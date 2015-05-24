@@ -6,4 +6,7 @@ sdkInfo:
   targetSdkVersion: '19'
 packageInfo:
   forced-package-id: '1'
+versionInfo:
+  versionCode: '19'
+  versionName: 4.4.4-47213b37ee
 compressionType: false

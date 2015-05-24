@@ -21,11 +21,11 @@ local-modified-apps :=
 local-modified-jars := 
 
 # All apks from MIUI
-local-miui-removed-apps := 
+local-miui-removed-apps := MiuiSuperMarket GameCenter 
 
-local-miui-removed-priv-apps := 
+local-miui-removed-priv-apps := MiGameCenterSDKService
 
-local-miui-modified-apps := MiuiFramework SecurityCenter
+local-miui-modified-apps := MiuiFramework SecurityCenter MiuiSystemUI
 
 # Config density for co-developers to use the aaps with HDPI or XHDPI resource,
 # Default configrations are HDPI for ics branch and XHDPI for jellybean branch
@@ -65,4 +65,6 @@ local-pre-zip-misc:
 	cp -rf stockrom/system/bin/debuggerd $(ZIP_DIR)/system/bin/debuggerd
 	rm -rf $(ZIP_DIR)/system/bin/dexopt_vendor
 	cp -rf stockrom/system/bin/dexopt $(ZIP_DIR)/system/bin/dexopt
+	cp -rf stockrom/system/xbin/busybox $(ZIP_DIR)/system/xbin/busybox
+	cp -rf stockrom/system/xbin/sqlite3 $(ZIP_DIR)/system/xbin/sqlite3
 # MIUI_V6_Sensation
