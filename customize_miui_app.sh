@@ -45,6 +45,7 @@ function mergyXmlPart() {
 if [ $1 = "MiuiFramework" ];then
 	applyPatch $1 $2
 	cp $1/pyramid.xml $2/assets/device_features/
+    cp $1/pyramid_legacy.xml $2/assets/device_features/
 fi
 
 if [ $1 = "SecurityCenter" ];then
@@ -52,6 +53,30 @@ if [ $1 = "SecurityCenter" ];then
 fi
 
 if [ $1 = "MiuiSystemUI" ];then
+	applyPatch $1 $2
+	cp $1/res/drawable-hdpi/tab_notifications_bg_n.png $2/res/drawable-hdpi/
+	cp $1/res/drawable-hdpi/tab_notifications_bg_p.png $2/res/drawable-hdpi/
+	cp $1/res/drawable-hdpi/tab_toggles_bg_n.png $2/res/drawable-hdpi/
+	cp $1/res/drawable-hdpi/tab_toggles_bg_p.png $2/res/drawable-hdpi/
+	rm $2/res/drawable-hdpi/tab_notifications_bg_n.9.png
+	rm $2/res/drawable-hdpi/tab_notifications_bg_p.9.png
+	rm $2/res/drawable-hdpi/tab_toggles_bg_n.9.png
+	rm $2/res/drawable-hdpi/tab_toggles_bg_p.9.png
+fi
+
+if [ $1 = "MiuiHome" ];then
+	applyPatch $1 $2
+fi
+
+if [ $1 = "DownloadProvider" ];then
+	applyPatch $1 $2
+fi
+
+if [ $1 = "DownloadProviderUi" ];then
+	applyPatch $1 $2
+fi
+
+if [ $1 = "Music" ];then
 	applyPatch $1 $2
 fi
 # MIUI_V6_Sensation

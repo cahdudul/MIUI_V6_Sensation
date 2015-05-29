@@ -6,14 +6,22 @@
     <bool name="is_xiaomi">false</bool>
     <!--whether the device is hongmi-->
     <bool name="is_hongmi">false</bool>
-    <!--whether install the fm app-->
-    <bool name="support_fm">true</bool>
+    <!--whether the device is pyramid-->
+    <bool name="is_pyramid">true</bool>
     <!--whether the device supports led light-->
     <bool name="support_led_light">true</bool>
+    <!--whether the device supports button light-->
+    <bool name="support_button_light">true</bool>
     <!--whether the device supports emulated storage-->
     <bool name="support_emulated_storage">true</bool>
     <!--whether the device supports internal sdcard-->
-    <bool name="support_internal_sdcard">false</bool>
+    <bool name="support_internal_sdcard">true</bool>
+    <!--whether the device supports erase external storage-->
+    <bool name="support_erase_external_storage">true</bool>
+    <!--whether the device supports power mode-->
+    <bool name="support_power_mode">true</bool>
+    <!--whether the device supports headset-->
+    <bool name="support_headset">true</bool>
     <!--the vendor feature, it's value may be qcom,mediatek,leadcore or nvidia-->
     <string name="vendor">qcom</string>
 </features>

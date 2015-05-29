@@ -25,7 +25,7 @@ local-miui-removed-apps := MiuiSuperMarket GameCenter
 
 local-miui-removed-priv-apps := MiGameCenterSDKService
 
-local-miui-modified-apps := MiuiFramework SecurityCenter MiuiSystemUI
+local-miui-modified-apps := MiuiFramework MiuiSystemUI SecurityCenter
 
 # Config density for co-developers to use the aaps with HDPI or XHDPI resource,
 # Default configrations are HDPI for ics branch and XHDPI for jellybean branch
@@ -56,7 +56,10 @@ PORT_PRODUCT：= pyramid
 local-pre-zip-misc:
 	@echo Update boot.img
 	cp other/boot.img $(ZIP_DIR)/boot.img
-
+	@echo Update build.prop
+	cp -rf other/system/build.prop $(ZIP_DIR)/system/build.prop
+	
+	@echo Added some custom app
 	cp -rf other/system $(ZIP_DIR)/
 
 	@echo goodbye! miui prebuilt binaries!
