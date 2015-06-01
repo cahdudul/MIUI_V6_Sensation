@@ -59,6 +59,14 @@ dalvik.vm.dexopt-flags=v=a,o=v,m=y,u=n
 windowsmgr.max_events_per_sec=300
 pm.sleep_mode=1
 
+# Lock Launcher in Memory
+ro.HOME_APP_ADJ=1
+
+# Performance Tunning
+debug.sf.hw=1
+debug.egl.hw=1
+debug.composition.type=c2d
+
 #
 # ADDITIONAL_BUILD_PROPERTIES
 #
@@ -142,4 +150,4 @@ sys.keep_app_1=com.dolby
 ro.semc.sound_effects_enabled=true
 ro.semc.xloud.supported=true
 persist.service.xloud.enable=1
-
+qemu.hw.mainkeys=1
