@@ -25,13 +25,10 @@ private-phone-apps := BasicDreams \
 		VisualizationWallpapers \
 		WAPPushManager \
 		AudioEffectService \
-		ChromeBookmarksSyncAdapter \
 		Ds \
 		DSNotificationService \
-		DsUI \
-		GoogleCalendarSyncAdapter \
-		GoogleContactsSyncAdapter \
-
+		DsUI
+		
 private-phone-priv-apps := BackupRestoreConfirmation \
 		DefaultContainerService \
 		DownloadProvider \
@@ -44,14 +41,4 @@ private-phone-priv-apps := BackupRestoreConfirmation \
 		SharedStorageBackup \
 		Shell \
 		WallpaperCropper \
-		Phonesky \
-		PrebuiltGmsCore \
-		FusedLocation \
-		GoogleBackupTransport \
-		GoogleFeedback \
-		GoogleLoginService \
-		GoogleOneTimeInitializer \
-		GooglePartnerSetup \
-		GoogleServicesFramework \
-		SetupWizard \
 # MIUI_V6_Sensation

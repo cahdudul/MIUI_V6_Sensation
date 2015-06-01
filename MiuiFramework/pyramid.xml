@@ -22,6 +22,8 @@
     <bool name="support_power_mode">true</bool>
     <!--whether the device supports headset-->
     <bool name="support_headset">true</bool>
+    <!--whether the device supports miui lite-->
+    <bool name="enable_miui_lite">true</bool>
     <!--the vendor feature, it's value may be qcom,mediatek,leadcore or nvidia-->
     <string name="vendor">qcom</string>
 </features>

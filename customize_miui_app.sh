@@ -6,7 +6,7 @@ GIT_APPLY=$PORT_ROOT/tools/git.apply
 curdir=`pwd`
 
 function applyPatch () {
-    for patch in `find $1 -name *.patch`
+    for patch in `find $1 -name "*.patch"`
     do
         cd out
         $GIT_APPLY ../$patch
@@ -20,7 +20,7 @@ function applyPatch () {
 }
 
 function applyPart () {
-    for part in `find $1 -name *.part`
+    for part in `find $1 -name "*.part"`
     do
         cd out
         $GIT_APPLY ../$part
@@ -62,6 +62,11 @@ if [ $1 = "MiuiSystemUI" ];then
 	rm $2/res/drawable-hdpi/tab_notifications_bg_p.9.png
 	rm $2/res/drawable-hdpi/tab_toggles_bg_n.9.png
 	rm $2/res/drawable-hdpi/tab_toggles_bg_p.9.png
+fi
+
+if [ $1 = "DeskClock" ];then
+    other/tools/idtoname.py other/tools/public-miui.xml $2/smali
+    other/tools/nametoid.py framework-res/res/values/public.xml $2/smali
 fi
 
 if [ $1 = "MiuiHome" ];then

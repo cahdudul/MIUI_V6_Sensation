@@ -18,6 +18,8 @@ local-previous-target-dir :=
 # All apps from original ZIP, but has smali files chanded
 local-modified-apps := 
 
+local-modified-priv-apps := mipop
+
 local-modified-jars := 
 
 # All apks from MIUI
@@ -25,7 +27,7 @@ local-miui-removed-apps := MiuiSuperMarket GameCenter
 
 local-miui-removed-priv-apps := MiGameCenterSDKService
 
-local-miui-modified-apps := MiuiFramework MiuiSystemUI SecurityCenter
+local-miui-modified-apps := MiuiFramework MiuiSystemUI MiuiHome SecurityCenter DeskClock
 
 # Config density for co-developers to use the aaps with HDPI or XHDPI resource,
 # Default configrations are HDPI for ics branch and XHDPI for jellybean branch
@@ -55,10 +57,12 @@ PORT_PRODUCT：= pyramid
 #pre_install_data_packages := $(TMP_DIR)/pre_install_apk_pkgname.txt
 local-pre-zip-misc:
 	@echo Update boot.img
-	cp other/boot.img $(ZIP_DIR)/boot.img
+	cp -rf other/boot.img $(ZIP_DIR)/boot.img
 	@echo Update build.prop
 	cp -rf other/system/build.prop $(ZIP_DIR)/system/build.prop
 	
+	mv $(ZIP_DIR)/system/app/QuickSearchBox.apk $(ZIP_DIR)/system/priv-app/QuickSearchBox.apk
+
 	@echo Added some custom app
 	cp -rf other/system $(ZIP_DIR)/
 
