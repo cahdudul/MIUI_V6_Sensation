@@ -412,7 +412,7 @@
 
     .line 401
     .local v3, "resources":Landroid/content/res/Resources;
-    const v5, 0x10e002d
+    const v5, 0x10e002e
 
     invoke-virtual {v3, v5}, Landroid/content/res/Resources;->getInteger(I)I
 
@@ -425,7 +425,7 @@
     iput v5, p0, Lcom/android/server/power/DisplayPowerController;->mScreenBrightnessDimConfig:I
 
     .line 404
-    const v5, 0x10e002a
+    const v5, 0x10e002b
 
     invoke-virtual {v3, v5}, Landroid/content/res/Resources;->getInteger(I)I
 
@@ -451,7 +451,7 @@
     iput v5, p0, Lcom/android/server/power/DisplayPowerController;->mScreenBrightnessRangeMaximum:I
 
     .line 411
-    const v5, 0x111001c
+    const v5, 0x111001d
 
     invoke-virtual {v3, v5}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -520,7 +520,7 @@
     invoke-virtual {v1, v5, v6, v2, v7}, Landroid/content/ContentResolver;->registerContentObserver(Landroid/net/Uri;ZLandroid/database/ContentObserver;I)V
 
     .line 437
-    const v5, 0x10e0030
+    const v5, 0x10e0031
 
     invoke-virtual {v3, v5}, Landroid/content/res/Resources;->getInteger(I)I
 
@@ -4485,14 +4485,14 @@
     if-nez v5, :cond_1
 
     .line 476
-    const v5, 0x1070026
+    const v5, 0x1070027
 
     invoke-virtual {v1, v5}, Landroid/content/res/Resources;->getIntArray(I)[I
 
     move-result-object v0
 
     .line 477
-    const v5, 0x1070027
+    const v5, 0x1070028
 
     invoke-virtual {v1, v5}, Landroid/content/res/Resources;->getIntArray(I)[I
 

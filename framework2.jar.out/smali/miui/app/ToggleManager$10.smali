@@ -24,7 +24,7 @@
     .param p2, "x0"    # Landroid/os/Handler;
 
     .prologue
-    .line 1001
+    .line 1000
     iput-object p1, p0, Lmiui/app/ToggleManager$10;->this$0:Lmiui/app/ToggleManager;
 
     invoke-direct {p0, p2}, Landroid/database/ContentObserver;-><init>(Landroid/os/Handler;)V
@@ -39,12 +39,12 @@
     .param p1, "selfChange"    # Z
 
     .prologue
-    .line 1004
+    .line 1003
     iget-object v0, p0, Lmiui/app/ToggleManager$10;->this$0:Lmiui/app/ToggleManager;
 
     # invokes: Lmiui/app/ToggleManager;->updateScreenButtonState()V
     invoke-static {v0}, Lmiui/app/ToggleManager;->access$1400(Lmiui/app/ToggleManager;)V
 
-    .line 1005
+    .line 1004
     return-void
 .end method

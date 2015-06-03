@@ -24,7 +24,7 @@
     .param p2, "x0"    # Landroid/os/Handler;
 
     .prologue
-    .line 1021
+    .line 1020
     iput-object p1, p0, Lmiui/app/ToggleManager$13;->this$0:Lmiui/app/ToggleManager;
 
     invoke-direct {p0, p2}, Landroid/database/ContentObserver;-><init>(Landroid/os/Handler;)V
@@ -39,18 +39,18 @@
     .param p1, "selfChange"    # Z
 
     .prologue
-    .line 1023
+    .line 1022
     iget-object v0, p0, Lmiui/app/ToggleManager$13;->this$0:Lmiui/app/ToggleManager;
 
     # invokes: Lmiui/app/ToggleManager;->queryBrightnessStatus()V
     invoke-static {v0}, Lmiui/app/ToggleManager;->access$1700(Lmiui/app/ToggleManager;)V
 
-    .line 1024
+    .line 1023
     iget-object v0, p0, Lmiui/app/ToggleManager$13;->this$0:Lmiui/app/ToggleManager;
 
     # invokes: Lmiui/app/ToggleManager;->updateBrightnessToggle()V
     invoke-static {v0}, Lmiui/app/ToggleManager;->access$1800(Lmiui/app/ToggleManager;)V
 
-    .line 1025
+    .line 1024
     return-void
 .end method

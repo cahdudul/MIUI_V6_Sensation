@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <plurals name="pinpuk_attempts">
-        <item quantity="other">%d جه‌ند هه‌وڵێکت ماوه‌ پێشی ئه‌وه‌ی سیمکارته‌که‌ت قوفڵ بێت.</item>
-        <item quantity="one">%d جه‌ند هه‌وڵێکت ماوه‌ پێشی ئه‌وه‌ی سیمکارته‌که‌ت قوفڵ بێت.</item>
+        <item quantity="other">%d هه‌وڵت ماوه‌ پێش ئه‌وه‌ی سیمکارت دابخرێت.</item>
+        <item quantity="one">%d هه‌وڵت ماوه‌ پێش ئه‌وه‌ی سیمکارت دابخرێت.</item>
     </plurals>
     <plurals name="num_seconds_ago">
         <item quantity="other">%d چرکەکان لەمەوپێش</item>

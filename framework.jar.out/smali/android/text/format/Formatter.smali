@@ -61,7 +61,7 @@
 
     .line 53
     .local v0, "result":F
-    const v1, 0x1040125
+    const v1, 0x104013c
 
     .line 54
     .local v1, "suffix":I
@@ -70,7 +70,7 @@
     if-lez v3, :cond_1
 
     .line 55
-    const v1, 0x1040126
+    const v1, 0x104013d
 
     .line 56
     div-float/2addr v0, v5
@@ -82,7 +82,7 @@
     if-lez v3, :cond_2
 
     .line 59
-    const v1, 0x1040127
+    const v1, 0x104013e
 
     .line 60
     div-float/2addr v0, v5
@@ -94,7 +94,7 @@
     if-lez v3, :cond_3
 
     .line 63
-    const v1, 0x1040128
+    const v1, 0x104013f
 
     .line 64
     div-float/2addr v0, v5
@@ -106,7 +106,7 @@
     if-lez v3, :cond_4
 
     .line 67
-    const v1, 0x1040129
+    const v1, 0x1040140
 
     .line 68
     div-float/2addr v0, v5
@@ -118,7 +118,7 @@
     if-lez v3, :cond_5
 
     .line 71
-    const v1, 0x104012a
+    const v1, 0x1040141
 
     .line 72
     div-float/2addr v0, v5
@@ -153,7 +153,7 @@
 
     move-result-object v3
 
-    const v4, 0x104012b
+    const v4, 0x1040142
 
     const/4 v5, 0x2
 

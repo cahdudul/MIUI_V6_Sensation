@@ -681,7 +681,7 @@
 
     return-void
 
-    .line 718
+    .line 731
     :cond_0
     iget-boolean v0, p0, Lcom/android/internal/telephony/uicc/RuimRecords;->mRecordsRequired:Z
 

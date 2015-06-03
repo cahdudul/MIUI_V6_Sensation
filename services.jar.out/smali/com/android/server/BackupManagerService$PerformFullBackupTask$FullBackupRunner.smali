@@ -49,18 +49,18 @@
     .end annotation
 
     .prologue
-    .line 2635
+    .line 2681
     iput-object p1, p0, Lcom/android/server/BackupManagerService$PerformFullBackupTask$FullBackupRunner;->this$1:Lcom/android/server/BackupManagerService$PerformFullBackupTask;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 2636
+    .line 2682
     iput-object p2, p0, Lcom/android/server/BackupManagerService$PerformFullBackupTask$FullBackupRunner;->mPackage:Landroid/content/pm/PackageInfo;
 
-    .line 2637
+    .line 2683
     iput-object p3, p0, Lcom/android/server/BackupManagerService$PerformFullBackupTask$FullBackupRunner;->mAgent:Landroid/app/IBackupAgent;
 
-    .line 2638
+    .line 2684
     invoke-virtual {p4}, Landroid/os/ParcelFileDescriptor;->getFileDescriptor()Ljava/io/FileDescriptor;
 
     move-result-object v0
@@ -71,26 +71,26 @@
 
     iput-object v0, p0, Lcom/android/server/BackupManagerService$PerformFullBackupTask$FullBackupRunner;->mPipe:Landroid/os/ParcelFileDescriptor;
 
-    .line 2639
+    .line 2685
     iput p5, p0, Lcom/android/server/BackupManagerService$PerformFullBackupTask$FullBackupRunner;->mToken:I
 
-    .line 2640
+    .line 2686
     iput-boolean p6, p0, Lcom/android/server/BackupManagerService$PerformFullBackupTask$FullBackupRunner;->mSendApk:Z
 
-    .line 2641
+    .line 2687
     iput-boolean p7, p0, Lcom/android/server/BackupManagerService$PerformFullBackupTask$FullBackupRunner;->mWriteManifest:Z
 
-    .line 2642
+    .line 2688
     return-void
 .end method
 
 
 # virtual methods
 .method public run()V
-    .locals 7
+    .locals 13
 
     .prologue
-    .line 2647
+    .line 2693
     :try_start_0
     new-instance v5, Landroid/app/backup/BackupDataOutput;
 
@@ -102,13 +102,13 @@
 
     invoke-direct {v5, v0}, Landroid/app/backup/BackupDataOutput;-><init>(Ljava/io/FileDescriptor;)V
 
-    .line 2650
+    .line 2696
     .local v5, "output":Landroid/app/backup/BackupDataOutput;
     iget-boolean v0, p0, Lcom/android/server/BackupManagerService$PerformFullBackupTask$FullBackupRunner;->mWriteManifest:Z
 
     if-eqz v0, :cond_0
 
-    .line 2652
+    .line 2698
     iget-object v0, p0, Lcom/android/server/BackupManagerService$PerformFullBackupTask$FullBackupRunner;->this$1:Lcom/android/server/BackupManagerService$PerformFullBackupTask;
 
     iget-object v1, p0, Lcom/android/server/BackupManagerService$PerformFullBackupTask$FullBackupRunner;->mPackage:Landroid/content/pm/PackageInfo;
@@ -122,7 +122,7 @@
     # invokes: Lcom/android/server/BackupManagerService$PerformFullBackupTask;->writeAppManifest(Landroid/content/pm/PackageInfo;Ljava/io/File;Z)V
     invoke-static {v0, v1, v2, v3}, Lcom/android/server/BackupManagerService$PerformFullBackupTask;->access$1100(Lcom/android/server/BackupManagerService$PerformFullBackupTask;Landroid/content/pm/PackageInfo;Ljava/io/File;Z)V
 
-    .line 2653
+    .line 2699
     iget-object v0, p0, Lcom/android/server/BackupManagerService$PerformFullBackupTask$FullBackupRunner;->mPackage:Landroid/content/pm/PackageInfo;
 
     iget-object v0, v0, Landroid/content/pm/PackageInfo;->packageName:Ljava/lang/String;
@@ -149,13 +149,13 @@
 
     invoke-static/range {v0 .. v5}, Landroid/app/backup/FullBackup;->backupToTar(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Landroid/app/backup/BackupDataOutput;)I
 
-    .line 2659
+    .line 2705
     :cond_0
     iget-boolean v0, p0, Lcom/android/server/BackupManagerService$PerformFullBackupTask$FullBackupRunner;->mSendApk:Z
 
     if-eqz v0, :cond_1
 
-    .line 2660
+    .line 2706
     iget-object v0, p0, Lcom/android/server/BackupManagerService$PerformFullBackupTask$FullBackupRunner;->this$1:Lcom/android/server/BackupManagerService$PerformFullBackupTask;
 
     iget-object v1, p0, Lcom/android/server/BackupManagerService$PerformFullBackupTask$FullBackupRunner;->mPackage:Landroid/content/pm/PackageInfo;
@@ -163,7 +163,7 @@
     # invokes: Lcom/android/server/BackupManagerService$PerformFullBackupTask;->writeApkToBackup(Landroid/content/pm/PackageInfo;Landroid/app/backup/BackupDataOutput;)V
     invoke-static {v0, v1, v5}, Lcom/android/server/BackupManagerService$PerformFullBackupTask;->access$1200(Lcom/android/server/BackupManagerService$PerformFullBackupTask;Landroid/content/pm/PackageInfo;Landroid/app/backup/BackupDataOutput;)V
 
-    .line 2663
+    .line 2709
     :cond_1
     const-string v0, "BackupManagerService"
 
@@ -191,7 +191,7 @@
 
     invoke-static {v0, v1}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 2664
+    .line 2710
     iget-object v0, p0, Lcom/android/server/BackupManagerService$PerformFullBackupTask$FullBackupRunner;->this$1:Lcom/android/server/BackupManagerService$PerformFullBackupTask;
 
     iget-object v0, v0, Lcom/android/server/BackupManagerService$PerformFullBackupTask;->this$0:Lcom/android/server/BackupManagerService;
@@ -204,7 +204,14 @@
 
     invoke-virtual {v0, v1, v2, v3, v4}, Lcom/android/server/BackupManagerService;->prepareOperationTimeout(IJLcom/android/server/BackupManagerService$BackupRestoreTask;)V
 
-    .line 2665
+    .line 2711
+    iget-object v0, p0, Lcom/android/server/BackupManagerService$PerformFullBackupTask$FullBackupRunner;->this$1:Lcom/android/server/BackupManagerService$PerformFullBackupTask;
+
+    iget-object v0, v0, Lcom/android/server/BackupManagerService$PerformFullBackupTask;->mDomainTokens:[Ljava/lang/String;
+
+    if-nez v0, :cond_2
+
+    .line 2712
     iget-object v0, p0, Lcom/android/server/BackupManagerService$PerformFullBackupTask$FullBackupRunner;->mAgent:Landroid/app/IBackupAgent;
 
     iget-object v1, p0, Lcom/android/server/BackupManagerService$PerformFullBackupTask$FullBackupRunner;->mPipe:Landroid/os/ParcelFileDescriptor;
@@ -223,7 +230,8 @@
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_2
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 2673
+    .line 2724
+    :goto_0
     :try_start_1
     iget-object v0, p0, Lcom/android/server/BackupManagerService$PerformFullBackupTask$FullBackupRunner;->mPipe:Landroid/os/ParcelFileDescriptor;
 
@@ -231,18 +239,51 @@
     :try_end_1
     .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_1
 
-    .line 2676
+    .line 2727
     .end local v5    # "output":Landroid/app/backup/BackupDataOutput;
-    :goto_0
+    :goto_1
     return-void
 
-    .line 2666
-    :catch_0
-    move-exception v6
-
-    .line 2667
-    .local v6, "e":Ljava/io/IOException;
+    .line 2714
+    .restart local v5    # "output":Landroid/app/backup/BackupDataOutput;
+    :cond_2
     :try_start_2
+    iget-object v6, p0, Lcom/android/server/BackupManagerService$PerformFullBackupTask$FullBackupRunner;->mAgent:Landroid/app/IBackupAgent;
+
+    iget-object v7, p0, Lcom/android/server/BackupManagerService$PerformFullBackupTask$FullBackupRunner;->mPipe:Landroid/os/ParcelFileDescriptor;
+
+    iget v8, p0, Lcom/android/server/BackupManagerService$PerformFullBackupTask$FullBackupRunner;->mToken:I
+
+    iget-object v0, p0, Lcom/android/server/BackupManagerService$PerformFullBackupTask$FullBackupRunner;->this$1:Lcom/android/server/BackupManagerService$PerformFullBackupTask;
+
+    iget-object v9, v0, Lcom/android/server/BackupManagerService$PerformFullBackupTask;->mDomainTokens:[Ljava/lang/String;
+
+    iget-object v0, p0, Lcom/android/server/BackupManagerService$PerformFullBackupTask$FullBackupRunner;->this$1:Lcom/android/server/BackupManagerService$PerformFullBackupTask;
+
+    iget-object v10, v0, Lcom/android/server/BackupManagerService$PerformFullBackupTask;->mExcludeFilesRegex:Ljava/lang/String;
+
+    iget-object v0, p0, Lcom/android/server/BackupManagerService$PerformFullBackupTask$FullBackupRunner;->this$1:Lcom/android/server/BackupManagerService$PerformFullBackupTask;
+
+    iget-object v0, v0, Lcom/android/server/BackupManagerService$PerformFullBackupTask;->this$0:Lcom/android/server/BackupManagerService;
+
+    iget-object v11, v0, Lcom/android/server/BackupManagerService;->mBackupManagerBinder:Landroid/app/backup/IBackupManager;
+
+    invoke-interface/range {v6 .. v11}, Landroid/app/IBackupAgent;->doBackupFiles(Landroid/os/ParcelFileDescriptor;I[Ljava/lang/String;Ljava/lang/String;Landroid/app/backup/IBackupManager;)V
+    :try_end_2
+    .catch Ljava/io/IOException; {:try_start_2 .. :try_end_2} :catch_0
+    .catch Landroid/os/RemoteException; {:try_start_2 .. :try_end_2} :catch_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
+
+    goto :goto_0
+
+    .line 2717
+    .end local v5    # "output":Landroid/app/backup/BackupDataOutput;
+    :catch_0
+    move-exception v12
+
+    .line 2718
+    .local v12, "e":Ljava/io/IOException;
+    :try_start_3
     const-string v0, "BackupManagerService"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -268,33 +309,33 @@
     move-result-object v1
 
     invoke-static {v0, v1}, Landroid/util/Slog;->e(Ljava/lang/String;Ljava/lang/String;)I
-    :try_end_2
-    .catchall {:try_start_2 .. :try_end_2} :catchall_0
+    :try_end_3
+    .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
-    .line 2673
-    :try_start_3
+    .line 2724
+    :try_start_4
     iget-object v0, p0, Lcom/android/server/BackupManagerService$PerformFullBackupTask$FullBackupRunner;->mPipe:Landroid/os/ParcelFileDescriptor;
 
     invoke-virtual {v0}, Landroid/os/ParcelFileDescriptor;->close()V
-    :try_end_3
-    .catch Ljava/io/IOException; {:try_start_3 .. :try_end_3} :catch_1
+    :try_end_4
+    .catch Ljava/io/IOException; {:try_start_4 .. :try_end_4} :catch_1
 
-    goto :goto_0
+    goto :goto_1
 
-    .line 2674
-    .end local v6    # "e":Ljava/io/IOException;
+    .line 2725
+    .end local v12    # "e":Ljava/io/IOException;
     :catch_1
     move-exception v0
 
-    goto :goto_0
+    goto :goto_1
 
-    .line 2668
+    .line 2719
     :catch_2
-    move-exception v6
+    move-exception v12
 
-    .line 2669
-    .local v6, "e":Landroid/os/RemoteException;
-    :try_start_4
+    .line 2720
+    .local v12, "e":Landroid/os/RemoteException;
+    :try_start_5
     const-string v0, "BackupManagerService"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -320,39 +361,39 @@
     move-result-object v1
 
     invoke-static {v0, v1}, Landroid/util/Slog;->e(Ljava/lang/String;Ljava/lang/String;)I
-    :try_end_4
-    .catchall {:try_start_4 .. :try_end_4} :catchall_0
+    :try_end_5
+    .catchall {:try_start_5 .. :try_end_5} :catchall_0
 
-    .line 2673
-    :try_start_5
+    .line 2724
+    :try_start_6
     iget-object v0, p0, Lcom/android/server/BackupManagerService$PerformFullBackupTask$FullBackupRunner;->mPipe:Landroid/os/ParcelFileDescriptor;
 
     invoke-virtual {v0}, Landroid/os/ParcelFileDescriptor;->close()V
-    :try_end_5
-    .catch Ljava/io/IOException; {:try_start_5 .. :try_end_5} :catch_1
+    :try_end_6
+    .catch Ljava/io/IOException; {:try_start_6 .. :try_end_6} :catch_1
 
-    goto :goto_0
+    goto :goto_1
 
-    .line 2672
-    .end local v6    # "e":Landroid/os/RemoteException;
+    .line 2723
+    .end local v12    # "e":Landroid/os/RemoteException;
     :catchall_0
     move-exception v0
 
-    .line 2673
-    :try_start_6
+    .line 2724
+    :try_start_7
     iget-object v1, p0, Lcom/android/server/BackupManagerService$PerformFullBackupTask$FullBackupRunner;->mPipe:Landroid/os/ParcelFileDescriptor;
 
     invoke-virtual {v1}, Landroid/os/ParcelFileDescriptor;->close()V
-    :try_end_6
-    .catch Ljava/io/IOException; {:try_start_6 .. :try_end_6} :catch_3
+    :try_end_7
+    .catch Ljava/io/IOException; {:try_start_7 .. :try_end_7} :catch_3
 
-    .line 2672
-    :goto_1
+    .line 2723
+    :goto_2
     throw v0
 
-    .line 2674
+    .line 2725
     :catch_3
     move-exception v1
 
-    goto :goto_1
+    goto :goto_2
 .end method

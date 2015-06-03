@@ -21,7 +21,13 @@
 
 .field public fd:Landroid/os/ParcelFileDescriptor;
 
+.field public ignoreEncryptionPasswordCheck:Z
+
+.field public ignoreVersionMismatchCheck:Z
+
 .field public final latch:Ljava/util/concurrent/atomic/AtomicBoolean;
+
+.field public noninteractive:Z
 
 .field public observer:Landroid/app/backup/IFullBackupRestoreObserver;
 
@@ -33,20 +39,26 @@
     .locals 2
 
     .prologue
-    .line 391
+    const/4 v1, 0x0
+
+    .line 421
     iput-object p1, p0, Lcom/android/server/BackupManagerService$FullParams;->this$0:Lcom/android/server/BackupManagerService;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 392
+    .line 422
     new-instance v0, Ljava/util/concurrent/atomic/AtomicBoolean;
-
-    const/4 v1, 0x0
 
     invoke-direct {v0, v1}, Ljava/util/concurrent/atomic/AtomicBoolean;-><init>(Z)V
 
     iput-object v0, p0, Lcom/android/server/BackupManagerService$FullParams;->latch:Ljava/util/concurrent/atomic/AtomicBoolean;
 
-    .line 393
+    .line 423
+    iput-boolean v1, p0, Lcom/android/server/BackupManagerService$FullParams;->noninteractive:Z
+
+    .line 424
+    iput-boolean v1, p0, Lcom/android/server/BackupManagerService$FullParams;->ignoreVersionMismatchCheck:Z
+
+    .line 425
     return-void
 .end method

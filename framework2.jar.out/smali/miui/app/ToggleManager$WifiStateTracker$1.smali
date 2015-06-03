@@ -36,7 +36,7 @@
     .locals 0
 
     .prologue
-    .line 1242
+    .line 1241
     iput-object p1, p0, Lmiui/app/ToggleManager$WifiStateTracker$1;->this$0:Lmiui/app/ToggleManager$WifiStateTracker;
 
     iput-boolean p2, p0, Lmiui/app/ToggleManager$WifiStateTracker$1;->val$enable:Z
@@ -53,7 +53,7 @@
     .param p1, "x0"    # [Ljava/lang/Object;
 
     .prologue
-    .line 1242
+    .line 1241
     check-cast p1, [Ljava/lang/Void;
 
     .end local p1    # "x0":[Ljava/lang/Object;
@@ -71,7 +71,7 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 1246
+    .line 1245
     # getter for: Lmiui/app/ToggleManager;->mWifiManager:Landroid/net/wifi/WifiManager;
     invoke-static {}, Lmiui/app/ToggleManager;->access$2600()Landroid/net/wifi/WifiManager;
 
@@ -81,7 +81,7 @@
 
     move-result v0
 
-    .line 1247
+    .line 1246
     .local v0, "wifiApState":I
     iget-boolean v1, p0, Lmiui/app/ToggleManager$WifiStateTracker$1;->val$enable:Z
 
@@ -95,7 +95,7 @@
 
     if-ne v0, v1, :cond_1
 
-    .line 1249
+    .line 1248
     :cond_0
     # getter for: Lmiui/app/ToggleManager;->mWifiManager:Landroid/net/wifi/WifiManager;
     invoke-static {}, Lmiui/app/ToggleManager;->access$2600()Landroid/net/wifi/WifiManager;
@@ -106,7 +106,7 @@
 
     invoke-virtual {v1, v3, v2}, Landroid/net/wifi/WifiManager;->setWifiApEnabled(Landroid/net/wifi/WifiConfiguration;Z)Z
 
-    .line 1251
+    .line 1250
     :cond_1
     # getter for: Lmiui/app/ToggleManager;->mWifiManager:Landroid/net/wifi/WifiManager;
     invoke-static {}, Lmiui/app/ToggleManager;->access$2600()Landroid/net/wifi/WifiManager;
@@ -117,7 +117,7 @@
 
     invoke-virtual {v1, v2}, Landroid/net/wifi/WifiManager;->setWifiEnabled(Z)Z
 
-    .line 1252
+    .line 1251
     return-object v3
 .end method
 
@@ -126,7 +126,7 @@
     .param p1, "x0"    # Ljava/lang/Object;
 
     .prologue
-    .line 1242
+    .line 1241
     check-cast p1, Ljava/lang/Void;
 
     .end local p1    # "x0":Ljava/lang/Object;
@@ -140,7 +140,7 @@
     .param p1, "param"    # Ljava/lang/Void;
 
     .prologue
-    .line 1257
+    .line 1256
     iget-object v0, p0, Lmiui/app/ToggleManager$WifiStateTracker$1;->this$0:Lmiui/app/ToggleManager$WifiStateTracker;
 
     const/4 v1, 0x0
@@ -148,6 +148,6 @@
     # setter for: Lmiui/app/ToggleManager$WifiStateTracker;->zChanging:Z
     invoke-static {v0, v1}, Lmiui/app/ToggleManager$WifiStateTracker;->access$2702(Lmiui/app/ToggleManager$WifiStateTracker;Z)Z
 
-    .line 1258
+    .line 1257
     return-void
 .end method

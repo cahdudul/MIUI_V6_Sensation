@@ -191,7 +191,7 @@
 
     move-result-object v28
 
-    const v29, 0x10e0049
+    const v29, 0x10e004a
 
     invoke-virtual/range {v28 .. v29}, Landroid/content/res/Resources;->getInteger(I)I
     :try_end_1

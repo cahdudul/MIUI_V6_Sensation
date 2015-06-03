@@ -246,7 +246,7 @@
 
     move-result-object v0
 
-    const v3, 0x1110043
+    const v3, 0x1110045
 
     invoke-virtual {v0, v3}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -286,7 +286,7 @@
 
     move-result-object v0
 
-    const v1, 0x1110076
+    const v1, 0x1110078
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -1517,7 +1517,7 @@
     if-eqz p1, :cond_1
 
     .line 946
-    const v4, 0x1040529
+    const v4, 0x1040540
 
     .line 951
     .local v4, "detailsId":I
@@ -1542,7 +1542,7 @@
 
     .line 953
     .local v12, "r":Landroid/content/res/Resources;
-    const v14, 0x1040527
+    const v14, 0x104053e
 
     const/4 v15, 0x2
 
@@ -1675,7 +1675,7 @@
 
     move-result-object v14
 
-    const v15, 0x104052a
+    const v15, 0x1040541
 
     invoke-virtual {v12, v15}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -1685,7 +1685,7 @@
 
     move-result-object v14
 
-    const v15, 0x104052b
+    const v15, 0x1040542
 
     invoke-virtual {v12, v15}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -1750,7 +1750,7 @@
     .end local v12    # "r":Landroid/content/res/Resources;
     .end local v13    # "rememberChoice":Landroid/widget/CheckBox;
     :cond_1
-    const v4, 0x1040528
+    const v4, 0x104053f
 
     .restart local v4    # "detailsId":I
     goto/16 :goto_1
@@ -2005,7 +2005,7 @@
 
     .line 917
     .local v4, "r":Landroid/content/res/Resources;
-    const v5, 0x1040524
+    const v5, 0x104053b
 
     const/4 v6, 0x1
 
@@ -2039,7 +2039,7 @@
 
     invoke-direct {v5, v6}, Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;)V
 
-    const v6, 0x1040523
+    const v6, 0x104053a
 
     invoke-virtual {v5, v6}, Landroid/app/AlertDialog$Builder;->setTitle(I)Landroid/app/AlertDialog$Builder;
 
@@ -2055,7 +2055,7 @@
 
     move-result-object v5
 
-    const v6, 0x1040525
+    const v6, 0x104053c
 
     invoke-virtual {v4, v6}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -2065,7 +2065,7 @@
 
     move-result-object v5
 
-    const v6, 0x1040526
+    const v6, 0x104053d
 
     invoke-virtual {v4, v6}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 

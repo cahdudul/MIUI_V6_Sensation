@@ -39,6 +39,8 @@
     .end annotation
 .end field
 
+.field public static final SYNC_EXTRA_INFO:Ljava/lang/String; = "sync_extra_info"
+
 .field public static final _ID:Ljava/lang/String; = "_id"
 
 
@@ -47,7 +49,7 @@
     .locals 1
 
     .prologue
-    .line 692
+    .line 695
     const-string v0, "content://mms-sms/sim-cards"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
@@ -63,7 +65,7 @@
     .locals 0
 
     .prologue
-    .line 691
+    .line 694
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

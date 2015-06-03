@@ -24,7 +24,7 @@
     .param p2, "x0"    # Landroid/os/Handler;
 
     .prologue
-    .line 1014
+    .line 1013
     iput-object p1, p0, Lmiui/app/ToggleManager$12;->this$0:Lmiui/app/ToggleManager;
 
     invoke-direct {p0, p2}, Landroid/database/ContentObserver;-><init>(Landroid/os/Handler;)V
@@ -39,12 +39,12 @@
     .param p1, "selfChange"    # Z
 
     .prologue
-    .line 1016
+    .line 1015
     iget-object v0, p0, Lmiui/app/ToggleManager$12;->this$0:Lmiui/app/ToggleManager;
 
     # invokes: Lmiui/app/ToggleManager;->updateAccelerometerToggle()V
     invoke-static {v0}, Lmiui/app/ToggleManager;->access$1600(Lmiui/app/ToggleManager;)V
 
-    .line 1017
+    .line 1016
     return-void
 .end method

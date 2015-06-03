@@ -28,7 +28,7 @@
     .locals 0
 
     .prologue
-    .line 71
+    .line 74
     iput-object p1, p0, Landroid/content/res/ThemeManager$1$2;->this$1:Landroid/content/res/ThemeManager$1;
 
     iput-boolean p2, p0, Landroid/content/res/ThemeManager$1$2;->val$isSuccess:Z
@@ -44,12 +44,12 @@
     .locals 4
 
     .prologue
-    .line 74
+    .line 77
     iget-object v2, p0, Landroid/content/res/ThemeManager$1$2;->this$1:Landroid/content/res/ThemeManager$1;
 
     iget-object v2, v2, Landroid/content/res/ThemeManager$1;->this$0:Landroid/content/res/ThemeManager;
 
-    # getter for: Landroid/content/res/ThemeManager;->mListeners:Ljava/util/Set;
+    # getter for: Landroid/content/res/ThemeManager;->mChangeListeners:Ljava/util/Set;
     invoke-static {v2}, Landroid/content/res/ThemeManager;->access$000(Landroid/content/res/ThemeManager;)Ljava/util/Set;
 
     move-result-object v2
@@ -58,7 +58,7 @@
 
     move-result-object v1
 
-    .line 75
+    .line 78
     .local v1, "iterator":Ljava/util/Iterator;, "Ljava/util/Iterator<Landroid/content/res/ThemeManager$ThemeChangeListener;>;"
     :goto_0
     invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
@@ -67,7 +67,7 @@
 
     if-eqz v2, :cond_0
 
-    .line 77
+    .line 80
     :try_start_0
     invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -83,11 +83,11 @@
 
     goto :goto_0
 
-    .line 78
+    .line 81
     :catch_0
     move-exception v0
 
-    .line 79
+    .line 82
     .local v0, "e":Ljava/lang/Throwable;
     # getter for: Landroid/content/res/ThemeManager;->TAG:Ljava/lang/String;
     invoke-static {}, Landroid/content/res/ThemeManager;->access$100()Ljava/lang/String;
@@ -98,12 +98,12 @@
 
     invoke-static {v2, v3, v0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 80
+    .line 83
     invoke-interface {v1}, Ljava/util/Iterator;->remove()V
 
     goto :goto_0
 
-    .line 83
+    .line 86
     .end local v0    # "e":Ljava/lang/Throwable;
     :cond_0
     return-void

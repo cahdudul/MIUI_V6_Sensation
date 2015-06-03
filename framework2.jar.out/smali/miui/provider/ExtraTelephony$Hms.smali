@@ -54,7 +54,7 @@
     .locals 2
 
     .prologue
-    .line 2333
+    .line 2340
     const-string v0, "content://hms/"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
@@ -63,7 +63,7 @@
 
     sput-object v0, Lmiui/provider/ExtraTelephony$Hms;->CONTENT_URI:Landroid/net/Uri;
 
-    .line 2336
+    .line 2343
     sget-object v0, Lmiui/provider/ExtraTelephony$Hms;->CONTENT_URI:Landroid/net/Uri;
 
     const-string v1, "threadId"
@@ -81,7 +81,7 @@
     .locals 0
 
     .prologue
-    .line 2332
+    .line 2339
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

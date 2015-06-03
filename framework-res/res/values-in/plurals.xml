@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <plurals name="tethered_clients_connected">
+        <item quantity="other">%d klien tersambung</item>
+    </plurals>
     <plurals name="pinpuk_attempts">
         <item quantity="other">Sisa %d percobaan sebelum SIM terkunci.</item>
         <item quantity="one">Sisa %d percobaan sebelum SIM terkunci.</item>

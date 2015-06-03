@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <plurals name="tethered_clients_connected">
+        <item quantity="other">%d clients connectats</item>
+        <item quantity="one">%d client connectat</item>
+    </plurals>
     <plurals name="pinpuk_attempts">
         <item quantity="other">"Et queden %d intents; si no l'encertes, la SIM es bloquejarà."</item>
         <item quantity="one">"Et queda %d intent; si no l'encertes, la SIM es bloquejarà."</item>

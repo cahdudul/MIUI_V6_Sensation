@@ -237,8 +237,6 @@
 
 .field private final mSecurityHelper:Landroid/security/ChooseLockSettingsHelper;
 
-.field private mSilentEnabled:Z
-
 .field private mStatusChangeListenerHandle:Ljava/lang/Object;
 
 .field private final mSyncStatusObserver:Landroid/content/SyncStatusObserver;
@@ -1667,17 +1665,17 @@
 
     iput-object v5, p0, Lmiui/app/ToggleManager;->mWifiState:Lmiui/app/ToggleManager$WifiStateTracker;
 
-    .line 915
+    .line 914
     iput-boolean v7, p0, Lmiui/app/ToggleManager;->mIsSimMissing:Z
 
-    .line 917
+    .line 916
     new-instance v5, Lmiui/app/ToggleManager$1;
 
     invoke-direct {v5, p0}, Lmiui/app/ToggleManager$1;-><init>(Lmiui/app/ToggleManager;)V
 
     iput-object v5, p0, Lmiui/app/ToggleManager;->mBroadcastReceiver:Landroid/content/BroadcastReceiver;
 
-    .line 938
+    .line 937
     new-instance v5, Lmiui/app/ToggleManager$2;
 
     iget-object v8, p0, Lmiui/app/ToggleManager;->mHandler:Landroid/os/Handler;
@@ -1686,7 +1684,7 @@
 
     iput-object v5, p0, Lmiui/app/ToggleManager;->mTogglOrderObserver:Landroid/database/ContentObserver;
 
-    .line 949
+    .line 948
     new-instance v5, Lmiui/app/ToggleManager$3;
 
     iget-object v8, p0, Lmiui/app/ToggleManager;->mHandler:Landroid/os/Handler;
@@ -1695,7 +1693,7 @@
 
     iput-object v5, p0, Lmiui/app/ToggleManager;->mFlightModeObserver:Landroid/database/ContentObserver;
 
-    .line 956
+    .line 955
     new-instance v5, Lmiui/app/ToggleManager$4;
 
     iget-object v8, p0, Lmiui/app/ToggleManager;->mHandler:Landroid/os/Handler;
@@ -1704,7 +1702,7 @@
 
     iput-object v5, p0, Lmiui/app/ToggleManager;->mDriveModeObserver:Landroid/database/ContentObserver;
 
-    .line 963
+    .line 962
     new-instance v5, Lmiui/app/ToggleManager$5;
 
     iget-object v8, p0, Lmiui/app/ToggleManager;->mHandler:Landroid/os/Handler;
@@ -1713,7 +1711,7 @@
 
     iput-object v5, p0, Lmiui/app/ToggleManager;->mMobileDataEnableObserver:Landroid/database/ContentObserver;
 
-    .line 971
+    .line 970
     new-instance v5, Lmiui/app/ToggleManager$6;
 
     iget-object v8, p0, Lmiui/app/ToggleManager;->mHandler:Landroid/os/Handler;
@@ -1722,7 +1720,7 @@
 
     iput-object v5, p0, Lmiui/app/ToggleManager;->mMobilePolicyEnableObserver:Landroid/database/ContentObserver;
 
-    .line 980
+    .line 979
     new-instance v5, Lmiui/app/ToggleManager$7;
 
     iget-object v8, p0, Lmiui/app/ToggleManager;->mHandler:Landroid/os/Handler;
@@ -1731,7 +1729,7 @@
 
     iput-object v5, p0, Lmiui/app/ToggleManager;->mTorchEnableObserver:Landroid/database/ContentObserver;
 
-    .line 987
+    .line 986
     new-instance v5, Lmiui/app/ToggleManager$8;
 
     iget-object v8, p0, Lmiui/app/ToggleManager;->mHandler:Landroid/os/Handler;
@@ -1740,7 +1738,7 @@
 
     iput-object v5, p0, Lmiui/app/ToggleManager;->mPrivacyModeObserver:Landroid/database/ContentObserver;
 
-    .line 994
+    .line 993
     new-instance v5, Lmiui/app/ToggleManager$9;
 
     iget-object v8, p0, Lmiui/app/ToggleManager;->mHandler:Landroid/os/Handler;
@@ -1749,7 +1747,7 @@
 
     iput-object v5, p0, Lmiui/app/ToggleManager;->mACObserver:Landroid/database/ContentObserver;
 
-    .line 1001
+    .line 1000
     new-instance v5, Lmiui/app/ToggleManager$10;
 
     iget-object v8, p0, Lmiui/app/ToggleManager;->mHandler:Landroid/os/Handler;
@@ -1758,7 +1756,7 @@
 
     iput-object v5, p0, Lmiui/app/ToggleManager;->mScreenButtonStateObserver:Landroid/database/ContentObserver;
 
-    .line 1008
+    .line 1007
     new-instance v5, Lmiui/app/ToggleManager$11;
 
     iget-object v8, p0, Lmiui/app/ToggleManager;->mHandler:Landroid/os/Handler;
@@ -1767,7 +1765,7 @@
 
     iput-object v5, p0, Lmiui/app/ToggleManager;->mLocationAllowedObserver:Landroid/database/ContentObserver;
 
-    .line 1014
+    .line 1013
     new-instance v5, Lmiui/app/ToggleManager$12;
 
     iget-object v8, p0, Lmiui/app/ToggleManager;->mHandler:Landroid/os/Handler;
@@ -1776,7 +1774,7 @@
 
     iput-object v5, p0, Lmiui/app/ToggleManager;->mAccelerometerRotationObserver:Landroid/database/ContentObserver;
 
-    .line 1021
+    .line 1020
     new-instance v5, Lmiui/app/ToggleManager$13;
 
     iget-object v8, p0, Lmiui/app/ToggleManager;->mHandler:Landroid/os/Handler;
@@ -1785,7 +1783,7 @@
 
     iput-object v5, p0, Lmiui/app/ToggleManager;->mBrightnessObserver:Landroid/database/ContentObserver;
 
-    .line 1028
+    .line 1027
     new-instance v5, Lmiui/app/ToggleManager$14;
 
     iget-object v8, p0, Lmiui/app/ToggleManager;->mHandler:Landroid/os/Handler;
@@ -1794,7 +1792,7 @@
 
     iput-object v5, p0, Lmiui/app/ToggleManager;->mPowerModeObserver:Landroid/database/ContentObserver;
 
-    .line 1034
+    .line 1033
     new-instance v5, Lmiui/app/ToggleManager$15;
 
     iget-object v8, p0, Lmiui/app/ToggleManager;->mHandler:Landroid/os/Handler;
@@ -1803,7 +1801,7 @@
 
     iput-object v5, p0, Lmiui/app/ToggleManager;->mQuietModeObserver:Landroid/database/ContentObserver;
 
-    .line 1040
+    .line 1039
     new-instance v5, Lmiui/app/ToggleManager$16;
 
     iget-object v8, p0, Lmiui/app/ToggleManager;->mHandler:Landroid/os/Handler;
@@ -1812,7 +1810,7 @@
 
     iput-object v5, p0, Lmiui/app/ToggleManager;->mPaperModeObserver:Landroid/database/ContentObserver;
 
-    .line 1046
+    .line 1045
     new-instance v5, Lmiui/app/ToggleManager$17;
 
     iget-object v8, p0, Lmiui/app/ToggleManager;->mHandler:Landroid/os/Handler;
@@ -1821,7 +1819,7 @@
 
     iput-object v5, p0, Lmiui/app/ToggleManager;->mZenModeObserver:Landroid/database/ContentObserver;
 
-    .line 1065
+    .line 1064
     new-instance v5, Lmiui/app/ToggleManager$18;
 
     iget-object v8, p0, Lmiui/app/ToggleManager;->mHandler:Landroid/os/Handler;
@@ -1830,14 +1828,14 @@
 
     iput-object v5, p0, Lmiui/app/ToggleManager;->mVibrateEnableObserver:Landroid/database/ContentObserver;
 
-    .line 1073
+    .line 1072
     new-instance v5, Lmiui/app/ToggleManager$19;
 
     invoke-direct {v5, p0}, Lmiui/app/ToggleManager$19;-><init>(Lmiui/app/ToggleManager;)V
 
     iput-object v5, p0, Lmiui/app/ToggleManager;->mUpdateSyncStateRunnable:Ljava/lang/Runnable;
 
-    .line 1080
+    .line 1079
     new-instance v5, Lmiui/app/ToggleManager$20;
 
     invoke-direct {v5, p0}, Lmiui/app/ToggleManager$20;-><init>(Lmiui/app/ToggleManager;)V
@@ -2785,19 +2783,19 @@
     .locals 1
 
     .prologue
-    .line 1333
+    .line 1332
     iget-object v0, p0, Lmiui/app/ToggleManager;->mBluetoothAdapter:Landroid/bluetooth/BluetoothAdapter;
 
     if-nez v0, :cond_0
 
-    .line 1334
+    .line 1333
     invoke-static {}, Landroid/bluetooth/BluetoothAdapter;->getDefaultAdapter()Landroid/bluetooth/BluetoothAdapter;
 
     move-result-object v0
 
     iput-object v0, p0, Lmiui/app/ToggleManager;->mBluetoothAdapter:Landroid/bluetooth/BluetoothAdapter;
 
-    .line 1336
+    .line 1335
     :cond_0
     iget-object v0, p0, Lmiui/app/ToggleManager;->mBluetoothAdapter:Landroid/bluetooth/BluetoothAdapter;
 
@@ -3718,7 +3716,7 @@
     .locals 1
 
     .prologue
-    .line 1672
+    .line 1661
     invoke-static {}, Landroid/content/ContentResolver;->getMasterSyncAutomatically()Z
 
     move-result v0
@@ -3743,10 +3741,10 @@
     .prologue
     const/4 v11, 0x0
 
-    .line 1967
+    .line 1956
     const/4 v8, 0x0
 
-    .line 1968
+    .line 1957
     .local v8, "path":Ljava/lang/String;
     new-instance v10, Ljava/io/File;
 
@@ -3760,7 +3758,7 @@
 
     invoke-direct {v10, v12, v13}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
 
-    .line 1970
+    .line 1959
     .local v10, "screenShotFolder":Ljava/io/File;
     invoke-virtual {v10}, Ljava/io/File;->exists()Z
 
@@ -3774,35 +3772,35 @@
 
     if-eqz v12, :cond_3
 
-    .line 1972
+    .line 1961
     new-instance v9, Lmiui/app/ToggleManager$22;
 
     invoke-direct {v9, p0}, Lmiui/app/ToggleManager$22;-><init>(Lmiui/app/ToggleManager;)V
 
-    .line 1984
+    .line 1973
     .local v9, "pictureFilter":Ljava/io/FilenameFilter;
     invoke-virtual {v10, v9}, Ljava/io/File;->listFiles(Ljava/io/FilenameFilter;)[Ljava/io/File;
 
     move-result-object v2
 
-    .line 1985
+    .line 1974
     .local v2, "files":[Ljava/io/File;
     if-nez v2, :cond_1
 
-    .line 2003
+    .line 1992
     .end local v2    # "files":[Ljava/io/File;
     .end local v9    # "pictureFilter":Ljava/io/FilenameFilter;
     :cond_0
     :goto_0
     return v11
 
-    .line 1988
+    .line 1977
     .restart local v2    # "files":[Ljava/io/File;
     .restart local v9    # "pictureFilter":Ljava/io/FilenameFilter;
     :cond_1
     const-wide/16 v6, 0x0
 
-    .line 1989
+    .line 1978
     .local v6, "maxLastModifed":J
     move-object v0, v2
 
@@ -3818,7 +3816,7 @@
 
     aget-object v1, v0, v3
 
-    .line 1990
+    .line 1979
     .local v1, "file":Ljava/io/File;
     invoke-virtual {v1}, Ljava/io/File;->lastModified()J
 
@@ -3828,23 +3826,23 @@
 
     if-lez v12, :cond_2
 
-    .line 1991
+    .line 1980
     invoke-virtual {v1}, Ljava/io/File;->lastModified()J
 
     move-result-wide v6
 
-    .line 1992
+    .line 1981
     invoke-virtual {v1}, Ljava/io/File;->getAbsolutePath()Ljava/lang/String;
 
     move-result-object v8
 
-    .line 1989
+    .line 1978
     :cond_2
     add-int/lit8 v3, v3, 0x1
 
     goto :goto_1
 
-    .line 1997
+    .line 1986
     .end local v0    # "arr$":[Ljava/io/File;
     .end local v1    # "file":Ljava/io/File;
     .end local v2    # "files":[Ljava/io/File;
@@ -3859,14 +3857,14 @@
 
     if-nez v12, :cond_0
 
-    .line 1999
+    .line 1988
     new-instance v4, Landroid/content/Intent;
 
     const-string v11, "android.intent.action.VIEW"
 
     invoke-direct {v4, v11}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 2000
+    .line 1989
     .local v4, "intent":Landroid/content/Intent;
     new-instance v11, Ljava/io/File;
 
@@ -3880,17 +3878,17 @@
 
     invoke-virtual {v4, v11, v12}, Landroid/content/Intent;->setDataAndType(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/Intent;
 
-    .line 2001
+    .line 1990
     const/high16 v11, 0x10000000
 
     invoke-virtual {v4, v11}, Landroid/content/Intent;->setFlags(I)Landroid/content/Intent;
 
-    .line 2002
+    .line 1991
     iget-object v11, p0, Lmiui/app/ToggleManager;->mContext:Landroid/content/Context;
 
     invoke-virtual {v11, v4}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
 
-    .line 2003
+    .line 1992
     const/4 v11, 0x1
 
     goto :goto_0
@@ -3904,7 +3902,7 @@
 
     const/4 v1, 0x0
 
-    .line 1054
+    .line 1053
     iget-boolean v2, p0, Lmiui/app/ToggleManager;->mBrightnessAutoAvailable:Z
 
     if-eqz v2, :cond_1
@@ -3922,7 +3920,7 @@
     :goto_0
     iput-boolean v0, p0, Lmiui/app/ToggleManager;->mBrightnessAutoMode:Z
 
-    .line 1060
+    .line 1059
     iget-object v0, p0, Lmiui/app/ToggleManager;->mResolver:Landroid/content/ContentResolver;
 
     const-string v1, "screen_brightness"
@@ -3935,7 +3933,7 @@
 
     iput v0, p0, Lmiui/app/ToggleManager;->mBrightnessManualLevel:I
 
-    .line 1062
+    .line 1061
     iget-object v0, p0, Lmiui/app/ToggleManager;->mResolver:Landroid/content/ContentResolver;
 
     const-string v1, "screen_auto_brightness_adj"
@@ -3962,13 +3960,13 @@
 
     iput v0, p0, Lmiui/app/ToggleManager;->mBrightnessAutoLevel:F
 
-    .line 1063
+    .line 1062
     return-void
 
     :cond_0
     move v0, v1
 
-    .line 1054
+    .line 1053
     goto :goto_0
 
     :cond_1
@@ -3981,7 +3979,7 @@
     .locals 3
 
     .prologue
-    .line 1430
+    .line 1429
     iget-object v1, p0, Lmiui/app/ToggleManager;->mResolver:Landroid/content/ContentResolver;
 
     const-string v2, "screen_brightness_mode"
@@ -3995,10 +3993,10 @@
     :goto_0
     invoke-static {v1, v2, v0}, Landroid/provider/Settings$System;->putInt(Landroid/content/ContentResolver;Ljava/lang/String;I)Z
 
-    .line 1435
+    .line 1434
     return-void
 
-    .line 1430
+    .line 1429
     :cond_0
     const/4 v0, 0x0
 
@@ -4027,7 +4025,7 @@
     .param p2, "length"    # I
 
     .prologue
-    .line 1589
+    .line 1578
     iget-object v0, p0, Lmiui/app/ToggleManager;->mContext:Landroid/content/Context;
 
     invoke-virtual {v0, p1}, Landroid/content/Context;->getString(I)Ljava/lang/String;
@@ -4036,7 +4034,7 @@
 
     invoke-direct {p0, v0, p2}, Lmiui/app/ToggleManager;->showToast(Ljava/lang/CharSequence;I)V
 
-    .line 1590
+    .line 1579
     return-void
 .end method
 
@@ -4046,23 +4044,23 @@
     .param p2, "length"    # I
 
     .prologue
-    .line 1593
+    .line 1582
     iget-object v1, p0, Lmiui/app/ToggleManager;->mContext:Landroid/content/Context;
 
     invoke-static {v1, p1, p2}, Landroid/widget/Toast;->makeText(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;
 
     move-result-object v0
 
-    .line 1594
+    .line 1583
     .local v0, "toast":Landroid/widget/Toast;
     const/16 v1, 0x7d6
 
     invoke-virtual {v0, v1}, Landroid/widget/Toast;->setType(I)V
 
-    .line 1595
+    .line 1584
     invoke-virtual {v0}, Landroid/widget/Toast;->show()V
 
-    .line 1596
+    .line 1585
     return-void
 .end method
 
@@ -4071,19 +4069,19 @@
     .param p1, "isReboot"    # Z
 
     .prologue
-    .line 1885
+    .line 1874
     if-eqz p1, :cond_0
 
     const v4, 0xa0b0040
 
-    .line 1888
+    .line 1877
     .local v4, "titleId":I
     :goto_0
     if-eqz p1, :cond_1
 
     const v3, 0xa0b004d
 
-    .line 1892
+    .line 1881
     .local v3, "positiveButtonId":I
     :goto_1
     new-instance v2, Landroid/app/AlertDialog$Builder;
@@ -4094,7 +4092,7 @@
 
     invoke-direct {v2, v5, v6}, Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;I)V
 
-    .line 1895
+    .line 1884
     .local v2, "dialogBuilder":Landroid/app/AlertDialog$Builder;
     const v5, 0x1010355
 
@@ -4126,7 +4124,7 @@
 
     move-result-object v1
 
-    .line 1930
+    .line 1919
     .local v1, "dialog":Landroid/app/AlertDialog;
     new-instance v0, Lmiui/app/ToggleManager$CloseDialogReceiver;
 
@@ -4134,11 +4132,11 @@
 
     invoke-direct {v0, v5, v1}, Lmiui/app/ToggleManager$CloseDialogReceiver;-><init>(Landroid/content/Context;Landroid/app/Dialog;)V
 
-    .line 1931
+    .line 1920
     .local v0, "closer":Lmiui/app/ToggleManager$CloseDialogReceiver;
     invoke-virtual {v1, v0}, Landroid/app/AlertDialog;->setOnDismissListener(Landroid/content/DialogInterface$OnDismissListener;)V
 
-    .line 1932
+    .line 1921
     invoke-virtual {v1}, Landroid/app/AlertDialog;->getWindow()Landroid/view/Window;
 
     move-result-object v5
@@ -4147,13 +4145,13 @@
 
     invoke-virtual {v5, v6}, Landroid/view/Window;->setType(I)V
 
-    .line 1933
+    .line 1922
     invoke-virtual {v1}, Landroid/app/AlertDialog;->show()V
 
-    .line 1934
+    .line 1923
     return-void
 
-    .line 1885
+    .line 1874
     .end local v0    # "closer":Lmiui/app/ToggleManager$CloseDialogReceiver;
     .end local v1    # "dialog":Landroid/app/AlertDialog;
     .end local v2    # "dialogBuilder":Landroid/app/AlertDialog$Builder;
@@ -4164,7 +4162,7 @@
 
     goto :goto_0
 
-    .line 1888
+    .line 1877
     .restart local v4    # "titleId":I
     :cond_1
     const v3, 0xa0b004e
@@ -4198,7 +4196,7 @@
     .locals 3
 
     .prologue
-    .line 1538
+    .line 1537
     :try_start_0
     const-string v1, "window"
 
@@ -4210,21 +4208,21 @@
 
     move-result-object v0
 
-    .line 1540
+    .line 1539
     .local v0, "wm":Landroid/view/IWindowManager;
     iget-boolean v1, p0, Lmiui/app/ToggleManager;->mAccelerometer:Z
 
     if-nez v1, :cond_0
 
-    .line 1541
+    .line 1540
     invoke-interface {v0}, Landroid/view/IWindowManager;->thawRotation()V
 
-    .line 1550
+    .line 1549
     .end local v0    # "wm":Landroid/view/IWindowManager;
     :goto_0
     return-void
 
-    .line 1543
+    .line 1542
     .restart local v0    # "wm":Landroid/view/IWindowManager;
     :cond_0
     invoke-interface {v0}, Landroid/view/IWindowManager;->getRotation()I
@@ -4233,14 +4231,14 @@
 
     if-eqz v1, :cond_1
 
-    .line 1544
+    .line 1543
     const v1, 0x9040031
 
     const/4 v2, 0x1
 
     invoke-direct {p0, v1, v2}, Lmiui/app/ToggleManager;->showToast(II)V
 
-    .line 1546
+    .line 1545
     :cond_1
     const/4 v1, -0x1
 
@@ -4250,7 +4248,7 @@
 
     goto :goto_0
 
-    .line 1548
+    .line 1547
     .end local v0    # "wm":Landroid/view/IWindowManager;
     :catch_0
     move-exception v1
@@ -4266,12 +4264,12 @@
 
     const/4 v5, 0x0
 
-    .line 1651
+    .line 1640
     invoke-static {}, Landroid/content/ContentResolver;->getCurrentSyncs()Ljava/util/List;
 
     move-result-object v2
 
-    .line 1652
+    .line 1641
     .local v2, "list":Ljava/util/List;, "Ljava/util/List<Landroid/content/SyncInfo;>;"
     if-eqz v2, :cond_1
 
@@ -4283,17 +4281,17 @@
 
     move v1, v3
 
-    .line 1653
+    .line 1642
     .local v1, "isActive":Z
     :goto_0
     if-nez v1, :cond_2
 
-    .line 1654
+    .line 1643
     new-instance v0, Landroid/os/Bundle;
 
     invoke-direct {v0}, Landroid/os/Bundle;-><init>()V
 
-    .line 1655
+    .line 1644
     .local v0, "extras":Landroid/os/Bundle;
     invoke-direct {p0}, Lmiui/app/ToggleManager;->isAutoSync()Z
 
@@ -4301,31 +4299,31 @@
 
     if-nez v4, :cond_0
 
-    .line 1656
+    .line 1645
     const-string v4, "force"
 
     invoke-virtual {v0, v4, v3}, Landroid/os/Bundle;->putBoolean(Ljava/lang/String;Z)V
 
-    .line 1658
+    .line 1647
     :cond_0
     invoke-static {v5, v5, v0}, Landroid/content/ContentResolver;->requestSync(Landroid/accounts/Account;Ljava/lang/String;Landroid/os/Bundle;)V
 
-    .line 1662
+    .line 1651
     .end local v0    # "extras":Landroid/os/Bundle;
     :goto_1
     invoke-direct {p0}, Lmiui/app/ToggleManager;->updateAdvancedSyncToggle()V
 
-    .line 1663
+    .line 1652
     return-void
 
-    .line 1652
+    .line 1641
     .end local v1    # "isActive":Z
     :cond_1
     const/4 v1, 0x0
 
     goto :goto_0
 
-    .line 1660
+    .line 1649
     .restart local v1    # "isActive":Z
     :cond_2
     invoke-static {v5, v5}, Landroid/content/ContentResolver;->cancelSync(Landroid/accounts/Account;Ljava/lang/String;)V
@@ -4341,29 +4339,29 @@
 
     const/4 v0, 0x0
 
-    .line 1418
+    .line 1417
     iget-boolean v2, p0, Lmiui/app/ToggleManager;->mBrightnessAutoMode:Z
 
     if-eqz v2, :cond_0
 
-    .line 1419
+    .line 1418
     iput-boolean v0, p0, Lmiui/app/ToggleManager;->mBrightnessAutoMode:Z
 
-    .line 1425
+    .line 1424
     :goto_0
     invoke-direct {p0}, Lmiui/app/ToggleManager;->setBrightnessMode()V
 
-    .line 1426
+    .line 1425
     invoke-virtual {p0}, Lmiui/app/ToggleManager;->getCurBrightness()I
 
     move-result v0
 
     invoke-virtual {p0, v0, v1}, Lmiui/app/ToggleManager;->applyBrightness(IZ)V
 
-    .line 1427
+    .line 1426
     return-void
 
-    .line 1422
+    .line 1421
     :cond_0
     iget-boolean v2, p0, Lmiui/app/ToggleManager;->mBrightnessAutoAvailable:Z
 
@@ -4381,40 +4379,40 @@
     .locals 1
 
     .prologue
-    .line 1340
+    .line 1339
     invoke-direct {p0}, Lmiui/app/ToggleManager;->ensureBluetoothAdapter()Z
 
     move-result v0
 
     if-eqz v0, :cond_0
 
-    .line 1341
+    .line 1340
     iget-boolean v0, p0, Lmiui/app/ToggleManager;->mBluetoothEnable:Z
 
     if-eqz v0, :cond_1
 
-    .line 1342
+    .line 1341
     iget-object v0, p0, Lmiui/app/ToggleManager;->mBluetoothAdapter:Landroid/bluetooth/BluetoothAdapter;
 
     invoke-virtual {v0}, Landroid/bluetooth/BluetoothAdapter;->disable()Z
 
-    .line 1343
+    .line 1342
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lmiui/app/ToggleManager;->mBluetoothEnabling:Z
 
-    .line 1349
+    .line 1348
     :cond_0
     :goto_0
     return-void
 
-    .line 1345
+    .line 1344
     :cond_1
     iget-object v0, p0, Lmiui/app/ToggleManager;->mBluetoothAdapter:Landroid/bluetooth/BluetoothAdapter;
 
     invoke-virtual {v0}, Landroid/bluetooth/BluetoothAdapter;->enable()Z
 
-    .line 1346
+    .line 1345
     const/4 v0, 0x1
 
     iput-boolean v0, p0, Lmiui/app/ToggleManager;->mBluetoothEnabling:Z
@@ -4430,37 +4428,37 @@
 
     const/4 v2, 0x1
 
-    .line 1396
+    .line 1395
     iget-boolean v0, p0, Lmiui/app/ToggleManager;->mBrightnessAutoMode:Z
 
     if-eqz v0, :cond_1
 
-    .line 1397
+    .line 1396
     sget v0, Lmiui/app/ToggleManager;->MINIMUM_BACKLIGHT:I
 
     iput v0, p0, Lmiui/app/ToggleManager;->mBrightnessManualLevel:I
 
-    .line 1398
+    .line 1397
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lmiui/app/ToggleManager;->mBrightnessAutoMode:Z
 
-    .line 1413
+    .line 1412
     :cond_0
     :goto_0
     invoke-direct {p0}, Lmiui/app/ToggleManager;->setBrightnessMode()V
 
-    .line 1414
+    .line 1413
     invoke-virtual {p0}, Lmiui/app/ToggleManager;->getCurBrightness()I
 
     move-result v0
 
     invoke-virtual {p0, v0, v2}, Lmiui/app/ToggleManager;->applyBrightness(IZ)V
 
-    .line 1415
+    .line 1414
     return-void
 
-    .line 1400
+    .line 1399
     :cond_1
     iget v0, p0, Lmiui/app/ToggleManager;->mBrightnessManualLevel:I
 
@@ -4468,36 +4466,36 @@
 
     if-gt v0, v1, :cond_2
 
-    .line 1401
+    .line 1400
     const/16 v0, 0x66
 
     iput v0, p0, Lmiui/app/ToggleManager;->mBrightnessManualLevel:I
 
     goto :goto_0
 
-    .line 1403
+    .line 1402
     :cond_2
     iget v0, p0, Lmiui/app/ToggleManager;->mBrightnessManualLevel:I
 
     if-ge v0, v3, :cond_3
 
-    .line 1404
+    .line 1403
     iput v3, p0, Lmiui/app/ToggleManager;->mBrightnessManualLevel:I
 
     goto :goto_0
 
-    .line 1407
+    .line 1406
     :cond_3
     sget v0, Lmiui/app/ToggleManager;->MINIMUM_BACKLIGHT:I
 
     iput v0, p0, Lmiui/app/ToggleManager;->mBrightnessManualLevel:I
 
-    .line 1408
+    .line 1407
     iget-boolean v0, p0, Lmiui/app/ToggleManager;->mBrightnessAutoAvailable:Z
 
     if-eqz v0, :cond_0
 
-    .line 1409
+    .line 1408
     iput-boolean v2, p0, Lmiui/app/ToggleManager;->mBrightnessAutoMode:Z
 
     goto :goto_0
@@ -4507,16 +4505,16 @@
     .locals 7
 
     .prologue
-    .line 1497
+    .line 1496
     const/4 v1, 0x0
 
-    .line 1498
+    .line 1497
     .local v1, "result":Z
     iget-boolean v4, p0, Lmiui/app/ToggleManager;->mMobilePolicyEnable:Z
 
     if-eqz v4, :cond_2
 
-    .line 1499
+    .line 1498
     iget-object v5, p0, Lmiui/app/ToggleManager;->mMobileDataUtils:Landroid/app/MobileDataUtils;
 
     iget-object v6, p0, Lmiui/app/ToggleManager;->mContext:Landroid/content/Context;
@@ -4530,18 +4528,18 @@
     :goto_0
     invoke-virtual {v5, v6, v4}, Landroid/app/MobileDataUtils;->enableMobileData(Landroid/content/Context;Z)V
 
-    .line 1513
+    .line 1512
     :cond_0
     :goto_1
     return v1
 
-    .line 1499
+    .line 1498
     :cond_1
     const/4 v4, 0x0
 
     goto :goto_0
 
-    .line 1501
+    .line 1500
     :cond_2
     iget-object v4, p0, Lmiui/app/ToggleManager;->mMobileDataUtils:Landroid/app/MobileDataUtils;
 
@@ -4551,7 +4549,7 @@
 
     move-result-object v2
 
-    .line 1502
+    .line 1501
     .local v2, "subscriberId":Ljava/lang/String;
     invoke-static {v2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
@@ -4559,18 +4557,18 @@
 
     if-nez v4, :cond_0
 
-    .line 1503
+    .line 1502
     invoke-static {v2}, Landroid/net/NetworkTemplate;->buildTemplateMobileAll(Ljava/lang/String;)Landroid/net/NetworkTemplate;
 
     move-result-object v3
 
-    .line 1504
+    .line 1503
     .local v3, "template":Landroid/net/NetworkTemplate;
     new-instance v0, Landroid/content/Intent;
 
     invoke-direct {v0}, Landroid/content/Intent;-><init>()V
 
-    .line 1505
+    .line 1504
     .local v0, "intent":Landroid/content/Intent;
     new-instance v4, Landroid/content/ComponentName;
 
@@ -4582,22 +4580,22 @@
 
     invoke-virtual {v0, v4}, Landroid/content/Intent;->setComponent(Landroid/content/ComponentName;)Landroid/content/Intent;
 
-    .line 1507
+    .line 1506
     const/high16 v4, 0x10000000
 
     invoke-virtual {v0, v4}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
 
-    .line 1508
+    .line 1507
     const-string v4, "android.net.NETWORK_TEMPLATE"
 
     invoke-virtual {v0, v4, v3}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;
 
-    .line 1509
+    .line 1508
     iget-object v4, p0, Lmiui/app/ToggleManager;->mContext:Landroid/content/Context;
 
     invoke-virtual {v4, v0}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
 
-    .line 1510
+    .line 1509
     const/4 v1, 0x1
 
     goto :goto_1
@@ -4611,7 +4609,7 @@
 
     const/4 v3, 0x0
 
-    .line 1728
+    .line 1717
     iget-boolean v1, p0, Lmiui/app/ToggleManager;->mDriveMode:Z
 
     if-nez v1, :cond_0
@@ -4621,7 +4619,7 @@
     :goto_0
     iput-boolean v1, p0, Lmiui/app/ToggleManager;->mDriveMode:Z
 
-    .line 1734
+    .line 1723
     iget-object v1, p0, Lmiui/app/ToggleManager;->mResolver:Landroid/content/ContentResolver;
 
     const-string v4, "drive_mode_drive_mode"
@@ -4633,25 +4631,25 @@
     :goto_1
     invoke-static {v1, v4, v2}, Landroid/provider/Settings$System;->putInt(Landroid/content/ContentResolver;Ljava/lang/String;I)Z
 
-    .line 1735
+    .line 1724
     iget-boolean v1, p0, Lmiui/app/ToggleManager;->mDriveMode:Z
 
     if-eqz v1, :cond_2
 
-    .line 1736
+    .line 1725
     new-instance v0, Landroid/content/Intent;
 
     const-string v1, "com.miui.app.ExtraStatusBarManager.action_enter_drive_mode"
 
     invoke-direct {v0, v1}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 1737
+    .line 1726
     .local v0, "intent":Landroid/content/Intent;
     iget-object v1, p0, Lmiui/app/ToggleManager;->mContext:Landroid/content/Context;
 
     invoke-virtual {v1, v0}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
 
-    .line 1742
+    .line 1731
     :goto_2
     return-void
 
@@ -4659,16 +4657,16 @@
     :cond_0
     move v1, v3
 
-    .line 1728
+    .line 1717
     goto :goto_0
 
     :cond_1
     move v2, v3
 
-    .line 1734
+    .line 1723
     goto :goto_1
 
-    .line 1739
+    .line 1728
     :cond_2
     new-instance v0, Landroid/content/Intent;
 
@@ -4676,7 +4674,7 @@
 
     invoke-direct {v0, v1}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 1740
+    .line 1729
     .restart local v0    # "intent":Landroid/content/Intent;
     iget-object v1, p0, Lmiui/app/ToggleManager;->mContext:Landroid/content/Context;
 
@@ -4693,7 +4691,7 @@
 
     const/4 v3, 0x0
 
-    .line 1704
+    .line 1693
     iget-boolean v1, p0, Lmiui/app/ToggleManager;->mFlightMode:Z
 
     if-nez v1, :cond_0
@@ -4703,7 +4701,7 @@
     :goto_0
     iput-boolean v1, p0, Lmiui/app/ToggleManager;->mFlightMode:Z
 
-    .line 1705
+    .line 1694
     iget-object v1, p0, Lmiui/app/ToggleManager;->mResolver:Landroid/content/ContentResolver;
 
     const-string v4, "airplane_mode_on"
@@ -4715,45 +4713,45 @@
     :goto_1
     invoke-static {v1, v4, v2}, Landroid/provider/Settings$Global;->putInt(Landroid/content/ContentResolver;Ljava/lang/String;I)Z
 
-    .line 1706
+    .line 1695
     new-instance v0, Landroid/content/Intent;
 
     const-string v1, "android.intent.action.AIRPLANE_MODE"
 
     invoke-direct {v0, v1}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 1707
+    .line 1696
     .local v0, "intent":Landroid/content/Intent;
     const/high16 v1, 0x20000000
 
     invoke-virtual {v0, v1}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
 
-    .line 1708
+    .line 1697
     const-string v1, "state"
 
     iget-boolean v2, p0, Lmiui/app/ToggleManager;->mFlightMode:Z
 
     invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Z)Landroid/content/Intent;
 
-    .line 1709
+    .line 1698
     iget-object v1, p0, Lmiui/app/ToggleManager;->mContext:Landroid/content/Context;
 
     invoke-virtual {v1, v0}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
 
-    .line 1710
+    .line 1699
     return-void
 
     .end local v0    # "intent":Landroid/content/Intent;
     :cond_0
     move v1, v3
 
-    .line 1704
+    .line 1693
     goto :goto_0
 
     :cond_1
     move v2, v3
 
-    .line 1705
+    .line 1694
     goto :goto_1
 .end method
 
@@ -4761,7 +4759,7 @@
     .locals 3
 
     .prologue
-    .line 1619
+    .line 1608
     iget-object v1, p0, Lmiui/app/ToggleManager;->mResolver:Landroid/content/ContentResolver;
 
     const-string v2, "gps"
@@ -4775,10 +4773,10 @@
     :goto_0
     invoke-static {v1, v2, v0}, Landroid/provider/Settings$Secure;->setLocationProviderEnabled(Landroid/content/ContentResolver;Ljava/lang/String;Z)V
 
-    .line 1621
+    .line 1610
     return-void
 
-    .line 1619
+    .line 1608
     :cond_0
     const/4 v0, 0x0
 
@@ -4789,7 +4787,7 @@
     .locals 3
 
     .prologue
-    .line 1869
+    .line 1858
     iget-boolean v0, p0, Lmiui/app/ToggleManager;->mPaperMode:Z
 
     if-nez v0, :cond_0
@@ -4799,7 +4797,7 @@
     :goto_0
     iput-boolean v0, p0, Lmiui/app/ToggleManager;->mPaperMode:Z
 
-    .line 1870
+    .line 1859
     iget-object v0, p0, Lmiui/app/ToggleManager;->mResolver:Landroid/content/ContentResolver;
 
     const-string v1, "screen_paper_mode_enabled"
@@ -4808,10 +4806,10 @@
 
     invoke-static {v0, v1, v2}, Landroid/provider/MiuiSettings$System;->putBoolean(Landroid/content/ContentResolver;Ljava/lang/String;Z)V
 
-    .line 1872
+    .line 1861
     return-void
 
-    .line 1869
+    .line 1858
     :cond_0
     const/4 v0, 0x0
 
@@ -4822,7 +4820,7 @@
     .locals 4
 
     .prologue
-    .line 1821
+    .line 1810
     const-string v1, "high"
 
     iget-object v2, p0, Lmiui/app/ToggleManager;->mPowerMode:Ljava/lang/String;
@@ -4833,12 +4831,12 @@
 
     if-eqz v1, :cond_0
 
-    .line 1822
+    .line 1811
     const-string v1, "middle"
 
     iput-object v1, p0, Lmiui/app/ToggleManager;->mPowerMode:Ljava/lang/String;
 
-    .line 1827
+    .line 1816
     :goto_0
     const-string v1, "persist.sys.aries.power_profile"
 
@@ -4846,7 +4844,7 @@
 
     invoke-static {v1, v2}, Landroid/os/SystemProperties;->set(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 1828
+    .line 1817
     iget-object v1, p0, Lmiui/app/ToggleManager;->mResolver:Landroid/content/ContentResolver;
 
     const-string v2, "power_mode"
@@ -4855,23 +4853,23 @@
 
     invoke-static {v1, v2, v3}, Landroid/provider/Settings$System;->putString(Landroid/content/ContentResolver;Ljava/lang/String;Ljava/lang/String;)Z
 
-    .line 1830
+    .line 1819
     new-instance v0, Landroid/content/Intent;
 
     const-string v1, "miui.intent.action.POWER_MODE_CHANGE"
 
     invoke-direct {v0, v1}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 1831
+    .line 1820
     .local v0, "powerModeChange":Landroid/content/Intent;
     iget-object v1, p0, Lmiui/app/ToggleManager;->mContext:Landroid/content/Context;
 
     invoke-virtual {v1, v0}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
 
-    .line 1832
+    .line 1821
     return-void
 
-    .line 1824
+    .line 1813
     .end local v0    # "powerModeChange":Landroid/content/Intent;
     :cond_0
     const-string v1, "high"
@@ -4891,23 +4889,23 @@
 
     const/high16 v4, 0x4000000
 
-    .line 1762
+    .line 1751
     const/4 v1, 0x0
 
-    .line 1763
+    .line 1752
     .local v1, "result":Z
     iget-boolean v2, p0, Lmiui/app/ToggleManager;->mPrivacyMode:Z
 
     if-nez v2, :cond_0
 
-    .line 1764
+    .line 1753
     new-instance v0, Landroid/content/Intent;
 
     const-string v2, "android.intent.action.MAIN"
 
     invoke-direct {v0, v2}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 1765
+    .line 1754
     .local v0, "intent":Landroid/content/Intent;
     const-string v2, "com.android.settings"
 
@@ -4915,26 +4913,26 @@
 
     invoke-virtual {v0, v2, v3}, Landroid/content/Intent;->setClassName(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
 
-    .line 1766
+    .line 1755
     invoke-virtual {v0, v5}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
 
-    .line 1767
+    .line 1756
     invoke-virtual {v0, v4}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
 
-    .line 1768
+    .line 1757
     invoke-virtual {v0, v6}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
 
-    .line 1769
+    .line 1758
     iget-object v2, p0, Lmiui/app/ToggleManager;->mContext:Landroid/content/Context;
 
     invoke-virtual {v2, v0}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
 
-    .line 1785
+    .line 1774
     .end local v0    # "intent":Landroid/content/Intent;
     :goto_0
     return v1
 
-    .line 1771
+    .line 1760
     :cond_0
     iget-object v2, p0, Lmiui/app/ToggleManager;->mSecurityHelper:Landroid/security/ChooseLockSettingsHelper;
 
@@ -4952,14 +4950,14 @@
 
     if-eqz v2, :cond_1
 
-    .line 1773
+    .line 1762
     new-instance v0, Landroid/content/Intent;
 
     const-string v2, "android.app.action.CONFIRM_ACCESS_CONTROL"
 
     invoke-direct {v0, v2}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 1774
+    .line 1763
     .restart local v0    # "intent":Landroid/content/Intent;
     const-string v2, "confirm_purpose"
 
@@ -4967,27 +4965,27 @@
 
     invoke-virtual {v0, v2, v3}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
 
-    .line 1776
+    .line 1765
     invoke-virtual {v0, v5}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
 
-    .line 1777
+    .line 1766
     invoke-virtual {v0, v4}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
 
-    .line 1778
+    .line 1767
     invoke-virtual {v0, v6}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
 
-    .line 1779
+    .line 1768
     iget-object v2, p0, Lmiui/app/ToggleManager;->mContext:Landroid/content/Context;
 
     invoke-virtual {v2, v0}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
 
-    .line 1780
+    .line 1769
     const/4 v1, 0x1
 
-    .line 1781
+    .line 1770
     goto :goto_0
 
-    .line 1782
+    .line 1771
     .end local v0    # "intent":Landroid/content/Intent;
     :cond_1
     iget-object v2, p0, Lmiui/app/ToggleManager;->mSecurityHelper:Landroid/security/ChooseLockSettingsHelper;
@@ -5007,7 +5005,7 @@
 
     const/4 v2, 0x0
 
-    .line 1848
+    .line 1837
     iget-boolean v0, p0, Lmiui/app/ToggleManager;->mQuietMode:Z
 
     if-nez v0, :cond_0
@@ -5017,14 +5015,14 @@
     :goto_0
     iput-boolean v0, p0, Lmiui/app/ToggleManager;->mQuietMode:Z
 
-    .line 1849
+    .line 1838
     invoke-direct {p0}, Lmiui/app/ToggleManager;->supportZenMode()Z
 
     move-result v0
 
     if-eqz v0, :cond_2
 
-    .line 1850
+    .line 1839
     iget-object v0, p0, Lmiui/app/ToggleManager;->mResolver:Landroid/content/ContentResolver;
 
     const-string v3, "zen_mode"
@@ -5036,23 +5034,23 @@
     :goto_1
     invoke-static {v0, v3, v1}, Landroid/provider/Settings$Global;->putInt(Landroid/content/ContentResolver;Ljava/lang/String;I)Z
 
-    .line 1854
+    .line 1843
     :goto_2
     return-void
 
     :cond_0
     move v0, v2
 
-    .line 1848
+    .line 1837
     goto :goto_0
 
     :cond_1
     move v1, v2
 
-    .line 1850
+    .line 1839
     goto :goto_1
 
-    .line 1852
+    .line 1841
     :cond_2
     iget-object v0, p0, Lmiui/app/ToggleManager;->mContext:Landroid/content/Context;
 
@@ -5064,61 +5062,18 @@
 .end method
 
 .method private toggleRinger()V
-    .locals 4
+    .locals 2
 
     .prologue
-    const/4 v1, 0x0
-
     .line 1566
-    invoke-direct {p0}, Lmiui/app/ToggleManager;->supportZenMode()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_2
-
-    .line 1567
-    iget-boolean v0, p0, Lmiui/app/ToggleManager;->mSilentEnabled:Z
-
-    if-nez v0, :cond_1
-
-    const/4 v0, 0x1
-
-    :goto_0
-    iput-boolean v0, p0, Lmiui/app/ToggleManager;->mSilentEnabled:Z
-
-    .line 1568
-    iget-object v0, p0, Lmiui/app/ToggleManager;->mResolver:Landroid/content/ContentResolver;
-
-    const-string v2, "zen_mode"
-
-    iget-boolean v3, p0, Lmiui/app/ToggleManager;->mSilentEnabled:Z
-
-    if-eqz v3, :cond_0
-
-    const/4 v1, 0x3
-
-    :cond_0
-    invoke-static {v0, v2, v1}, Landroid/provider/Settings$Global;->putInt(Landroid/content/ContentResolver;Ljava/lang/String;I)Z
-
-    .line 1573
-    :goto_1
-    return-void
-
-    :cond_1
-    move v0, v1
-
-    .line 1567
-    goto :goto_0
-
-    .line 1571
-    :cond_2
     iget-object v0, p0, Lmiui/app/ToggleManager;->mContext:Landroid/content/Context;
 
     const/4 v1, 0x4
 
     invoke-static {v0, v1}, Lmiui/util/AudioManagerHelper;->toggleSilent(Landroid/content/Context;I)V
 
-    goto :goto_1
+    .line 1567
+    return-void
 .end method
 
 .method private toggleScreenButtonState()V
@@ -5131,7 +5086,7 @@
 
     const/4 v3, 0x0
 
-    .line 2007
+    .line 1996
     iget-boolean v1, p0, Lmiui/app/ToggleManager;->mScreenButtonDisabled:Z
 
     if-nez v1, :cond_0
@@ -5141,7 +5096,7 @@
     :goto_0
     iput-boolean v1, p0, Lmiui/app/ToggleManager;->mScreenButtonDisabled:Z
 
-    .line 2009
+    .line 1998
     iget-object v1, p0, Lmiui/app/ToggleManager;->mResolver:Landroid/content/ContentResolver;
 
     const-string v5, "screen_buttons_has_been_disabled"
@@ -5152,14 +5107,14 @@
 
     if-nez v1, :cond_1
 
-    .line 2010
+    .line 1999
     iget-object v1, p0, Lmiui/app/ToggleManager;->mResolver:Landroid/content/ContentResolver;
 
     const-string v5, "screen_buttons_has_been_disabled"
 
     invoke-static {v1, v5, v2}, Landroid/provider/Settings$Secure;->putInt(Landroid/content/ContentResolver;Ljava/lang/String;I)Z
 
-    .line 2011
+    .line 2000
     new-instance v1, Landroid/app/AlertDialog$Builder;
 
     iget-object v5, p0, Lmiui/app/ToggleManager;->mContext:Landroid/content/Context;
@@ -5184,7 +5139,7 @@
 
     move-result-object v0
 
-    .line 2016
+    .line 2005
     .local v0, "dialog":Landroid/app/AlertDialog;
     invoke-virtual {v0}, Landroid/app/AlertDialog;->getWindow()Landroid/view/Window;
 
@@ -5194,10 +5149,10 @@
 
     invoke-virtual {v1, v4}, Landroid/view/Window;->setType(I)V
 
-    .line 2017
+    .line 2006
     invoke-virtual {v0}, Landroid/app/AlertDialog;->show()V
 
-    .line 2026
+    .line 2015
     .end local v0    # "dialog":Landroid/app/AlertDialog;
     :goto_1
     iget-object v1, p0, Lmiui/app/ToggleManager;->mResolver:Landroid/content/ContentResolver;
@@ -5211,16 +5166,16 @@
     :goto_2
     invoke-static {v1, v4, v2}, Landroid/provider/Settings$Secure;->putInt(Landroid/content/ContentResolver;Ljava/lang/String;I)Z
 
-    .line 2029
+    .line 2018
     return-void
 
     :cond_0
     move v1, v3
 
-    .line 2007
+    .line 1996
     goto :goto_0
 
-    .line 2020
+    .line 2009
     :cond_1
     iget-boolean v1, p0, Lmiui/app/ToggleManager;->mScreenButtonDisabled:Z
 
@@ -5241,7 +5196,7 @@
     :cond_3
     move v2, v3
 
-    .line 2026
+    .line 2015
     goto :goto_2
 .end method
 
@@ -5249,7 +5204,7 @@
     .locals 3
 
     .prologue
-    .line 1962
+    .line 1951
     iget-object v0, p0, Lmiui/app/ToggleManager;->mContext:Landroid/content/Context;
 
     const-string v1, "statusbar"
@@ -5262,7 +5217,7 @@
 
     invoke-virtual {v0}, Landroid/app/StatusBarManager;->collapsePanels()V
 
-    .line 1963
+    .line 1952
     iget-object v0, p0, Lmiui/app/ToggleManager;->mContext:Landroid/content/Context;
 
     new-instance v1, Landroid/content/Intent;
@@ -5273,7 +5228,7 @@
 
     invoke-virtual {v0, v1}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
 
-    .line 1964
+    .line 1953
     return-void
 .end method
 
@@ -5281,7 +5236,7 @@
     .locals 1
 
     .prologue
-    .line 1636
+    .line 1625
     invoke-static {}, Landroid/content/ContentResolver;->getMasterSyncAutomatically()Z
 
     move-result v0
@@ -5293,10 +5248,10 @@
     :goto_0
     invoke-static {v0}, Landroid/content/ContentResolver;->setMasterSyncAutomatically(Z)V
 
-    .line 1637
+    .line 1626
     return-void
 
-    .line 1636
+    .line 1625
     :cond_0
     const/4 v0, 0x0
 
@@ -5307,14 +5262,14 @@
     .locals 3
 
     .prologue
-    .line 1814
+    .line 1803
     new-instance v0, Landroid/content/Intent;
 
     const-string v1, "miui.intent.action.TOGGLE_TORCH"
 
     invoke-direct {v0, v1}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 1815
+    .line 1804
     .local v0, "intent":Landroid/content/Intent;
     const-string v1, "miui.intent.extra.IS_TOGGLE"
 
@@ -5322,12 +5277,12 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Z)Landroid/content/Intent;
 
-    .line 1816
+    .line 1805
     iget-object v1, p0, Lmiui/app/ToggleManager;->mContext:Landroid/content/Context;
 
     invoke-virtual {v1, v0}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
 
-    .line 1817
+    .line 1806
     return-void
 .end method
 
@@ -5335,12 +5290,12 @@
     .locals 1
 
     .prologue
-    .line 1603
+    .line 1592
     iget-object v0, p0, Lmiui/app/ToggleManager;->mContext:Landroid/content/Context;
 
     invoke-static {v0}, Lmiui/util/AudioManagerHelper;->toggleVibrateSetting(Landroid/content/Context;)V
 
-    .line 1604
+    .line 1593
     return-void
 .end method
 
@@ -5350,18 +5305,18 @@
     .prologue
     const/16 v2, 0x10
 
-    .line 1797
+    .line 1786
     iget-object v1, p0, Lmiui/app/ToggleManager;->mSecurityHelper:Landroid/security/ChooseLockSettingsHelper;
 
     invoke-virtual {v1}, Landroid/security/ChooseLockSettingsHelper;->isACLockEnabled()Z
 
     move-result v0
 
-    .line 1798
+    .line 1787
     .local v0, "enable":Z
     invoke-virtual {p0, v2, v0}, Lmiui/app/ToggleManager;->updateToggleStatus(IZ)V
 
-    .line 1799
+    .line 1788
     if-eqz v0, :cond_0
 
     const v1, 0x9020001
@@ -5369,10 +5324,10 @@
     :goto_0
     invoke-direct {p0, v2, v1}, Lmiui/app/ToggleManager;->updateToggleImage(II)V
 
-    .line 1802
+    .line 1791
     return-void
 
-    .line 1799
+    .line 1788
     :cond_0
     const/high16 v1, 0x9020000
 
@@ -5389,7 +5344,7 @@
 
     const/4 v2, 0x0
 
-    .line 1553
+    .line 1552
     iget-object v0, p0, Lmiui/app/ToggleManager;->mResolver:Landroid/content/ContentResolver;
 
     const-string v3, "accelerometer_rotation"
@@ -5405,7 +5360,7 @@
     :goto_0
     iput-boolean v0, p0, Lmiui/app/ToggleManager;->mAccelerometer:Z
 
-    .line 1555
+    .line 1554
     iget-boolean v0, p0, Lmiui/app/ToggleManager;->mAccelerometer:Z
 
     if-nez v0, :cond_1
@@ -5413,7 +5368,7 @@
     :goto_1
     invoke-virtual {p0, v4, v1}, Lmiui/app/ToggleManager;->updateToggleStatus(IZ)V
 
-    .line 1556
+    .line 1555
     iget-boolean v0, p0, Lmiui/app/ToggleManager;->mAccelerometer:Z
 
     if-eqz v0, :cond_2
@@ -5423,22 +5378,22 @@
     :goto_2
     invoke-direct {p0, v4, v0}, Lmiui/app/ToggleManager;->updateToggleImage(II)V
 
-    .line 1559
+    .line 1558
     return-void
 
     :cond_0
     move v0, v2
 
-    .line 1553
+    .line 1552
     goto :goto_0
 
     :cond_1
     move v1, v2
 
-    .line 1555
+    .line 1554
     goto :goto_1
 
-    .line 1556
+    .line 1555
     :cond_2
     const v0, 0x9020021
 
@@ -5449,12 +5404,12 @@
     .locals 3
 
     .prologue
-    .line 1666
+    .line 1655
     invoke-static {}, Landroid/content/ContentResolver;->getCurrentSyncs()Ljava/util/List;
 
     move-result-object v1
 
-    .line 1667
+    .line 1656
     .local v1, "list":Ljava/util/List;, "Ljava/util/List<Landroid/content/SyncInfo;>;"
     if-eqz v1, :cond_0
 
@@ -5466,7 +5421,7 @@
 
     const/4 v0, 0x1
 
-    .line 1668
+    .line 1657
     .local v0, "isActive":Z
     :goto_0
     invoke-direct {p0}, Lmiui/app/ToggleManager;->isAutoSync()Z
@@ -5475,10 +5430,10 @@
 
     invoke-direct {p0, v2, v0}, Lmiui/app/ToggleManager;->updateAdvancedSyncToggle(ZZ)V
 
-    .line 1669
+    .line 1658
     return-void
 
-    .line 1667
+    .line 1656
     .end local v0    # "isActive":Z
     :cond_0
     const/4 v0, 0x0
@@ -5496,29 +5451,29 @@
 
     const/16 v3, 0x13
 
-    .line 1676
+    .line 1665
     const/4 v0, 0x0
 
-    .line 1677
+    .line 1666
     .local v0, "iconId":I
     const/4 v1, 0x0
 
-    .line 1678
+    .line 1667
     .local v1, "statusNameId":I
     if-eqz p1, :cond_2
 
-    .line 1679
+    .line 1668
     if-eqz p2, :cond_0
 
     const v0, 0x9020027
 
-    .line 1682
+    .line 1671
     :goto_0
     if-eqz p2, :cond_1
 
     move v1, v2
 
-    .line 1694
+    .line 1683
     :goto_1
     invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -5526,34 +5481,34 @@
 
     invoke-virtual {p0, v3, v2}, Lmiui/app/ToggleManager;->updateToggleStatusName(ILjava/lang/Object;)V
 
-    .line 1695
+    .line 1684
     invoke-virtual {p0, v3, p2}, Lmiui/app/ToggleManager;->updateToggleStatus(IZ)V
 
-    .line 1696
+    .line 1685
     invoke-direct {p0, v3, v0}, Lmiui/app/ToggleManager;->updateToggleImage(II)V
 
-    .line 1697
+    .line 1686
     return-void
 
-    .line 1679
+    .line 1668
     :cond_0
     const v0, 0x9020028
 
     goto :goto_0
 
-    .line 1682
+    .line 1671
     :cond_1
     const v1, 0x904001a
 
     goto :goto_1
 
-    .line 1687
+    .line 1676
     :cond_2
     if-eqz p2, :cond_3
 
     const v0, 0x902002c
 
-    .line 1690
+    .line 1679
     :goto_2
     if-eqz p2, :cond_4
 
@@ -5562,13 +5517,13 @@
     :goto_3
     goto :goto_1
 
-    .line 1687
+    .line 1676
     :cond_3
     const v0, 0x9020031
 
     goto :goto_2
 
-    .line 1690
+    .line 1679
     :cond_4
     const v1, 0x904001b
 
@@ -5583,24 +5538,24 @@
 
     const/4 v4, 0x4
 
-    .line 1372
+    .line 1371
     const/4 v1, 0x0
 
     .local v1, "brightnessResId":I
     const/4 v0, 0x0
 
-    .line 1373
+    .line 1372
     .local v0, "autoResId":I
     iget-boolean v2, p0, Lmiui/app/ToggleManager;->mBrightnessAutoMode:Z
 
     if-eqz v2, :cond_0
 
-    .line 1374
+    .line 1373
     const v1, 0x9020004
 
     move v0, v1
 
-    .line 1387
+    .line 1386
     :goto_0
     const v2, 0x9020007
 
@@ -5611,40 +5566,40 @@
     :goto_1
     invoke-virtual {p0, v4, v2}, Lmiui/app/ToggleManager;->updateToggleStatus(IZ)V
 
-    .line 1389
+    .line 1388
     iget-boolean v2, p0, Lmiui/app/ToggleManager;->mBrightnessAutoMode:Z
 
     invoke-virtual {p0, v5, v2}, Lmiui/app/ToggleManager;->updateToggleStatus(IZ)V
 
-    .line 1390
+    .line 1389
     invoke-direct {p0, v4, v1}, Lmiui/app/ToggleManager;->updateToggleImage(II)V
 
-    .line 1391
+    .line 1390
     invoke-direct {p0, v5, v0}, Lmiui/app/ToggleManager;->updateToggleImage(II)V
 
-    .line 1392
+    .line 1391
     return-void
 
-    .line 1376
+    .line 1375
     :cond_0
     const v0, 0x9020006
 
-    .line 1377
+    .line 1376
     const v1, 0x9020007
 
-    .line 1378
+    .line 1377
     iget v2, p0, Lmiui/app/ToggleManager;->mBrightnessManualLevel:I
 
     sget v3, Lmiui/app/ToggleManager;->MINIMUM_BACKLIGHT:I
 
     if-gt v2, v3, :cond_1
 
-    .line 1379
+    .line 1378
     const v1, 0x9020007
 
     goto :goto_0
 
-    .line 1380
+    .line 1379
     :cond_1
     iget v2, p0, Lmiui/app/ToggleManager;->mBrightnessManualLevel:I
 
@@ -5652,18 +5607,18 @@
 
     if-ge v2, v3, :cond_2
 
-    .line 1381
+    .line 1380
     const v1, 0x9020005
 
     goto :goto_0
 
-    .line 1383
+    .line 1382
     :cond_2
     const v1, 0x9020008
 
     goto :goto_0
 
-    .line 1387
+    .line 1386
     :cond_3
     const/4 v2, 0x1
 
@@ -5682,7 +5637,7 @@
 
     const/4 v1, 0x1
 
-    .line 1517
+    .line 1516
     iget-object v2, p0, Lmiui/app/ToggleManager;->mMobileDataUtils:Landroid/app/MobileDataUtils;
 
     iget-object v3, p0, Lmiui/app/ToggleManager;->mContext:Landroid/content/Context;
@@ -5693,7 +5648,7 @@
 
     iput-boolean v2, p0, Lmiui/app/ToggleManager;->mMobileDataEnable:Z
 
-    .line 1518
+    .line 1517
     iget-boolean v2, p0, Lmiui/app/ToggleManager;->mMobileDataEnable:Z
 
     if-eqz v2, :cond_1
@@ -5704,12 +5659,12 @@
 
     move v0, v1
 
-    .line 1519
+    .line 1518
     .local v0, "isDataEnabled":Z
     :goto_0
     invoke-virtual {p0, v1, v0}, Lmiui/app/ToggleManager;->updateToggleStatus(IZ)V
 
-    .line 1520
+    .line 1519
     if-eqz v0, :cond_2
 
     const v2, 0x902000a
@@ -5729,28 +5684,28 @@
     :goto_2
     invoke-virtual {p0, v1, v2, v3}, Lmiui/app/ToggleManager;->updateToggleImage(III)V
 
-    .line 1524
+    .line 1523
     iget-boolean v1, p0, Lmiui/app/ToggleManager;->mEnableNetType:Z
 
     if-nez v1, :cond_4
 
     if-eqz v0, :cond_4
 
-    .line 1525
+    .line 1524
     invoke-virtual {p0, v5, v6, v4}, Lmiui/app/ToggleManager;->updateToggleImage(III)V
 
-    .line 1530
+    .line 1529
     :goto_3
     return-void
 
-    .line 1518
+    .line 1517
     .end local v0    # "isDataEnabled":Z
     :cond_1
     const/4 v0, 0x0
 
     goto :goto_0
 
-    .line 1520
+    .line 1519
     .restart local v0    # "isDataEnabled":Z
     :cond_2
     const v2, 0x9020009
@@ -5762,7 +5717,7 @@
 
     goto :goto_2
 
-    .line 1528
+    .line 1527
     :cond_4
     invoke-direct {p0, v5, v6}, Lmiui/app/ToggleManager;->updateToggleImage(II)V
 
@@ -5775,7 +5730,7 @@
     .prologue
     const/16 v4, 0x15
 
-    .line 1746
+    .line 1735
     iget-object v2, p0, Lmiui/app/ToggleManager;->mResolver:Landroid/content/ContentResolver;
 
     const-string v3, "drive_mode_drive_mode"
@@ -5789,31 +5744,31 @@
     :goto_0
     invoke-static {v2, v3, v1}, Landroid/provider/Settings$System;->putInt(Landroid/content/ContentResolver;Ljava/lang/String;I)Z
 
-    .line 1747
+    .line 1736
     iget-boolean v1, p0, Lmiui/app/ToggleManager;->mDriveMode:Z
 
     if-eqz v1, :cond_1
 
-    .line 1748
+    .line 1737
     new-instance v0, Landroid/content/Intent;
 
     const-string v1, "com.miui.app.ExtraStatusBarManager.action_enter_drive_mode"
 
     invoke-direct {v0, v1}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 1749
+    .line 1738
     .local v0, "intent":Landroid/content/Intent;
     iget-object v1, p0, Lmiui/app/ToggleManager;->mContext:Landroid/content/Context;
 
     invoke-virtual {v1, v0}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;)V
 
-    .line 1754
+    .line 1743
     :goto_1
     iget-boolean v1, p0, Lmiui/app/ToggleManager;->mDriveMode:Z
 
     invoke-virtual {p0, v4, v1}, Lmiui/app/ToggleManager;->updateToggleStatus(IZ)V
 
-    .line 1755
+    .line 1744
     iget-boolean v1, p0, Lmiui/app/ToggleManager;->mDriveMode:Z
 
     if-eqz v1, :cond_2
@@ -5823,20 +5778,20 @@
     :goto_2
     invoke-direct {p0, v4, v1}, Lmiui/app/ToggleManager;->updateToggleImage(II)V
 
-    .line 1758
+    .line 1747
     invoke-direct {p0}, Lmiui/app/ToggleManager;->updateDataToggle()V
 
-    .line 1759
+    .line 1748
     return-void
 
-    .line 1746
+    .line 1735
     .end local v0    # "intent":Landroid/content/Intent;
     :cond_0
     const/4 v1, 0x0
 
     goto :goto_0
 
-    .line 1751
+    .line 1740
     :cond_1
     new-instance v0, Landroid/content/Intent;
 
@@ -5844,7 +5799,7 @@
 
     invoke-direct {v0, v1}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 1752
+    .line 1741
     .restart local v0    # "intent":Landroid/content/Intent;
     iget-object v1, p0, Lmiui/app/ToggleManager;->mContext:Landroid/content/Context;
 
@@ -5852,7 +5807,7 @@
 
     goto :goto_1
 
-    .line 1755
+    .line 1744
     :cond_2
     const v1, 0x902000c
 
@@ -5869,14 +5824,14 @@
 
     const/4 v1, 0x0
 
-    .line 1713
+    .line 1702
     sget v2, Landroid/os/Build$VERSION;->SDK_INT:I
 
     const/16 v3, 0x10
 
     if-gt v2, v3, :cond_1
 
-    .line 1714
+    .line 1703
     iget-object v2, p0, Lmiui/app/ToggleManager;->mResolver:Landroid/content/ContentResolver;
 
     const-string v3, "airplane_mode_on"
@@ -5890,13 +5845,13 @@
     :goto_0
     iput-boolean v0, p0, Lmiui/app/ToggleManager;->mFlightMode:Z
 
-    .line 1719
+    .line 1708
     :goto_1
     iget-boolean v0, p0, Lmiui/app/ToggleManager;->mFlightMode:Z
 
     invoke-virtual {p0, v4, v0}, Lmiui/app/ToggleManager;->updateToggleStatus(IZ)V
 
-    .line 1720
+    .line 1709
     iget-boolean v0, p0, Lmiui/app/ToggleManager;->mFlightMode:Z
 
     if-eqz v0, :cond_3
@@ -5906,19 +5861,19 @@
     :goto_2
     invoke-direct {p0, v4, v0}, Lmiui/app/ToggleManager;->updateToggleImage(II)V
 
-    .line 1724
+    .line 1713
     invoke-direct {p0}, Lmiui/app/ToggleManager;->updateDataToggle()V
 
-    .line 1725
+    .line 1714
     return-void
 
     :cond_0
     move v0, v1
 
-    .line 1714
+    .line 1703
     goto :goto_0
 
-    .line 1717
+    .line 1706
     :cond_1
     iget-object v2, p0, Lmiui/app/ToggleManager;->mResolver:Landroid/content/ContentResolver;
 
@@ -5940,7 +5895,7 @@
 
     goto :goto_3
 
-    .line 1720
+    .line 1709
     :cond_3
     const v0, 0x902000e
 
@@ -5953,7 +5908,7 @@
     .prologue
     const/4 v2, 0x7
 
-    .line 1624
+    .line 1613
     iget-object v0, p0, Lmiui/app/ToggleManager;->mResolver:Landroid/content/ContentResolver;
 
     const-string v1, "gps"
@@ -5964,12 +5919,12 @@
 
     iput-boolean v0, p0, Lmiui/app/ToggleManager;->mGpsEnable:Z
 
-    .line 1626
+    .line 1615
     iget-boolean v0, p0, Lmiui/app/ToggleManager;->mGpsEnable:Z
 
     invoke-virtual {p0, v2, v0}, Lmiui/app/ToggleManager;->updateToggleStatus(IZ)V
 
-    .line 1627
+    .line 1616
     iget-boolean v0, p0, Lmiui/app/ToggleManager;->mGpsEnable:Z
 
     if-eqz v0, :cond_0
@@ -5979,10 +5934,10 @@
     :goto_0
     invoke-direct {p0, v2, v0}, Lmiui/app/ToggleManager;->updateToggleImage(II)V
 
-    .line 1630
+    .line 1619
     return-void
 
-    .line 1627
+    .line 1616
     :cond_0
     const v0, 0x9020010
 
@@ -6021,7 +5976,7 @@
     .prologue
     const/16 v3, 0x1a
 
-    .line 1875
+    .line 1864
     iget-object v0, p0, Lmiui/app/ToggleManager;->mResolver:Landroid/content/ContentResolver;
 
     const-string v1, "screen_paper_mode_enabled"
@@ -6034,12 +5989,12 @@
 
     iput-boolean v0, p0, Lmiui/app/ToggleManager;->mPaperMode:Z
 
-    .line 1878
+    .line 1867
     iget-boolean v0, p0, Lmiui/app/ToggleManager;->mPaperMode:Z
 
     invoke-virtual {p0, v3, v0}, Lmiui/app/ToggleManager;->updateToggleStatus(IZ)V
 
-    .line 1879
+    .line 1868
     iget-boolean v0, p0, Lmiui/app/ToggleManager;->mPaperMode:Z
 
     if-eqz v0, :cond_0
@@ -6049,10 +6004,10 @@
     :goto_0
     invoke-direct {p0, v3, v0}, Lmiui/app/ToggleManager;->updateToggleImage(II)V
 
-    .line 1882
+    .line 1871
     return-void
 
-    .line 1879
+    .line 1868
     :cond_0
     const v0, 0x9020017
 
@@ -6065,10 +6020,10 @@
     .prologue
     const/16 v4, 0x17
 
-    .line 1835
+    .line 1824
     const/4 v1, 0x0
 
-    .line 1836
+    .line 1825
     .local v1, "resId":I
     iget-object v2, p0, Lmiui/app/ToggleManager;->mResolver:Landroid/content/ContentResolver;
 
@@ -6080,7 +6035,7 @@
 
     iput-object v2, p0, Lmiui/app/ToggleManager;->mPowerMode:Ljava/lang/String;
 
-    .line 1837
+    .line 1826
     iget-object v2, p0, Lmiui/app/ToggleManager;->mPowerMode:Ljava/lang/String;
 
     invoke-static {v2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
@@ -6089,12 +6044,12 @@
 
     if-eqz v2, :cond_0
 
-    .line 1838
+    .line 1827
     const-string v2, "middle"
 
     iput-object v2, p0, Lmiui/app/ToggleManager;->mPowerMode:Ljava/lang/String;
 
-    .line 1840
+    .line 1829
     :cond_0
     const-string v2, "high"
 
@@ -6104,11 +6059,11 @@
 
     move-result v0
 
-    .line 1841
+    .line 1830
     .local v0, "isHigh":Z
     invoke-virtual {p0, v4, v0}, Lmiui/app/ToggleManager;->updateToggleStatus(IZ)V
 
-    .line 1842
+    .line 1831
     if-eqz v0, :cond_1
 
     const v2, 0x902001a
@@ -6116,10 +6071,10 @@
     :goto_0
     invoke-direct {p0, v4, v2}, Lmiui/app/ToggleManager;->updateToggleImage(II)V
 
-    .line 1845
+    .line 1834
     return-void
 
-    .line 1842
+    .line 1831
     :cond_1
     const v2, 0x9020019
 
@@ -6132,7 +6087,7 @@
     .prologue
     const/16 v1, 0xe
 
-    .line 1789
+    .line 1778
     iget-object v0, p0, Lmiui/app/ToggleManager;->mSecurityHelper:Landroid/security/ChooseLockSettingsHelper;
 
     invoke-virtual {v0}, Landroid/security/ChooseLockSettingsHelper;->isPrivacyModeEnabled()Z
@@ -6141,12 +6096,12 @@
 
     iput-boolean v0, p0, Lmiui/app/ToggleManager;->mPrivacyMode:Z
 
-    .line 1790
+    .line 1779
     iget-boolean v0, p0, Lmiui/app/ToggleManager;->mPrivacyMode:Z
 
     invoke-virtual {p0, v1, v0}, Lmiui/app/ToggleManager;->updateToggleStatus(IZ)V
 
-    .line 1791
+    .line 1780
     iget-boolean v0, p0, Lmiui/app/ToggleManager;->mPrivacyMode:Z
 
     if-eqz v0, :cond_0
@@ -6156,10 +6111,10 @@
     :goto_0
     invoke-direct {p0, v1, v0}, Lmiui/app/ToggleManager;->updateToggleImage(II)V
 
-    .line 1794
+    .line 1783
     return-void
 
-    .line 1791
+    .line 1780
     :cond_0
     const v0, 0x902001b
 
@@ -6176,14 +6131,14 @@
 
     const/4 v1, 0x0
 
-    .line 1857
+    .line 1846
     invoke-direct {p0}, Lmiui/app/ToggleManager;->supportZenMode()Z
 
     move-result v2
 
     if-eqz v2, :cond_1
 
-    .line 1858
+    .line 1847
     iget-object v2, p0, Lmiui/app/ToggleManager;->mResolver:Landroid/content/ContentResolver;
 
     const-string v3, "zen_mode"
@@ -6197,13 +6152,13 @@
     :goto_0
     iput-boolean v0, p0, Lmiui/app/ToggleManager;->mQuietMode:Z
 
-    .line 1862
+    .line 1851
     :goto_1
     iget-boolean v0, p0, Lmiui/app/ToggleManager;->mQuietMode:Z
 
     invoke-virtual {p0, v4, v0}, Lmiui/app/ToggleManager;->updateToggleStatus(IZ)V
 
-    .line 1863
+    .line 1852
     iget-boolean v0, p0, Lmiui/app/ToggleManager;->mQuietMode:Z
 
     if-eqz v0, :cond_2
@@ -6213,16 +6168,16 @@
     :goto_2
     invoke-direct {p0, v4, v0}, Lmiui/app/ToggleManager;->updateToggleImage(II)V
 
-    .line 1866
+    .line 1855
     return-void
 
     :cond_0
     move v0, v1
 
-    .line 1858
+    .line 1847
     goto :goto_0
 
-    .line 1860
+    .line 1849
     :cond_1
     iget-object v0, p0, Lmiui/app/ToggleManager;->mContext:Landroid/content/Context;
 
@@ -6234,7 +6189,7 @@
 
     goto :goto_1
 
-    .line 1863
+    .line 1852
     :cond_2
     const v0, 0x902001d
 
@@ -6249,7 +6204,7 @@
 
     const/4 v0, 0x0
 
-    .line 2032
+    .line 2021
     iget-object v1, p0, Lmiui/app/ToggleManager;->mResolver:Landroid/content/ContentResolver;
 
     const-string v2, "screen_buttons_state"
@@ -6265,12 +6220,12 @@
     :cond_0
     iput-boolean v0, p0, Lmiui/app/ToggleManager;->mScreenButtonDisabled:Z
 
-    .line 2034
+    .line 2023
     iget-boolean v0, p0, Lmiui/app/ToggleManager;->mScreenButtonDisabled:Z
 
     invoke-virtual {p0, v3, v0}, Lmiui/app/ToggleManager;->updateToggleStatus(IZ)V
 
-    .line 2035
+    .line 2024
     iget-boolean v0, p0, Lmiui/app/ToggleManager;->mScreenButtonDisabled:Z
 
     if-eqz v0, :cond_1
@@ -6280,10 +6235,10 @@
     :goto_0
     invoke-direct {p0, v3, v0}, Lmiui/app/ToggleManager;->updateToggleImage(II)V
 
-    .line 2038
+    .line 2027
     return-void
 
-    .line 2035
+    .line 2024
     :cond_1
     const v0, 0x9020023
 
@@ -6296,16 +6251,16 @@
     .prologue
     const/16 v2, 0x8
 
-    .line 1640
+    .line 1629
     invoke-static {}, Landroid/content/ContentResolver;->getMasterSyncAutomatically()Z
 
     move-result v0
 
-    .line 1641
+    .line 1630
     .local v0, "isSyncOn":Z
     invoke-virtual {p0, v2, v0}, Lmiui/app/ToggleManager;->updateToggleStatus(IZ)V
 
-    .line 1642
+    .line 1631
     if-eqz v0, :cond_0
 
     const v1, 0x9020032
@@ -6313,10 +6268,10 @@
     :goto_0
     invoke-direct {p0, v2, v1}, Lmiui/app/ToggleManager;->updateToggleImage(II)V
 
-    .line 1645
+    .line 1634
     return-void
 
-    .line 1642
+    .line 1631
     :cond_0
     const v1, 0x9020031
 
@@ -6357,12 +6312,12 @@
     .param p2, "resId"    # I
 
     .prologue
-    .line 1089
+    .line 1088
     const/16 v0, 0xff
 
     invoke-virtual {p0, p1, p2, v0}, Lmiui/app/ToggleManager;->updateToggleImage(III)V
 
-    .line 1090
+    .line 1089
     return-void
 .end method
 
@@ -6376,7 +6331,7 @@
 
     const/4 v1, 0x0
 
-    .line 1805
+    .line 1794
     iget-object v2, p0, Lmiui/app/ToggleManager;->mContext:Landroid/content/Context;
 
     invoke-virtual {v2}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
@@ -6394,12 +6349,12 @@
     :goto_0
     iput-boolean v0, p0, Lmiui/app/ToggleManager;->mTorchEnable:Z
 
-    .line 1807
+    .line 1796
     iget-boolean v0, p0, Lmiui/app/ToggleManager;->mTorchEnable:Z
 
     invoke-virtual {p0, v4, v0}, Lmiui/app/ToggleManager;->updateToggleStatus(IZ)V
 
-    .line 1808
+    .line 1797
     iget-boolean v0, p0, Lmiui/app/ToggleManager;->mTorchEnable:Z
 
     if-eqz v0, :cond_1
@@ -6409,16 +6364,16 @@
     :goto_1
     invoke-direct {p0, v4, v0}, Lmiui/app/ToggleManager;->updateToggleImage(II)V
 
-    .line 1811
+    .line 1800
     return-void
 
     :cond_0
     move v0, v1
 
-    .line 1805
+    .line 1794
     goto :goto_0
 
-    .line 1808
+    .line 1797
     :cond_1
     const v0, 0x9020033
 
@@ -6784,14 +6739,14 @@
     .param p2, "write"    # Z
 
     .prologue
-    .line 1444
+    .line 1443
     const/4 v5, 0x0
 
-    .line 1445
+    .line 1444
     .local v5, "valf":F
     const/4 v0, 0x0
 
-    .line 1447
+    .line 1446
     .local v0, "brightnessValue":I
     :try_start_0
     const-string v6, "power"
@@ -6804,26 +6759,26 @@
 
     move-result-object v2
 
-    .line 1448
+    .line 1447
     .local v2, "power":Landroid/os/IPowerManager;
     const/4 v3, 0x0
 
-    .line 1449
+    .line 1448
     .local v3, "setAutoBrightnessAdjustmentMethod":Ljava/lang/reflect/Method;
     const/4 v4, 0x0
 
-    .line 1450
+    .line 1449
     .local v4, "setBrightnessMethod":Ljava/lang/reflect/Method;
     if-eqz v2, :cond_0
 
-    .line 1451
+    .line 1450
     sget v6, Landroid/os/Build$VERSION;->SDK_INT:I
 
     const/16 v7, 0x10
 
     if-gt v6, v7, :cond_1
 
-    .line 1452
+    .line 1451
     invoke-virtual {v2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
     move-result-object v6
@@ -6844,7 +6799,7 @@
 
     move-result-object v3
 
-    .line 1454
+    .line 1453
     invoke-virtual {v2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
     move-result-object v6
@@ -6865,21 +6820,21 @@
 
     move-result-object v4
 
-    .line 1461
+    .line 1460
     :goto_0
     iget-boolean v6, p0, Lmiui/app/ToggleManager;->mBrightnessAutoMode:Z
 
     if-eqz v6, :cond_2
 
-    .line 1462
+    .line 1461
     if-eqz v3, :cond_0
 
-    .line 1463
+    .line 1462
     sget-boolean v6, Lmiui/app/ToggleManager;->USE_SCREEN_AUTO_BRIGHTNESS_ADJUSTMENT:Z
 
     if-eqz v6, :cond_0
 
-    .line 1464
+    .line 1463
     int-to-float v6, p1
 
     const/high16 v7, 0x40000000    # 2.0f
@@ -6896,7 +6851,7 @@
 
     sub-float v5, v6, v7
 
-    .line 1465
+    .line 1464
     const/4 v6, 0x1
 
     new-array v6, v6, [Ljava/lang/Object;
@@ -6911,17 +6866,17 @@
 
     invoke-virtual {v3, v2, v6}, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 1466
+    .line 1465
     if-eqz p2, :cond_0
 
-    .line 1467
+    .line 1466
     iget-object v6, p0, Lmiui/app/ToggleManager;->mResolver:Landroid/content/ContentResolver;
 
     const-string v7, "screen_auto_brightness_adj"
 
     invoke-static {v6, v7, v5}, Landroid/provider/Settings$System;->putFloat(Landroid/content/ContentResolver;Ljava/lang/String;F)Z
 
-    .line 1490
+    .line 1489
     .end local v2    # "power":Landroid/os/IPowerManager;
     .end local v3    # "setAutoBrightnessAdjustmentMethod":Ljava/lang/reflect/Method;
     .end local v4    # "setBrightnessMethod":Ljava/lang/reflect/Method;
@@ -6929,7 +6884,7 @@
     :goto_1
     return-void
 
-    .line 1456
+    .line 1455
     .restart local v2    # "power":Landroid/os/IPowerManager;
     .restart local v3    # "setAutoBrightnessAdjustmentMethod":Ljava/lang/reflect/Method;
     .restart local v4    # "setBrightnessMethod":Ljava/lang/reflect/Method;
@@ -6954,7 +6909,7 @@
 
     move-result-object v3
 
-    .line 1458
+    .line 1457
     invoke-virtual {v2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
     move-result-object v6
@@ -6977,16 +6932,16 @@
 
     goto :goto_0
 
-    .line 1472
+    .line 1471
     :cond_2
     if-eqz v4, :cond_0
 
-    .line 1473
+    .line 1472
     sget v6, Lmiui/app/ToggleManager;->MINIMUM_BACKLIGHT:I
 
     add-int v0, p1, v6
 
-    .line 1474
+    .line 1473
     const/4 v6, 0x1
 
     new-array v6, v6, [Ljava/lang/Object;
@@ -7001,10 +6956,10 @@
 
     invoke-virtual {v4, v2, v6}, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 1475
+    .line 1474
     if-eqz p2, :cond_0
 
-    .line 1476
+    .line 1475
     iget-object v6, p0, Lmiui/app/ToggleManager;->mResolver:Landroid/content/ContentResolver;
 
     const-string v7, "screen_brightness"
@@ -7018,47 +6973,47 @@
 
     goto :goto_1
 
-    .line 1481
+    .line 1480
     .end local v2    # "power":Landroid/os/IPowerManager;
     .end local v3    # "setAutoBrightnessAdjustmentMethod":Ljava/lang/reflect/Method;
     .end local v4    # "setBrightnessMethod":Ljava/lang/reflect/Method;
     :catch_0
     move-exception v1
 
-    .line 1482
+    .line 1481
     .local v1, "e":Ljava/lang/NoSuchMethodException;
     invoke-virtual {v1}, Ljava/lang/NoSuchMethodException;->printStackTrace()V
 
     goto :goto_1
 
-    .line 1483
+    .line 1482
     .end local v1    # "e":Ljava/lang/NoSuchMethodException;
     :catch_1
     move-exception v1
 
-    .line 1484
+    .line 1483
     .local v1, "e":Ljava/lang/IllegalArgumentException;
     invoke-virtual {v1}, Ljava/lang/IllegalArgumentException;->printStackTrace()V
 
     goto :goto_1
 
-    .line 1485
+    .line 1484
     .end local v1    # "e":Ljava/lang/IllegalArgumentException;
     :catch_2
     move-exception v1
 
-    .line 1486
+    .line 1485
     .local v1, "e":Ljava/lang/IllegalAccessException;
     invoke-virtual {v1}, Ljava/lang/IllegalAccessException;->printStackTrace()V
 
     goto :goto_1
 
-    .line 1487
+    .line 1486
     .end local v1    # "e":Ljava/lang/IllegalAccessException;
     :catch_3
     move-exception v1
 
-    .line 1488
+    .line 1487
     .local v1, "e":Ljava/lang/reflect/InvocationTargetException;
     invoke-virtual {v1}, Ljava/lang/reflect/InvocationTargetException;->printStackTrace()V
 
@@ -7069,7 +7024,7 @@
     .locals 2
 
     .prologue
-    .line 1438
+    .line 1437
     iget-boolean v0, p0, Lmiui/app/ToggleManager;->mBrightnessAutoMode:Z
 
     if-eqz v0, :cond_0
@@ -7101,7 +7056,7 @@
     .locals 1
 
     .prologue
-    .line 2041
+    .line 2030
     iget-boolean v0, p0, Lmiui/app/ToggleManager;->mBrightnessAutoMode:Z
 
     return v0
@@ -7275,23 +7230,23 @@
     .prologue
     const/4 v5, 0x1
 
-    .line 1110
+    .line 1109
     iget-object v3, p0, Lmiui/app/ToggleManager;->mContext:Landroid/content/Context;
 
     invoke-static {v3}, Landroid/app/MiuiStatusBarManager;->isCollapseAfterClicked(Landroid/content/Context;)Z
 
     move-result v2
 
-    .line 1111
+    .line 1110
     .local v2, "result":Z
     packed-switch p1, :pswitch_data_0
 
-    .line 1224
+    .line 1223
     :cond_0
     :goto_0
     return v2
 
-    .line 1113
+    .line 1112
     :pswitch_0
     new-instance v1, Landroid/content/Intent;
 
@@ -7299,7 +7254,7 @@
 
     invoke-direct {v1, v3}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 1114
+    .line 1113
     .local v1, "intent":Landroid/content/Intent;
     iget-object v3, p0, Lmiui/app/ToggleManager;->mSecurityHelper:Landroid/security/ChooseLockSettingsHelper;
 
@@ -7309,36 +7264,36 @@
 
     if-eqz v3, :cond_1
 
-    .line 1115
+    .line 1114
     const-string v3, "com.android.settings"
 
     const-string v4, "com.android.settings.ConfirmAccessControl"
 
     invoke-virtual {v1, v3, v4}, Landroid/content/Intent;->setClassName(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
 
-    .line 1116
+    .line 1115
     const-string v3, "confirm_purpose"
 
     invoke-virtual {v1, v3, v5}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
 
-    .line 1121
+    .line 1120
     :goto_1
     const/high16 v3, 0x10000000
 
     invoke-virtual {v1, v3}, Landroid/content/Intent;->setFlags(I)Landroid/content/Intent;
 
-    .line 1122
+    .line 1121
     iget-object v3, p0, Lmiui/app/ToggleManager;->mContext:Landroid/content/Context;
 
     invoke-virtual {v3, v1}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
 
-    .line 1123
+    .line 1122
     const/4 v2, 0x1
 
-    .line 1124
+    .line 1123
     goto :goto_0
 
-    .line 1119
+    .line 1118
     :cond_1
     const-string v3, "com.android.settings"
 
@@ -7348,40 +7303,40 @@
 
     goto :goto_1
 
-    .line 1127
+    .line 1126
     .end local v1    # "intent":Landroid/content/Intent;
     :pswitch_1
     invoke-direct {p0}, Lmiui/app/ToggleManager;->toggleAdvancedSync()V
 
     goto :goto_0
 
-    .line 1130
+    .line 1129
     :pswitch_2
     invoke-direct {p0}, Lmiui/app/ToggleManager;->toggleAutoBrightness()V
 
-    .line 1131
+    .line 1130
     const/4 v2, 0x0
 
-    .line 1132
+    .line 1131
     goto :goto_0
 
-    .line 1134
+    .line 1133
     :pswitch_3
     invoke-direct {p0}, Lmiui/app/ToggleManager;->toggleBluetooth()V
 
     goto :goto_0
 
-    .line 1137
+    .line 1136
     :pswitch_4
     invoke-direct {p0}, Lmiui/app/ToggleManager;->toggleBrightness()V
 
-    .line 1138
+    .line 1137
     const/4 v2, 0x0
 
-    .line 1139
+    .line 1138
     goto :goto_0
 
-    .line 1141
+    .line 1140
     :pswitch_5
     iget-boolean v3, p0, Lmiui/app/ToggleManager;->mFlightMode:Z
 
@@ -7391,19 +7346,19 @@
 
     if-nez v3, :cond_0
 
-    .line 1142
+    .line 1141
     invoke-direct {p0}, Lmiui/app/ToggleManager;->toggleData()Z
 
     move-result v0
 
-    .line 1143
+    .line 1142
     .local v0, "dataResult":Z
     or-int/2addr v2, v0
 
-    .line 1144
+    .line 1143
     goto :goto_0
 
-    .line 1147
+    .line 1146
     .end local v0    # "dataResult":Z
     :pswitch_6
     new-instance v1, Landroid/content/Intent;
@@ -7412,7 +7367,7 @@
 
     invoke-direct {v1, v3}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 1148
+    .line 1147
     .restart local v1    # "intent":Landroid/content/Intent;
     const-string v3, "com.android.systemui"
 
@@ -7420,41 +7375,41 @@
 
     invoke-virtual {v1, v3, v4}, Landroid/content/Intent;->setClassName(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
 
-    .line 1149
+    .line 1148
     const/high16 v3, 0x14000000
 
     invoke-virtual {v1, v3}, Landroid/content/Intent;->setFlags(I)Landroid/content/Intent;
 
-    .line 1150
+    .line 1149
     const-string v3, "com.android.systemui.settings.EXTRA_LOCATE_DIVIDER"
 
     invoke-virtual {v1, v3, v5}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Z)Landroid/content/Intent;
 
-    .line 1151
+    .line 1150
     iget-object v3, p0, Lmiui/app/ToggleManager;->mContext:Landroid/content/Context;
 
     invoke-virtual {v3, v1}, Landroid/content/Context;->startActivity(Landroid/content/Intent;)V
 
-    .line 1152
+    .line 1151
     const/4 v2, 0x1
 
-    .line 1153
+    .line 1152
     goto :goto_0
 
-    .line 1156
+    .line 1155
     .end local v1    # "intent":Landroid/content/Intent;
     :pswitch_7
     invoke-direct {p0}, Lmiui/app/ToggleManager;->toggleFlightMode()V
 
     goto :goto_0
 
-    .line 1159
+    .line 1158
     :pswitch_8
     invoke-direct {p0}, Lmiui/app/ToggleManager;->toggleGps()V
 
     goto :goto_0
 
-    .line 1162
+    .line 1161
     :pswitch_9
     iget-object v3, p0, Lmiui/app/ToggleManager;->mContext:Landroid/content/Context;
 
@@ -7474,13 +7429,13 @@
 
     goto/16 :goto_0
 
-    .line 1166
+    .line 1165
     :pswitch_a
     invoke-direct {p0}, Lmiui/app/ToggleManager;->toggleRinger()V
 
     goto/16 :goto_0
 
-    .line 1169
+    .line 1168
     :pswitch_b
     iget-boolean v3, p0, Lmiui/app/ToggleManager;->mMobileDataEnable:Z
 
@@ -7494,18 +7449,18 @@
 
     if-eqz v3, :cond_0
 
-    .line 1170
+    .line 1169
     :cond_2
     const/16 v3, 0x11
 
     invoke-virtual {p0, v3}, Lmiui/app/ToggleManager;->startLongClickAction(I)Z
 
-    .line 1171
+    .line 1170
     const/4 v2, 0x1
 
     goto/16 :goto_0
 
-    .line 1176
+    .line 1175
     :pswitch_c
     invoke-direct {p0}, Lmiui/app/ToggleManager;->togglePrivacyMode()Z
 
@@ -7513,38 +7468,38 @@
 
     or-int/2addr v2, v3
 
-    .line 1177
+    .line 1176
     goto/16 :goto_0
 
-    .line 1179
+    .line 1178
     :pswitch_d
     invoke-direct {p0, v5}, Lmiui/app/ToggleManager;->shutdown(Z)V
 
     goto/16 :goto_0
 
-    .line 1182
+    .line 1181
     :pswitch_e
     invoke-direct {p0}, Lmiui/app/ToggleManager;->toggleAccelerometer()V
 
     goto/16 :goto_0
 
-    .line 1185
+    .line 1184
     :pswitch_f
     invoke-direct {p0}, Lmiui/app/ToggleManager;->toggleScreenButtonState()V
 
     goto/16 :goto_0
 
-    .line 1188
+    .line 1187
     :pswitch_10
     invoke-direct {p0}, Lmiui/app/ToggleManager;->toggleScreenshot()V
 
-    .line 1189
+    .line 1188
     const/4 v2, 0x1
 
-    .line 1190
+    .line 1189
     goto/16 :goto_0
 
-    .line 1192
+    .line 1191
     :pswitch_11
     const/4 v3, 0x0
 
@@ -7552,25 +7507,25 @@
 
     goto/16 :goto_0
 
-    .line 1195
+    .line 1194
     :pswitch_12
     invoke-direct {p0}, Lmiui/app/ToggleManager;->toggleSync()V
 
     goto/16 :goto_0
 
-    .line 1198
+    .line 1197
     :pswitch_13
     invoke-direct {p0}, Lmiui/app/ToggleManager;->toggleTorch()V
 
     goto/16 :goto_0
 
-    .line 1201
+    .line 1200
     :pswitch_14
     invoke-direct {p0}, Lmiui/app/ToggleManager;->toggleVibrate()V
 
     goto/16 :goto_0
 
-    .line 1204
+    .line 1203
     :pswitch_15
     iget-object v3, p0, Lmiui/app/ToggleManager;->mWifiState:Lmiui/app/ToggleManager$WifiStateTracker;
 
@@ -7578,19 +7533,19 @@
 
     goto/16 :goto_0
 
-    .line 1207
+    .line 1206
     :pswitch_16
     invoke-direct {p0}, Lmiui/app/ToggleManager;->togglePowerMode()V
 
     goto/16 :goto_0
 
-    .line 1210
+    .line 1209
     :pswitch_17
     invoke-direct {p0}, Lmiui/app/ToggleManager;->toggleDriveMode()V
 
     goto/16 :goto_0
 
-    .line 1213
+    .line 1212
     :pswitch_18
     sget-object v3, Lmiui/app/ToggleManager;->mWifiApEnabler:Lmiui/app/WifiApEnabler;
 
@@ -7598,19 +7553,19 @@
 
     goto/16 :goto_0
 
-    .line 1216
+    .line 1215
     :pswitch_19
     invoke-direct {p0}, Lmiui/app/ToggleManager;->toggleQuietMode()V
 
     goto/16 :goto_0
 
-    .line 1219
+    .line 1218
     :pswitch_1a
     invoke-direct {p0}, Lmiui/app/ToggleManager;->togglePaperMode()V
 
     goto/16 :goto_0
 
-    .line 1111
+    .line 1110
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_6
@@ -7978,14 +7933,14 @@
 
     const/4 v2, 0x2
 
-    .line 1352
+    .line 1351
     invoke-direct {p0}, Lmiui/app/ToggleManager;->ensureBluetoothAdapter()Z
 
     move-result v0
 
     if-eqz v0, :cond_0
 
-    .line 1353
+    .line 1352
     iget-object v0, p0, Lmiui/app/ToggleManager;->mBluetoothAdapter:Landroid/bluetooth/BluetoothAdapter;
 
     invoke-virtual {v0}, Landroid/bluetooth/BluetoothAdapter;->isEnabled()Z
@@ -7994,7 +7949,7 @@
 
     iput-boolean v0, p0, Lmiui/app/ToggleManager;->mBluetoothEnable:Z
 
-    .line 1356
+    .line 1355
     :cond_0
     iget-boolean v0, p0, Lmiui/app/ToggleManager;->mBluetoothEnable:Z
 
@@ -8010,41 +7965,41 @@
     :goto_0
     invoke-virtual {p0, v2, v0}, Lmiui/app/ToggleManager;->updateToggleStatus(IZ)V
 
-    .line 1358
+    .line 1357
     iget-boolean v0, p0, Lmiui/app/ToggleManager;->mBluetoothEnable:Z
 
     if-eqz v0, :cond_3
 
-    .line 1359
+    .line 1358
     iput-boolean v1, p0, Lmiui/app/ToggleManager;->mBluetoothEnabling:Z
 
-    .line 1360
+    .line 1359
     invoke-direct {p0, v2, v3}, Lmiui/app/ToggleManager;->updateToggleImage(II)V
 
-    .line 1369
+    .line 1368
     :goto_1
     return-void
 
     :cond_2
     move v0, v1
 
-    .line 1356
+    .line 1355
     goto :goto_0
 
-    .line 1362
+    .line 1361
     :cond_3
     iget-boolean v0, p0, Lmiui/app/ToggleManager;->mBluetoothEnabling:Z
 
     if-eqz v0, :cond_4
 
-    .line 1363
+    .line 1362
     const/16 v0, 0x7d
 
     invoke-virtual {p0, v2, v3, v0}, Lmiui/app/ToggleManager;->updateToggleImage(III)V
 
     goto :goto_1
 
-    .line 1366
+    .line 1365
     :cond_4
     const v0, 0x9020002
 
@@ -8054,82 +8009,38 @@
 .end method
 
 .method public updateRingerToggle()V
-    .locals 5
+    .locals 3
 
     .prologue
-    const/4 v4, 0x5
+    const/4 v2, 0x5
 
-    const/4 v1, 0x0
-
-    .line 1576
-    invoke-direct {p0}, Lmiui/app/ToggleManager;->supportZenMode()Z
-
-    move-result v2
-
-    if-eqz v2, :cond_2
-
-    .line 1577
-    iget-object v2, p0, Lmiui/app/ToggleManager;->mResolver:Landroid/content/ContentResolver;
-
-    const-string v3, "zen_mode"
-
-    invoke-static {v2, v3, v1}, Landroid/provider/Settings$Global;->getInt(Landroid/content/ContentResolver;Ljava/lang/String;I)I
-
-    move-result v0
-
-    .line 1578
-    .local v0, "mode":I
-    const/4 v2, 0x3
-
-    if-eq v0, v2, :cond_0
-
-    const/4 v2, 0x2
-
-    if-ne v0, v2, :cond_1
-
-    :cond_0
-    const/4 v1, 0x1
-
-    :cond_1
-    iput-boolean v1, p0, Lmiui/app/ToggleManager;->mSilentEnabled:Z
-
-    .line 1582
-    .end local v0    # "mode":I
-    :goto_0
-    iget-boolean v1, p0, Lmiui/app/ToggleManager;->mSilentEnabled:Z
-
-    invoke-virtual {p0, v4, v1}, Lmiui/app/ToggleManager;->updateToggleStatus(IZ)V
-
-    .line 1583
-    iget-boolean v1, p0, Lmiui/app/ToggleManager;->mSilentEnabled:Z
-
-    if-eqz v1, :cond_3
-
-    const v1, 0x9020015
-
-    :goto_1
-    invoke-direct {p0, v4, v1}, Lmiui/app/ToggleManager;->updateToggleImage(II)V
-
-    .line 1586
-    return-void
-
-    .line 1580
-    :cond_2
+    .line 1570
     iget-object v1, p0, Lmiui/app/ToggleManager;->mContext:Landroid/content/Context;
 
     invoke-static {v1}, Lmiui/util/AudioManagerHelper;->isSilentEnabled(Landroid/content/Context;)Z
 
-    move-result v1
+    move-result v0
 
-    iput-boolean v1, p0, Lmiui/app/ToggleManager;->mSilentEnabled:Z
+    .line 1571
+    .local v0, "silentEnabled":Z
+    invoke-virtual {p0, v2, v0}, Lmiui/app/ToggleManager;->updateToggleStatus(IZ)V
 
-    goto :goto_0
+    .line 1572
+    if-eqz v0, :cond_0
 
-    .line 1583
-    :cond_3
+    const v1, 0x9020015
+
+    :goto_0
+    invoke-direct {p0, v2, v1}, Lmiui/app/ToggleManager;->updateToggleImage(II)V
+
+    .line 1575
+    return-void
+
+    .line 1572
+    :cond_0
     const v1, 0x9020014
 
-    goto :goto_1
+    goto :goto_0
 .end method
 
 .method protected updateToggleImage(III)V
@@ -8139,17 +8050,17 @@
     .param p3, "alpha"    # I
 
     .prologue
-    .line 1093
+    .line 1092
     sget-object v3, Lmiui/app/ToggleManager;->sToggleImages:[I
 
     aput p2, v3, p1
 
-    .line 1094
+    .line 1093
     sget-object v3, Lmiui/app/ToggleManager;->sToggleAlpha:[I
 
     aput p3, v3, p1
 
-    .line 1096
+    .line 1095
     iget-object v3, p0, Lmiui/app/ToggleManager;->mToggleChangedListener:Ljava/util/List;
 
     invoke-interface {v3}, Ljava/util/List;->size()I
@@ -8158,7 +8069,7 @@
 
     if-lez v3, :cond_1
 
-    .line 1097
+    .line 1096
     iget-object v3, p0, Lmiui/app/ToggleManager;->mToggleChangedListener:Ljava/util/List;
 
     invoke-interface {v3}, Ljava/util/List;->size()I
@@ -8171,7 +8082,7 @@
     :goto_0
     if-ltz v0, :cond_1
 
-    .line 1098
+    .line 1097
     iget-object v3, p0, Lmiui/app/ToggleManager;->mToggleChangedListener:Ljava/util/List;
 
     invoke-interface {v3, v0}, Ljava/util/List;->get(I)Ljava/lang/Object;
@@ -8180,7 +8091,7 @@
 
     check-cast v1, Ljava/lang/ref/WeakReference;
 
-    .line 1099
+    .line 1098
     .local v1, "item":Ljava/lang/ref/WeakReference;, "Ljava/lang/ref/WeakReference<Lmiui/app/ToggleManager$OnToggleChangedListener;>;"
     invoke-virtual {v1}, Ljava/lang/ref/WeakReference;->get()Ljava/lang/Object;
 
@@ -8188,28 +8099,28 @@
 
     check-cast v2, Lmiui/app/ToggleManager$OnToggleChangedListener;
 
-    .line 1100
+    .line 1099
     .local v2, "l":Lmiui/app/ToggleManager$OnToggleChangedListener;
     if-nez v2, :cond_0
 
-    .line 1101
+    .line 1100
     iget-object v3, p0, Lmiui/app/ToggleManager;->mToggleChangedListener:Ljava/util/List;
 
     invoke-interface {v3, v0}, Ljava/util/List;->remove(I)Ljava/lang/Object;
 
-    .line 1097
+    .line 1096
     :goto_1
     add-int/lit8 v0, v0, -0x1
 
     goto :goto_0
 
-    .line 1103
+    .line 1102
     :cond_0
     invoke-interface {v2, p1}, Lmiui/app/ToggleManager$OnToggleChangedListener;->OnToggleChanged(I)V
 
     goto :goto_1
 
-    .line 1107
+    .line 1106
     .end local v0    # "i":I
     .end local v1    # "item":Ljava/lang/ref/WeakReference;, "Ljava/lang/ref/WeakReference<Lmiui/app/ToggleManager$OnToggleChangedListener;>;"
     .end local v2    # "l":Lmiui/app/ToggleManager$OnToggleChangedListener;
@@ -8257,18 +8168,18 @@
     .prologue
     const/4 v2, 0x6
 
-    .line 1607
+    .line 1596
     iget-object v1, p0, Lmiui/app/ToggleManager;->mContext:Landroid/content/Context;
 
     invoke-static {v1}, Lmiui/util/AudioManagerHelper;->isVibrateEnabled(Landroid/content/Context;)Z
 
     move-result v0
 
-    .line 1608
+    .line 1597
     .local v0, "isVibrateEnabled":Z
     invoke-virtual {p0, v2, v0}, Lmiui/app/ToggleManager;->updateToggleStatus(IZ)V
 
-    .line 1609
+    .line 1598
     if-eqz v0, :cond_0
 
     const v1, 0x9020036
@@ -8276,10 +8187,10 @@
     :goto_0
     invoke-direct {p0, v2, v1}, Lmiui/app/ToggleManager;->updateToggleImage(II)V
 
-    .line 1612
+    .line 1601
     return-void
 
-    .line 1609
+    .line 1598
     :cond_0
     const v1, 0x9020035
 
@@ -8300,7 +8211,7 @@
 
     const/16 v7, 0xf
 
-    .line 1310
+    .line 1309
     iget-object v1, p0, Lmiui/app/ToggleManager;->mWifiState:Lmiui/app/ToggleManager$WifiStateTracker;
 
     iget-object v1, v1, Lmiui/app/ToggleManager$WifiStateTracker;->zSsid:Ljava/lang/String;
@@ -8326,7 +8237,7 @@
     :goto_0
     invoke-virtual {p0, v7, v1}, Lmiui/app/ToggleManager;->updateToggleStatusName(ILjava/lang/Object;)V
 
-    .line 1315
+    .line 1314
     sget-object v1, Lmiui/app/ToggleManager;->mWifiManager:Landroid/net/wifi/WifiManager;
 
     invoke-virtual {v1}, Landroid/net/wifi/WifiManager;->getWifiState()I
@@ -8350,15 +8261,15 @@
     :cond_0
     move v0, v5
 
-    .line 1318
+    .line 1317
     .local v0, "wifiEnabled":Z
     :goto_1
     if-eqz v0, :cond_4
 
-    .line 1319
+    .line 1318
     invoke-virtual {p0, v7, v5}, Lmiui/app/ToggleManager;->updateToggleStatus(IZ)V
 
-    .line 1320
+    .line 1319
     const v4, 0x902003a
 
     iget-object v1, p0, Lmiui/app/ToggleManager;->mWifiState:Lmiui/app/ToggleManager$WifiStateTracker;
@@ -8372,11 +8283,11 @@
     :goto_2
     invoke-virtual {p0, v7, v4, v1}, Lmiui/app/ToggleManager;->updateToggleImage(III)V
 
-    .line 1330
+    .line 1329
     :goto_3
     return-void
 
-    .line 1310
+    .line 1309
     .end local v0    # "wifiEnabled":Z
     :cond_1
     iget-object v1, p0, Lmiui/app/ToggleManager;->mWifiState:Lmiui/app/ToggleManager$WifiStateTracker;
@@ -8388,21 +8299,21 @@
     :cond_2
     move v0, v4
 
-    .line 1315
+    .line 1314
     goto :goto_1
 
     .restart local v0    # "wifiEnabled":Z
     :cond_3
     move v1, v3
 
-    .line 1320
+    .line 1319
     goto :goto_2
 
-    .line 1325
+    .line 1324
     :cond_4
     invoke-virtual {p0, v7, v4}, Lmiui/app/ToggleManager;->updateToggleStatus(IZ)V
 
-    .line 1326
+    .line 1325
     const v1, 0x9020039
 
     sget-object v4, Lmiui/app/ToggleManager;->mWifiManager:Landroid/net/wifi/WifiManager;

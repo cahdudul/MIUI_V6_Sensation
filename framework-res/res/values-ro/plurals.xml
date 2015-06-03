@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <plurals name="tethered_clients_connected">
+        <item quantity="other">%d de clienți conectați</item>
+        <item quantity="one">%d client conectat</item>
+        <item quantity="few">%d clienți conectați</item>
+    </plurals>
     <plurals name="pinpuk_attempts">
         <item quantity="other">V-au mai rămas %d încercări până la blocarea cardului SIM.</item>
         <item quantity="one">V-a mai rămas %d încercare până la blocarea cardului SIM.</item>

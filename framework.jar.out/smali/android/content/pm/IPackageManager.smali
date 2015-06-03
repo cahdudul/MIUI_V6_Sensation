@@ -39,6 +39,14 @@
     .end annotation
 .end method
 
+.method public abstract addPreLaunchCheckPackage(Ljava/lang/String;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract addPreferredActivity(Landroid/content/IntentFilter;I[Landroid/content/ComponentName;Landroid/content/ComponentName;I)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -96,6 +104,14 @@
 .end method
 
 .method public abstract clearPackagePreferredActivities(Ljava/lang/String;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract clearPreLaunchCheckPackages()V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -640,6 +656,14 @@
     .end annotation
 .end method
 
+.method public abstract processThemeResources(Ljava/lang/String;)I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract queryContentProviders(Ljava/lang/String;II)Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -848,6 +872,14 @@
     .end annotation
 .end method
 
+.method public abstract removePreLaunchCheckPackage(Ljava/lang/String;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract replacePreferredActivity(Landroid/content/IntentFilter;I[Landroid/content/ComponentName;Landroid/content/ComponentName;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -961,6 +993,14 @@
 .end method
 
 .method public abstract setPermissionEnforced(Ljava/lang/String;Z)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract setPreLaunchCheckActivity(Landroid/content/ComponentName;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

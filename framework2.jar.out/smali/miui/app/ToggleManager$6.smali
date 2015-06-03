@@ -24,7 +24,7 @@
     .param p2, "x0"    # Landroid/os/Handler;
 
     .prologue
-    .line 971
+    .line 970
     iput-object p1, p0, Lmiui/app/ToggleManager$6;->this$0:Lmiui/app/ToggleManager;
 
     invoke-direct {p0, p2}, Landroid/database/ContentObserver;-><init>(Landroid/os/Handler;)V
@@ -41,7 +41,7 @@
     .prologue
     const/4 v0, 0x1
 
-    .line 974
+    .line 973
     iget-object v1, p0, Lmiui/app/ToggleManager$6;->this$0:Lmiui/app/ToggleManager;
 
     iget-object v2, p0, Lmiui/app/ToggleManager$6;->this$0:Lmiui/app/ToggleManager;
@@ -63,16 +63,16 @@
     # setter for: Lmiui/app/ToggleManager;->mMobilePolicyEnable:Z
     invoke-static {v1, v0}, Lmiui/app/ToggleManager;->access$902(Lmiui/app/ToggleManager;Z)Z
 
-    .line 976
+    .line 975
     iget-object v0, p0, Lmiui/app/ToggleManager$6;->this$0:Lmiui/app/ToggleManager;
 
     # invokes: Lmiui/app/ToggleManager;->updateDataToggle()V
     invoke-static {v0}, Lmiui/app/ToggleManager;->access$400(Lmiui/app/ToggleManager;)V
 
-    .line 977
+    .line 976
     return-void
 
-    .line 974
+    .line 973
     :cond_0
     const/4 v0, 0x0
 

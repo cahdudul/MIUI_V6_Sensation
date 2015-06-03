@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <plurals name="tethered_clients_connected">
+        <item quantity="other">%d kliens csatlakoztatott</item>
+        <item quantity="one">%d kliens csatlakoztatott</item>
+    </plurals>
     <plurals name="pinpuk_attempts">
         <item quantity="other">Még %d próbálkozása van, mielőtt zároljuk a SIM kártyát.</item>
         <item quantity="one">Még %d próbálkozása van, mielőtt zároljuk a SIM kártyát.</item>

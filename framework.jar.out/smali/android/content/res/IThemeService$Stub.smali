@@ -34,11 +34,19 @@
 
 .field static final TRANSACTION_isThemeApplying:I = 0x5
 
+.field static final TRANSACTION_isThemeBeingProcessed:I = 0x9
+
+.field static final TRANSACTION_processThemeResources:I = 0x8
+
+.field static final TRANSACTION_registerThemeProcessingListener:I = 0xa
+
 .field static final TRANSACTION_removeUpdates:I = 0x2
 
 .field static final TRANSACTION_requestThemeChange:I = 0x3
 
 .field static final TRANSACTION_requestThemeChangeUpdates:I = 0x1
+
+.field static final TRANSACTION_unregisterThemeProcessingListener:I = 0xb
 
 
 # direct methods
@@ -134,7 +142,7 @@
     .line 39
     sparse-switch p1, :sswitch_data_0
 
-    .line 115
+    .line 153
     invoke-super {p0, p1, p2, p3, p4}, Landroid/os/Binder;->onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
     move-result v5
@@ -352,6 +360,122 @@
     .restart local v0    # "_arg0":Landroid/graphics/Bitmap;
     goto :goto_1
 
+    .line 116
+    .end local v0    # "_arg0":Landroid/graphics/Bitmap;
+    :sswitch_8
+    const-string v6, "android.content.res.IThemeService"
+
+    invoke-virtual {p2, v6}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 118
+    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v0
+
+    .line 119
+    .local v0, "_arg0":Ljava/lang/String;
+    invoke-virtual {p0, v0}, Landroid/content/res/IThemeService$Stub;->processThemeResources(Ljava/lang/String;)Z
+
+    move-result v2
+
+    .line 120
+    .restart local v2    # "_result":Z
+    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
+
+    .line 121
+    if-eqz v2, :cond_3
+
+    move v4, v5
+
+    :cond_3
+    invoke-virtual {p3, v4}, Landroid/os/Parcel;->writeInt(I)V
+
+    goto/16 :goto_0
+
+    .line 126
+    .end local v0    # "_arg0":Ljava/lang/String;
+    .end local v2    # "_result":Z
+    :sswitch_9
+    const-string v6, "android.content.res.IThemeService"
+
+    invoke-virtual {p2, v6}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 128
+    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v0
+
+    .line 129
+    .restart local v0    # "_arg0":Ljava/lang/String;
+    invoke-virtual {p0, v0}, Landroid/content/res/IThemeService$Stub;->isThemeBeingProcessed(Ljava/lang/String;)Z
+
+    move-result v2
+
+    .line 130
+    .restart local v2    # "_result":Z
+    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
+
+    .line 131
+    if-eqz v2, :cond_4
+
+    move v4, v5
+
+    :cond_4
+    invoke-virtual {p3, v4}, Landroid/os/Parcel;->writeInt(I)V
+
+    goto/16 :goto_0
+
+    .line 136
+    .end local v0    # "_arg0":Ljava/lang/String;
+    .end local v2    # "_result":Z
+    :sswitch_a
+    const-string v4, "android.content.res.IThemeService"
+
+    invoke-virtual {p2, v4}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 138
+    invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
+
+    move-result-object v4
+
+    invoke-static {v4}, Landroid/content/res/IThemeProcessingListener$Stub;->asInterface(Landroid/os/IBinder;)Landroid/content/res/IThemeProcessingListener;
+
+    move-result-object v0
+
+    .line 139
+    .local v0, "_arg0":Landroid/content/res/IThemeProcessingListener;
+    invoke-virtual {p0, v0}, Landroid/content/res/IThemeService$Stub;->registerThemeProcessingListener(Landroid/content/res/IThemeProcessingListener;)V
+
+    .line 140
+    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
+
+    goto/16 :goto_0
+
+    .line 145
+    .end local v0    # "_arg0":Landroid/content/res/IThemeProcessingListener;
+    :sswitch_b
+    const-string v4, "android.content.res.IThemeService"
+
+    invoke-virtual {p2, v4}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 147
+    invoke-virtual {p2}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
+
+    move-result-object v4
+
+    invoke-static {v4}, Landroid/content/res/IThemeProcessingListener$Stub;->asInterface(Landroid/os/IBinder;)Landroid/content/res/IThemeProcessingListener;
+
+    move-result-object v0
+
+    .line 148
+    .restart local v0    # "_arg0":Landroid/content/res/IThemeProcessingListener;
+    invoke-virtual {p0, v0}, Landroid/content/res/IThemeService$Stub;->unregisterThemeProcessingListener(Landroid/content/res/IThemeProcessingListener;)V
+
+    .line 149
+    invoke-virtual {p3}, Landroid/os/Parcel;->writeNoException()V
+
+    goto/16 :goto_0
+
     .line 39
     nop
 
@@ -364,6 +488,10 @@
         0x5 -> :sswitch_5
         0x6 -> :sswitch_6
         0x7 -> :sswitch_7
+        0x8 -> :sswitch_8
+        0x9 -> :sswitch_9
+        0xa -> :sswitch_a
+        0xb -> :sswitch_b
         0x5f4e5446 -> :sswitch_0
     .end sparse-switch
 .end method

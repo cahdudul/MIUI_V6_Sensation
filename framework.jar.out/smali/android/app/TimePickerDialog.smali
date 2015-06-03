@@ -67,7 +67,7 @@
     invoke-virtual {p0, v3}, Landroid/app/TimePickerDialog;->setIcon(I)V
 
     .line 96
-    const v3, 0x1040536
+    const v3, 0x104054d
 
     invoke-virtual {p0, v3}, Landroid/app/TimePickerDialog;->setTitle(I)V
 
@@ -80,7 +80,7 @@
     .local v1, "themeContext":Landroid/content/Context;
     const/4 v3, -0x1
 
-    const v4, 0x1040539
+    const v4, 0x1040550
 
     invoke-virtual {v1, v4}, Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;
 

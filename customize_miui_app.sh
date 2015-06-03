@@ -58,10 +58,10 @@ if [ $1 = "MiuiSystemUI" ];then
 	cp $1/res/drawable-hdpi/tab_notifications_bg_p.png $2/res/drawable-hdpi/
 	cp $1/res/drawable-hdpi/tab_toggles_bg_n.png $2/res/drawable-hdpi/
 	cp $1/res/drawable-hdpi/tab_toggles_bg_p.png $2/res/drawable-hdpi/
-	rm $2/res/drawable-hdpi/tab_notifications_bg_n.9.png
-	rm $2/res/drawable-hdpi/tab_notifications_bg_p.9.png
-	rm $2/res/drawable-hdpi/tab_toggles_bg_n.9.png
-	rm $2/res/drawable-hdpi/tab_toggles_bg_p.9.png
+	rm -rf $2/res/drawable-hdpi/tab_notifications_bg_n.9.png
+	rm -rf $2/res/drawable-hdpi/tab_notifications_bg_p.9.png
+	rm -rf $2/res/drawable-hdpi/tab_toggles_bg_n.9.png
+	rm -rf $2/res/drawable-hdpi/tab_toggles_bg_p.9.png
 fi
 
 if [ $1 = "DeskClock" ];then
@@ -78,10 +78,6 @@ if [ $1 = "DownloadProvider" ];then
 fi
 
 if [ $1 = "DownloadProviderUi" ];then
-	applyPatch $1 $2
-fi
-
-if [ $1 = "Music" ];then
 	applyPatch $1 $2
 fi
 # MIUI_V6_Sensation

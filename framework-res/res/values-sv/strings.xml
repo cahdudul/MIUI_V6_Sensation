@@ -27,18 +27,6 @@
     <string name="storage_internal">Internminne</string>
     <string name="storage_sd_card">SD-kort</string>
     <string name="storage_usb">USB-lagring</string>
-    <string name="pinpuk_attempts">"
-Återstående försök:"</string>
-    <string name="lockscreen_sim_error_message_short">Ogiltigt SIM.</string>
-    <string name="lockscreen_airplane_mode_on">Flygplansläge</string>
-    <string name="progress_nomediapresent">Inget flyttbart media tillgängligt…</string>
-    <string name="storage_uicc">UICC-lagring</string>
-    <string name="stk_cc_ussd_to_dial">USSD-begäran ändras till DIAL-begäran.</string>
-    <string name="stk_cc_ussd_to_ss">USSD-begäran ändras till SS-begäran.</string>
-    <string name="stk_cc_ussd_to_ussd">USSD-begäran ändras till ny USSD-begäran.</string>
-    <string name="stk_cc_ss_to_dial">SS-begäran ändras till DIAL-begäran.</string>
-    <string name="stk_cc_ss_to_ussd">SS-begäran ändras till USSD-begäran.</string>
-    <string name="stk_cc_ss_to_ss">SS-begäran ändras till ny SS-begäran.</string>
     <string name="profileNameDefault">Standard</string>
     <string name="profileNameWork">Jobb</string>
     <string name="profileNameHome">Hemma</string>
@@ -68,7 +56,6 @@
     <string name="permlab_preventpower">förhindra avstängningsknapp</string>
     <string name="permdesc_preventpower">Tillåter appen att åsidosätta avstängningsknappen</string>
     <string name="permlab_sendMockSms">skicka sken-SMS</string>
-    <string name="permdesc_sendMockSms">Tillåter appen att skicka sken-SMS. Detta tillåter en app att skicka SMS till betrodda applikationer. Illasinnade appar kan skicka meddelanden oavbrutet och därmed blockera enhetens aviseringssystem samt störa användaren.</string>
     <string name="storage_sd_dock_card">SD-kort i docka</string>
     <string name="app_killed_message">App tvångsavslutad</string>
     <string name="global_action_reboot">Omstart</string>
@@ -153,7 +140,6 @@
     <string name="adb_net_active_notification_title">ADB över nätverk aktiverat</string>
     <string name="adb_both_active_notification_title">ADB över USB och nätverk aktiverat</string>
     <string name="adb_active_generic_notification_message">Tryck på för att inaktivera felsökning.</string>
-    <string name="extmedia_format_message_cm">"All data på ditt minneskort (under sökvägen '%1$s') kommer att tas bort. Denna åtgärd kan inte ångras!"</string>
     <string name="numeric_date_template" formatted="false">%s-%s-%s</string>
     <string name="month_day_year" formatted="false">%-e %B %Y</string>
     <string name="time_of_day" formatted="false">%H:%M:%S</string>

@@ -47,31 +47,31 @@
     .prologue
     const/4 v1, -0x1
 
-    .line 259
+    .line 260
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 248
+    .line 249
     const-string v0, ""
 
     iput-object v0, p0, Lcom/android/server/WallpaperManagerService$KeyguardWallpaperData;->name:Ljava/lang/String;
 
-    .line 253
+    .line 254
     new-instance v0, Landroid/os/RemoteCallbackList;
 
     invoke-direct {v0}, Landroid/os/RemoteCallbackList;-><init>()V
 
     iput-object v0, p0, Lcom/android/server/WallpaperManagerService$KeyguardWallpaperData;->callbacks:Landroid/os/RemoteCallbackList;
 
-    .line 256
+    .line 257
     iput v1, p0, Lcom/android/server/WallpaperManagerService$KeyguardWallpaperData;->width:I
 
-    .line 257
+    .line 258
     iput v1, p0, Lcom/android/server/WallpaperManagerService$KeyguardWallpaperData;->height:I
 
-    .line 260
+    .line 261
     iput p1, p0, Lcom/android/server/WallpaperManagerService$KeyguardWallpaperData;->userId:I
 
-    .line 261
+    .line 262
     new-instance v0, Ljava/io/File;
 
     # invokes: Lcom/android/server/WallpaperManagerService;->getWallpaperDir(I)Ljava/io/File;
@@ -85,7 +85,7 @@
 
     iput-object v0, p0, Lcom/android/server/WallpaperManagerService$KeyguardWallpaperData;->wallpaperFile:Ljava/io/File;
 
-    .line 262
+    .line 263
     return-void
 .end method
 
@@ -94,7 +94,7 @@
     .param p0, "x0"    # Lcom/android/server/WallpaperManagerService$KeyguardWallpaperData;
 
     .prologue
-    .line 234
+    .line 235
     iget-object v0, p0, Lcom/android/server/WallpaperManagerService$KeyguardWallpaperData;->callbacks:Landroid/os/RemoteCallbackList;
 
     return-object v0

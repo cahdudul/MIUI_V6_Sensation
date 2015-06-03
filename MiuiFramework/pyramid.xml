@@ -6,8 +6,8 @@
     <bool name="is_xiaomi">false</bool>
     <!--whether the device is hongmi-->
     <bool name="is_hongmi">false</bool>
-    <!--whether the device is pyramid-->
-    <bool name="is_pyramid">true</bool>
+    <!--whether the device is htc_pyramid-->
+    <bool name="is_htc_pyramid">true</bool>
     <!--whether the device supports led light-->
     <bool name="support_led_light">true</bool>
     <!--whether the device supports button light-->
@@ -23,7 +23,7 @@
     <!--whether the device supports headset-->
     <bool name="support_headset">true</bool>
     <!--whether the device supports miui lite-->
-    <bool name="enable_miui_lite">true</bool>
+    <bool name="enable_miui_lite">false</bool>
     <!--the vendor feature, it's value may be qcom,mediatek,leadcore or nvidia-->
     <string name="vendor">qcom</string>
 </features>

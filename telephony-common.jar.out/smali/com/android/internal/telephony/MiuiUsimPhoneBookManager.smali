@@ -3707,14 +3707,20 @@
 .end method
 
 .method setPhoneAdnRecordAnr(II[B)V
-    .locals 3
+    .locals 4
     .param p1, "pbrIndex"    # I
     .param p2, "adnIndex"    # I
     .param p3, "anrData"    # [B
 
     .prologue
+    const/4 v3, 0x2
+
     .line 476
-    if-nez p3, :cond_1
+    if-eqz p3, :cond_0
+
+    array-length v2, p3
+
+    if-ge v2, v3, :cond_1
 
     .line 487
     :cond_0
@@ -3736,9 +3742,7 @@
     if-ge v1, v2, :cond_0
 
     .line 482
-    const/4 v2, 0x2
-
-    invoke-static {p3, v2, v1}, Landroid/telephony/PhoneNumberUtils;->calledPartyBCDToString([BII)Ljava/lang/String;
+    invoke-static {p3, v3, v1}, Landroid/telephony/PhoneNumberUtils;->calledPartyBCDToString([BII)Ljava/lang/String;
 
     move-result-object v0
 
@@ -4669,7 +4673,7 @@
 
     iget-object v0, v0, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
 
-    invoke-static {v0}, Lcom/android/internal/telephony/IccProviderException;->getErrorCauseFromException(Ljava/lang/Throwable;)I
+    invoke-static {v0}, Lcom/android/internal/telephony/MiuiIccProviderException;->getErrorCauseFromException(Ljava/lang/Throwable;)I
 
     move-result v0
 
@@ -5128,7 +5132,7 @@
 
     iget-object v0, v0, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
 
-    invoke-static {v0}, Lcom/android/internal/telephony/IccProviderException;->getErrorCauseFromException(Ljava/lang/Throwable;)I
+    invoke-static {v0}, Lcom/android/internal/telephony/MiuiIccProviderException;->getErrorCauseFromException(Ljava/lang/Throwable;)I
 
     move-result v0
 
@@ -5700,7 +5704,7 @@
 
     iget-object v3, v3, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
 
-    invoke-static {v3}, Lcom/android/internal/telephony/IccProviderException;->getErrorCauseFromException(Ljava/lang/Throwable;)I
+    invoke-static {v3}, Lcom/android/internal/telephony/MiuiIccProviderException;->getErrorCauseFromException(Ljava/lang/Throwable;)I
 
     move-result v3
 

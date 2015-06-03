@@ -389,7 +389,7 @@
     iput v8, p0, Landroid/view/ViewConfiguration;->mOverflingDistance:I
 
     .line 296
-    const v8, 0x1110013
+    const v8, 0x1110014
 
     invoke-virtual {v4, v8}, Landroid/content/res/Resources;->getBoolean(I)Z
 

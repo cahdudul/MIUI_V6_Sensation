@@ -34,7 +34,7 @@
     .locals 0
 
     .prologue
-    .line 3738
+    .line 3823
     iput-object p1, p0, Lcom/android/server/pm/PackageManagerService$5;->this$0:Lcom/android/server/pm/PackageManagerService;
 
     iput-object p2, p0, Lcom/android/server/pm/PackageManagerService$5;->val$file:Ljava/io/File;
@@ -56,7 +56,7 @@
     .locals 8
 
     .prologue
-    .line 3741
+    .line 3826
     iget-object v0, p0, Lcom/android/server/pm/PackageManagerService$5;->this$0:Lcom/android/server/pm/PackageManagerService;
 
     iget-object v1, p0, Lcom/android/server/pm/PackageManagerService$5;->val$file:Ljava/io/File;
@@ -76,7 +76,7 @@
 
     move-result-object v7
 
-    .line 3744
+    .line 3829
     .local v7, "pkg":Landroid/content/pm/PackageParser$Package;
     if-nez v7, :cond_0
 
@@ -94,7 +94,7 @@
 
     if-ne v0, v1, :cond_0
 
-    .line 3747
+    .line 3832
     const-string v0, "PackageManager"
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -119,12 +119,12 @@
 
     invoke-static {v0, v1}, Landroid/util/Slog;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 3748
+    .line 3833
     iget-object v0, p0, Lcom/android/server/pm/PackageManagerService$5;->val$file:Ljava/io/File;
 
     invoke-virtual {v0}, Ljava/io/File;->delete()Z
 
-    .line 3750
+    .line 3835
     :cond_0
     return-void
 .end method

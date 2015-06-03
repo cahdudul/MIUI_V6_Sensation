@@ -49,18 +49,18 @@
     .end annotation
 
     .prologue
-    .line 107
+    .line 108
     invoke-static {p0, p1}, Lcom/android/internal/util/cm/ActionUtils;->resolveCurrentLauncherPackage(Landroid/content/Context;I)Ljava/lang/String;
 
     move-result-object v1
 
-    .line 108
+    .line 109
     .local v1, "defaultHomePackage":Ljava/lang/String;
     invoke-static {}, Landroid/app/ActivityManagerNative;->getDefault()Landroid/app/IActivityManager;
 
     move-result-object v0
 
-    .line 109
+    .line 110
     .local v0, "am":Landroid/app/IActivityManager;
     const/4 v6, 0x5
 
@@ -70,7 +70,7 @@
 
     move-result-object v5
 
-    .line 112
+    .line 113
     .local v5, "tasks":Ljava/util/List;, "Ljava/util/List<Landroid/app/ActivityManager$RecentTaskInfo;>;"
     const/4 v2, 0x1
 
@@ -82,27 +82,27 @@
 
     if-ge v2, v6, :cond_2
 
-    .line 113
+    .line 114
     invoke-interface {v5, v2}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
     move-result-object v4
 
     check-cast v4, Landroid/app/ActivityManager$RecentTaskInfo;
 
-    .line 114
+    .line 115
     .local v4, "task":Landroid/app/ActivityManager$RecentTaskInfo;
     iget-object v6, v4, Landroid/app/ActivityManager$RecentTaskInfo;->origActivity:Landroid/content/ComponentName;
 
     if-eqz v6, :cond_0
 
-    .line 115
+    .line 116
     iget-object v6, v4, Landroid/app/ActivityManager$RecentTaskInfo;->baseIntent:Landroid/content/Intent;
 
     iget-object v7, v4, Landroid/app/ActivityManager$RecentTaskInfo;->origActivity:Landroid/content/ComponentName;
 
     invoke-virtual {v6, v7}, Landroid/content/Intent;->setComponent(Landroid/content/ComponentName;)Landroid/content/Intent;
 
-    .line 117
+    .line 118
     :cond_0
     iget-object v6, v4, Landroid/app/ActivityManager$RecentTaskInfo;->baseIntent:Landroid/content/Intent;
 
@@ -114,7 +114,7 @@
 
     move-result-object v3
 
-    .line 118
+    .line 119
     .local v3, "packageName":Ljava/lang/String;
     invoke-virtual {v3, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
@@ -130,20 +130,20 @@
 
     if-nez v6, :cond_1
 
-    .line 120
+    .line 121
     invoke-interface {v5, v2}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
     move-result-object v6
 
     check-cast v6, Landroid/app/ActivityManager$RecentTaskInfo;
 
-    .line 124
+    .line 125
     .end local v3    # "packageName":Ljava/lang/String;
     .end local v4    # "task":Landroid/app/ActivityManager$RecentTaskInfo;
     :goto_1
     return-object v6
 
-    .line 112
+    .line 113
     .restart local v3    # "packageName":Ljava/lang/String;
     .restart local v4    # "task":Landroid/app/ActivityManager$RecentTaskInfo;
     :cond_1
@@ -151,7 +151,7 @@
 
     goto :goto_0
 
-    .line 124
+    .line 125
     .end local v3    # "packageName":Ljava/lang/String;
     .end local v4    # "task":Landroid/app/ActivityManager$RecentTaskInfo;
     :cond_2
@@ -361,7 +361,7 @@
     .param p1, "userId"    # I
 
     .prologue
-    .line 128
+    .line 129
     new-instance v3, Landroid/content/Intent;
 
     const-string v4, "android.intent.action.MAIN"
@@ -374,13 +374,13 @@
 
     move-result-object v1
 
-    .line 130
+    .line 131
     .local v1, "launcherIntent":Landroid/content/Intent;
     invoke-virtual {p0}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
 
     move-result-object v2
 
-    .line 131
+    .line 132
     .local v2, "pm":Landroid/content/pm/PackageManager;
     const/4 v3, 0x0
 
@@ -388,13 +388,48 @@
 
     move-result-object v0
 
-    .line 132
+    .line 133
     .local v0, "launcherInfo":Landroid/content/pm/ResolveInfo;
     iget-object v3, v0, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
 
     iget-object v3, v3, Landroid/content/pm/ActivityInfo;->packageName:Ljava/lang/String;
 
     return-object v3
+.end method
+
+.method private static sendCloseSystemWindows(Landroid/content/Context;Ljava/lang/String;)V
+    .locals 1
+    .param p0, "context"    # Landroid/content/Context;
+    .param p1, "reason"    # Ljava/lang/String;
+
+    .prologue
+    .line 137
+    invoke-static {}, Landroid/app/ActivityManagerNative;->isSystemReady()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    .line 139
+    :try_start_0
+    invoke-static {}, Landroid/app/ActivityManagerNative;->getDefault()Landroid/app/IActivityManager;
+
+    move-result-object v0
+
+    invoke-interface {v0, p1}, Landroid/app/IActivityManager;->closeSystemDialogs(Ljava/lang/String;)V
+    :try_end_0
+    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 143
+    :cond_0
+    :goto_0
+    return-void
+
+    .line 140
+    :catch_0
+    move-exception v0
+
+    goto :goto_0
 .end method
 
 .method public static switchToLastApp(Landroid/content/Context;I)Z
@@ -461,7 +496,7 @@
     :cond_0
     const/4 v4, 0x0
 
-    .line 102
+    .line 103
     :goto_0
     return v4
 
@@ -495,6 +530,11 @@
 
     .line 100
     .local v2, "opts":Landroid/app/ActivityOptions;
+    const/4 v4, 0x0
+
+    invoke-static {p0, v4}, Lcom/android/internal/util/cm/ActionUtils;->sendCloseSystemWindows(Landroid/content/Context;Ljava/lang/String;)V
+
+    .line 101
     iget v4, v1, Landroid/app/ActivityManager$RecentTaskInfo;->id:I
 
     const/4 v5, 0x2
@@ -505,7 +545,7 @@
 
     invoke-interface {v0, v4, v5, v6}, Landroid/app/IActivityManager;->moveTaskToFront(IILandroid/os/Bundle;)V
 
-    .line 102
+    .line 103
     const/4 v4, 0x1
 
     goto :goto_0

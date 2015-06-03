@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <plurals name="tethered_clients_connected">
+        <item quantity="other">%d client connessi</item>
+        <item quantity="one">%d client connesso</item>
+    </plurals>
     <plurals name="pinpuk_attempts">
         <item quantity="other">Hai ancora %d tentativi a disposizione prima che la SIM venga bloccata.</item>
         <item quantity="one">Hai ancora %d tentativo a disposizione prima che la SIM venga bloccata.</item>

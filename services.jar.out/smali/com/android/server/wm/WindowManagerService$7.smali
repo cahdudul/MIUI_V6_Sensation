@@ -28,7 +28,7 @@
     .locals 0
 
     .prologue
-    .line 6198
+    .line 6204
     iput-object p1, p0, Lcom/android/server/wm/WindowManagerService$7;->this$0:Lcom/android/server/wm/WindowManagerService;
 
     iput-object p2, p0, Lcom/android/server/wm/WindowManagerService$7;->val$watcherBinder:Landroid/os/IBinder;
@@ -44,14 +44,14 @@
     .locals 5
 
     .prologue
-    .line 6201
+    .line 6207
     iget-object v2, p0, Lcom/android/server/wm/WindowManagerService$7;->this$0:Lcom/android/server/wm/WindowManagerService;
 
     iget-object v3, v2, Lcom/android/server/wm/WindowManagerService;->mWindowMap:Ljava/util/HashMap;
 
     monitor-enter v3
 
-    .line 6202
+    .line 6208
     const/4 v0, 0x0
 
     .local v0, "i":I
@@ -67,7 +67,7 @@
 
     if-ge v0, v2, :cond_2
 
-    .line 6203
+    .line 6209
     iget-object v4, p0, Lcom/android/server/wm/WindowManagerService$7;->val$watcherBinder:Landroid/os/IBinder;
 
     iget-object v2, p0, Lcom/android/server/wm/WindowManagerService$7;->this$0:Lcom/android/server/wm/WindowManagerService;
@@ -88,7 +88,7 @@
 
     if-ne v4, v2, :cond_1
 
-    .line 6204
+    .line 6210
     iget-object v2, p0, Lcom/android/server/wm/WindowManagerService$7;->this$0:Lcom/android/server/wm/WindowManagerService;
 
     iget-object v2, v2, Lcom/android/server/wm/WindowManagerService;->mRotationWatchers:Ljava/util/ArrayList;
@@ -99,11 +99,11 @@
 
     check-cast v1, Lcom/android/server/wm/WindowManagerService$RotationWatcher;
 
-    .line 6205
+    .line 6211
     .local v1, "removed":Lcom/android/server/wm/WindowManagerService$RotationWatcher;
     if-eqz v1, :cond_0
 
-    .line 6206
+    .line 6212
     iget-object v2, v1, Lcom/android/server/wm/WindowManagerService$RotationWatcher;->watcher:Landroid/view/IRotationWatcher;
 
     invoke-interface {v2}, Landroid/view/IRotationWatcher;->asBinder()Landroid/os/IBinder;
@@ -114,25 +114,25 @@
 
     invoke-interface {v2, p0, v4}, Landroid/os/IBinder;->unlinkToDeath(Landroid/os/IBinder$DeathRecipient;I)Z
 
-    .line 6208
+    .line 6214
     :cond_0
     add-int/lit8 v0, v0, -0x1
 
-    .line 6202
+    .line 6208
     .end local v1    # "removed":Lcom/android/server/wm/WindowManagerService$RotationWatcher;
     :cond_1
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 6211
+    .line 6217
     :cond_2
     monitor-exit v3
 
-    .line 6212
+    .line 6218
     return-void
 
-    .line 6211
+    .line 6217
     :catchall_0
     move-exception v2
 

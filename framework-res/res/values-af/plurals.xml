@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <plurals name="tethered_clients_connected">
+        <item quantity="other">%d kliënte gekonnekteer</item>
+        <item quantity="one">%d kliënt gekonnekteer</item>
+    </plurals>
     <plurals name="pinpuk_attempts">
         <item quantity="other">Jy het %d oorblywende pogings voordat SIM gesluit word.</item>
         <item quantity="one">Jy het %d oorblywende poging voordat SIM gesluit word.</item>

@@ -29,17 +29,17 @@
     .param p3, "_info"    # Landroid/content/pm/PackageInfo;
 
     .prologue
-    .line 368
+    .line 395
     iput-object p1, p0, Lcom/android/server/BackupManagerService$ClearParams;->this$0:Lcom/android/server/BackupManagerService;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 369
+    .line 396
     iput-object p2, p0, Lcom/android/server/BackupManagerService$ClearParams;->transport:Lcom/android/internal/backup/IBackupTransport;
 
-    .line 370
+    .line 397
     iput-object p3, p0, Lcom/android/server/BackupManagerService$ClearParams;->packageInfo:Landroid/content/pm/PackageInfo;
 
-    .line 371
+    .line 398
     return-void
 .end method

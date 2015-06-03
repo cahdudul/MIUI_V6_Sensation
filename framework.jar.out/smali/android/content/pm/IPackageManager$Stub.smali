@@ -32,6 +32,8 @@
 
 .field static final TRANSACTION_addPermissionAsync:I = 0x53
 
+.field static final TRANSACTION_addPreLaunchCheckPackage:I = 0x68
+
 .field static final TRANSACTION_addPreferredActivity:I = 0x38
 
 .field static final TRANSACTION_canonicalToCurrentPackageNames:I = 0x6
@@ -47,6 +49,8 @@
 .field static final TRANSACTION_clearApplicationUserData:I = 0x45
 
 .field static final TRANSACTION_clearPackagePreferredActivities:I = 0x3a
+
+.field static final TRANSACTION_clearPreLaunchCheckPackages:I = 0x6a
 
 .field static final TRANSACTION_currentToCanonicalPackageNames:I = 0x5
 
@@ -168,6 +172,8 @@
 
 .field static final TRANSACTION_performDexOpt:I = 0x4f
 
+.field static final TRANSACTION_processThemeResources:I = 0x65
+
 .field static final TRANSACTION_queryContentProviders:I = 0x2a
 
 .field static final TRANSACTION_queryInstrumentation:I = 0x2c
@@ -190,6 +196,8 @@
 
 .field static final TRANSACTION_removePermission:I = 0x13
 
+.field static final TRANSACTION_removePreLaunchCheckPackage:I = 0x69
+
 .field static final TRANSACTION_replacePreferredActivity:I = 0x39
 
 .field static final TRANSACTION_resetPreferredActivities:I = 0x35
@@ -208,7 +216,7 @@
 
 .field static final TRANSACTION_setComponentEnabledSetting:I = 0x3d
 
-.field static final TRANSACTION_setComponentProtectedSetting:I = 0x65
+.field static final TRANSACTION_setComponentProtectedSetting:I = 0x66
 
 .field static final TRANSACTION_setInstallLocation:I = 0x54
 
@@ -219,6 +227,8 @@
 .field static final TRANSACTION_setPackageStoppedState:I = 0x41
 
 .field static final TRANSACTION_setPermissionEnforced:I = 0x5e
+
+.field static final TRANSACTION_setPreLaunchCheckActivity:I = 0x67
 
 .field static final TRANSACTION_systemReady:I = 0x4c
 
@@ -318,7 +328,7 @@
     .line 44
     sparse-switch p1, :sswitch_data_0
 
-    .line 1552
+    .line 1601
     invoke-super/range {p0 .. p4}, Landroid/os/Binder;->onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
     move-result v3
@@ -6213,13 +6223,52 @@
     invoke-virtual {v0, v3}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
     .line 1537
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v4
+
+    .line 1538
+    .restart local v4    # "_arg0":Ljava/lang/String;
+    move-object/from16 v0, p0
+
+    invoke-virtual {v0, v4}, Landroid/content/pm/IPackageManager$Stub;->processThemeResources(Ljava/lang/String;)I
+
+    move-result v20
+
+    .line 1539
+    .local v20, "_result":I
+    invoke-virtual/range {p3 .. p3}, Landroid/os/Parcel;->writeNoException()V
+
+    .line 1540
+    move-object/from16 v0, p3
+
+    move/from16 v1, v20
+
+    invoke-virtual {v0, v1}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 1541
+    const/4 v3, 0x1
+
+    goto/16 :goto_0
+
+    .line 1545
+    .end local v4    # "_arg0":Ljava/lang/String;
+    .end local v20    # "_result":I
+    :sswitch_66
+    const-string v3, "android.content.pm.IPackageManager"
+
+    move-object/from16 v0, p2
+
+    invoke-virtual {v0, v3}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 1547
     invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
 
     move-result v3
 
     if-eqz v3, :cond_4b
 
-    .line 1538
+    .line 1548
     sget-object v3, Landroid/content/ComponentName;->CREATOR:Landroid/os/Parcelable$Creator;
 
     move-object/from16 v0, p2
@@ -6230,7 +6279,7 @@
 
     check-cast v4, Landroid/content/ComponentName;
 
-    .line 1544
+    .line 1554
     .local v4, "_arg0":Landroid/content/ComponentName;
     :goto_4c
     invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
@@ -6241,28 +6290,28 @@
 
     const/4 v5, 0x1
 
-    .line 1546
+    .line 1556
     .local v5, "_arg1":Z
     :goto_4d
     invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
 
     move-result v6
 
-    .line 1547
+    .line 1557
     .restart local v6    # "_arg2":I
     move-object/from16 v0, p0
 
     invoke-virtual {v0, v4, v5, v6}, Landroid/content/pm/IPackageManager$Stub;->setComponentProtectedSetting(Landroid/content/ComponentName;ZI)V
 
-    .line 1548
+    .line 1558
     invoke-virtual/range {p3 .. p3}, Landroid/os/Parcel;->writeNoException()V
 
-    .line 1549
+    .line 1559
     const/4 v3, 0x1
 
     goto/16 :goto_0
 
-    .line 1541
+    .line 1551
     .end local v4    # "_arg0":Landroid/content/ComponentName;
     .end local v5    # "_arg1":Z
     .end local v6    # "_arg2":I
@@ -6272,11 +6321,137 @@
     .restart local v4    # "_arg0":Landroid/content/ComponentName;
     goto :goto_4c
 
-    .line 1544
+    .line 1554
     :cond_4c
     const/4 v5, 0x0
 
     goto :goto_4d
+
+    .line 1563
+    .end local v4    # "_arg0":Landroid/content/ComponentName;
+    :sswitch_67
+    const-string v3, "android.content.pm.IPackageManager"
+
+    move-object/from16 v0, p2
+
+    invoke-virtual {v0, v3}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 1565
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v3
+
+    if-eqz v3, :cond_4d
+
+    .line 1566
+    sget-object v3, Landroid/content/ComponentName;->CREATOR:Landroid/os/Parcelable$Creator;
+
+    move-object/from16 v0, p2
+
+    invoke-interface {v3, v0}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+
+    move-result-object v4
+
+    check-cast v4, Landroid/content/ComponentName;
+
+    .line 1571
+    .restart local v4    # "_arg0":Landroid/content/ComponentName;
+    :goto_4e
+    move-object/from16 v0, p0
+
+    invoke-virtual {v0, v4}, Landroid/content/pm/IPackageManager$Stub;->setPreLaunchCheckActivity(Landroid/content/ComponentName;)V
+
+    .line 1572
+    invoke-virtual/range {p3 .. p3}, Landroid/os/Parcel;->writeNoException()V
+
+    .line 1573
+    const/4 v3, 0x1
+
+    goto/16 :goto_0
+
+    .line 1569
+    .end local v4    # "_arg0":Landroid/content/ComponentName;
+    :cond_4d
+    const/4 v4, 0x0
+
+    .restart local v4    # "_arg0":Landroid/content/ComponentName;
+    goto :goto_4e
+
+    .line 1577
+    .end local v4    # "_arg0":Landroid/content/ComponentName;
+    :sswitch_68
+    const-string v3, "android.content.pm.IPackageManager"
+
+    move-object/from16 v0, p2
+
+    invoke-virtual {v0, v3}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 1579
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v4
+
+    .line 1580
+    .local v4, "_arg0":Ljava/lang/String;
+    move-object/from16 v0, p0
+
+    invoke-virtual {v0, v4}, Landroid/content/pm/IPackageManager$Stub;->addPreLaunchCheckPackage(Ljava/lang/String;)V
+
+    .line 1581
+    invoke-virtual/range {p3 .. p3}, Landroid/os/Parcel;->writeNoException()V
+
+    .line 1582
+    const/4 v3, 0x1
+
+    goto/16 :goto_0
+
+    .line 1586
+    .end local v4    # "_arg0":Ljava/lang/String;
+    :sswitch_69
+    const-string v3, "android.content.pm.IPackageManager"
+
+    move-object/from16 v0, p2
+
+    invoke-virtual {v0, v3}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 1588
+    invoke-virtual/range {p2 .. p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v4
+
+    .line 1589
+    .restart local v4    # "_arg0":Ljava/lang/String;
+    move-object/from16 v0, p0
+
+    invoke-virtual {v0, v4}, Landroid/content/pm/IPackageManager$Stub;->removePreLaunchCheckPackage(Ljava/lang/String;)V
+
+    .line 1590
+    invoke-virtual/range {p3 .. p3}, Landroid/os/Parcel;->writeNoException()V
+
+    .line 1591
+    const/4 v3, 0x1
+
+    goto/16 :goto_0
+
+    .line 1595
+    .end local v4    # "_arg0":Ljava/lang/String;
+    :sswitch_6a
+    const-string v3, "android.content.pm.IPackageManager"
+
+    move-object/from16 v0, p2
+
+    invoke-virtual {v0, v3}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 1596
+    invoke-virtual/range {p0 .. p0}, Landroid/content/pm/IPackageManager$Stub;->clearPreLaunchCheckPackages()V
+
+    .line 1597
+    invoke-virtual/range {p3 .. p3}, Landroid/os/Parcel;->writeNoException()V
+
+    .line 1598
+    const/4 v3, 0x1
+
+    goto/16 :goto_0
 
     .line 44
     nop
@@ -6384,6 +6559,11 @@
         0x63 -> :sswitch_63
         0x64 -> :sswitch_64
         0x65 -> :sswitch_65
+        0x66 -> :sswitch_66
+        0x67 -> :sswitch_67
+        0x68 -> :sswitch_68
+        0x69 -> :sswitch_69
+        0x6a -> :sswitch_6a
         0x5f4e5446 -> :sswitch_0
     .end sparse-switch
 .end method

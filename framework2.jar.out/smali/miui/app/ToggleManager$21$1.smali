@@ -26,7 +26,7 @@
     .locals 0
 
     .prologue
-    .line 1902
+    .line 1891
     iput-object p1, p0, Lmiui/app/ToggleManager$21$1;->this$1:Lmiui/app/ToggleManager$21;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -40,14 +40,14 @@
     .locals 3
 
     .prologue
-    .line 1905
+    .line 1894
     iget-object v1, p0, Lmiui/app/ToggleManager$21$1;->this$1:Lmiui/app/ToggleManager$21;
 
     iget-boolean v1, v1, Lmiui/app/ToggleManager$21;->val$isReboot:Z
 
     if-eqz v1, :cond_0
 
-    .line 1906
+    .line 1895
     iget-object v1, p0, Lmiui/app/ToggleManager$21$1;->this$1:Lmiui/app/ToggleManager$21;
 
     iget-object v1, v1, Lmiui/app/ToggleManager$21;->this$0:Lmiui/app/ToggleManager;
@@ -69,11 +69,11 @@
 
     invoke-virtual {v1, v2}, Landroid/os/PowerManager;->reboot(Ljava/lang/String;)V
 
-    .line 1917
+    .line 1906
     :goto_0
     return-void
 
-    .line 1909
+    .line 1898
     :cond_0
     new-instance v0, Landroid/content/Intent;
 
@@ -81,13 +81,13 @@
 
     invoke-direct {v0, v1}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 1910
+    .line 1899
     .local v0, "intent":Landroid/content/Intent;
     const/high16 v1, 0x10000000
 
     invoke-virtual {v0, v1}, Landroid/content/Intent;->setFlags(I)Landroid/content/Intent;
 
-    .line 1911
+    .line 1900
     iget-object v1, p0, Lmiui/app/ToggleManager$21$1;->this$1:Lmiui/app/ToggleManager$21;
 
     iget-object v1, v1, Lmiui/app/ToggleManager$21;->this$0:Lmiui/app/ToggleManager;

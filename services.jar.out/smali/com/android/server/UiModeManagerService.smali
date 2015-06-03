@@ -261,7 +261,7 @@
 
     move-result-object v0
 
-    const v3, 0x10e0017
+    const v3, 0x10e0018
 
     invoke-virtual {v0, v3}, Landroid/content/res/Resources;->getInteger(I)I
 
@@ -274,7 +274,7 @@
 
     move-result-object v0
 
-    const v3, 0x10e0019
+    const v3, 0x10e001a
 
     invoke-virtual {v0, v3}, Landroid/content/res/Resources;->getInteger(I)I
 
@@ -292,7 +292,7 @@
 
     move-result-object v0
 
-    const v3, 0x10e0018
+    const v3, 0x10e0019
 
     invoke-virtual {v0, v3}, Landroid/content/res/Resources;->getInteger(I)I
 
@@ -482,7 +482,7 @@
     .prologue
     const/4 v4, 0x0
 
-    const v10, 0x104059f
+    const v10, 0x10405b6
 
     const/4 v1, 0x0
 
@@ -601,7 +601,7 @@
 
     iget-object v0, p0, Lcom/android/server/UiModeManagerService;->mContext:Landroid/content/Context;
 
-    const v3, 0x10405a0
+    const v3, 0x10405b7
 
     invoke-virtual {v0, v3}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 

@@ -1,5 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <plurals name="pinpuk_attempts">
+        <item quantity="other">Du hues nach %d Versich iwwreg ier deng SIM gespaart ass.</item>
+        <item quantity="one">Du hues nach %d Versuch iwwreg ier deng SIM gespaart ass.</item>
+    </plurals>
+    <plurals name="num_seconds_ago">
+        <item quantity="other">%d Sekonnen hier</item>
+        <item quantity="one">1 Sekonn hier</item>
+    </plurals>
+    <plurals name="num_minutes_ago">
+        <item quantity="other">%d Minutten hier</item>
+        <item quantity="one">1 Minutt hier</item>
+    </plurals>
+    <plurals name="num_hours_ago">
+        <item quantity="other">%d Stonnen hier</item>
+        <item quantity="one">1 Stonn hier</item>
+    </plurals>
+    <plurals name="num_days_ago">
+        <item quantity="other">%d Deeg hier</item>
+        <item quantity="one">gëschter</item>
+    </plurals>
+    <plurals name="abbrev_num_seconds_ago">
+        <item quantity="other">%d Sek. hier</item>
+        <item quantity="one">1 Sek. hier</item>
+    </plurals>
+    <plurals name="abbrev_num_minutes_ago">
+        <item quantity="other">%d Min. hier</item>
+        <item quantity="one">1 Min. hier</item>
+    </plurals>
+    <plurals name="abbrev_num_hours_ago">
+        <item quantity="other">%d Stonnen hier</item>
+        <item quantity="one">1 Stonn hier</item>
+    </plurals>
+    <plurals name="abbrev_num_days_ago">
+        <item quantity="other">%d Deeg hier</item>
+        <item quantity="one">gëschter</item>
+    </plurals>
     <plurals name="duration_seconds">
         <item quantity="other">%d Sekonnen</item>
         <item quantity="one">1 Sekonn</item>
@@ -11,5 +47,9 @@
     <plurals name="duration_hours">
         <item quantity="other">%d Stonnen</item>
         <item quantity="one">1 Stonn</item>
+    </plurals>
+    <plurals name="restr_pin_countdown">
+        <item quantity="other">Probéier nees a(n) %d Sekonnen</item>
+        <item quantity="one">Probéier nees an 1 Sekonn</item>
     </plurals>
 </resources>

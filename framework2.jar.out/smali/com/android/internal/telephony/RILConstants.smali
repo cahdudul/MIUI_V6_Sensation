@@ -54,6 +54,8 @@
 
 .field public static final IMS_PHONE:I = 0x4
 
+.field public static final INVALID_PARAMETER:I = 0x1d
+
 .field public static final LTE_ON_CDMA_FALSE:I = 0x0
 
 .field public static final LTE_ON_CDMA_TRUE:I = 0x1
@@ -61,6 +63,8 @@
 .field public static final LTE_ON_CDMA_UNKNOWN:I = -0x1
 
 .field public static final MAX_INT:I = 0x7fffffff
+
+.field public static final MISSING_RESOURCE:I = 0x1b
 
 .field public static final MODE_NOT_SUPPORTED:I = 0xd
 
@@ -111,6 +115,8 @@
 .field public static final NETWORK_MODE_WCDMA_PREF:I = 0x0
 
 .field public static final NO_PHONE:I = 0x0
+
+.field public static final NO_SUCH_ELEMENT:I = 0x1c
 
 .field public static final OP_NOT_ALLOWED_BEFORE_REG_NW:I = 0x9
 
@@ -334,7 +340,17 @@
 
 .field public static final RIL_REQUEST_SIGNAL_STRENGTH:I = 0x13
 
+.field public static final RIL_REQUEST_SIM_CLOSE_CHANNEL:I = 0x77
+
+.field public static final RIL_REQUEST_SIM_GET_ATR:I = 0x79
+
 .field public static final RIL_REQUEST_SIM_IO:I = 0x1c
+
+.field public static final RIL_REQUEST_SIM_OPEN_CHANNEL:I = 0x76
+
+.field public static final RIL_REQUEST_SIM_TRANSMIT_BASIC:I = 0x75
+
+.field public static final RIL_REQUEST_SIM_TRANSMIT_CHANNEL:I = 0x78
 
 .field public static final RIL_REQUEST_SMS_ACKNOWLEDGE:I = 0x25
 
@@ -394,7 +410,7 @@
 
 .field public static final RIL_UNSOL_OEM_HOOK_RAW:I = 0x404
 
-.field public static final RIL_UNSOL_ON_SS:I = 0x40f
+.field public static final RIL_UNSOL_ON_SS:I = 0x40e
 
 .field public static final RIL_UNSOL_ON_USSD:I = 0x3ee
 
@@ -438,7 +454,7 @@
 
 .field public static final RIL_UNSOL_STK_CALL_SETUP:I = 0x3f7
 
-.field public static final RIL_UNSOL_STK_CC_ALPHA_NOTIFY:I = 0x410
+.field public static final RIL_UNSOL_STK_CC_ALPHA_NOTIFY:I = 0x40f
 
 .field public static final RIL_UNSOL_STK_EVENT_NOTIFY:I = 0x3f6
 
@@ -450,7 +466,7 @@
 
 .field public static final RIL_UNSOL_SUPP_SVC_NOTIFICATION:I = 0x3f3
 
-.field public static final RIL_UNSOL_UICC_SUBSCRIPTION_STATUS_CHANGED:I = 0x411
+.field public static final RIL_UNSOL_UICC_SUBSCRIPTION_STATUS_CHANGED:I = 0x410
 
 .field public static final RIL_UNSOL_VOICE_RADIO_TECH_CHANGED:I = 0x40b
 

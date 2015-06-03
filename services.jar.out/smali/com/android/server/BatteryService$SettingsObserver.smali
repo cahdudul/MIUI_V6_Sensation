@@ -237,7 +237,7 @@
 
     const-string v3, "battery_light_low_color"
 
-    const v4, 0x10e0023
+    const v4, 0x10e0024
 
     invoke-virtual {v0, v4}, Landroid/content/res/Resources;->getInteger(I)I
 
@@ -255,7 +255,7 @@
 
     const-string v3, "battery_light_medium_color"
 
-    const v4, 0x10e0024
+    const v4, 0x10e0025
 
     invoke-virtual {v0, v4}, Landroid/content/res/Resources;->getInteger(I)I
 
@@ -273,7 +273,7 @@
 
     const-string v3, "battery_light_full_color"
 
-    const v4, 0x10e0025
+    const v4, 0x10e0026
 
     invoke-virtual {v0, v4}, Landroid/content/res/Resources;->getInteger(I)I
 

@@ -28,7 +28,7 @@
     .locals 0
 
     .prologue
-    .line 1898
+    .line 1887
     iput-object p1, p0, Lmiui/app/ToggleManager$21;->this$0:Lmiui/app/ToggleManager;
 
     iput-boolean p2, p0, Lmiui/app/ToggleManager$21;->val$isReboot:Z
@@ -46,7 +46,7 @@
     .param p2, "which"    # I
 
     .prologue
-    .line 1900
+    .line 1889
     iget-object v0, p0, Lmiui/app/ToggleManager$21;->this$0:Lmiui/app/ToggleManager;
 
     # getter for: Lmiui/app/ToggleManager;->mContext:Landroid/content/Context;
@@ -64,7 +64,7 @@
 
     invoke-virtual {v0}, Landroid/app/StatusBarManager;->collapsePanels()V
 
-    .line 1902
+    .line 1891
     iget-object v0, p0, Lmiui/app/ToggleManager$21;->this$0:Lmiui/app/ToggleManager;
 
     # getter for: Lmiui/app/ToggleManager;->mHandler:Landroid/os/Handler;
@@ -80,6 +80,6 @@
 
     invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
 
-    .line 1919
+    .line 1908
     return-void
 .end method

@@ -25,20 +25,8 @@
     <string name="selectTextMode">Select text</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="storage_internal">Internal storage</string>
-    <string name="storage_sd_card">SD card</string>
+    <string name="storage_sd_card">Internal storage</string>
     <string name="storage_usb">USB storage</string>
-    <string name="pinpuk_attempts">"
-Attempts remaining:"</string>
-    <string name="lockscreen_sim_error_message_short">Invalid card.</string>
-    <string name="lockscreen_airplane_mode_on">Airplane mode</string>
-    <string name="progress_nomediapresent">No removable media present…</string>
-    <string name="storage_uicc">UICC storage</string>
-    <string name="stk_cc_ussd_to_dial">USSD request is modified to DIAL request.</string>
-    <string name="stk_cc_ussd_to_ss">USSD request is modified to SS request.</string>
-    <string name="stk_cc_ussd_to_ussd">USSD request is modified to new USSD request.</string>
-    <string name="stk_cc_ss_to_dial">SS request is modified to DIAL request.</string>
-    <string name="stk_cc_ss_to_ussd">SS request is modified to USSD request.</string>
-    <string name="stk_cc_ss_to_ss">SS request is modified to new SS request.</string>
     <string name="media_route_chooser_grouping_done" />
     <string name="wifi_display_notification_message" />
     <string name="wifi_display_notification_title" />
@@ -124,7 +112,7 @@ Attempts remaining:"</string>
     <string name="permlab_preventpower">prevent power key</string>
     <string name="permdesc_preventpower">Allows the app to override the power key</string>
     <string name="permlab_sendMockSms">send mock SMS messages</string>
-    <string name="permdesc_sendMockSms">"Allows the app to send mock SMS messages. This allows an app to send messages to trusted applications. Malicious apps could send messages continuously, blocking the device's notification system and disrupting the user."</string>
+    <string name="permdesc_sendMockSms">"Allows the app to send mock SMS messages. This allows an app to send messages to trusted apps. Malicious apps could send messages continuously, blocking the device's notification system and disrupting the user."</string>
     <string name="storage_sd_dock_card">Dock SD card</string>
     <string name="app_killed_message">App killed</string>
     <string name="global_action_reboot">Reboot</string>
@@ -161,6 +149,10 @@ Attempts remaining:"</string>
     <string name="permdesc_setKeyguardWallpaper">Allows an app to change the lock screen wallpaper.</string>
     <string name="permlab_useHardwareFramework">use hardware framework</string>
     <string name="permdesc_useHardwareFramework">Allows an app access to the CM hardware framework.</string>
+    <string name="permlab_keyguardApplicationWidget">set keyguard app widget</string>
+    <string name="permdesc_keyguardApplicationWidget">Allows an app to set the app widget on the keyguard.</string>
+    <string name="permlab_interceptPackageLaunch">intercept application launch</string>
+    <string name="permdesc_interceptPackageLaunch">Allows an app to intercept launch of other applications</string>
     <string name="immersive_mode_confirmation_bottom">Swipe up from the bottom to exit full screen.</string>
     <string name="app_ops_access_camera">access the camera</string>
     <string name="app_ops_access_location">access your location</string>
@@ -210,10 +202,11 @@ Attempts remaining:"</string>
     <string name="adb_net_active_notification_title">ADB over network enabled</string>
     <string name="adb_both_active_notification_title">ADB over USB &amp; network enabled</string>
     <string name="adb_active_generic_notification_message">Touch to disable debugging.</string>
-    <string name="extmedia_format_message_cm">"All data on your card (under path '%1$s') will be erased. This action can't be reversed!"</string>
+    <string name="usb_extmedia_format_message">"All data on your USB storage (under path '%1$s') will be erased. This action can't be reversed!"</string>
+    <string name="sd_extmedia_format_message">"All data on your card (under path '%1$s') will be erased. This action can't be reversed!"</string>
     <string name="usb_storage_notification_manage_message">Tap to manage</string>
-    <string name="sd_ext_media_checking_notification_title">Preparing SD card</string>
-    <string name="sd_ext_media_checking_notification_message">Checking SD card for errors.</string>
+    <string name="sd_ext_media_checking_notification_title">Preparing SD card…</string>
+    <string name="sd_ext_media_checking_notification_message">Checking SD card for errors…</string>
     <string name="sd_ext_media_nofs_notification_title">Blank SD card</string>
     <string name="sd_ext_media_nofs_notification_message">SD card is blank or has unsupported filesystem.</string>
     <string name="sd_ext_media_unmountable_notification_title">Damaged SD card</string>
@@ -224,8 +217,8 @@ Attempts remaining:"</string>
     <string name="sd_ext_media_safe_unmount_notification_message">You can safely remove SD card.</string>
     <string name="sd_ext_media_nomedia_notification_title">Removed SD card</string>
     <string name="sd_ext_media_nomedia_notification_message">SD card removed. Insert a new one.</string>
-    <string name="usb_ext_media_checking_notification_title">Preparing USB storage</string>
-    <string name="usb_ext_media_checking_notification_message">Checking USB storage for errors.</string>
+    <string name="usb_ext_media_checking_notification_title">Preparing USB storage…</string>
+    <string name="usb_ext_media_checking_notification_message">Checking USB storage for errors…</string>
     <string name="usb_ext_media_nofs_notification_title">Blank USB storage</string>
     <string name="usb_ext_media_nofs_notification_message">USB storage is blank or has unsupported filesystem.</string>
     <string name="usb_ext_media_unmountable_notification_title">Damaged USB storage</string>
@@ -236,6 +229,35 @@ Attempts remaining:"</string>
     <string name="usb_ext_media_safe_unmount_notification_message">You can safely remove USB storage.</string>
     <string name="usb_ext_media_nomedia_notification_title">Removed USB storage</string>
     <string name="usb_ext_media_nomedia_notification_message">USB storage removed. Insert new media.</string>
+    <string name="progress_nomediapresent">No removable media present…</string>
+    <string name="lockscreen_sim_error_message_short">Invalid card.</string>
+    <string name="lockscreen_airplane_mode_on">Airplane mode</string>
+    <string name="lockscreen_sim_locked_message_cm">SIM/RUIM card is locked.</string>
+    <string name="pinpuk_attempts">"
+Attempts remaining:"</string>
+    <string name="stk_cc_ussd_to_dial">USSD request is modified to DIAL request.</string>
+    <string name="stk_cc_ussd_to_ss">USSD request is modified to SS request.</string>
+    <string name="stk_cc_ussd_to_ussd">USSD request is modified to new USSD request.</string>
+    <string name="stk_cc_ss_to_dial">SS request is modified to DIAL request.</string>
+    <string name="stk_cc_ss_to_ussd">SS request is modified to USSD request.</string>
+    <string name="stk_cc_ss_to_ss">SS request is modified to new SS request.</string>
+    <string name="theme_install_error_title">Failed to install theme</string>
+    <string name="theme_install_error_message">%s failed to install</string>
+    <string name="storage_uicc">UICC storage</string>
+    <string name="sd_progress_unmounting">Unmounting SD card…</string>
+    <string name="sd_progress_erasing">Erasing SD card…</string>
+    <string name="sd_format_error">"Couldn't erase SD card."</string>
+    <string name="sd_media_bad_removal">SD card was removed before being unmounted.</string>
+    <string name="sd_media_checking">SD card is currently being checked.</string>
+    <string name="sd_media_removed">SD card has been removed.</string>
+    <string name="sd_media_shared">SD card is currently in use by a computer.</string>
+    <string name="usb_progress_unmounting">Unmounting USB storage…</string>
+    <string name="usb_progress_erasing">Erasing USB storage…</string>
+    <string name="usb_format_error">"Couldn't erase USB storage."</string>
+    <string name="usb_media_bad_removal">USB storage was removed before being unmounted.</string>
+    <string name="usb_media_checking">USB storage is currently being checked.</string>
+    <string name="usb_media_removed">USB storage has been removed.</string>
+    <string name="usb_media_shared">USB storage is currently in use by a computer.</string>
     <string name="config_ethernet_iface_regex">eth\\d</string>
     <string name="config_tether_apndata" />
     <string name="config_wifi_p2p_device_type">10-0050F204-5</string>
@@ -244,8 +266,8 @@ Attempts remaining:"</string>
     <string name="config_keyguardPackage">com.android.keyguard</string>
     <string name="config_keyguardService">com.android.keyguard.KeyguardService</string>
     <string name="default_wallpaper_component">@null</string>
-    <string name="config_networkLocationProviderPackageName">com.baidu.map.location</string>
-    <string name="config_fusedLocationProviderPackageName">com.android.location.fused</string>
+    <string name="config_networkLocationProviderPackageName">com.qualcomm.location</string>
+    <string name="config_fusedLocationProviderPackageName">com.qualcomm.location</string>
     <string name="config_geocoderProviderPackageName">@null</string>
     <string name="config_geofenceProviderPackageName">@null</string>
     <string name="config_geofenceServicesProvider">com.qualcomm.location</string>
@@ -274,6 +296,7 @@ Attempts remaining:"</string>
     <string name="config_chooseAccountActivity">android/android.accounts.ChooseAccountActivity</string>
     <string name="config_chooseTypeAndAccountActivity">android/android.accounts.ChooseTypeAndAccountActivity</string>
     <string name="config_customResolverActivity" />
+    <string name="config_prelaunchcheckactivity" />
     <string name="config_appsAuthorizedForSharedAccounts">;com.android.settings;</string>
     <string name="config_legacyUmsLunFile">/sys/devices/platform/usb_mass_storage/lun0/file</string>
     <string name="config_deviceKeyHandlerLib" />
@@ -1029,10 +1052,8 @@ Attempts remaining:"</string>
     <string name="emergency_calls_only">Emergency calls only</string>
     <string name="lockscreen_network_locked_message">Network locked</string>
     <string name="lockscreen_sim_puk_locked_message">SIM card is PUK-locked.</string>
-    <string name="lockscreen_sim_puk_locked_instructions">"PIN1 Blocked. Enter PUK1
-or
-Please see the User Guide or contact Customer Care."</string>
-    <string name="lockscreen_sim_locked_message">SIM/RUIM card is locked.</string>
+    <string name="lockscreen_sim_puk_locked_instructions">See the User Guide or contact Customer Care.</string>
+    <string name="lockscreen_sim_locked_message">SIM card is locked.</string>
     <string name="lockscreen_sim_unlock_progress_dialog_message">Unlocking SIM card…</string>
     <string name="lockscreen_too_many_failed_attempts_dialog_message" formatted="false">"You have incorrectly drawn your unlock pattern %d times. 
 
@@ -1632,7 +1653,7 @@ for account %s."</string>
     <string name="kg_sim_unlock_progress_dialog_message">Unlocking SIM card…</string>
     <string name="kg_password_wrong_pin_code">Incorrect PIN code.</string>
     <string name="kg_invalid_sim_pin_hint">Type a PIN that is 4 to 8 numbers.</string>
-    <string name="kg_invalid_sim_puk_hint">PUK code should be 8 numbers.</string>
+    <string name="kg_invalid_sim_puk_hint">PUK code should be 8 numbers or more.</string>
     <string name="kg_invalid_puk">Re-enter the correct PUK code. Repeated attempts will permanently disable the SIM.</string>
     <string name="kg_invalid_confirm_pin_hint">PIN codes does not match</string>
     <string name="kg_login_too_many_attempts">Too many pattern attempts</string>

@@ -27,18 +27,6 @@
     <string name="storage_internal">內部儲存空間</string>
     <string name="storage_sd_card">SD 卡</string>
     <string name="storage_usb">USB 儲存裝置</string>
-    <string name="pinpuk_attempts">"
-剩餘嘗試次數："</string>
-    <string name="lockscreen_sim_error_message_short">無效的 SIM 卡。</string>
-    <string name="lockscreen_airplane_mode_on">飛航模式</string>
-    <string name="progress_nomediapresent">沒有可移除的媒體…</string>
-    <string name="storage_uicc">UICC 儲存空間</string>
-    <string name="stk_cc_ussd_to_dial">USSD 要求被修改為 DIAL 要求。</string>
-    <string name="stk_cc_ussd_to_ss">USSD 要求被修改為 SS 要求。</string>
-    <string name="stk_cc_ussd_to_ussd">USSD 要求被修改為新的 USSD 要求。</string>
-    <string name="stk_cc_ss_to_dial">SS 要求被修改為 DIAL 要求。</string>
-    <string name="stk_cc_ss_to_ussd">SS 要求被修改為 USSD 要求。</string>
-    <string name="stk_cc_ss_to_ss">SS 要求被修改為新的 SS 要求。</string>
     <string name="profileNameDefault">預設</string>
     <string name="profileNameWork">工作</string>
     <string name="profileNameHome">住家</string>
@@ -68,7 +56,6 @@
     <string name="permlab_preventpower">防止使用電源鍵</string>
     <string name="permdesc_preventpower">允許應用程式覆寫電源鍵的功能。</string>
     <string name="permlab_sendMockSms">傳送模擬簡訊</string>
-    <string name="permdesc_sendMockSms">允許應用程式傳送模擬簡訊，這會允許應用程式傳送簡訊給信任的應用程式。惡意應用程式可能會不斷地傳送訊息，妨礙裝置的通知系統以及干擾使用者。</string>
     <string name="storage_sd_dock_card">座架 SD 卡</string>
     <string name="app_killed_message">應用程式已終止</string>
     <string name="global_action_reboot">重新啟動</string>
@@ -154,10 +141,7 @@
     <string name="adb_net_active_notification_title">網絡 ADB 已啟用</string>
     <string name="adb_both_active_notification_title">USB 及網絡 ADB 已啟用</string>
     <string name="adb_active_generic_notification_message">輕觸來停用調試。</string>
-    <string name="extmedia_format_message_cm">"SD 卡上所有資料將會被清除（路徑 '%1$s'）。這個動作無法復原."</string>
     <string name="usb_storage_notification_manage_message">點擊進行管理</string>
-    <string name="sd_ext_media_checking_notification_title">正在準備 SD 卡</string>
-    <string name="sd_ext_media_checking_notification_message">正在檢查 SD 卡的錯誤。</string>
     <string name="sd_ext_media_nofs_notification_title">SD 卡為空白</string>
     <string name="sd_ext_media_nofs_notification_message">SD 卡無內容，或使用不受支援的檔案系統。</string>
     <string name="sd_ext_media_unmountable_notification_title">USB 儲存裝置已損壞</string>
@@ -168,8 +152,6 @@
     <string name="sd_ext_media_safe_unmount_notification_message">您現在可以安全地移除 SD 卡。</string>
     <string name="sd_ext_media_nomedia_notification_title">已移除 SD 卡</string>
     <string name="sd_ext_media_nomedia_notification_message">SD 卡已移除，請插入新的 SD 卡。</string>
-    <string name="usb_ext_media_checking_notification_title">正在準備 USB 儲存裝置</string>
-    <string name="usb_ext_media_checking_notification_message">正在檢查 USB 儲存裝置的錯誤。</string>
     <string name="usb_ext_media_nofs_notification_title">USB 儲存裝置為空白</string>
     <string name="usb_ext_media_nofs_notification_message">USB 儲存裝置無內容，或使用不受支援的檔案系統。</string>
     <string name="usb_ext_media_unmountable_notification_title">USB 儲存裝置已損壞</string>
@@ -180,6 +162,8 @@
     <string name="usb_ext_media_safe_unmount_notification_message">您現在可以安全地移除 USB 儲存裝置。</string>
     <string name="usb_ext_media_nomedia_notification_title">已移除 USB 儲存裝置</string>
     <string name="usb_ext_media_nomedia_notification_message">USB 儲存裝置已移除，請插入新的 USB 儲存裝置。</string>
+    <string name="lockscreen_sim_error_message_short">無效的 SIM 卡。</string>
+    <string name="lockscreen_airplane_mode_on">飛航模式</string>
     <string name="numeric_date_template" formatted="false">%s/%s/%s</string>
     <string name="month_day_year" formatted="false">%Y 年 %-m 月 %-e 日</string>
     <string name="time_of_day" formatted="false">%p %I:%M:%S</string>

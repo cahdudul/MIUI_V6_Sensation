@@ -59,7 +59,7 @@
     iput-object v3, p0, Lcom/android/internal/policy/impl/keyguard/KeyguardServiceDelegate;->mKeyguardConnection:Landroid/content/ServiceConnection;
 
     .line 107
-    const v3, 0x10400f0
+    const v3, 0x1040106
 
     invoke-virtual {p1, v3}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -67,7 +67,7 @@
 
     .line 109
     .local v2, "keyguardPackage":Ljava/lang/String;
-    const v3, 0x10400f1
+    const v3, 0x1040107
 
     invoke-virtual {p1, v3}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 

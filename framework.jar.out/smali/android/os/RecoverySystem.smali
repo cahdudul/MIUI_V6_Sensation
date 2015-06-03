@@ -513,6 +513,14 @@
 
     .line 334
     .local v1, "filename":Ljava/lang/String;
+    const-string/jumbo v2, "storage/emulated"
+
+    const-string v3, "data/media"
+
+    invoke-virtual {v1, v2, v3}, Ljava/lang/String;->replace(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+
+    move-result-object v1
+
     const-string v2, "RecoverySystem"
 
     new-instance v3, Ljava/lang/StringBuilder;

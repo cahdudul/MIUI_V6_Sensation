@@ -305,7 +305,7 @@
     if-eqz v2, :cond_2
 
     .line 327
-    const v2, 0x104006e
+    const v2, 0x1040063
 
     invoke-virtual {p0, v2}, Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;
 
@@ -314,7 +314,7 @@
     invoke-virtual {v1, v2}, Landroid/app/ProgressDialog;->setTitle(Ljava/lang/CharSequence;)V
 
     .line 328
-    const v2, 0x1040076
+    const v2, 0x104006b
 
     invoke-virtual {p0, v2}, Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;
 
@@ -485,7 +485,7 @@
     .line 330
     .restart local v1    # "pd":Landroid/app/ProgressDialog;
     :cond_2
-    const v2, 0x1040196
+    const v2, 0x10401ad
 
     invoke-virtual {p0, v2}, Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;
 
@@ -494,7 +494,7 @@
     invoke-virtual {v1, v2}, Landroid/app/ProgressDialog;->setTitle(Ljava/lang/CharSequence;)V
 
     .line 331
-    const v2, 0x104019a
+    const v2, 0x10401b1
 
     invoke-virtual {p0, v2}, Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;
 
@@ -799,11 +799,11 @@
     if-eqz v8, :cond_4
 
     .line 144
-    const v7, 0x104019d
+    const v7, 0x10401b4
 
     .line 145
     .local v7, "titleResourceId":I
-    const v6, 0x104019e
+    const v6, 0x10401b5
 
     .line 164
     .local v6, "resourceId":I
@@ -1046,11 +1046,11 @@
     if-eqz v8, :cond_5
 
     .line 147
-    const v7, 0x104006e
+    const v7, 0x1040063
 
     .line 148
     .restart local v7    # "titleResourceId":I
-    const v6, 0x1040077
+    const v6, 0x104006c
 
     .restart local v6    # "resourceId":I
     goto/16 :goto_1
@@ -1063,7 +1063,7 @@
 
     move-result-object v8
 
-    const v9, 0x10e001c
+    const v9, 0x10e001d
 
     invoke-virtual {v8, v9}, Landroid/content/res/Resources;->getInteger(I)I
 
@@ -1071,7 +1071,7 @@
 
     .line 154
     .local v5, "longPressBehavior":I
-    const v7, 0x1040196
+    const v7, 0x10401ad
 
     .line 155
     .restart local v7    # "titleResourceId":I
@@ -1080,7 +1080,7 @@
     if-ne v5, v8, :cond_6
 
     .line 156
-    const v6, 0x104019c
+    const v6, 0x10401b3
 
     .line 161
     .restart local v6    # "resourceId":I
@@ -1112,7 +1112,7 @@
     .line 158
     .end local v6    # "resourceId":I
     :cond_6
-    const v6, 0x104019b
+    const v6, 0x10401b2
 
     .restart local v6    # "resourceId":I
     goto :goto_5

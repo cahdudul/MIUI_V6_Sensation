@@ -3628,7 +3628,7 @@
 
     move-object/from16 v22, v0
 
-    const v24, 0x104055b
+    const v24, 0x1040572
 
     new-instance v25, Lcom/android/server/InputMethodManagerService$9;
 
@@ -8451,7 +8451,7 @@
 
     iget-object v10, v0, Lcom/android/server/InputMethodManagerService;->mRes:Landroid/content/res/Resources;
 
-    const v12, 0x104055a
+    const v12, 0x1040571
 
     invoke-virtual {v10, v12}, Landroid/content/res/Resources;->getText(I)Ljava/lang/CharSequence;
 
@@ -8501,7 +8501,7 @@
 
     const/4 v12, 0x0
 
-    const v13, 0x104055a
+    const v13, 0x1040571
 
     move-object/from16 v0, p0
 
@@ -8579,7 +8579,7 @@
 
     const/4 v12, 0x0
 
-    const v13, 0x104055a
+    const v13, 0x1040571
 
     sget-object v14, Landroid/os/UserHandle;->ALL:Landroid/os/UserHandle;
 
@@ -10160,7 +10160,7 @@
 
     const-string v3, "android.intent.extra.client_label"
 
-    const v4, 0x104058c
+    const v4, 0x10405a3
 
     invoke-virtual {v1, v3, v4}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
 
@@ -11880,7 +11880,7 @@
     .local v7, "e":Landroid/provider/Settings$SettingNotFoundException;
     iget-object v0, p0, Lcom/android/server/InputMethodManagerService;->mRes:Landroid/content/res/Resources;
 
-    const v1, 0x1110069
+    const v1, 0x111006b
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getBoolean(I)Z
 

@@ -318,6 +318,8 @@
 
 .field public static final MOVE_SUCCEEDED:I = 0x1
 
+.field public static final PERFORM_PRE_LAUNCH_CHECK:I = 0x100000
+
 .field public static final PERMISSION_DENIED:I = -0x1
 
 .field public static final PERMISSION_GRANTED:I = 0x0
@@ -359,7 +361,7 @@
     .param p1, "packageName"    # Ljava/lang/String;
 
     .prologue
-    .line 3283
+    .line 3290
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -430,7 +432,7 @@
     .param p5, "userId"    # I
 
     .prologue
-    .line 3082
+    .line 3089
     new-instance v0, Ljava/lang/RuntimeException;
 
     const-string v1, "Not implemented. Must override in a subclass."
@@ -445,10 +447,10 @@
     .param p1, "permissions"    # [Ljava/lang/String;
 
     .prologue
-    .line 1873
+    .line 1880
     if-nez p1, :cond_0
 
-    .line 1874
+    .line 1881
     new-instance v5, Ljava/lang/NullPointerException;
 
     const-string/jumbo v6, "permissions cannot be null"
@@ -457,7 +459,7 @@
 
     throw v5
 
-    .line 1876
+    .line 1883
     :cond_0
     move-object v0, p1
 
@@ -473,11 +475,11 @@
 
     aget-object v4, v0, v2
 
-    .line 1877
+    .line 1884
     .local v4, "permission":Ljava/lang/String;
     if-nez v4, :cond_1
 
-    .line 1878
+    .line 1885
     new-instance v5, Ljava/lang/IllegalArgumentException;
 
     const-string/jumbo v6, "permissions cannot contain null"
@@ -486,13 +488,13 @@
 
     throw v5
 
-    .line 1876
+    .line 1883
     :cond_1
     add-int/lit8 v2, v2, 0x1
 
     goto :goto_0
 
-    .line 1882
+    .line 1889
     .end local v4    # "permission":Ljava/lang/String;
     :cond_2
     new-instance v1, Landroid/content/Intent;
@@ -501,18 +503,18 @@
 
     invoke-direct {v1, v5}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 1883
+    .line 1890
     .local v1, "i":Landroid/content/Intent;
     const-string v5, "android.content.pm.extra.PERMISSION_LIST"
 
     invoke-virtual {v1, v5, p1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;[Ljava/lang/String;)Landroid/content/Intent;
 
-    .line 1884
+    .line 1891
     const-string v5, "com.android.packageinstaller"
 
     invoke-virtual {v1, v5}, Landroid/content/Intent;->setPackage(Ljava/lang/String;)Landroid/content/Intent;
 
-    .line 1885
+    .line 1892
     return-object v1
 .end method
 
@@ -730,50 +732,50 @@
 
     const/4 v1, 0x0
 
-    .line 2681
+    .line 2688
     new-instance v10, Landroid/content/pm/PackageParser;
 
     invoke-direct {v10, p1}, Landroid/content/pm/PackageParser;-><init>(Ljava/lang/String;)V
 
-    .line 2682
+    .line 2689
     .local v10, "packageParser":Landroid/content/pm/PackageParser;
     new-instance v9, Landroid/util/DisplayMetrics;
 
     invoke-direct {v9}, Landroid/util/DisplayMetrics;-><init>()V
 
-    .line 2683
+    .line 2690
     .local v9, "metrics":Landroid/util/DisplayMetrics;
     invoke-virtual {v9}, Landroid/util/DisplayMetrics;->setToDefaults()V
 
-    .line 2684
+    .line 2691
     new-instance v11, Ljava/io/File;
 
     invoke-direct {v11, p1}, Ljava/io/File;-><init>(Ljava/lang/String;)V
 
-    .line 2685
+    .line 2692
     .local v11, "sourceFile":Ljava/io/File;
     invoke-virtual {v10, v11, p1, v9, v5}, Landroid/content/pm/PackageParser;->parsePackage(Ljava/io/File;Ljava/lang/String;Landroid/util/DisplayMetrics;I)Landroid/content/pm/PackageParser$Package;
 
     move-result-object v0
 
-    .line 2687
+    .line 2694
     .local v0, "pkg":Landroid/content/pm/PackageParser$Package;
     if-nez v0, :cond_0
 
-    .line 2694
+    .line 2701
     :goto_0
     return-object v1
 
-    .line 2690
+    .line 2697
     :cond_0
     and-int/lit8 v2, p2, 0x40
 
     if-eqz v2, :cond_1
 
-    .line 2691
+    .line 2698
     invoke-virtual {v10, v0, v5}, Landroid/content/pm/PackageParser;->collectCertificates(Landroid/content/pm/PackageParser$Package;I)Z
 
-    .line 2693
+    .line 2700
     :cond_1
     new-instance v8, Landroid/content/pm/PackageUserState;
 
@@ -786,7 +788,7 @@
 
     move-object v7, v1
 
-    .line 2694
+    .line 2701
     invoke-static/range {v0 .. v8}, Landroid/content/pm/PackageParser;->generatePackageInfo(Landroid/content/pm/PackageParser$Package;[IIJJLjava/util/HashSet;Landroid/content/pm/PackageUserState;)Landroid/content/pm/PackageInfo;
 
     move-result-object v1
@@ -819,14 +821,14 @@
     .param p2, "observer"    # Landroid/content/pm/IPackageStatsObserver;
 
     .prologue
-    .line 3001
+    .line 3008
     invoke-static {}, Landroid/os/UserHandle;->myUserId()I
 
     move-result v0
 
     invoke-virtual {p0, p1, v0, p2}, Landroid/content/pm/PackageManager;->getPackageSizeInfo(Ljava/lang/String;ILandroid/content/pm/IPackageStatsObserver;)V
 
-    .line 3002
+    .line 3009
     return-void
 .end method
 
@@ -1031,6 +1033,9 @@
 .end method
 
 .method public abstract movePackage(Ljava/lang/String;Landroid/content/pm/IPackageMoveObserver;I)V
+.end method
+
+.method public abstract processThemeResources(Ljava/lang/String;)I
 .end method
 
 .method public abstract queryBroadcastReceivers(Landroid/content/Intent;I)Ljava/util/List;

@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <plurals name="tethered_clients_connected">
+        <item quantity="other">Συνδέθηκαν %d συσκευές</item>
+        <item quantity="one">Συνδέθηκε %d συσκευή</item>
+    </plurals>
     <plurals name="pinpuk_attempts">
         <item quantity="other">Απομένουν %d προσπάθειες προτού η κάρτα SIM κλειδωθεί.</item>
         <item quantity="one">Απομένει άλλη %d προσπάθεια προτού η κάρτα SIM κλειδωθεί.</item>

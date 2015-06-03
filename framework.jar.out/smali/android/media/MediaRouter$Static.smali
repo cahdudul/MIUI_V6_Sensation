@@ -214,7 +214,7 @@
     .line 120
     new-instance v1, Landroid/media/MediaRouter$RouteCategory;
 
-    const v4, 0x104061e
+    const v4, 0x1040635
 
     const/4 v5, 0x3
 
@@ -856,7 +856,7 @@
     .line 136
     iget-object v1, p0, Landroid/media/MediaRouter$Static;->mDefaultAudioVideo:Landroid/media/MediaRouter$RouteInfo;
 
-    const v2, 0x104061a
+    const v2, 0x1040631
 
     iput v2, v1, Landroid/media/MediaRouter$RouteInfo;->mNameResId:I
 
@@ -1009,7 +1009,7 @@
 
     .line 179
     :cond_0
-    const v4, 0x104061b
+    const v4, 0x1040632
 
     .line 187
     .local v4, "name":I
@@ -1103,7 +1103,7 @@
 
     iget-object v5, v5, Landroid/media/MediaRouter$Static;->mResources:Landroid/content/res/Resources;
 
-    const v6, 0x104061f
+    const v6, 0x1040636
 
     invoke-virtual {v5, v6}, Landroid/content/res/Resources;->getText(I)Ljava/lang/CharSequence;
 
@@ -1166,7 +1166,7 @@
     if-eqz v5, :cond_5
 
     .line 181
-    const v4, 0x104061c
+    const v4, 0x1040633
 
     .restart local v4    # "name":I
     goto :goto_0
@@ -1181,7 +1181,7 @@
     if-eqz v5, :cond_6
 
     .line 183
-    const v4, 0x104061d
+    const v4, 0x1040634
 
     .restart local v4    # "name":I
     goto/16 :goto_0
@@ -1189,7 +1189,7 @@
     .line 185
     .end local v4    # "name":I
     :cond_6
-    const v4, 0x104061a
+    const v4, 0x1040631
 
     .restart local v4    # "name":I
     goto/16 :goto_0

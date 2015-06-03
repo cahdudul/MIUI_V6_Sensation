@@ -100,7 +100,7 @@
     <color name="keyguard_avatar_nick_color">#ffffffff</color>
     <color name="keyguard_avatar_frame_pressed_color">#ff35b5e5</color>
     <color name="accessibility_focus_highlight">#80ffff00</color>
-    <color name="config_defaultNotificationColor">#ff0000ff</color>
+    <color name="config_defaultNotificationColor">#ff00ff00</color>
     <color name="webviewchromium_color_picker_border_color">#ffb0b0b0</color>
     <color name="webviewchromium_color_picker_background_color">#ffffffff</color>
     <color name="webviewchromium_autofill_divider_color">#ffe5e5e5</color>

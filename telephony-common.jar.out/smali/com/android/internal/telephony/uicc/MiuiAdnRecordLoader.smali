@@ -168,11 +168,11 @@
     if-eq v1, v3, :cond_1
 
     .line 350
-    new-instance v1, Lcom/android/internal/telephony/IccProviderException;
+    new-instance v1, Lcom/android/internal/telephony/MiuiIccProviderException;
 
     const/16 v3, -0x3e9
 
-    invoke-direct {v1, v3}, Lcom/android/internal/telephony/IccProviderException;-><init>(I)V
+    invoke-direct {v1, v3}, Lcom/android/internal/telephony/MiuiIccProviderException;-><init>(I)V
 
     invoke-direct {p0, v1}, Lcom/android/internal/telephony/uicc/MiuiAdnRecordLoader;->sendErrorResponse(Ljava/lang/Throwable;)V
 
@@ -467,11 +467,11 @@
     if-le v0, v1, :cond_3
 
     .line 207
-    new-instance v0, Lcom/android/internal/telephony/IccProviderException;
+    new-instance v0, Lcom/android/internal/telephony/MiuiIccProviderException;
 
     const/16 v1, -0x3e9
 
-    invoke-direct {v0, v1}, Lcom/android/internal/telephony/IccProviderException;-><init>(I)V
+    invoke-direct {v0, v1}, Lcom/android/internal/telephony/MiuiIccProviderException;-><init>(I)V
 
     invoke-direct {p0, v0}, Lcom/android/internal/telephony/uicc/MiuiAdnRecordLoader;->sendErrorResponse(Ljava/lang/Throwable;)V
 
@@ -492,11 +492,11 @@
     if-nez v3, :cond_4
 
     .line 213
-    new-instance v0, Lcom/android/internal/telephony/IccProviderException;
+    new-instance v0, Lcom/android/internal/telephony/MiuiIccProviderException;
 
     const/16 v1, -0x3e9
 
-    invoke-direct {v0, v1}, Lcom/android/internal/telephony/IccProviderException;-><init>(I)V
+    invoke-direct {v0, v1}, Lcom/android/internal/telephony/MiuiIccProviderException;-><init>(I)V
 
     invoke-direct {p0, v0}, Lcom/android/internal/telephony/uicc/MiuiAdnRecordLoader;->sendErrorResponse(Ljava/lang/Throwable;)V
 
@@ -606,11 +606,11 @@
     if-nez v3, :cond_7
 
     .line 241
-    new-instance v0, Lcom/android/internal/telephony/IccProviderException;
+    new-instance v0, Lcom/android/internal/telephony/MiuiIccProviderException;
 
     const/16 v1, -0x3e9
 
-    invoke-direct {v0, v1}, Lcom/android/internal/telephony/IccProviderException;-><init>(I)V
+    invoke-direct {v0, v1}, Lcom/android/internal/telephony/MiuiIccProviderException;-><init>(I)V
 
     invoke-direct {p0, v0}, Lcom/android/internal/telephony/uicc/MiuiAdnRecordLoader;->sendErrorResponse(Ljava/lang/Throwable;)V
 
@@ -710,11 +710,11 @@
     if-nez v3, :cond_9
 
     .line 270
-    new-instance v0, Lcom/android/internal/telephony/IccProviderException;
+    new-instance v0, Lcom/android/internal/telephony/MiuiIccProviderException;
 
     const/16 v1, -0x3e9
 
-    invoke-direct {v0, v1}, Lcom/android/internal/telephony/IccProviderException;-><init>(I)V
+    invoke-direct {v0, v1}, Lcom/android/internal/telephony/MiuiIccProviderException;-><init>(I)V
 
     invoke-direct {p0, v0}, Lcom/android/internal/telephony/uicc/MiuiAdnRecordLoader;->sendErrorResponse(Ljava/lang/Throwable;)V
 
@@ -774,11 +774,11 @@
     if-nez v8, :cond_b
 
     .line 290
-    new-instance v0, Lcom/android/internal/telephony/IccProviderException;
+    new-instance v0, Lcom/android/internal/telephony/MiuiIccProviderException;
 
     const/16 v1, -0x3e9
 
-    invoke-direct {v0, v1}, Lcom/android/internal/telephony/IccProviderException;-><init>(I)V
+    invoke-direct {v0, v1}, Lcom/android/internal/telephony/MiuiIccProviderException;-><init>(I)V
 
     invoke-direct {p0, v0}, Lcom/android/internal/telephony/uicc/MiuiAdnRecordLoader;->sendErrorResponse(Ljava/lang/Throwable;)V
 
@@ -1158,11 +1158,11 @@
     if-nez v3, :cond_1
 
     .line 149
-    new-instance v0, Lcom/android/internal/telephony/IccProviderException;
+    new-instance v0, Lcom/android/internal/telephony/MiuiIccProviderException;
 
     const/16 v1, -0x3e9
 
-    invoke-direct {v0, v1}, Lcom/android/internal/telephony/IccProviderException;-><init>(I)V
+    invoke-direct {v0, v1}, Lcom/android/internal/telephony/MiuiIccProviderException;-><init>(I)V
 
     invoke-direct {p0, v0}, Lcom/android/internal/telephony/uicc/MiuiAdnRecordLoader;->sendErrorResponse(Ljava/lang/Throwable;)V
 

@@ -17,6 +17,7 @@
     <integer name="config_max_pan_devices">5</integer>
     <integer name="config_wifi_supplicant_scan_interval">15000</integer>
     <integer name="config_wifi_scan_interval_p2p_connected">60000</integer>
+    <integer name="config_wifi_scan_interval_wfd_connected">300000</integer>
     <integer name="config_wifi_framework_scan_interval">0</integer>
     <integer name="config_wifi_driver_stop_delay">120000</integer>
     <integer name="config_lidOpenRotation">-1</integer>
@@ -71,7 +72,7 @@
     <integer name="config_maxResolverActivityColumns">2</integer>
     <integer name="config_multiuserMaximumUsers">1</integer>
     <integer name="config_safe_media_volume_index">10</integer>
-    <integer name="config_mobile_mtu">1500</integer>
+    <integer name="config_mobile_mtu">1358</integer>
     <integer name="config_toastDefaultGravity">0x51</integer>
     <integer name="config_valid_wappush_index">-1</integer>
     <integer name="config_overrideHasPermanentMenuKey">2</integer>

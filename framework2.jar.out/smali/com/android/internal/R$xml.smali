@@ -45,13 +45,15 @@
 
 .field public static final time_zones_by_country:I = 0x10f0012
 
+.field public static final vendors:I = 0x10f0013
+
 
 # direct methods
 .method public constructor <init>()V
     .locals 0
 
     .prologue
-    .line 18188
+    .line 18497
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

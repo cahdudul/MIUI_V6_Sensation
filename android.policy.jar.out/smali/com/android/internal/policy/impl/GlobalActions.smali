@@ -1049,11 +1049,11 @@
 
     const v4, 0x10802f0
 
-    const v5, 0x104006b
+    const v5, 0x1040060
 
-    const v6, 0x104006c
+    const v6, 0x1040061
 
-    const v7, 0x104006d
+    const v7, 0x1040062
 
     move-object/from16 v2, p0
 
@@ -1073,11 +1073,11 @@
 
     const v4, 0x10802ed
 
-    const v5, 0x10401aa
+    const v5, 0x10401c1
 
-    const v6, 0x10401ab
+    const v6, 0x10401c2
 
-    const v7, 0x10401ac
+    const v7, 0x10401c3
 
     move-object/from16 v2, p0
 
@@ -1118,7 +1118,7 @@
 
     const v3, 0x1080030
 
-    const v4, 0x10401a3
+    const v4, 0x10401ba
 
     move-object/from16 v0, p0
 
@@ -1157,7 +1157,7 @@
 
     const v3, 0x10802f3
 
-    const v4, 0x104007e
+    const v4, 0x1040073
 
     move-object/from16 v0, p0
 
@@ -1247,7 +1247,7 @@
 
     const v3, 0x10802f6
 
-    const v4, 0x104006a
+    const v4, 0x104005f
 
     move-object/from16 v0, p0
 
@@ -1369,7 +1369,7 @@
 
     const v3, 0x10805b8
 
-    const v4, 0x10401a4
+    const v4, 0x10401bb
 
     move-object/from16 v0, p0
 
@@ -2095,7 +2095,7 @@
     .line 705
     iget-object v1, p0, Lcom/android/internal/policy/impl/GlobalActions;->mDialog:Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;
 
-    const v2, 0x10401a1
+    const v2, 0x10401b8
 
     invoke-virtual {v1, v2}, Lcom/android/internal/policy/impl/GlobalActions$GlobalActionsDialog;->setTitle(I)V
 

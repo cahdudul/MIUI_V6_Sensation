@@ -198,6 +198,7 @@
     <protected-broadcast android:name="android.net.proxy.PAC_REFRESH"/>
     <protected-broadcast android:name="com.android.server.connectivityservice.CONNECTED_TO_PROVISIONING_NETWORK_ACTION"/>
     <protected-broadcast android:name="org.cyanogenmod.intent.action.THEME_CHANGED"/>
+    <protected-broadcast android:name="android.intent.action.THEME_RESOURCES_CACHED"/>
     <eat-comment/>
     <permission-group android:description="@string/permgroupdesc_costMoney" android:label="@string/permgrouplab_costMoney" android:name="android.permission-group.COST_MONEY"/>
     <eat-comment/>
@@ -413,7 +414,7 @@
     <permission android:description="@string/permdesc_retrieve_window_info" android:label="@string/permlab_retrieve_window_info" android:name="android.permission.RETRIEVE_WINDOW_INFO" android:protectionLevel="signature"/>
     <permission android:description="@string/permdesc_temporary_enable_accessibility" android:label="@string/permlab_temporary_enable_accessibility" android:name="android.permission.TEMPORARY_ENABLE_ACCESSIBILITY" android:protectionLevel="signature"/>
     <permission android:description="@string/permdesc_magnify_display" android:label="@string/permlab_magnify_display" android:name="android.permission.MAGNIFY_DISPLAY" android:protectionLevel="signature"/>
-    <permission android:description="@string/permdesc_runSetActivityWatcher" android:label="@string/permlab_runSetActivityWatcher" android:name="android.permission.SET_ACTIVITY_WATCHER" android:protectionLevel="signature"/>
+    <permission android:description="@string/permdesc_runSetActivityWatcher" android:label="@string/permlab_runSetActivityWatcher" android:name="android.permission.SET_ACTIVITY_WATCHER" android:protectionLevel="system|signature"/>
     <permission android:description="@string/permdesc_shutdown" android:label="@string/permlab_shutdown" android:name="android.permission.SHUTDOWN" android:protectionLevel="system|signature"/>
     <permission android:description="@string/permdesc_stopAppSwitches" android:label="@string/permlab_stopAppSwitches" android:name="android.permission.STOP_APP_SWITCHES" android:protectionLevel="system|signature"/>
     <permission android:description="@string/permdesc_getTopActivityInfo" android:label="@string/permlab_getTopActivityInfo" android:name="android.permission.GET_TOP_ACTIVITY_INFO" android:protectionLevel="signature"/>
@@ -505,6 +506,8 @@
     <permission android:description="@string/permdesc_readThemesDesc" android:label="@string/permlab_readThemes" android:name="android.permission.READ_THEMES" android:protectionLevel="normal"/>
     <permission android:description="@string/permdesc_writeThemesDesc" android:label="@string/permlab_writeThemes" android:name="android.permission.WRITE_THEMES" android:protectionLevel="signature"/>
     <permission android:description="@string/permdesc_useHardwareFramework" android:label="@string/permlab_useHardwareFramework" android:name="android.permission.HARDWARE_ABSTRACTION_ACCESS" android:protectionLevel="signature"/>
+    <permission android:description="@string/permdesc_keyguardApplicationWidget" android:label="@string/permlab_keyguardApplicationWidget" android:name="android.permission.SET_KEYGUARD_APPLICATION_WIDGET" android:protectionLevel="system|signature"/>
+    <permission android:description="@string/permdesc_interceptPackageLaunch" android:label="@string/permlab_interceptPackageLaunch" android:name="android.permission.INTERCEPT_PACKAGE_LAUNCH" android:protectionLevel="system|signature"/>
     <uses-permission android:name="android.permission.CONFIRM_FULL_BACKUP"/>
     <application android:allowClearUserData="false" android:backupAgent="com.android.server.SystemBackupAgent" android:hasCode="false" android:icon="@drawable/ic_launcher_android" android:killAfterRestore="false" android:label="@string/android_system_label" android:persistent="true" android:process="system" android:supportsRtl="true">
         <activity android:excludeFromRecents="true" android:finishOnCloseSystemDialogs="true" android:multiprocess="true" android:name="com.android.internal.app.ChooserActivity" android:theme="@style/Theme.Holo.Dialog.Alert">

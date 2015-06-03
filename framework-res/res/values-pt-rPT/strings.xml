@@ -27,18 +27,6 @@
     <string name="storage_internal">memória de armazenamento interno</string>
     <string name="storage_sd_card">Cartão SD</string>
     <string name="storage_usb">Armazenamento USB</string>
-    <string name="pinpuk_attempts">"
-Tentativas restantes:"</string>
-    <string name="lockscreen_sim_error_message_short">Cartão inválido.</string>
-    <string name="lockscreen_airplane_mode_on">Modo de Avião</string>
-    <string name="progress_nomediapresent">Sem média removível…</string>
-    <string name="storage_uicc">Armazenamento UICC</string>
-    <string name="stk_cc_ussd_to_dial">Pedido USSD é modificado para pedido DIAL.</string>
-    <string name="stk_cc_ussd_to_ss">Pedido USSD é modificado para pedido SS.</string>
-    <string name="stk_cc_ussd_to_ussd">Pedido USSD é modificado para novo pedido USSD.</string>
-    <string name="stk_cc_ss_to_dial">Pedido SS é modificado para pedido DIAL.</string>
-    <string name="stk_cc_ss_to_ussd">Pedido SS é modificado para pedido USSD.</string>
-    <string name="stk_cc_ss_to_ss">Pedido SS é modificado para novo pedido SS.</string>
     <string name="profileNameDefault">Padrão</string>
     <string name="profileNameWork">Trabalho</string>
     <string name="profileNameHome">Casa</string>
@@ -106,6 +94,8 @@ de baixo nível."</string>
     <string name="permdesc_setKeyguardWallpaper">Permite a uma aplicação trocar a imagem de fundo do ecrã de bloqueio.</string>
     <string name="permlab_useHardwareFramework">Utilizar a estrutura de hardware</string>
     <string name="permdesc_useHardwareFramework">Permite o acesso duma aplicação à estrutura de hardware CM.</string>
+    <string name="permlab_keyguardApplicationWidget">Definir a aplicação do widget do ecrã de bloqueio</string>
+    <string name="permdesc_keyguardApplicationWidget">Permite a uma aplicação definir o widget do ecrã de bloqueio.</string>
     <string name="immersive_mode_confirmation_bottom">Deslize de baixo para cima para sair de ecrã inteiro.</string>
     <string name="app_ops_access_camera">aceder à câmara</string>
     <string name="app_ops_access_location">aceder à sua localização</string>
@@ -155,10 +145,11 @@ de baixo nível."</string>
     <string name="adb_net_active_notification_title">ADB sobre rede ativado</string>
     <string name="adb_both_active_notification_title">ABD sobre USB e rede ativado</string>
     <string name="adb_active_generic_notification_message">Toque para desativar a depuração.</string>
-    <string name="extmedia_format_message_cm">"Todos os dados do teu cartão de memória (na diretoria '%1$s') vão ser eliminados. Esta ação não é reversível!"</string>
+    <string name="usb_extmedia_format_message">"Todos os dados do teu armazenamento USB (na diretoria '%1$s') vão ser eliminados. Esta ação não é reversível!"</string>
+    <string name="sd_extmedia_format_message">"Todos os dados do teu cartão de memória (na diretoria '%1$s') vão ser eliminados. Esta ação não é reversível!"</string>
     <string name="usb_storage_notification_manage_message">Toque para gerir</string>
-    <string name="sd_ext_media_checking_notification_title">A preparar o cartão SD</string>
-    <string name="sd_ext_media_checking_notification_message">A verificar erros no cartão SD.</string>
+    <string name="sd_ext_media_checking_notification_title">A preparar o cartão SD…</string>
+    <string name="sd_ext_media_checking_notification_message">A verificar erros no cartão SD…</string>
     <string name="sd_ext_media_nofs_notification_title">Cartão SD vazio</string>
     <string name="sd_ext_media_nofs_notification_message">O cartão SD está vazio ou possui um sistema de ficheiros não suportado.</string>
     <string name="sd_ext_media_unmountable_notification_title">Cartão SD danificado</string>
@@ -169,8 +160,8 @@ de baixo nível."</string>
     <string name="sd_ext_media_safe_unmount_notification_message">Pode remover o cartão SD em segurança.</string>
     <string name="sd_ext_media_nomedia_notification_title">Cartão SD removido</string>
     <string name="sd_ext_media_nomedia_notification_message">Cartão SD removido. Inserir um novo.</string>
-    <string name="usb_ext_media_checking_notification_title">A preparar o armazenamento USB</string>
-    <string name="usb_ext_media_checking_notification_message">A verificar erros no armazenamento USB.</string>
+    <string name="usb_ext_media_checking_notification_title">A preparar armazenamento USB…</string>
+    <string name="usb_ext_media_checking_notification_message">A verificar erros no armazenamento USB…</string>
     <string name="usb_ext_media_nofs_notification_title">Armazenamento USB vazio</string>
     <string name="usb_ext_media_nofs_notification_message">O armazenamento USB está vazio ou têm um sistema de ficheiros não suportado.</string>
     <string name="usb_ext_media_unmountable_notification_title">Armazenamento USB danificado</string>
@@ -181,6 +172,35 @@ de baixo nível."</string>
     <string name="usb_ext_media_safe_unmount_notification_message">Pode remover o armazenamento USB em segurança.</string>
     <string name="usb_ext_media_nomedia_notification_title">Armazenamento USB removido</string>
     <string name="usb_ext_media_nomedia_notification_message">Armazenamento USB removido. Inserir novo.</string>
+    <string name="progress_nomediapresent">Sem media removível…</string>
+    <string name="lockscreen_sim_error_message_short">Cartão inválido.</string>
+    <string name="lockscreen_airplane_mode_on">Modo de avião</string>
+    <string name="lockscreen_sim_locked_message_cm">Cartão SIM/RUIM está bloqueado.</string>
+    <string name="pinpuk_attempts">"
+Tentativas restantes:"</string>
+    <string name="stk_cc_ussd_to_dial">Pedido USSD modificado em pedido DIAL.</string>
+    <string name="stk_cc_ussd_to_ss">Pedido USSD modificado em pedido SS.</string>
+    <string name="stk_cc_ussd_to_ussd">Pedido USSD modificado em novo pedido USSD.</string>
+    <string name="stk_cc_ss_to_dial">Pedido SS modificado em pedido DIAL.</string>
+    <string name="stk_cc_ss_to_ussd">Pedido SS modificado em pedido USSD.</string>
+    <string name="stk_cc_ss_to_ss">Pedido SS modificado em novo pedido SS.</string>
+    <string name="theme_install_error_title">Falha ao instalar o tema</string>
+    <string name="theme_install_error_message">%s não instalou</string>
+    <string name="storage_uicc">Armazenamento UICC</string>
+    <string name="sd_progress_unmounting">A desmontar o cartão SD…</string>
+    <string name="sd_progress_erasing">A apagar o cartão…</string>
+    <string name="sd_format_error">Não foi possível apagar o cartão SD.</string>
+    <string name="sd_media_bad_removal">O cartão SD foi removido antes de ser desmontado.</string>
+    <string name="sd_media_checking">O cartão SD está a ser verificado.</string>
+    <string name="sd_media_removed">O cartão SD foi removido.</string>
+    <string name="sd_media_shared">O cartão SD está a ser utilizado por um computador.</string>
+    <string name="usb_progress_unmounting">A desmontar o armazenamento USB…</string>
+    <string name="usb_progress_erasing">A apagar o armazenamento USB…</string>
+    <string name="usb_format_error">Não foi possível apagar o armazenamento USB.</string>
+    <string name="usb_media_bad_removal">O armazenamento USB foi removido antes de ser desmontado.</string>
+    <string name="usb_media_checking">O armazenamento USB está a ser verificado.</string>
+    <string name="usb_media_removed">O armazenamento USB foi removido.</string>
+    <string name="usb_media_shared">O armazenamento USB está a ser utilizado por um computador.</string>
     <string name="numeric_date_template" formatted="false">%s/%s/%s</string>
     <string name="month_day_year" formatted="false">%-e de %B de %Y</string>
     <string name="time_of_day" formatted="false">%H:%M:%S</string>

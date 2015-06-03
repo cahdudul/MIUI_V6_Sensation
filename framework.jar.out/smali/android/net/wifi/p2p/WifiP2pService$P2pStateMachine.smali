@@ -68,6 +68,8 @@
 
 .field private final mPeersLostDuringConnection:Landroid/net/wifi/p2p/WifiP2pDeviceList;
 
+.field private mPendingReformGroupIndication:Z
+
 .field private mProvisionDiscoveryState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$ProvisionDiscoveryState;
 
 .field private mSavedP2pGroup:Landroid/net/wifi/p2p/WifiP2pGroup;
@@ -96,10 +98,10 @@
     .param p3, "p2pSupported"    # Z
 
     .prologue
-    .line 456
+    .line 457
     iput-object p1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
-    .line 457
+    .line 458
     invoke-direct {p0, p2}, Lcom/android/internal/util/StateMachine;-><init>(Ljava/lang/String;)V
 
     .line 401
@@ -271,146 +273,151 @@
 
     iput-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mWifiP2pInfo:Landroid/net/wifi/p2p/WifiP2pInfo;
 
-    .line 451
+    .line 447
+    const/4 v0, 0x0
+
+    iput-boolean v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mPendingReformGroupIndication:Z
+
+    .line 452
     new-instance v0, Landroid/net/wifi/p2p/WifiP2pConfig;
 
     invoke-direct {v0}, Landroid/net/wifi/p2p/WifiP2pConfig;-><init>()V
 
     iput-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mSavedPeerConfig:Landroid/net/wifi/p2p/WifiP2pConfig;
 
-    .line 459
+    .line 460
     iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mDefaultState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$DefaultState;
 
     invoke-virtual {p0, v0}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->addState(Lcom/android/internal/util/State;)V
 
-    .line 460
+    .line 461
     iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mP2pNotSupportedState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$P2pNotSupportedState;
 
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mDefaultState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$DefaultState;
 
     invoke-virtual {p0, v0, v1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->addState(Lcom/android/internal/util/State;Lcom/android/internal/util/State;)V
 
-    .line 461
+    .line 462
     iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mP2pDisablingState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$P2pDisablingState;
 
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mDefaultState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$DefaultState;
 
     invoke-virtual {p0, v0, v1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->addState(Lcom/android/internal/util/State;Lcom/android/internal/util/State;)V
 
-    .line 462
-    iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mP2pDisabledState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$P2pDisabledState;
-
-    iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mDefaultState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$DefaultState;
-
-    invoke-virtual {p0, v0, v1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->addState(Lcom/android/internal/util/State;Lcom/android/internal/util/State;)V
-
     .line 463
-    iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mP2pEnablingState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$P2pEnablingState;
+    iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mP2pDisabledState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$P2pDisabledState;
 
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mDefaultState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$DefaultState;
 
     invoke-virtual {p0, v0, v1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->addState(Lcom/android/internal/util/State;Lcom/android/internal/util/State;)V
 
     .line 464
-    iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mP2pEnabledState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$P2pEnabledState;
+    iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mP2pEnablingState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$P2pEnablingState;
 
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mDefaultState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$DefaultState;
 
     invoke-virtual {p0, v0, v1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->addState(Lcom/android/internal/util/State;Lcom/android/internal/util/State;)V
 
     .line 465
+    iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mP2pEnabledState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$P2pEnabledState;
+
+    iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mDefaultState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$DefaultState;
+
+    invoke-virtual {p0, v0, v1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->addState(Lcom/android/internal/util/State;Lcom/android/internal/util/State;)V
+
+    .line 466
     iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mInactiveState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$InactiveState;
 
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mP2pEnabledState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$P2pEnabledState;
 
     invoke-virtual {p0, v0, v1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->addState(Lcom/android/internal/util/State;Lcom/android/internal/util/State;)V
 
-    .line 466
+    .line 467
     iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mGroupCreatingState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$GroupCreatingState;
 
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mP2pEnabledState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$P2pEnabledState;
 
     invoke-virtual {p0, v0, v1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->addState(Lcom/android/internal/util/State;Lcom/android/internal/util/State;)V
 
-    .line 467
+    .line 468
     iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mUserAuthorizingInviteRequestState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$UserAuthorizingInviteRequestState;
 
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mGroupCreatingState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$GroupCreatingState;
 
     invoke-virtual {p0, v0, v1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->addState(Lcom/android/internal/util/State;Lcom/android/internal/util/State;)V
 
-    .line 468
+    .line 469
     iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mUserAuthorizingNegotiationRequestState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$UserAuthorizingNegotiationRequestState;
 
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mGroupCreatingState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$GroupCreatingState;
 
     invoke-virtual {p0, v0, v1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->addState(Lcom/android/internal/util/State;Lcom/android/internal/util/State;)V
 
-    .line 469
+    .line 470
     iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mProvisionDiscoveryState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$ProvisionDiscoveryState;
 
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mGroupCreatingState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$GroupCreatingState;
 
     invoke-virtual {p0, v0, v1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->addState(Lcom/android/internal/util/State;Lcom/android/internal/util/State;)V
 
-    .line 470
+    .line 471
     iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mGroupNegotiationState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$GroupNegotiationState;
 
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mGroupCreatingState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$GroupCreatingState;
 
     invoke-virtual {p0, v0, v1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->addState(Lcom/android/internal/util/State;Lcom/android/internal/util/State;)V
 
-    .line 471
+    .line 472
     iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mFrequencyConflictState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$FrequencyConflictState;
 
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mGroupCreatingState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$GroupCreatingState;
 
     invoke-virtual {p0, v0, v1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->addState(Lcom/android/internal/util/State;Lcom/android/internal/util/State;)V
 
-    .line 472
+    .line 473
     iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mGroupCreatedState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$GroupCreatedState;
 
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mP2pEnabledState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$P2pEnabledState;
 
     invoke-virtual {p0, v0, v1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->addState(Lcom/android/internal/util/State;Lcom/android/internal/util/State;)V
 
-    .line 473
+    .line 474
     iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mUserAuthorizingJoinState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$UserAuthorizingJoinState;
 
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mGroupCreatedState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$GroupCreatedState;
 
     invoke-virtual {p0, v0, v1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->addState(Lcom/android/internal/util/State;Lcom/android/internal/util/State;)V
 
-    .line 474
+    .line 475
     iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mOngoingGroupRemovalState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$OngoingGroupRemovalState;
 
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mGroupCreatedState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$GroupCreatedState;
 
     invoke-virtual {p0, v0, v1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->addState(Lcom/android/internal/util/State;Lcom/android/internal/util/State;)V
 
-    .line 476
+    .line 477
     if-eqz p3, :cond_0
 
-    .line 477
+    .line 478
     iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mP2pDisabledState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$P2pDisabledState;
 
     invoke-virtual {p0, v0}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->setInitialState(Lcom/android/internal/util/State;)V
 
-    .line 481
+    .line 482
     :goto_0
     const/16 v0, 0x32
 
     invoke-virtual {p0, v0}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->setLogRecSize(I)V
 
-    .line 482
+    .line 483
     const/4 v0, 0x1
 
     invoke-virtual {p0, v0}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->setLogOnlyTransitions(Z)V
 
-    .line 483
+    .line 484
     return-void
 
-    .line 479
+    .line 480
     :cond_0
     iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mP2pNotSupportedState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$P2pNotSupportedState;
 
@@ -441,7 +448,23 @@
     return-object v0
 .end method
 
-.method static synthetic access$10000(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
+.method static synthetic access$10000(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;ILjava/lang/String;Z)Z
+    .locals 1
+    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
+    .param p1, "x1"    # I
+    .param p2, "x2"    # Ljava/lang/String;
+    .param p3, "x3"    # Z
+
+    .prologue
+    .line 399
+    invoke-direct {p0, p1, p2, p3}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->removeClientFromList(ILjava/lang/String;Z)Z
+
+    move-result v0
+
+    return v0
+.end method
+
+.method static synthetic access$10100(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
     .locals 0
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
     .param p1, "x1"    # Lcom/android/internal/util/IState;
@@ -453,28 +476,14 @@
     return-void
 .end method
 
-.method static synthetic access$10100(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Ljava/lang/String;)Ljava/lang/String;
-    .locals 1
-    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
-    .param p1, "x1"    # Ljava/lang/String;
-
-    .prologue
-    .line 399
-    invoke-direct {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->getDeviceName(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v0
-
-    return-object v0
-.end method
-
-.method static synthetic access$10200(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Landroid/os/Message;)V
+.method static synthetic access$10200(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
     .locals 0
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
-    .param p1, "x1"    # Landroid/os/Message;
+    .param p1, "x1"    # Lcom/android/internal/util/IState;
 
     .prologue
     .line 399
-    invoke-virtual {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->deferMessage(Landroid/os/Message;)V
+    invoke-virtual {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->transitionTo(Lcom/android/internal/util/IState;)V
 
     return-void
 .end method
@@ -491,14 +500,28 @@
     return-void
 .end method
 
-.method static synthetic access$10400(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
-    .locals 0
+.method static synthetic access$10400(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Ljava/lang/String;)Ljava/lang/String;
+    .locals 1
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
-    .param p1, "x1"    # Lcom/android/internal/util/IState;
+    .param p1, "x1"    # Ljava/lang/String;
 
     .prologue
     .line 399
-    invoke-virtual {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->transitionTo(Lcom/android/internal/util/IState;)V
+    invoke-direct {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->getDeviceName(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method static synthetic access$10500(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Landroid/os/Message;)V
+    .locals 0
+    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
+    .param p1, "x1"    # Landroid/os/Message;
+
+    .prologue
+    .line 399
+    invoke-virtual {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->deferMessage(Landroid/os/Message;)V
 
     return-void
 .end method
@@ -515,39 +538,28 @@
     return-void
 .end method
 
-.method static synthetic access$10700(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;I)V
+.method static synthetic access$10700(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
     .locals 0
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
-    .param p1, "x1"    # I
+    .param p1, "x1"    # Lcom/android/internal/util/IState;
 
     .prologue
     .line 399
-    invoke-direct {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->updateThisDevice(I)V
+    invoke-virtual {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->transitionTo(Lcom/android/internal/util/IState;)V
 
     return-void
 .end method
 
-.method static synthetic access$10800(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Ljava/net/InetAddress;)V
+.method static synthetic access$10900(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
     .locals 0
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
-    .param p1, "x1"    # Ljava/net/InetAddress;
+    .param p1, "x1"    # Lcom/android/internal/util/IState;
 
     .prologue
     .line 399
-    invoke-direct {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->setWifiP2pInfoOnGroupFormation(Ljava/net/InetAddress;)V
+    invoke-virtual {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->transitionTo(Lcom/android/internal/util/IState;)V
 
     return-void
-.end method
-
-.method static synthetic access$10900(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;)Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$OngoingGroupRemovalState;
-    .locals 1
-    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
-
-    .prologue
-    .line 399
-    iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mOngoingGroupRemovalState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$OngoingGroupRemovalState;
-
-    return-object v0
 .end method
 
 .method static synthetic access$1100(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;)Landroid/net/wifi/p2p/WifiP2pGroup;
@@ -561,16 +573,15 @@
     return-object v0
 .end method
 
-.method static synthetic access$11000(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
-    .locals 0
+.method static synthetic access$11000(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;)Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$OngoingGroupRemovalState;
+    .locals 1
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
-    .param p1, "x1"    # Lcom/android/internal/util/IState;
 
     .prologue
     .line 399
-    invoke-virtual {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->transitionTo(Lcom/android/internal/util/IState;)V
+    iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mOngoingGroupRemovalState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$OngoingGroupRemovalState;
 
-    return-void
+    return-object v0
 .end method
 
 .method static synthetic access$1102(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Landroid/net/wifi/p2p/WifiP2pGroup;)Landroid/net/wifi/p2p/WifiP2pGroup;
@@ -585,18 +596,7 @@
     return-object p1
 .end method
 
-.method static synthetic access$11100(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;)V
-    .locals 0
-    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
-
-    .prologue
-    .line 399
-    invoke-direct {p0}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->handleGroupRemoved()V
-
-    return-void
-.end method
-
-.method static synthetic access$11200(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
+.method static synthetic access$11100(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
     .locals 0
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
     .param p1, "x1"    # Lcom/android/internal/util/IState;
@@ -604,6 +604,17 @@
     .prologue
     .line 399
     invoke-virtual {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->transitionTo(Lcom/android/internal/util/IState;)V
+
+    return-void
+.end method
+
+.method static synthetic access$11200(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;)V
+    .locals 0
+    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
+
+    .prologue
+    .line 399
+    invoke-direct {p0}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->handleGroupRemoved()V
 
     return-void
 .end method
@@ -620,7 +631,31 @@
     return-void
 .end method
 
-.method static synthetic access$11400(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
+.method static synthetic access$11400(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;I)V
+    .locals 0
+    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
+    .param p1, "x1"    # I
+
+    .prologue
+    .line 399
+    invoke-direct {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->updateThisDevice(I)V
+
+    return-void
+.end method
+
+.method static synthetic access$11500(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Ljava/net/InetAddress;)V
+    .locals 0
+    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
+    .param p1, "x1"    # Ljava/net/InetAddress;
+
+    .prologue
+    .line 399
+    invoke-direct {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->setWifiP2pInfoOnGroupFormation(Ljava/net/InetAddress;)V
+
+    return-void
+.end method
+
+.method static synthetic access$11600(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
     .locals 0
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
     .param p1, "x1"    # Lcom/android/internal/util/IState;
@@ -632,7 +667,7 @@
     return-void
 .end method
 
-.method static synthetic access$11500(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
+.method static synthetic access$11700(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
     .locals 0
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
     .param p1, "x1"    # Lcom/android/internal/util/IState;
@@ -642,29 +677,6 @@
     invoke-virtual {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->transitionTo(Lcom/android/internal/util/IState;)V
 
     return-void
-.end method
-
-.method static synthetic access$11600(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Landroid/os/Message;)V
-    .locals 0
-    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
-    .param p1, "x1"    # Landroid/os/Message;
-
-    .prologue
-    .line 399
-    invoke-virtual {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->deferMessage(Landroid/os/Message;)V
-
-    return-void
-.end method
-
-.method static synthetic access$11700(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;)Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$UserAuthorizingJoinState;
-    .locals 1
-    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
-
-    .prologue
-    .line 399
-    iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mUserAuthorizingJoinState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$UserAuthorizingJoinState;
-
-    return-object v0
 .end method
 
 .method static synthetic access$11800(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
@@ -679,13 +691,14 @@
     return-void
 .end method
 
-.method static synthetic access$11900(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;)V
+.method static synthetic access$11900(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
     .locals 0
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
+    .param p1, "x1"    # Lcom/android/internal/util/IState;
 
     .prologue
     .line 399
-    invoke-direct {p0}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->resetWifiP2pInfo()V
+    invoke-virtual {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->transitionTo(Lcom/android/internal/util/IState;)V
 
     return-void
 .end method
@@ -713,7 +726,65 @@
     return-void
 .end method
 
-.method static synthetic access$12100(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
+.method static synthetic access$12100(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Landroid/os/Message;)V
+    .locals 0
+    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
+    .param p1, "x1"    # Landroid/os/Message;
+
+    .prologue
+    .line 399
+    invoke-virtual {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->deferMessage(Landroid/os/Message;)V
+
+    return-void
+.end method
+
+.method static synthetic access$12200(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;)Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$UserAuthorizingJoinState;
+    .locals 1
+    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
+
+    .prologue
+    .line 399
+    iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mUserAuthorizingJoinState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$UserAuthorizingJoinState;
+
+    return-object v0
+.end method
+
+.method static synthetic access$12300(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
+    .locals 0
+    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
+    .param p1, "x1"    # Lcom/android/internal/util/IState;
+
+    .prologue
+    .line 399
+    invoke-virtual {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->transitionTo(Lcom/android/internal/util/IState;)V
+
+    return-void
+.end method
+
+.method static synthetic access$12400(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;)V
+    .locals 0
+    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
+
+    .prologue
+    .line 399
+    invoke-direct {p0}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->resetWifiP2pInfo()V
+
+    return-void
+.end method
+
+.method static synthetic access$12500(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
+    .locals 0
+    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
+    .param p1, "x1"    # Lcom/android/internal/util/IState;
+
+    .prologue
+    .line 399
+    invoke-virtual {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->transitionTo(Lcom/android/internal/util/IState;)V
+
+    return-void
+.end method
+
+.method static synthetic access$12600(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
     .locals 0
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
     .param p1, "x1"    # Lcom/android/internal/util/IState;
@@ -1125,7 +1196,19 @@
     return-void
 .end method
 
-.method static synthetic access$5100(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;)Landroid/net/wifi/p2p/WifiP2pConfig;
+.method static synthetic access$5000(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;I)V
+    .locals 0
+    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
+    .param p1, "x1"    # I
+
+    .prologue
+    .line 399
+    invoke-direct {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->sendMiracastModeChanged(I)V
+
+    return-void
+.end method
+
+.method static synthetic access$5200(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;)Landroid/net/wifi/p2p/WifiP2pConfig;
     .locals 1
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
 
@@ -1136,7 +1219,7 @@
     return-object v0
 .end method
 
-.method static synthetic access$5102(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Landroid/net/wifi/p2p/WifiP2pConfig;)Landroid/net/wifi/p2p/WifiP2pConfig;
+.method static synthetic access$5202(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Landroid/net/wifi/p2p/WifiP2pConfig;)Landroid/net/wifi/p2p/WifiP2pConfig;
     .locals 0
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
     .param p1, "x1"    # Landroid/net/wifi/p2p/WifiP2pConfig;
@@ -1148,7 +1231,7 @@
     return-object p1
 .end method
 
-.method static synthetic access$5200(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Landroid/net/wifi/p2p/WifiP2pConfig;)Z
+.method static synthetic access$5300(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Landroid/net/wifi/p2p/WifiP2pConfig;)Z
     .locals 1
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
     .param p1, "x1"    # Landroid/net/wifi/p2p/WifiP2pConfig;
@@ -1162,7 +1245,7 @@
     return v0
 .end method
 
-.method static synthetic access$5400(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Landroid/net/wifi/p2p/WifiP2pConfig;)Z
+.method static synthetic access$5500(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Landroid/net/wifi/p2p/WifiP2pConfig;)Z
     .locals 1
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
     .param p1, "x1"    # Landroid/net/wifi/p2p/WifiP2pConfig;
@@ -1176,7 +1259,7 @@
     return v0
 .end method
 
-.method static synthetic access$5500(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;)Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$GroupNegotiationState;
+.method static synthetic access$5600(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;)Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$GroupNegotiationState;
     .locals 1
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
 
@@ -1187,7 +1270,7 @@
     return-object v0
 .end method
 
-.method static synthetic access$5600(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
+.method static synthetic access$5700(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
     .locals 0
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
     .param p1, "x1"    # Lcom/android/internal/util/IState;
@@ -1199,7 +1282,7 @@
     return-void
 .end method
 
-.method static synthetic access$5700(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;)Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$ProvisionDiscoveryState;
+.method static synthetic access$5800(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;)Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$ProvisionDiscoveryState;
     .locals 1
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
 
@@ -1210,7 +1293,7 @@
     return-object v0
 .end method
 
-.method static synthetic access$5800(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
+.method static synthetic access$5900(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
     .locals 0
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
     .param p1, "x1"    # Lcom/android/internal/util/IState;
@@ -1222,7 +1305,7 @@
     return-void
 .end method
 
-.method static synthetic access$6100(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;)Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$UserAuthorizingNegotiationRequestState;
+.method static synthetic access$6200(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;)Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$UserAuthorizingNegotiationRequestState;
     .locals 1
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
 
@@ -1233,7 +1316,7 @@
     return-object v0
 .end method
 
-.method static synthetic access$6200(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
+.method static synthetic access$6300(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
     .locals 0
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
     .param p1, "x1"    # Lcom/android/internal/util/IState;
@@ -1245,7 +1328,7 @@
     return-void
 .end method
 
-.method static synthetic access$6400(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;)Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$UserAuthorizingInviteRequestState;
+.method static synthetic access$6500(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;)Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$UserAuthorizingInviteRequestState;
     .locals 1
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
 
@@ -1256,7 +1339,7 @@
     return-object v0
 .end method
 
-.method static synthetic access$6500(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
+.method static synthetic access$6600(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
     .locals 0
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
     .param p1, "x1"    # Lcom/android/internal/util/IState;
@@ -1268,7 +1351,7 @@
     return-void
 .end method
 
-.method static synthetic access$6600(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Ljava/lang/String;Ljava/lang/String;)V
+.method static synthetic access$6700(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Ljava/lang/String;Ljava/lang/String;)V
     .locals 0
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
     .param p1, "x1"    # Ljava/lang/String;
@@ -1277,18 +1360,6 @@
     .prologue
     .line 399
     invoke-direct {p0, p1, p2}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->notifyP2pProvDiscShowPinRequest(Ljava/lang/String;Ljava/lang/String;)V
-
-    return-void
-.end method
-
-.method static synthetic access$6700(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
-    .locals 0
-    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
-    .param p1, "x1"    # Lcom/android/internal/util/IState;
-
-    .prologue
-    .line 399
-    invoke-virtual {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->transitionTo(Lcom/android/internal/util/IState;)V
 
     return-void
 .end method
@@ -1305,14 +1376,14 @@
     return-void
 .end method
 
-.method static synthetic access$6900(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Landroid/os/Message;)V
+.method static synthetic access$6900(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
     .locals 0
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
-    .param p1, "x1"    # Landroid/os/Message;
+    .param p1, "x1"    # Lcom/android/internal/util/IState;
 
     .prologue
     .line 399
-    invoke-virtual {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->deferMessage(Landroid/os/Message;)V
+    invoke-virtual {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->transitionTo(Lcom/android/internal/util/IState;)V
 
     return-void
 .end method
@@ -1331,7 +1402,19 @@
     return-void
 .end method
 
-.method static synthetic access$7000(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
+.method static synthetic access$7000(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Landroid/os/Message;)V
+    .locals 0
+    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
+    .param p1, "x1"    # Landroid/os/Message;
+
+    .prologue
+    .line 399
+    invoke-virtual {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->deferMessage(Landroid/os/Message;)V
+
+    return-void
+.end method
+
+.method static synthetic access$7100(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
     .locals 0
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
     .param p1, "x1"    # Lcom/android/internal/util/IState;
@@ -1343,7 +1426,7 @@
     return-void
 .end method
 
-.method static synthetic access$7100(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;)V
+.method static synthetic access$7200(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;)V
     .locals 0
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
 
@@ -1354,7 +1437,7 @@
     return-void
 .end method
 
-.method static synthetic access$7200(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
+.method static synthetic access$7300(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
     .locals 0
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
     .param p1, "x1"    # Lcom/android/internal/util/IState;
@@ -1366,7 +1449,7 @@
     return-void
 .end method
 
-.method static synthetic access$7300(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;)Landroid/net/wifi/p2p/WifiP2pDeviceList;
+.method static synthetic access$7400(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;)Landroid/net/wifi/p2p/WifiP2pDeviceList;
     .locals 1
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
 
@@ -1377,7 +1460,7 @@
     return-object v0
 .end method
 
-.method static synthetic access$7400(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
+.method static synthetic access$7500(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
     .locals 0
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
     .param p1, "x1"    # Lcom/android/internal/util/IState;
@@ -1389,7 +1472,7 @@
     return-void
 .end method
 
-.method static synthetic access$7500(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;)V
+.method static synthetic access$7600(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;)V
     .locals 0
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
 
@@ -1400,7 +1483,7 @@
     return-void
 .end method
 
-.method static synthetic access$7600(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Landroid/net/wifi/p2p/WifiP2pConfig;)V
+.method static synthetic access$7700(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Landroid/net/wifi/p2p/WifiP2pConfig;)V
     .locals 0
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
     .param p1, "x1"    # Landroid/net/wifi/p2p/WifiP2pConfig;
@@ -1408,18 +1491,6 @@
     .prologue
     .line 399
     invoke-direct {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->p2pConnectWithPinDisplay(Landroid/net/wifi/p2p/WifiP2pConfig;)V
-
-    return-void
-.end method
-
-.method static synthetic access$7700(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
-    .locals 0
-    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
-    .param p1, "x1"    # Lcom/android/internal/util/IState;
-
-    .prologue
-    .line 399
-    invoke-virtual {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->transitionTo(Lcom/android/internal/util/IState;)V
 
     return-void
 .end method
@@ -1507,7 +1578,19 @@
     return-void
 .end method
 
-.method static synthetic access$8400(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Ljava/lang/String;Ljava/lang/String;)V
+.method static synthetic access$8400(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
+    .locals 0
+    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
+    .param p1, "x1"    # Lcom/android/internal/util/IState;
+
+    .prologue
+    .line 399
+    invoke-virtual {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->transitionTo(Lcom/android/internal/util/IState;)V
+
+    return-void
+.end method
+
+.method static synthetic access$8500(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Ljava/lang/String;Ljava/lang/String;)V
     .locals 0
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
     .param p1, "x1"    # Ljava/lang/String;
@@ -1516,18 +1599,6 @@
     .prologue
     .line 399
     invoke-direct {p0, p1, p2}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->notifyInvitationSent(Ljava/lang/String;Ljava/lang/String;)V
-
-    return-void
-.end method
-
-.method static synthetic access$8500(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
-    .locals 0
-    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
-    .param p1, "x1"    # Lcom/android/internal/util/IState;
-
-    .prologue
-    .line 399
-    invoke-virtual {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->transitionTo(Lcom/android/internal/util/IState;)V
 
     return-void
 .end method
@@ -1544,28 +1615,39 @@
     return-void
 .end method
 
-.method static synthetic access$8800(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Z)V
+.method static synthetic access$8700(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
+    .locals 0
+    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
+    .param p1, "x1"    # Lcom/android/internal/util/IState;
+
+    .prologue
+    .line 399
+    invoke-virtual {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->transitionTo(Lcom/android/internal/util/IState;)V
+
+    return-void
+.end method
+
+.method static synthetic access$8800(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;)Z
+    .locals 1
+    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
+
+    .prologue
+    .line 399
+    iget-boolean v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mPendingReformGroupIndication:Z
+
+    return v0
+.end method
+
+.method static synthetic access$8802(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Z)Z
     .locals 0
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
     .param p1, "x1"    # Z
 
     .prologue
     .line 399
-    invoke-direct {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->updatePersistentNetworks(Z)V
+    iput-boolean p1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mPendingReformGroupIndication:Z
 
-    return-void
-.end method
-
-.method static synthetic access$8900(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Ljava/lang/String;)V
-    .locals 0
-    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
-    .param p1, "x1"    # Ljava/lang/String;
-
-    .prologue
-    .line 399
-    invoke-direct {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->startDhcpServer(Ljava/lang/String;)V
-
-    return-void
+    return p1
 .end method
 
 .method static synthetic access$900(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Landroid/os/Message;ILjava/lang/Object;)V
@@ -1582,7 +1664,31 @@
     return-void
 .end method
 
+.method static synthetic access$9000(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Z)V
+    .locals 0
+    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
+    .param p1, "x1"    # Z
+
+    .prologue
+    .line 399
+    invoke-direct {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->updatePersistentNetworks(Z)V
+
+    return-void
+.end method
+
 .method static synthetic access$9100(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Ljava/lang/String;)V
+    .locals 0
+    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
+    .param p1, "x1"    # Ljava/lang/String;
+
+    .prologue
+    .line 399
+    invoke-direct {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->startDhcpServer(Ljava/lang/String;)V
+
+    return-void
+.end method
+
+.method static synthetic access$9300(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Ljava/lang/String;)V
     .locals 0
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
     .param p1, "x1"    # Ljava/lang/String;
@@ -1594,36 +1700,13 @@
     return-void
 .end method
 
-.method static synthetic access$9200(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;)Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$GroupCreatedState;
+.method static synthetic access$9400(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;)Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$GroupCreatedState;
     .locals 1
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
 
     .prologue
     .line 399
     iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mGroupCreatedState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$GroupCreatedState;
-
-    return-object v0
-.end method
-
-.method static synthetic access$9300(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
-    .locals 0
-    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
-    .param p1, "x1"    # Lcom/android/internal/util/IState;
-
-    .prologue
-    .line 399
-    invoke-virtual {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->transitionTo(Lcom/android/internal/util/IState;)V
-
-    return-void
-.end method
-
-.method static synthetic access$9400(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;)Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$FrequencyConflictState;
-    .locals 1
-    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
-
-    .prologue
-    .line 399
-    iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mFrequencyConflictState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$FrequencyConflictState;
 
     return-object v0
 .end method
@@ -1640,16 +1723,15 @@
     return-void
 .end method
 
-.method static synthetic access$9600(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
-    .locals 0
+.method static synthetic access$9600(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;)Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$FrequencyConflictState;
+    .locals 1
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
-    .param p1, "x1"    # Lcom/android/internal/util/IState;
 
     .prologue
     .line 399
-    invoke-virtual {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->transitionTo(Lcom/android/internal/util/IState;)V
+    iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mFrequencyConflictState:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$FrequencyConflictState;
 
-    return-void
+    return-object v0
 .end method
 
 .method static synthetic access$9700(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
@@ -1664,20 +1746,16 @@
     return-void
 .end method
 
-.method static synthetic access$9800(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;ILjava/lang/String;Z)Z
-    .locals 1
+.method static synthetic access$9800(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
+    .locals 0
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
-    .param p1, "x1"    # I
-    .param p2, "x2"    # Ljava/lang/String;
-    .param p3, "x3"    # Z
+    .param p1, "x1"    # Lcom/android/internal/util/IState;
 
     .prologue
     .line 399
-    invoke-direct {p0, p1, p2, p3}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->removeClientFromList(ILjava/lang/String;Z)Z
+    invoke-virtual {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->transitionTo(Lcom/android/internal/util/IState;)V
 
-    move-result v0
-
-    return v0
+    return-void
 .end method
 
 .method static synthetic access$9900(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;Lcom/android/internal/util/IState;)V
@@ -1702,27 +1780,27 @@
 
     const/4 v1, 0x0
 
-    .line 2889
+    .line 2939
     invoke-direct {p0}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->clearClientDeadChannels()V
 
-    .line 2890
+    .line 2940
     invoke-direct {p0, p1, v2}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->getClientInfo(Landroid/os/Messenger;Z)Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;
 
     move-result-object v0
 
-    .line 2891
+    .line 2941
     .local v0, "clientInfo":Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;
     if-nez v0, :cond_1
 
-    .line 2904
+    .line 2954
     :cond_0
     :goto_0
     return v1
 
-    .line 2895
+    .line 2945
     :cond_1
     # getter for: Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->mServList:Ljava/util/List;
-    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13000(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Ljava/util/List;
+    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13500(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Ljava/util/List;
 
     move-result-object v3
 
@@ -1732,7 +1810,7 @@
 
     if-eqz v3, :cond_0
 
-    .line 2899
+    .line 2949
     iget-object v3, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mWifiNative:Landroid/net/wifi/WifiNative;
 
     invoke-virtual {v3, p2}, Landroid/net/wifi/WifiNative;->p2pServiceAdd(Landroid/net/wifi/p2p/nsd/WifiP2pServiceInfo;)Z
@@ -1741,9 +1819,9 @@
 
     if-nez v3, :cond_2
 
-    .line 2900
+    .line 2950
     # getter for: Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->mServList:Ljava/util/List;
-    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13000(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Ljava/util/List;
+    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13500(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Ljava/util/List;
 
     move-result-object v2
 
@@ -1754,7 +1832,7 @@
     :cond_2
     move v1, v2
 
-    .line 2904
+    .line 2954
     goto :goto_0
 .end method
 
@@ -1765,12 +1843,12 @@
     .param p3, "value"    # Ljava/lang/String;
 
     .prologue
-    .line 2146
+    .line 2196
     invoke-static {}, Landroid/content/res/Resources;->getSystem()Landroid/content/res/Resources;
 
     move-result-object v0
 
-    .line 2147
+    .line 2197
     .local v0, "r":Landroid/content/res/Resources;
     iget-object v2, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
@@ -1791,7 +1869,7 @@
 
     move-result-object v1
 
-    .line 2149
+    .line 2199
     .local v1, "row":Landroid/view/View;
     const v2, 0x102038f
 
@@ -1807,7 +1885,7 @@
 
     invoke-virtual {v2, v3}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 2150
+    .line 2200
     const v2, 0x10202b9
 
     invoke-virtual {v1, v2}, Landroid/view/View;->findViewById(I)Landroid/view/View;
@@ -1818,10 +1896,10 @@
 
     invoke-virtual {v2, p3}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 2151
+    .line 2201
     invoke-virtual {p1, v1}, Landroid/view/ViewGroup;->addView(Landroid/view/View;)V
 
-    .line 2152
+    .line 2202
     return-void
 .end method
 
@@ -1833,38 +1911,38 @@
     .prologue
     const/4 v1, 0x1
 
-    .line 2813
+    .line 2863
     invoke-direct {p0}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->clearClientDeadChannels()V
 
-    .line 2814
+    .line 2864
     invoke-direct {p0, p1, v1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->getClientInfo(Landroid/os/Messenger;Z)Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;
 
     move-result-object v0
 
-    .line 2815
+    .line 2865
     .local v0, "clientInfo":Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;
     if-nez v0, :cond_1
 
-    .line 2816
+    .line 2866
     const/4 v1, 0x0
 
-    .line 2829
+    .line 2879
     :cond_0
     :goto_0
     return v1
 
-    .line 2819
+    .line 2869
     :cond_1
     iget-object v2, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # ++operator for: Landroid/net/wifi/p2p/WifiP2pService;->mServiceTransactionId:B
-    invoke-static {v2}, Landroid/net/wifi/p2p/WifiP2pService;->access$12604(Landroid/net/wifi/p2p/WifiP2pService;)B
+    invoke-static {v2}, Landroid/net/wifi/p2p/WifiP2pService;->access$13104(Landroid/net/wifi/p2p/WifiP2pService;)B
 
-    .line 2821
+    .line 2871
     iget-object v2, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mServiceTransactionId:B
-    invoke-static {v2}, Landroid/net/wifi/p2p/WifiP2pService;->access$12600(Landroid/net/wifi/p2p/WifiP2pService;)B
+    invoke-static {v2}, Landroid/net/wifi/p2p/WifiP2pService;->access$13100(Landroid/net/wifi/p2p/WifiP2pService;)B
 
     move-result v2
 
@@ -1873,50 +1951,90 @@
     iget-object v2, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # ++operator for: Landroid/net/wifi/p2p/WifiP2pService;->mServiceTransactionId:B
-    invoke-static {v2}, Landroid/net/wifi/p2p/WifiP2pService;->access$12604(Landroid/net/wifi/p2p/WifiP2pService;)B
+    invoke-static {v2}, Landroid/net/wifi/p2p/WifiP2pService;->access$13104(Landroid/net/wifi/p2p/WifiP2pService;)B
 
-    .line 2822
+    .line 2872
     :cond_2
     iget-object v2, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mServiceTransactionId:B
-    invoke-static {v2}, Landroid/net/wifi/p2p/WifiP2pService;->access$12600(Landroid/net/wifi/p2p/WifiP2pService;)B
+    invoke-static {v2}, Landroid/net/wifi/p2p/WifiP2pService;->access$13100(Landroid/net/wifi/p2p/WifiP2pService;)B
 
     move-result v2
 
     invoke-virtual {p2, v2}, Landroid/net/wifi/p2p/nsd/WifiP2pServiceRequest;->setTransactionId(I)V
 
-    .line 2823
+    .line 2873
     # getter for: Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->mReqList:Landroid/util/SparseArray;
-    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$12900(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/util/SparseArray;
+    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13400(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/util/SparseArray;
 
     move-result-object v2
 
     iget-object v3, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mServiceTransactionId:B
-    invoke-static {v3}, Landroid/net/wifi/p2p/WifiP2pService;->access$12600(Landroid/net/wifi/p2p/WifiP2pService;)B
+    invoke-static {v3}, Landroid/net/wifi/p2p/WifiP2pService;->access$13100(Landroid/net/wifi/p2p/WifiP2pService;)B
 
     move-result v3
 
     invoke-virtual {v2, v3, p2}, Landroid/util/SparseArray;->put(ILjava/lang/Object;)V
 
-    .line 2825
+    .line 2875
     iget-object v2, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mServiceDiscReqId:Ljava/lang/String;
-    invoke-static {v2}, Landroid/net/wifi/p2p/WifiP2pService;->access$5900(Landroid/net/wifi/p2p/WifiP2pService;)Ljava/lang/String;
+    invoke-static {v2}, Landroid/net/wifi/p2p/WifiP2pService;->access$6000(Landroid/net/wifi/p2p/WifiP2pService;)Ljava/lang/String;
 
     move-result-object v2
 
     if-eqz v2, :cond_0
 
-    .line 2829
+    .line 2879
     invoke-direct {p0}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->updateSupplicantServiceRequest()Z
 
     move-result v1
 
     goto :goto_0
+.end method
+
+.method private checkAndSetConnectivityInstance()V
+    .locals 3
+
+    .prologue
+    .line 2140
+    iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
+
+    # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mCm:Landroid/net/ConnectivityManager;
+    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService;->access$12700(Landroid/net/wifi/p2p/WifiP2pService;)Landroid/net/ConnectivityManager;
+
+    move-result-object v0
+
+    if-nez v0, :cond_0
+
+    .line 2141
+    iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
+
+    iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
+
+    # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mContext:Landroid/content/Context;
+    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService;->access$400(Landroid/net/wifi/p2p/WifiP2pService;)Landroid/content/Context;
+
+    move-result-object v0
+
+    const-string v2, "connectivity"
+
+    invoke-virtual {v0, v2}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/net/ConnectivityManager;
+
+    # setter for: Landroid/net/wifi/p2p/WifiP2pService;->mCm:Landroid/net/ConnectivityManager;
+    invoke-static {v1, v0}, Landroid/net/wifi/p2p/WifiP2pService;->access$12702(Landroid/net/wifi/p2p/WifiP2pService;Landroid/net/ConnectivityManager;)Landroid/net/ConnectivityManager;
+
+    .line 2143
+    :cond_0
+    return-void
 .end method
 
 .method private clearClientDeadChannels()V
@@ -1925,17 +2043,17 @@
     .prologue
     const/4 v7, 0x0
 
-    .line 2977
+    .line 3027
     new-instance v1, Ljava/util/ArrayList;
 
     invoke-direct {v1}, Ljava/util/ArrayList;-><init>()V
 
-    .line 2979
+    .line 3029
     .local v1, "deadClients":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Landroid/os/Messenger;>;"
     iget-object v6, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mClientInfoList:Ljava/util/HashMap;
-    invoke-static {v6}, Landroid/net/wifi/p2p/WifiP2pService;->access$12500(Landroid/net/wifi/p2p/WifiP2pService;)Ljava/util/HashMap;
+    invoke-static {v6}, Landroid/net/wifi/p2p/WifiP2pService;->access$13000(Landroid/net/wifi/p2p/WifiP2pService;)Ljava/util/HashMap;
 
     move-result-object v6
 
@@ -1961,33 +2079,33 @@
 
     check-cast v0, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;
 
-    .line 2980
+    .line 3030
     .local v0, "c":Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;
     invoke-static {}, Landroid/os/Message;->obtain()Landroid/os/Message;
 
     move-result-object v5
 
-    .line 2981
+    .line 3031
     .local v5, "msg":Landroid/os/Message;
     const v6, 0x22031
 
     iput v6, v5, Landroid/os/Message;->what:I
 
-    .line 2982
+    .line 3032
     iput v7, v5, Landroid/os/Message;->arg1:I
 
-    .line 2983
+    .line 3033
     iput v7, v5, Landroid/os/Message;->arg2:I
 
-    .line 2984
+    .line 3034
     const/4 v6, 0x0
 
     iput-object v6, v5, Landroid/os/Message;->obj:Ljava/lang/Object;
 
-    .line 2986
+    .line 3036
     :try_start_0
     # getter for: Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->mMessenger:Landroid/os/Messenger;
-    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13100(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/os/Messenger;
+    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13600(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/os/Messenger;
 
     move-result-object v6
 
@@ -1997,14 +2115,14 @@
 
     goto :goto_0
 
-    .line 2987
+    .line 3037
     :catch_0
     move-exception v2
 
-    .line 2989
+    .line 3039
     .local v2, "e":Landroid/os/RemoteException;
     # getter for: Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->mMessenger:Landroid/os/Messenger;
-    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13100(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/os/Messenger;
+    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13600(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/os/Messenger;
 
     move-result-object v6
 
@@ -2012,7 +2130,7 @@
 
     goto :goto_0
 
-    .line 2993
+    .line 3043
     .end local v0    # "c":Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;
     .end local v2    # "e":Landroid/os/RemoteException;
     .end local v5    # "msg":Landroid/os/Message;
@@ -2034,13 +2152,13 @@
 
     check-cast v4, Landroid/os/Messenger;
 
-    .line 2994
+    .line 3044
     .local v4, "m":Landroid/os/Messenger;
     invoke-direct {p0, v4}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->clearClientInfo(Landroid/os/Messenger;)V
 
     goto :goto_1
 
-    .line 2996
+    .line 3046
     .end local v4    # "m":Landroid/os/Messenger;
     :cond_1
     return-void
@@ -2051,13 +2169,13 @@
     .param p1, "m"    # Landroid/os/Messenger;
 
     .prologue
-    .line 2940
+    .line 2990
     invoke-direct {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->clearLocalServices(Landroid/os/Messenger;)V
 
-    .line 2941
+    .line 2991
     invoke-direct {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->clearServiceRequests(Landroid/os/Messenger;)V
 
-    .line 2942
+    .line 2992
     return-void
 .end method
 
@@ -2066,26 +2184,26 @@
     .param p1, "m"    # Landroid/os/Messenger;
 
     .prologue
-    .line 2923
+    .line 2973
     const/4 v3, 0x0
 
     invoke-direct {p0, p1, v3}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->getClientInfo(Landroid/os/Messenger;Z)Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;
 
     move-result-object v0
 
-    .line 2924
+    .line 2974
     .local v0, "clientInfo":Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;
     if-nez v0, :cond_1
 
-    .line 2937
+    .line 2987
     :cond_0
     :goto_0
     return-void
 
-    .line 2928
+    .line 2978
     :cond_1
     # getter for: Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->mServList:Ljava/util/List;
-    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13000(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Ljava/util/List;
+    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13500(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Ljava/util/List;
 
     move-result-object v3
 
@@ -2107,7 +2225,7 @@
 
     check-cast v2, Landroid/net/wifi/p2p/nsd/WifiP2pServiceInfo;
 
-    .line 2929
+    .line 2979
     .local v2, "servInfo":Landroid/net/wifi/p2p/nsd/WifiP2pServiceInfo;
     iget-object v3, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mWifiNative:Landroid/net/wifi/WifiNative;
 
@@ -2115,19 +2233,19 @@
 
     goto :goto_1
 
-    .line 2932
+    .line 2982
     .end local v2    # "servInfo":Landroid/net/wifi/p2p/nsd/WifiP2pServiceInfo;
     :cond_2
     # getter for: Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->mServList:Ljava/util/List;
-    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13000(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Ljava/util/List;
+    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13500(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Ljava/util/List;
 
     move-result-object v3
 
     invoke-interface {v3}, Ljava/util/List;->clear()V
 
-    .line 2933
+    .line 2983
     # getter for: Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->mReqList:Landroid/util/SparseArray;
-    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$12900(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/util/SparseArray;
+    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13400(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/util/SparseArray;
 
     move-result-object v3
 
@@ -2137,16 +2255,16 @@
 
     if-nez v3, :cond_0
 
-    .line 2935
+    .line 2985
     iget-object v3, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mClientInfoList:Ljava/util/HashMap;
-    invoke-static {v3}, Landroid/net/wifi/p2p/WifiP2pService;->access$12500(Landroid/net/wifi/p2p/WifiP2pService;)Ljava/util/HashMap;
+    invoke-static {v3}, Landroid/net/wifi/p2p/WifiP2pService;->access$13000(Landroid/net/wifi/p2p/WifiP2pService;)Ljava/util/HashMap;
 
     move-result-object v3
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->mMessenger:Landroid/os/Messenger;
-    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13100(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/os/Messenger;
+    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13600(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/os/Messenger;
 
     move-result-object v4
 
@@ -2160,26 +2278,26 @@
     .param p1, "m"    # Landroid/os/Messenger;
 
     .prologue
-    .line 2865
+    .line 2915
     const/4 v1, 0x0
 
     invoke-direct {p0, p1, v1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->getClientInfo(Landroid/os/Messenger;Z)Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;
 
     move-result-object v0
 
-    .line 2866
+    .line 2916
     .local v0, "clientInfo":Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;
     if-nez v0, :cond_1
 
-    .line 2886
+    .line 2936
     :cond_0
     :goto_0
     return-void
 
-    .line 2870
+    .line 2920
     :cond_1
     # getter for: Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->mReqList:Landroid/util/SparseArray;
-    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$12900(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/util/SparseArray;
+    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13400(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/util/SparseArray;
 
     move-result-object v1
 
@@ -2189,17 +2307,17 @@
 
     if-eqz v1, :cond_0
 
-    .line 2874
+    .line 2924
     # getter for: Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->mReqList:Landroid/util/SparseArray;
-    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$12900(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/util/SparseArray;
+    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13400(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/util/SparseArray;
 
     move-result-object v1
 
     invoke-virtual {v1}, Landroid/util/SparseArray;->clear()V
 
-    .line 2876
+    .line 2926
     # getter for: Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->mServList:Ljava/util/List;
-    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13000(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Ljava/util/List;
+    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13500(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Ljava/util/List;
 
     move-result-object v1
 
@@ -2209,33 +2327,33 @@
 
     if-nez v1, :cond_2
 
-    .line 2878
+    .line 2928
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mClientInfoList:Ljava/util/HashMap;
-    invoke-static {v1}, Landroid/net/wifi/p2p/WifiP2pService;->access$12500(Landroid/net/wifi/p2p/WifiP2pService;)Ljava/util/HashMap;
+    invoke-static {v1}, Landroid/net/wifi/p2p/WifiP2pService;->access$13000(Landroid/net/wifi/p2p/WifiP2pService;)Ljava/util/HashMap;
 
     move-result-object v1
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->mMessenger:Landroid/os/Messenger;
-    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13100(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/os/Messenger;
+    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13600(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/os/Messenger;
 
     move-result-object v2
 
     invoke-virtual {v1, v2}, Ljava/util/HashMap;->remove(Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 2881
+    .line 2931
     :cond_2
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mServiceDiscReqId:Ljava/lang/String;
-    invoke-static {v1}, Landroid/net/wifi/p2p/WifiP2pService;->access$5900(Landroid/net/wifi/p2p/WifiP2pService;)Ljava/lang/String;
+    invoke-static {v1}, Landroid/net/wifi/p2p/WifiP2pService;->access$6000(Landroid/net/wifi/p2p/WifiP2pService;)Ljava/lang/String;
 
     move-result-object v1
 
     if-eqz v1, :cond_0
 
-    .line 2885
+    .line 2935
     invoke-direct {p0}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->updateSupplicantServiceRequest()Z
 
     goto :goto_0
@@ -2245,40 +2363,40 @@
     .locals 2
 
     .prologue
-    .line 2803
+    .line 2853
     iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mServiceDiscReqId:Ljava/lang/String;
-    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService;->access$5900(Landroid/net/wifi/p2p/WifiP2pService;)Ljava/lang/String;
+    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService;->access$6000(Landroid/net/wifi/p2p/WifiP2pService;)Ljava/lang/String;
 
     move-result-object v0
 
     if-nez v0, :cond_0
 
-    .line 2807
+    .line 2857
     :goto_0
     return-void
 
-    .line 2805
+    .line 2855
     :cond_0
     iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mWifiNative:Landroid/net/wifi/WifiNative;
 
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mServiceDiscReqId:Ljava/lang/String;
-    invoke-static {v1}, Landroid/net/wifi/p2p/WifiP2pService;->access$5900(Landroid/net/wifi/p2p/WifiP2pService;)Ljava/lang/String;
+    invoke-static {v1}, Landroid/net/wifi/p2p/WifiP2pService;->access$6000(Landroid/net/wifi/p2p/WifiP2pService;)Ljava/lang/String;
 
     move-result-object v1
 
     invoke-virtual {v0, v1}, Landroid/net/wifi/WifiNative;->p2pServDiscCancelReq(Ljava/lang/String;)Z
 
-    .line 2806
+    .line 2856
     iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     const/4 v1, 0x0
 
     # setter for: Landroid/net/wifi/p2p/WifiP2pService;->mServiceDiscReqId:Ljava/lang/String;
-    invoke-static {v0, v1}, Landroid/net/wifi/p2p/WifiP2pService;->access$5902(Landroid/net/wifi/p2p/WifiP2pService;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v0, v1}, Landroid/net/wifi/p2p/WifiP2pService;->access$6002(Landroid/net/wifi/p2p/WifiP2pService;Ljava/lang/String;)Ljava/lang/String;
 
     goto :goto_0
 .end method
@@ -2288,7 +2406,7 @@
     .param p1, "config"    # Landroid/net/wifi/p2p/WifiP2pConfig;
 
     .prologue
-    .line 2372
+    .line 2422
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mWifiNative:Landroid/net/wifi/WifiNative;
 
     iget-object v2, p1, Landroid/net/wifi/p2p/WifiP2pConfig;->deviceAddress:Ljava/lang/String;
@@ -2297,7 +2415,7 @@
 
     move-result v0
 
-    .line 2373
+    .line 2423
     .local v0, "gc":I
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mPeers:Landroid/net/wifi/p2p/WifiP2pDeviceList;
 
@@ -2305,7 +2423,7 @@
 
     invoke-virtual {v1, v2, v0}, Landroid/net/wifi/p2p/WifiP2pDeviceList;->updateGroupCapability(Ljava/lang/String;I)V
 
-    .line 2374
+    .line 2424
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mPeers:Landroid/net/wifi/p2p/WifiP2pDeviceList;
 
     iget-object v2, p1, Landroid/net/wifi/p2p/WifiP2pConfig;->deviceAddress:Ljava/lang/String;
@@ -2323,11 +2441,11 @@
     .param p2, "createIfNotExist"    # Z
 
     .prologue
-    .line 3006
+    .line 3056
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mClientInfoList:Ljava/util/HashMap;
-    invoke-static {v1}, Landroid/net/wifi/p2p/WifiP2pService;->access$12500(Landroid/net/wifi/p2p/WifiP2pService;)Ljava/util/HashMap;
+    invoke-static {v1}, Landroid/net/wifi/p2p/WifiP2pService;->access$13000(Landroid/net/wifi/p2p/WifiP2pService;)Ljava/util/HashMap;
 
     move-result-object v1
 
@@ -2337,13 +2455,13 @@
 
     check-cast v0, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;
 
-    .line 3008
+    .line 3058
     .local v0, "clientInfo":Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;
     if-nez v0, :cond_0
 
     if-eqz p2, :cond_0
 
-    .line 3010
+    .line 3060
     new-instance v0, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;
 
     .end local v0    # "clientInfo":Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;
@@ -2353,18 +2471,18 @@
 
     invoke-direct {v0, v1, p1, v2}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;-><init>(Landroid/net/wifi/p2p/WifiP2pService;Landroid/os/Messenger;Landroid/net/wifi/p2p/WifiP2pService$1;)V
 
-    .line 3011
+    .line 3061
     .restart local v0    # "clientInfo":Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mClientInfoList:Ljava/util/HashMap;
-    invoke-static {v1}, Landroid/net/wifi/p2p/WifiP2pService;->access$12500(Landroid/net/wifi/p2p/WifiP2pService;)Ljava/util/HashMap;
+    invoke-static {v1}, Landroid/net/wifi/p2p/WifiP2pService;->access$13000(Landroid/net/wifi/p2p/WifiP2pService;)Ljava/util/HashMap;
 
     move-result-object v1
 
     invoke-virtual {v1, p1, v0}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 3014
+    .line 3064
     :cond_0
     return-object v0
 .end method
@@ -2374,7 +2492,7 @@
     .param p1, "netId"    # I
 
     .prologue
-    .line 2498
+    .line 2548
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mWifiNative:Landroid/net/wifi/WifiNative;
 
     const-string/jumbo v2, "p2p_client_list"
@@ -2383,14 +2501,14 @@
 
     move-result-object v0
 
-    .line 2499
+    .line 2549
     .local v0, "p2pClients":Ljava/lang/String;
     if-nez v0, :cond_0
 
-    .line 2500
+    .line 2550
     const/4 v1, 0x0
 
-    .line 2502
+    .line 2552
     :goto_0
     return-object v1
 
@@ -2409,21 +2527,21 @@
     .param p1, "deviceAddress"    # Ljava/lang/String;
 
     .prologue
-    .line 2561
+    .line 2611
     iget-object v2, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mPeers:Landroid/net/wifi/p2p/WifiP2pDeviceList;
 
     invoke-virtual {v2, p1}, Landroid/net/wifi/p2p/WifiP2pDeviceList;->get(Ljava/lang/String;)Landroid/net/wifi/p2p/WifiP2pDevice;
 
     move-result-object v0
 
-    .line 2562
+    .line 2612
     .local v0, "d":Landroid/net/wifi/p2p/WifiP2pDevice;
     if-eqz v0, :cond_0
 
-    .line 2563
+    .line 2613
     iget-object v1, v0, Landroid/net/wifi/p2p/WifiP2pDevice;->deviceName:Ljava/lang/String;
 
-    .line 2564
+    .line 2614
     .local v1, "deviceName":Ljava/lang/String;
     const-string v2, ""
 
@@ -2433,14 +2551,14 @@
 
     if-eqz v2, :cond_1
 
-    .line 2570
+    .line 2620
     .end local v1    # "deviceName":Ljava/lang/String;
     .end local p1    # "deviceAddress":Ljava/lang/String;
     :cond_0
     :goto_0
     return-object p1
 
-    .line 2567
+    .line 2617
     .restart local v1    # "deviceName":Ljava/lang/String;
     .restart local p1    # "deviceAddress":Ljava/lang/String;
     :cond_1
@@ -2456,17 +2574,17 @@
     .prologue
     const/4 v9, -0x1
 
-    .line 2476
+    .line 2526
     if-nez p1, :cond_1
 
     move v7, v9
 
-    .line 2489
+    .line 2539
     :cond_0
     :goto_0
     return v7
 
-    .line 2478
+    .line 2528
     :cond_1
     iget-object v10, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mGroups:Landroid/net/wifi/p2p/WifiP2pGroupList;
 
@@ -2474,7 +2592,7 @@
 
     move-result-object v3
 
-    .line 2479
+    .line 2529
     .local v3, "groups":Ljava/util/Collection;, "Ljava/util/Collection<Landroid/net/wifi/p2p/WifiP2pGroup;>;"
     invoke-interface {v3}, Ljava/util/Collection;->iterator()Ljava/util/Iterator;
 
@@ -2493,23 +2611,23 @@
 
     check-cast v2, Landroid/net/wifi/p2p/WifiP2pGroup;
 
-    .line 2480
+    .line 2530
     .local v2, "group":Landroid/net/wifi/p2p/WifiP2pGroup;
     invoke-virtual {v2}, Landroid/net/wifi/p2p/WifiP2pGroup;->getNetworkId()I
 
     move-result v7
 
-    .line 2481
+    .line 2531
     .local v7, "netId":I
     invoke-direct {p0, v7}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->getClientList(I)[Ljava/lang/String;
 
     move-result-object v8
 
-    .line 2482
+    .line 2532
     .local v8, "p2pClientList":[Ljava/lang/String;
     if-eqz v8, :cond_2
 
-    .line 2483
+    .line 2533
     move-object v0, v8
 
     .local v0, "arr$":[Ljava/lang/String;
@@ -2524,7 +2642,7 @@
 
     aget-object v1, v0, v5
 
-    .line 2484
+    .line 2534
     .local v1, "client":Ljava/lang/String;
     invoke-virtual {p1, v1}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
 
@@ -2532,7 +2650,7 @@
 
     if-nez v10, :cond_0
 
-    .line 2483
+    .line 2533
     add-int/lit8 v5, v5, 0x1
 
     goto :goto_1
@@ -2547,7 +2665,7 @@
     :cond_3
     move v7, v9
 
-    .line 2489
+    .line 2539
     goto :goto_0
 .end method
 
@@ -2555,7 +2673,7 @@
     .locals 5
 
     .prologue
-    .line 2574
+    .line 2624
     iget-object v2, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mContext:Landroid/content/Context;
@@ -2573,11 +2691,11 @@
 
     move-result-object v0
 
-    .line 2576
+    .line 2626
     .local v0, "deviceName":Ljava/lang/String;
     if-nez v0, :cond_0
 
-    .line 2579
+    .line 2629
     iget-object v2, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mContext:Landroid/content/Context;
@@ -2595,7 +2713,7 @@
 
     move-result-object v1
 
-    .line 2581
+    .line 2631
     .local v1, "id":Ljava/lang/String;
     new-instance v2, Ljava/lang/StringBuilder;
 
@@ -2623,7 +2741,7 @@
 
     move-result-object v0
 
-    .line 2583
+    .line 2633
     .end local v0    # "deviceName":Ljava/lang/String;
     .end local v1    # "id":Ljava/lang/String;
     :cond_0
@@ -2636,10 +2754,10 @@
     .prologue
     const/4 v3, 0x0
 
-    .line 2662
+    .line 2712
     invoke-direct {p0}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->resetWifiP2pInfo()V
 
-    .line 2663
+    .line 2713
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mNetworkInfo:Landroid/net/NetworkInfo;
@@ -2651,20 +2769,20 @@
 
     invoke-virtual {v1, v2, v3, v3}, Landroid/net/NetworkInfo;->setDetailedState(Landroid/net/NetworkInfo$DetailedState;Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 2664
+    .line 2714
     invoke-direct {p0}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->sendP2pConnectionChangedBroadcast()V
 
-    .line 2666
+    .line 2716
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mAutonomousGroup:Z
-    invoke-static {v1}, Landroid/net/wifi/p2p/WifiP2pService;->access$5300(Landroid/net/wifi/p2p/WifiP2pService;)Z
+    invoke-static {v1}, Landroid/net/wifi/p2p/WifiP2pService;->access$5400(Landroid/net/wifi/p2p/WifiP2pService;)Z
 
     move-result v1
 
     if-nez v1, :cond_2
 
-    .line 2669
+    .line 2719
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mPeers:Landroid/net/wifi/p2p/WifiP2pDeviceList;
 
     iget-object v2, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mPeersLostDuringConnection:Landroid/net/wifi/p2p/WifiP2pDeviceList;
@@ -2673,7 +2791,7 @@
 
     move-result v0
 
-    .line 2670
+    .line 2720
     .local v0, "peersChanged":Z
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mPeers:Landroid/net/wifi/p2p/WifiP2pDeviceList;
 
@@ -2687,41 +2805,41 @@
 
     if-eqz v1, :cond_0
 
-    .line 2671
+    .line 2721
     const/4 v0, 0x1
 
-    .line 2672
+    .line 2722
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mWifiNative:Landroid/net/wifi/WifiNative;
 
     invoke-virtual {v1}, Landroid/net/wifi/WifiNative;->p2pFlush()Z
 
-    .line 2674
+    .line 2724
     :cond_0
     if-eqz v0, :cond_1
 
-    .line 2675
+    .line 2725
     invoke-direct {p0}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->sendPeersChangedBroadcast()V
 
-    .line 2678
+    .line 2728
     :cond_1
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mPeersLostDuringConnection:Landroid/net/wifi/p2p/WifiP2pDeviceList;
 
     invoke-virtual {v1}, Landroid/net/wifi/p2p/WifiP2pDeviceList;->clear()Z
 
-    .line 2680
+    .line 2730
     .end local v0    # "peersChanged":Z
     :cond_2
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # setter for: Landroid/net/wifi/p2p/WifiP2pService;->mServiceDiscReqId:Ljava/lang/String;
-    invoke-static {v1, v3}, Landroid/net/wifi/p2p/WifiP2pService;->access$5902(Landroid/net/wifi/p2p/WifiP2pService;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v1, v3}, Landroid/net/wifi/p2p/WifiP2pService;->access$6002(Landroid/net/wifi/p2p/WifiP2pService;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 2681
+    .line 2731
     const v1, 0x22001
 
     invoke-virtual {p0, v1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->sendMessage(I)V
 
-    .line 2682
+    .line 2732
     return-void
 .end method
 
@@ -2733,7 +2851,7 @@
 
     const/4 v6, 0x0
 
-    .line 2685
+    .line 2735
     iget-object v4, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mGroup:Landroid/net/wifi/p2p/WifiP2pGroup;
 
     invoke-virtual {v4}, Landroid/net/wifi/p2p/WifiP2pGroup;->isGroupOwner()Z
@@ -2742,7 +2860,7 @@
 
     if-eqz v4, :cond_1
 
-    .line 2686
+    .line 2736
     iget-object v4, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mGroup:Landroid/net/wifi/p2p/WifiP2pGroup;
 
     invoke-virtual {v4}, Landroid/net/wifi/p2p/WifiP2pGroup;->getInterface()Ljava/lang/String;
@@ -2751,7 +2869,7 @@
 
     invoke-direct {p0, v4}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->stopDhcpServer(Ljava/lang/String;)V
 
-    .line 2695
+    .line 2745
     :goto_0
     :try_start_0
     iget-object v4, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
@@ -2768,7 +2886,7 @@
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 2699
+    .line 2749
     :goto_1
     iget-object v4, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mGroup:Landroid/net/wifi/p2p/WifiP2pGroup;
 
@@ -2780,7 +2898,7 @@
 
     invoke-static {v4, v5}, Landroid/net/NetworkUtils;->resetConnections(Ljava/lang/String;I)I
 
-    .line 2703
+    .line 2753
     iget-object v4, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mWifiNative:Landroid/net/wifi/WifiNative;
 
     iget-object v5, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mGroup:Landroid/net/wifi/p2p/WifiP2pGroup;
@@ -2791,10 +2909,10 @@
 
     invoke-virtual {v4, v5, v6}, Landroid/net/wifi/WifiNative;->setP2pGroupIdle(Ljava/lang/String;I)Z
 
-    .line 2705
+    .line 2755
     const/4 v3, 0x0
 
-    .line 2708
+    .line 2758
     .local v3, "peersChanged":Z
     iget-object v4, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mGroup:Landroid/net/wifi/p2p/WifiP2pGroup;
 
@@ -2821,7 +2939,7 @@
 
     check-cast v0, Landroid/net/wifi/p2p/WifiP2pDevice;
 
-    .line 2709
+    .line 2759
     .local v0, "d":Landroid/net/wifi/p2p/WifiP2pDevice;
     iget-object v4, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mPeers:Landroid/net/wifi/p2p/WifiP2pDeviceList;
 
@@ -2835,7 +2953,7 @@
 
     goto :goto_2
 
-    .line 2689
+    .line 2739
     .end local v0    # "d":Landroid/net/wifi/p2p/WifiP2pDevice;
     .end local v2    # "i$":Ljava/util/Iterator;
     .end local v3    # "peersChanged":Z
@@ -2843,7 +2961,7 @@
     iget-object v4, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mDhcpStateMachine:Landroid/net/DhcpStateMachine;
-    invoke-static {v4}, Landroid/net/wifi/p2p/WifiP2pService;->access$9000(Landroid/net/wifi/p2p/WifiP2pService;)Landroid/net/DhcpStateMachine;
+    invoke-static {v4}, Landroid/net/wifi/p2p/WifiP2pService;->access$9200(Landroid/net/wifi/p2p/WifiP2pService;)Landroid/net/DhcpStateMachine;
 
     move-result-object v4
 
@@ -2851,29 +2969,29 @@
 
     invoke-virtual {v4, v5}, Landroid/net/DhcpStateMachine;->sendMessage(I)V
 
-    .line 2690
+    .line 2740
     iget-object v4, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mDhcpStateMachine:Landroid/net/DhcpStateMachine;
-    invoke-static {v4}, Landroid/net/wifi/p2p/WifiP2pService;->access$9000(Landroid/net/wifi/p2p/WifiP2pService;)Landroid/net/DhcpStateMachine;
+    invoke-static {v4}, Landroid/net/wifi/p2p/WifiP2pService;->access$9200(Landroid/net/wifi/p2p/WifiP2pService;)Landroid/net/DhcpStateMachine;
 
     move-result-object v4
 
     invoke-virtual {v4}, Landroid/net/DhcpStateMachine;->doQuit()V
 
-    .line 2691
+    .line 2741
     iget-object v4, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # setter for: Landroid/net/wifi/p2p/WifiP2pService;->mDhcpStateMachine:Landroid/net/DhcpStateMachine;
-    invoke-static {v4, v7}, Landroid/net/wifi/p2p/WifiP2pService;->access$9002(Landroid/net/wifi/p2p/WifiP2pService;Landroid/net/DhcpStateMachine;)Landroid/net/DhcpStateMachine;
+    invoke-static {v4, v7}, Landroid/net/wifi/p2p/WifiP2pService;->access$9202(Landroid/net/wifi/p2p/WifiP2pService;Landroid/net/DhcpStateMachine;)Landroid/net/DhcpStateMachine;
 
     goto :goto_0
 
-    .line 2696
+    .line 2746
     :catch_0
     move-exception v1
 
-    .line 2697
+    .line 2747
     .local v1, "e":Ljava/lang/Exception;
     new-instance v4, Ljava/lang/StringBuilder;
 
@@ -2897,7 +3015,7 @@
 
     goto :goto_1
 
-    .line 2711
+    .line 2761
     .end local v1    # "e":Ljava/lang/Exception;
     .restart local v2    # "i$":Ljava/util/Iterator;
     .restart local v3    # "peersChanged":Z
@@ -2918,7 +3036,7 @@
 
     const/4 v3, 0x1
 
-    .line 2712
+    .line 2762
     :cond_3
     iget-object v4, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mPeers:Landroid/net/wifi/p2p/WifiP2pDeviceList;
 
@@ -2932,39 +3050,39 @@
 
     const/4 v3, 0x1
 
-    .line 2713
+    .line 2763
     :cond_4
     if-eqz v3, :cond_5
 
-    .line 2714
+    .line 2764
     invoke-direct {p0}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->sendPeersChangedBroadcast()V
 
-    .line 2717
+    .line 2767
     :cond_5
     iput-object v7, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mGroup:Landroid/net/wifi/p2p/WifiP2pGroup;
 
-    .line 2718
+    .line 2768
     iget-object v4, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mPeersLostDuringConnection:Landroid/net/wifi/p2p/WifiP2pDeviceList;
 
     invoke-virtual {v4}, Landroid/net/wifi/p2p/WifiP2pDeviceList;->clear()Z
 
-    .line 2719
+    .line 2769
     iget-object v4, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # setter for: Landroid/net/wifi/p2p/WifiP2pService;->mServiceDiscReqId:Ljava/lang/String;
-    invoke-static {v4, v7}, Landroid/net/wifi/p2p/WifiP2pService;->access$5902(Landroid/net/wifi/p2p/WifiP2pService;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v4, v7}, Landroid/net/wifi/p2p/WifiP2pService;->access$6002(Landroid/net/wifi/p2p/WifiP2pService;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 2721
+    .line 2771
     iget-object v4, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mTempoarilyDisconnectedWifi:Z
-    invoke-static {v4}, Landroid/net/wifi/p2p/WifiP2pService;->access$10500(Landroid/net/wifi/p2p/WifiP2pService;)Z
+    invoke-static {v4}, Landroid/net/wifi/p2p/WifiP2pService;->access$10800(Landroid/net/wifi/p2p/WifiP2pService;)Z
 
     move-result v4
 
     if-eqz v4, :cond_6
 
-    .line 2722
+    .line 2772
     iget-object v4, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mWifiChannel:Lcom/android/internal/util/AsyncChannel;
@@ -2976,13 +3094,13 @@
 
     invoke-virtual {v4, v5, v6}, Lcom/android/internal/util/AsyncChannel;->sendMessage(II)V
 
-    .line 2723
+    .line 2773
     iget-object v4, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # setter for: Landroid/net/wifi/p2p/WifiP2pService;->mTempoarilyDisconnectedWifi:Z
-    invoke-static {v4, v6}, Landroid/net/wifi/p2p/WifiP2pService;->access$10502(Landroid/net/wifi/p2p/WifiP2pService;Z)Z
+    invoke-static {v4, v6}, Landroid/net/wifi/p2p/WifiP2pService;->access$10802(Landroid/net/wifi/p2p/WifiP2pService;Z)Z
 
-    .line 2725
+    .line 2775
     :cond_6
     return-void
 .end method
@@ -2991,14 +3109,14 @@
     .locals 4
 
     .prologue
-    .line 2625
+    .line 2675
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mWifiNative:Landroid/net/wifi/WifiNative;
 
     const/4 v2, 0x1
 
     invoke-virtual {v1, v2}, Landroid/net/wifi/WifiNative;->setPersistentReconnect(Z)Z
 
-    .line 2626
+    .line 2676
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mThisDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
@@ -3012,7 +3130,7 @@
 
     iput-object v2, v1, Landroid/net/wifi/p2p/WifiP2pDevice;->deviceName:Ljava/lang/String;
 
-    .line 2627
+    .line 2677
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mWifiNative:Landroid/net/wifi/WifiNative;
 
     iget-object v2, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
@@ -3026,7 +3144,7 @@
 
     invoke-virtual {v1, v2}, Landroid/net/wifi/WifiNative;->setDeviceName(Ljava/lang/String;)Z
 
-    .line 2629
+    .line 2679
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mWifiNative:Landroid/net/wifi/WifiNative;
 
     new-instance v2, Ljava/lang/StringBuilder;
@@ -3058,7 +3176,7 @@
 
     invoke-virtual {v1, v2}, Landroid/net/wifi/WifiNative;->setP2pSsidPostfix(Ljava/lang/String;)Z
 
-    .line 2630
+    .line 2680
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mWifiNative:Landroid/net/wifi/WifiNative;
 
     iget-object v2, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
@@ -3072,21 +3190,21 @@
 
     invoke-virtual {v1, v2}, Landroid/net/wifi/WifiNative;->setDeviceType(Ljava/lang/String;)Z
 
-    .line 2633
+    .line 2683
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mWifiNative:Landroid/net/wifi/WifiNative;
 
     const-string/jumbo v2, "virtual_push_button physical_display keypad"
 
     invoke-virtual {v1, v2}, Landroid/net/wifi/WifiNative;->setConfigMethods(Ljava/lang/String;)Z
 
-    .line 2635
+    .line 2685
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mWifiNative:Landroid/net/wifi/WifiNative;
 
     const-string/jumbo v2, "sta"
 
     invoke-virtual {v1, v2}, Landroid/net/wifi/WifiNative;->setConcurrencyPriority(Ljava/lang/String;)Z
 
-    .line 2637
+    .line 2687
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mThisDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
@@ -3102,48 +3220,48 @@
 
     iput-object v2, v1, Landroid/net/wifi/p2p/WifiP2pDevice;->deviceAddress:Ljava/lang/String;
 
-    .line 2638
+    .line 2688
     const/4 v1, 0x3
 
     invoke-direct {p0, v1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->updateThisDevice(I)V
 
-    .line 2641
+    .line 2691
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mClientInfoList:Ljava/util/HashMap;
-    invoke-static {v1}, Landroid/net/wifi/p2p/WifiP2pService;->access$12500(Landroid/net/wifi/p2p/WifiP2pService;)Ljava/util/HashMap;
+    invoke-static {v1}, Landroid/net/wifi/p2p/WifiP2pService;->access$13000(Landroid/net/wifi/p2p/WifiP2pService;)Ljava/util/HashMap;
 
     move-result-object v1
 
     invoke-virtual {v1}, Ljava/util/HashMap;->clear()V
 
-    .line 2642
+    .line 2692
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mWifiNative:Landroid/net/wifi/WifiNative;
 
     invoke-virtual {v1}, Landroid/net/wifi/WifiNative;->p2pFlush()Z
 
-    .line 2643
+    .line 2693
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mWifiNative:Landroid/net/wifi/WifiNative;
 
     invoke-virtual {v1}, Landroid/net/wifi/WifiNative;->p2pServiceFlush()Z
 
-    .line 2644
+    .line 2694
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     const/4 v2, 0x0
 
     # setter for: Landroid/net/wifi/p2p/WifiP2pService;->mServiceTransactionId:B
-    invoke-static {v1, v2}, Landroid/net/wifi/p2p/WifiP2pService;->access$12602(Landroid/net/wifi/p2p/WifiP2pService;B)B
+    invoke-static {v1, v2}, Landroid/net/wifi/p2p/WifiP2pService;->access$13102(Landroid/net/wifi/p2p/WifiP2pService;B)B
 
-    .line 2645
+    .line 2695
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     const/4 v2, 0x0
 
     # setter for: Landroid/net/wifi/p2p/WifiP2pService;->mServiceDiscReqId:Ljava/lang/String;
-    invoke-static {v1, v2}, Landroid/net/wifi/p2p/WifiP2pService;->access$5902(Landroid/net/wifi/p2p/WifiP2pService;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v1, v2}, Landroid/net/wifi/p2p/WifiP2pService;->access$6002(Landroid/net/wifi/p2p/WifiP2pService;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 2647
+    .line 2697
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mContext:Landroid/content/Context;
@@ -3161,7 +3279,7 @@
 
     move-result-object v0
 
-    .line 2649
+    .line 2699
     .local v0, "countryCode":Ljava/lang/String;
     if-eqz v0, :cond_0
 
@@ -3171,11 +3289,11 @@
 
     if-nez v1, :cond_0
 
-    .line 2650
+    .line 2700
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mP2pStateMachine:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
-    invoke-static {v1}, Landroid/net/wifi/p2p/WifiP2pService;->access$12700(Landroid/net/wifi/p2p/WifiP2pService;)Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
+    invoke-static {v1}, Landroid/net/wifi/p2p/WifiP2pService;->access$13200(Landroid/net/wifi/p2p/WifiP2pService;)Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
 
     move-result-object v1
 
@@ -3183,10 +3301,10 @@
 
     invoke-virtual {v1, v2, v0}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->sendMessage(ILjava/lang/Object;)V
 
-    .line 2653
+    .line 2703
     :cond_0
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->RELOAD:Ljava/lang/Boolean;
-    invoke-static {}, Landroid/net/wifi/p2p/WifiP2pService;->access$12400()Ljava/lang/Boolean;
+    invoke-static {}, Landroid/net/wifi/p2p/WifiP2pService;->access$12900()Ljava/lang/Boolean;
 
     move-result-object v1
 
@@ -3196,7 +3314,7 @@
 
     invoke-direct {p0, v1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->updatePersistentNetworks(Z)V
 
-    .line 2654
+    .line 2704
     return-void
 .end method
 
@@ -3207,15 +3325,15 @@
     .prologue
     const/4 v0, 0x1
 
-    .line 2360
+    .line 2410
     if-nez p1, :cond_1
 
-    .line 2363
+    .line 2413
     :cond_0
     :goto_0
     return v0
 
-    .line 2361
+    .line 2411
     :cond_1
     iget-object v1, p1, Landroid/net/wifi/p2p/WifiP2pConfig;->deviceAddress:Ljava/lang/String;
 
@@ -3225,7 +3343,7 @@
 
     if-nez v1, :cond_0
 
-    .line 2362
+    .line 2412
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mPeers:Landroid/net/wifi/p2p/WifiP2pDeviceList;
 
     iget-object v2, p1, Landroid/net/wifi/p2p/WifiP2pConfig;->deviceAddress:Ljava/lang/String;
@@ -3236,7 +3354,7 @@
 
     if-eqz v1, :cond_0
 
-    .line 2363
+    .line 2413
     const/4 v0, 0x0
 
     goto :goto_0
@@ -3246,18 +3364,18 @@
     .locals 9
 
     .prologue
-    .line 2204
+    .line 2254
     invoke-static {}, Landroid/content/res/Resources;->getSystem()Landroid/content/res/Resources;
 
     move-result-object v3
 
-    .line 2205
+    .line 2255
     .local v3, "r":Landroid/content/res/Resources;
     iget-object v6, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mSavedPeerConfig:Landroid/net/wifi/p2p/WifiP2pConfig;
 
     iget-object v5, v6, Landroid/net/wifi/p2p/WifiP2pConfig;->wps:Landroid/net/wifi/WpsInfo;
 
-    .line 2206
+    .line 2256
     .local v5, "wps":Landroid/net/wifi/WpsInfo;
     iget-object v6, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
@@ -3278,7 +3396,7 @@
 
     move-result-object v4
 
-    .line 2209
+    .line 2259
     .local v4, "textEntryView":Landroid/view/View;
     const v6, 0x10202db
 
@@ -3288,9 +3406,9 @@
 
     check-cast v1, Landroid/view/ViewGroup;
 
-    .line 2210
+    .line 2260
     .local v1, "group":Landroid/view/ViewGroup;
-    const v6, 0x104051d
+    const v6, 0x1040534
 
     iget-object v7, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mSavedPeerConfig:Landroid/net/wifi/p2p/WifiP2pConfig;
 
@@ -3302,7 +3420,7 @@
 
     invoke-direct {p0, v1, v6, v7}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->addRowToDialog(Landroid/view/ViewGroup;ILjava/lang/String;)V
 
-    .line 2212
+    .line 2262
     const v6, 0x102038e
 
     invoke-virtual {v4, v6}, Landroid/view/View;->findViewById(I)Landroid/view/View;
@@ -3311,7 +3429,7 @@
 
     check-cast v2, Landroid/widget/EditText;
 
-    .line 2214
+    .line 2264
     .local v2, "pin":Landroid/widget/EditText;
     new-instance v6, Landroid/app/AlertDialog$Builder;
 
@@ -3324,7 +3442,7 @@
 
     invoke-direct {v6, v7}, Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;)V
 
-    const v7, 0x104051c
+    const v7, 0x1040533
 
     invoke-virtual {v3, v7}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -3338,7 +3456,7 @@
 
     move-result-object v6
 
-    const v7, 0x1040519
+    const v7, 0x1040530
 
     invoke-virtual {v3, v7}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -3352,7 +3470,7 @@
 
     move-result-object v6
 
-    const v7, 0x104051a
+    const v7, 0x1040531
 
     invoke-virtual {v3, v7}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -3378,13 +3496,13 @@
 
     move-result-object v0
 
-    .line 2243
+    .line 2293
     .local v0, "dialog":Landroid/app/AlertDialog;
     iget v6, v5, Landroid/net/wifi/WpsInfo;->setup:I
 
     packed-switch v6, :pswitch_data_0
 
-    .line 2256
+    .line 2306
     :goto_0
     invoke-virtual {v3}, Landroid/content/res/Resources;->getConfiguration()Landroid/content/res/Configuration;
 
@@ -3398,14 +3516,14 @@
 
     if-ne v6, v7, :cond_0
 
-    .line 2259
+    .line 2309
     new-instance v6, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$6;
 
     invoke-direct {v6, p0}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine$6;-><init>(Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;)V
 
     invoke-virtual {v0, v6}, Landroid/app/AlertDialog;->setOnKeyListener(Landroid/content/DialogInterface$OnKeyListener;)V
 
-    .line 2276
+    .line 2326
     :cond_0
     invoke-virtual {v0}, Landroid/app/AlertDialog;->getWindow()Landroid/view/Window;
 
@@ -3415,13 +3533,13 @@
 
     invoke-virtual {v6, v7}, Landroid/view/Window;->setType(I)V
 
-    .line 2277
+    .line 2327
     invoke-virtual {v0}, Landroid/app/AlertDialog;->show()V
 
-    .line 2278
+    .line 2328
     return-void
 
-    .line 2246
+    .line 2296
     :pswitch_0
     const v6, 0x102038d
 
@@ -3435,9 +3553,9 @@
 
     goto :goto_0
 
-    .line 2250
+    .line 2300
     :pswitch_1
-    const v6, 0x1040520
+    const v6, 0x1040537
 
     iget-object v7, v5, Landroid/net/wifi/WpsInfo;->pin:Ljava/lang/String;
 
@@ -3445,7 +3563,7 @@
 
     goto :goto_0
 
-    .line 2243
+    .line 2293
     nop
 
     :pswitch_data_0
@@ -3463,12 +3581,12 @@
     .prologue
     const/4 v6, 0x0
 
-    .line 2155
+    .line 2205
     invoke-static {}, Landroid/content/res/Resources;->getSystem()Landroid/content/res/Resources;
 
     move-result-object v2
 
-    .line 2157
+    .line 2207
     .local v2, "r":Landroid/content/res/Resources;
     iget-object v4, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
@@ -3487,7 +3605,7 @@
 
     move-result-object v3
 
-    .line 2160
+    .line 2210
     .local v3, "textEntryView":Landroid/view/View;
     const v4, 0x10202db
 
@@ -3497,9 +3615,9 @@
 
     check-cast v1, Landroid/view/ViewGroup;
 
-    .line 2161
+    .line 2211
     .local v1, "group":Landroid/view/ViewGroup;
-    const v4, 0x104051e
+    const v4, 0x1040535
 
     invoke-direct {p0, p2}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->getDeviceName(Ljava/lang/String;)Ljava/lang/String;
 
@@ -3507,12 +3625,12 @@
 
     invoke-direct {p0, v1, v4, v5}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->addRowToDialog(Landroid/view/ViewGroup;ILjava/lang/String;)V
 
-    .line 2162
-    const v4, 0x1040520
+    .line 2212
+    const v4, 0x1040537
 
     invoke-direct {p0, v1, v4, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->addRowToDialog(Landroid/view/ViewGroup;ILjava/lang/String;)V
 
-    .line 2164
+    .line 2214
     new-instance v4, Landroid/app/AlertDialog$Builder;
 
     iget-object v5, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
@@ -3524,7 +3642,7 @@
 
     invoke-direct {v4, v5}, Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;)V
 
-    const v5, 0x104051b
+    const v5, 0x1040532
 
     invoke-virtual {v2, v5}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -3552,7 +3670,7 @@
 
     move-result-object v0
 
-    .line 2169
+    .line 2219
     .local v0, "dialog":Landroid/app/AlertDialog;
     invoke-virtual {v0}, Landroid/app/AlertDialog;->getWindow()Landroid/view/Window;
 
@@ -3562,10 +3680,10 @@
 
     invoke-virtual {v4, v5}, Landroid/view/Window;->setType(I)V
 
-    .line 2170
+    .line 2220
     invoke-virtual {v0}, Landroid/app/AlertDialog;->show()V
 
-    .line 2171
+    .line 2221
     return-void
 .end method
 
@@ -3573,12 +3691,12 @@
     .locals 5
 
     .prologue
-    .line 2135
+    .line 2185
     invoke-static {}, Landroid/content/res/Resources;->getSystem()Landroid/content/res/Resources;
 
     move-result-object v1
 
-    .line 2136
+    .line 2186
     .local v1, "r":Landroid/content/res/Resources;
     new-instance v2, Landroid/app/AlertDialog$Builder;
 
@@ -3591,7 +3709,7 @@
 
     invoke-direct {v2, v3}, Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;)V
 
-    const v3, 0x1040514
+    const v3, 0x104052b
 
     invoke-virtual {v1, v3}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -3601,7 +3719,7 @@
 
     move-result-object v2
 
-    const v3, 0x1040516
+    const v3, 0x104052d
 
     invoke-virtual {v1, v3}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -3627,7 +3745,7 @@
 
     move-result-object v0
 
-    .line 2141
+    .line 2191
     .local v0, "dialog":Landroid/app/AlertDialog;
     invoke-virtual {v0}, Landroid/app/AlertDialog;->getWindow()Landroid/view/Window;
 
@@ -3637,10 +3755,10 @@
 
     invoke-virtual {v2, v3}, Landroid/view/Window;->setType(I)V
 
-    .line 2142
+    .line 2192
     invoke-virtual {v0}, Landroid/app/AlertDialog;->show()V
 
-    .line 2143
+    .line 2193
     return-void
 .end method
 
@@ -3650,20 +3768,20 @@
     .param p2, "peerAddress"    # Ljava/lang/String;
 
     .prologue
-    .line 2174
+    .line 2224
     invoke-static {}, Landroid/content/res/Resources;->getSystem()Landroid/content/res/Resources;
 
     move-result-object v2
 
-    .line 2175
+    .line 2225
     .local v2, "r":Landroid/content/res/Resources;
     move-object v3, p2
 
-    .line 2176
+    .line 2226
     .local v3, "tempDevAddress":Ljava/lang/String;
     move-object v4, p1
 
-    .line 2178
+    .line 2228
     .local v4, "tempPin":Ljava/lang/String;
     iget-object v6, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
@@ -3684,7 +3802,7 @@
 
     move-result-object v5
 
-    .line 2181
+    .line 2231
     .local v5, "textEntryView":Landroid/view/View;
     const v6, 0x10202db
 
@@ -3694,9 +3812,9 @@
 
     check-cast v1, Landroid/view/ViewGroup;
 
-    .line 2182
+    .line 2232
     .local v1, "group":Landroid/view/ViewGroup;
-    const v6, 0x104051e
+    const v6, 0x1040535
 
     invoke-direct {p0, p2}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->getDeviceName(Ljava/lang/String;)Ljava/lang/String;
 
@@ -3704,12 +3822,12 @@
 
     invoke-direct {p0, v1, v6, v7}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->addRowToDialog(Landroid/view/ViewGroup;ILjava/lang/String;)V
 
-    .line 2183
-    const v6, 0x1040520
+    .line 2233
+    const v6, 0x1040537
 
     invoke-direct {p0, v1, v6, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->addRowToDialog(Landroid/view/ViewGroup;ILjava/lang/String;)V
 
-    .line 2185
+    .line 2235
     new-instance v6, Landroid/app/AlertDialog$Builder;
 
     iget-object v7, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
@@ -3721,7 +3839,7 @@
 
     invoke-direct {v6, v7}, Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;)V
 
-    const v7, 0x104051b
+    const v7, 0x1040532
 
     invoke-virtual {v2, v7}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -3735,7 +3853,7 @@
 
     move-result-object v6
 
-    const v7, 0x1040519
+    const v7, 0x1040530
 
     invoke-virtual {v2, v7}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -3759,7 +3877,7 @@
 
     move-result-object v0
 
-    .line 2199
+    .line 2249
     .local v0, "dialog":Landroid/app/AlertDialog;
     invoke-virtual {v0}, Landroid/app/AlertDialog;->getWindow()Landroid/view/Window;
 
@@ -3769,10 +3887,10 @@
 
     invoke-virtual {v6, v7}, Landroid/view/Window;->setType(I)V
 
-    .line 2200
+    .line 2250
     invoke-virtual {v0}, Landroid/app/AlertDialog;->show()V
 
-    .line 2201
+    .line 2251
     return-void
 .end method
 
@@ -3781,18 +3899,18 @@
     .param p1, "srcMsg"    # Landroid/os/Message;
 
     .prologue
-    .line 2755
+    .line 2805
     invoke-static {}, Landroid/os/Message;->obtain()Landroid/os/Message;
 
     move-result-object v0
 
-    .line 2756
+    .line 2806
     .local v0, "msg":Landroid/os/Message;
     iget v1, p1, Landroid/os/Message;->arg2:I
 
     iput v1, v0, Landroid/os/Message;->arg2:I
 
-    .line 2757
+    .line 2807
     return-object v0
 .end method
 
@@ -3801,30 +3919,30 @@
     .param p1, "config"    # Landroid/net/wifi/p2p/WifiP2pConfig;
 
     .prologue
-    .line 2382
+    .line 2432
     const/4 v1, 0x0
 
-    .line 2383
+    .line 2433
     .local v1, "join":Z
     invoke-direct {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->fetchCurrentDeviceDetails(Landroid/net/wifi/p2p/WifiP2pConfig;)Landroid/net/wifi/p2p/WifiP2pDevice;
 
     move-result-object v0
 
-    .line 2385
+    .line 2435
     .local v0, "dev":Landroid/net/wifi/p2p/WifiP2pDevice;
     iget-object v3, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mIsInvite:Z
-    invoke-static {v3}, Landroid/net/wifi/p2p/WifiP2pService;->access$6300(Landroid/net/wifi/p2p/WifiP2pService;)Z
+    invoke-static {v3}, Landroid/net/wifi/p2p/WifiP2pService;->access$6400(Landroid/net/wifi/p2p/WifiP2pService;)Z
 
     move-result v3
 
     if-eqz v3, :cond_0
 
-    .line 2386
+    .line 2436
     const/4 v1, 0x1
 
-    .line 2391
+    .line 2441
     :goto_0
     iget-object v3, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mWifiNative:Landroid/net/wifi/WifiNative;
 
@@ -3832,31 +3950,31 @@
 
     move-result-object v2
 
-    .line 2393
+    .line 2443
     .local v2, "pin":Ljava/lang/String;
     :try_start_0
     invoke-static {v2}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
 
-    .line 2394
+    .line 2444
     iget-object v3, p1, Landroid/net/wifi/p2p/WifiP2pConfig;->deviceAddress:Ljava/lang/String;
 
     invoke-direct {p0, v2, v3}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->notifyInvitationSent(Ljava/lang/String;Ljava/lang/String;)V
     :try_end_0
     .catch Ljava/lang/NumberFormatException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 2398
+    .line 2448
     :goto_1
     iget-object v3, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     const/4 v4, 0x0
 
     # setter for: Landroid/net/wifi/p2p/WifiP2pService;->mIsInvite:Z
-    invoke-static {v3, v4}, Landroid/net/wifi/p2p/WifiP2pService;->access$6302(Landroid/net/wifi/p2p/WifiP2pService;Z)Z
+    invoke-static {v3, v4}, Landroid/net/wifi/p2p/WifiP2pService;->access$6402(Landroid/net/wifi/p2p/WifiP2pService;Z)Z
 
-    .line 2399
+    .line 2449
     return-void
 
-    .line 2388
+    .line 2438
     .end local v2    # "pin":Ljava/lang/String;
     :cond_0
     invoke-virtual {v0}, Landroid/net/wifi/p2p/WifiP2pDevice;->isGroupOwner()Z
@@ -3865,7 +3983,7 @@
 
     goto :goto_0
 
-    .line 2395
+    .line 2445
     .restart local v2    # "pin":Ljava/lang/String;
     :catch_0
     move-exception v3
@@ -3882,18 +4000,18 @@
 
     const/4 v4, 0x0
 
-    .line 2408
+    .line 2458
     invoke-direct {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->fetchCurrentDeviceDetails(Landroid/net/wifi/p2p/WifiP2pConfig;)Landroid/net/wifi/p2p/WifiP2pDevice;
 
     move-result-object v0
 
-    .line 2410
+    .line 2460
     .local v0, "dev":Landroid/net/wifi/p2p/WifiP2pDevice;
     invoke-virtual {v0}, Landroid/net/wifi/p2p/WifiP2pDevice;->isGroupOwner()Z
 
     move-result v1
 
-    .line 2411
+    .line 2461
     .local v1, "join":Z
     iget-object v6, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mWifiNative:Landroid/net/wifi/WifiNative;
 
@@ -3903,7 +4021,7 @@
 
     move-result-object v3
 
-    .line 2414
+    .line 2464
     .local v3, "ssid":Ljava/lang/String;
     if-eqz v1, :cond_2
 
@@ -3913,10 +4031,10 @@
 
     if-eqz v6, :cond_2
 
-    .line 2419
+    .line 2469
     const/4 v1, 0x0
 
-    .line 2431
+    .line 2481
     :cond_0
     if-nez v1, :cond_3
 
@@ -3926,21 +4044,21 @@
 
     if-eqz v6, :cond_3
 
-    .line 2432
+    .line 2482
     const-string/jumbo v5, "target device reaches the device limit."
 
     invoke-virtual {p0, v5}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->loge(Ljava/lang/String;)V
 
-    .line 2463
+    .line 2513
     :cond_1
     :goto_0
     return v4
 
-    .line 2420
+    .line 2470
     :cond_2
     if-eqz v1, :cond_0
 
-    .line 2421
+    .line 2471
     iget-object v6, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mGroups:Landroid/net/wifi/p2p/WifiP2pGroupList;
 
     iget-object v7, v0, Landroid/net/wifi/p2p/WifiP2pDevice;->deviceAddress:Ljava/lang/String;
@@ -3949,11 +4067,11 @@
 
     move-result v2
 
-    .line 2422
+    .line 2472
     .local v2, "netId":I
     if-ltz v2, :cond_0
 
-    .line 2424
+    .line 2474
     iget-object v6, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mWifiNative:Landroid/net/wifi/WifiNative;
 
     invoke-virtual {v6, v2}, Landroid/net/wifi/WifiNative;->p2pGroupAdd(I)Z
@@ -3964,10 +4082,10 @@
 
     move v4, v5
 
-    .line 2427
+    .line 2477
     goto :goto_0
 
-    .line 2436
+    .line 2486
     .end local v2    # "netId":I
     :cond_3
     if-nez v1, :cond_1
@@ -3978,16 +4096,16 @@
 
     if-eqz v6, :cond_1
 
-    .line 2437
+    .line 2487
     const/4 v2, -0x2
 
-    .line 2438
+    .line 2488
     .restart local v2    # "netId":I
     iget v6, p1, Landroid/net/wifi/p2p/WifiP2pConfig;->netId:I
 
     if-ltz v6, :cond_6
 
-    .line 2439
+    .line 2489
     iget-object v6, p1, Landroid/net/wifi/p2p/WifiP2pConfig;->deviceAddress:Ljava/lang/String;
 
     iget-object v7, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mGroups:Landroid/net/wifi/p2p/WifiP2pGroupList;
@@ -4004,26 +4122,26 @@
 
     if-eqz v6, :cond_4
 
-    .line 2440
+    .line 2490
     iget v2, p1, Landroid/net/wifi/p2p/WifiP2pConfig;->netId:I
 
-    .line 2445
+    .line 2495
     :cond_4
     :goto_1
     if-gez v2, :cond_5
 
-    .line 2446
+    .line 2496
     iget-object v6, v0, Landroid/net/wifi/p2p/WifiP2pDevice;->deviceAddress:Ljava/lang/String;
 
     invoke-direct {p0, v6}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->getNetworkIdFromClientList(Ljava/lang/String;)I
 
     move-result v2
 
-    .line 2449
+    .line 2499
     :cond_5
     if-ltz v2, :cond_1
 
-    .line 2451
+    .line 2501
     iget-object v6, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mWifiNative:Landroid/net/wifi/WifiNative;
 
     iget-object v7, v0, Landroid/net/wifi/p2p/WifiP2pDevice;->deviceAddress:Ljava/lang/String;
@@ -4034,15 +4152,15 @@
 
     if-eqz v6, :cond_7
 
-    .line 2453
+    .line 2503
     iput v2, p1, Landroid/net/wifi/p2p/WifiP2pConfig;->netId:I
 
     move v4, v5
 
-    .line 2454
+    .line 2504
     goto :goto_0
 
-    .line 2443
+    .line 2493
     :cond_6
     iget-object v6, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mGroups:Landroid/net/wifi/p2p/WifiP2pGroupList;
 
@@ -4054,15 +4172,15 @@
 
     goto :goto_1
 
-    .line 2456
+    .line 2506
     :cond_7
     const-string/jumbo v5, "p2pReinvoke() failed, update networks"
 
     invoke-virtual {p0, v5}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->loge(Ljava/lang/String;)V
 
-    .line 2457
+    .line 2507
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->RELOAD:Ljava/lang/Boolean;
-    invoke-static {}, Landroid/net/wifi/p2p/WifiP2pService;->access$12400()Ljava/lang/Boolean;
+    invoke-static {}, Landroid/net/wifi/p2p/WifiP2pService;->access$12900()Ljava/lang/Boolean;
 
     move-result-object v5
 
@@ -4084,26 +4202,26 @@
     .prologue
     const/4 v7, 0x1
 
-    .line 2513
+    .line 2563
     new-instance v6, Ljava/lang/StringBuilder;
 
     invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
 
-    .line 2514
+    .line 2564
     .local v6, "modifiedClientList":Ljava/lang/StringBuilder;
     invoke-direct {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->getClientList(I)[Ljava/lang/String;
 
     move-result-object v2
 
-    .line 2515
+    .line 2565
     .local v2, "currentClientList":[Ljava/lang/String;
     const/4 v4, 0x0
 
-    .line 2516
+    .line 2566
     .local v4, "isClientRemoved":Z
     if-eqz v2, :cond_1
 
-    .line 2517
+    .line 2567
     move-object v0, v2
 
     .local v0, "arr$":[Ljava/lang/String;
@@ -4118,7 +4236,7 @@
 
     aget-object v1, v0, v3
 
-    .line 2518
+    .line 2568
     .local v1, "client":Ljava/lang/String;
     invoke-virtual {v1, p2}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
 
@@ -4126,27 +4244,27 @@
 
     if-nez v8, :cond_0
 
-    .line 2519
+    .line 2569
     const-string v8, " "
 
     invoke-virtual {v6, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 2520
+    .line 2570
     invoke-virtual {v6, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 2517
+    .line 2567
     :goto_1
     add-int/lit8 v3, v3, 0x1
 
     goto :goto_0
 
-    .line 2522
+    .line 2572
     :cond_0
     const/4 v4, 0x1
 
     goto :goto_1
 
-    .line 2526
+    .line 2576
     .end local v0    # "arr$":[Ljava/lang/String;
     .end local v1    # "client":Ljava/lang/String;
     .end local v3    # "i$":I
@@ -4160,25 +4278,25 @@
 
     if-eqz p3, :cond_2
 
-    .line 2529
+    .line 2579
     iget-object v8, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mGroups:Landroid/net/wifi/p2p/WifiP2pGroupList;
 
     invoke-virtual {v8, p1}, Landroid/net/wifi/p2p/WifiP2pGroupList;->remove(I)V
 
-    .line 2545
+    .line 2595
     :goto_2
     return v7
 
-    .line 2533
+    .line 2583
     :cond_2
     if-nez v4, :cond_3
 
-    .line 2535
+    .line 2585
     const/4 v7, 0x0
 
     goto :goto_2
 
-    .line 2539
+    .line 2589
     :cond_3
     invoke-virtual {v6}, Ljava/lang/StringBuilder;->length()I
 
@@ -4186,12 +4304,12 @@
 
     if-nez v8, :cond_4
 
-    .line 2540
+    .line 2590
     const-string v8, "\"\""
 
     invoke-virtual {v6, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 2542
+    .line 2592
     :cond_4
     iget-object v8, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mWifiNative:Landroid/net/wifi/WifiNative;
 
@@ -4203,7 +4321,7 @@
 
     invoke-virtual {v8, p1, v9, v10}, Landroid/net/wifi/WifiNative;->setNetworkVariable(ILjava/lang/String;Ljava/lang/String;)Z
 
-    .line 2544
+    .line 2594
     iget-object v8, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mWifiNative:Landroid/net/wifi/WifiNative;
 
     invoke-virtual {v8}, Landroid/net/wifi/WifiNative;->saveConfig()Z
@@ -4217,39 +4335,39 @@
     .param p2, "servInfo"    # Landroid/net/wifi/p2p/nsd/WifiP2pServiceInfo;
 
     .prologue
-    .line 2908
+    .line 2958
     const/4 v1, 0x0
 
     invoke-direct {p0, p1, v1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->getClientInfo(Landroid/os/Messenger;Z)Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;
 
     move-result-object v0
 
-    .line 2909
+    .line 2959
     .local v0, "clientInfo":Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;
     if-nez v0, :cond_1
 
-    .line 2920
+    .line 2970
     :cond_0
     :goto_0
     return-void
 
-    .line 2913
+    .line 2963
     :cond_1
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mWifiNative:Landroid/net/wifi/WifiNative;
 
     invoke-virtual {v1, p2}, Landroid/net/wifi/WifiNative;->p2pServiceDel(Landroid/net/wifi/p2p/nsd/WifiP2pServiceInfo;)Z
 
-    .line 2915
+    .line 2965
     # getter for: Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->mServList:Ljava/util/List;
-    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13000(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Ljava/util/List;
+    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13500(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Ljava/util/List;
 
     move-result-object v1
 
     invoke-interface {v1, p2}, Ljava/util/List;->remove(Ljava/lang/Object;)Z
 
-    .line 2916
+    .line 2966
     # getter for: Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->mReqList:Landroid/util/SparseArray;
-    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$12900(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/util/SparseArray;
+    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13400(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/util/SparseArray;
 
     move-result-object v1
 
@@ -4260,7 +4378,7 @@
     if-nez v1, :cond_0
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->mServList:Ljava/util/List;
-    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13000(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Ljava/util/List;
+    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13500(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Ljava/util/List;
 
     move-result-object v1
 
@@ -4270,16 +4388,16 @@
 
     if-nez v1, :cond_0
 
-    .line 2918
+    .line 2968
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mClientInfoList:Ljava/util/HashMap;
-    invoke-static {v1}, Landroid/net/wifi/p2p/WifiP2pService;->access$12500(Landroid/net/wifi/p2p/WifiP2pService;)Ljava/util/HashMap;
+    invoke-static {v1}, Landroid/net/wifi/p2p/WifiP2pService;->access$13000(Landroid/net/wifi/p2p/WifiP2pService;)Ljava/util/HashMap;
 
     move-result-object v1
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->mMessenger:Landroid/os/Messenger;
-    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13100(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/os/Messenger;
+    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13600(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/os/Messenger;
 
     move-result-object v2
 
@@ -4294,34 +4412,34 @@
     .param p2, "req"    # Landroid/net/wifi/p2p/nsd/WifiP2pServiceRequest;
 
     .prologue
-    .line 2833
+    .line 2883
     const/4 v3, 0x0
 
     invoke-direct {p0, p1, v3}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->getClientInfo(Landroid/os/Messenger;Z)Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;
 
     move-result-object v0
 
-    .line 2834
+    .line 2884
     .local v0, "clientInfo":Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;
     if-nez v0, :cond_1
 
-    .line 2861
+    .line 2911
     :cond_0
     :goto_0
     return-void
 
-    .line 2840
+    .line 2890
     :cond_1
     const/4 v2, 0x0
 
-    .line 2841
+    .line 2891
     .local v2, "removed":Z
     const/4 v1, 0x0
 
     .local v1, "i":I
     :goto_1
     # getter for: Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->mReqList:Landroid/util/SparseArray;
-    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$12900(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/util/SparseArray;
+    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13400(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/util/SparseArray;
 
     move-result-object v3
 
@@ -4331,9 +4449,9 @@
 
     if-ge v1, v3, :cond_2
 
-    .line 2842
+    .line 2892
     # getter for: Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->mReqList:Landroid/util/SparseArray;
-    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$12900(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/util/SparseArray;
+    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13400(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/util/SparseArray;
 
     move-result-object v3
 
@@ -4347,24 +4465,24 @@
 
     if-eqz v3, :cond_4
 
-    .line 2843
+    .line 2893
     const/4 v2, 0x1
 
-    .line 2844
+    .line 2894
     # getter for: Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->mReqList:Landroid/util/SparseArray;
-    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$12900(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/util/SparseArray;
+    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13400(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/util/SparseArray;
 
     move-result-object v3
 
     invoke-virtual {v3, v1}, Landroid/util/SparseArray;->removeAt(I)V
 
-    .line 2849
+    .line 2899
     :cond_2
     if-eqz v2, :cond_0
 
-    .line 2851
+    .line 2901
     # getter for: Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->mReqList:Landroid/util/SparseArray;
-    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$12900(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/util/SparseArray;
+    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13400(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/util/SparseArray;
 
     move-result-object v3
 
@@ -4375,7 +4493,7 @@
     if-nez v3, :cond_3
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->mServList:Ljava/util/List;
-    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13000(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Ljava/util/List;
+    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13500(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Ljava/util/List;
 
     move-result-object v3
 
@@ -4385,38 +4503,38 @@
 
     if-nez v3, :cond_3
 
-    .line 2853
+    .line 2903
     iget-object v3, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mClientInfoList:Ljava/util/HashMap;
-    invoke-static {v3}, Landroid/net/wifi/p2p/WifiP2pService;->access$12500(Landroid/net/wifi/p2p/WifiP2pService;)Ljava/util/HashMap;
+    invoke-static {v3}, Landroid/net/wifi/p2p/WifiP2pService;->access$13000(Landroid/net/wifi/p2p/WifiP2pService;)Ljava/util/HashMap;
 
     move-result-object v3
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->mMessenger:Landroid/os/Messenger;
-    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13100(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/os/Messenger;
+    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13600(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/os/Messenger;
 
     move-result-object v4
 
     invoke-virtual {v3, v4}, Ljava/util/HashMap;->remove(Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 2856
+    .line 2906
     :cond_3
     iget-object v3, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mServiceDiscReqId:Ljava/lang/String;
-    invoke-static {v3}, Landroid/net/wifi/p2p/WifiP2pService;->access$5900(Landroid/net/wifi/p2p/WifiP2pService;)Ljava/lang/String;
+    invoke-static {v3}, Landroid/net/wifi/p2p/WifiP2pService;->access$6000(Landroid/net/wifi/p2p/WifiP2pService;)Ljava/lang/String;
 
     move-result-object v3
 
     if-eqz v3, :cond_0
 
-    .line 2860
+    .line 2910
     invoke-direct {p0}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->updateSupplicantServiceRequest()Z
 
     goto :goto_0
 
-    .line 2841
+    .line 2891
     :cond_4
     add-int/lit8 v1, v1, 0x1
 
@@ -4429,30 +4547,30 @@
     .param p2, "what"    # I
 
     .prologue
-    .line 2730
+    .line 2780
     iget-object v1, p1, Landroid/os/Message;->replyTo:Landroid/os/Messenger;
 
     if-nez v1, :cond_0
 
-    .line 2734
+    .line 2784
     :goto_0
     return-void
 
-    .line 2731
+    .line 2781
     :cond_0
     invoke-direct {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->obtainMessage(Landroid/os/Message;)Landroid/os/Message;
 
     move-result-object v0
 
-    .line 2732
+    .line 2782
     .local v0, "dstMsg":Landroid/os/Message;
     iput p2, v0, Landroid/os/Message;->what:I
 
-    .line 2733
+    .line 2783
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mReplyChannel:Lcom/android/internal/util/AsyncChannel;
-    invoke-static {v1}, Landroid/net/wifi/p2p/WifiP2pService;->access$12800(Landroid/net/wifi/p2p/WifiP2pService;)Lcom/android/internal/util/AsyncChannel;
+    invoke-static {v1}, Landroid/net/wifi/p2p/WifiP2pService;->access$13300(Landroid/net/wifi/p2p/WifiP2pService;)Lcom/android/internal/util/AsyncChannel;
 
     move-result-object v1
 
@@ -4468,33 +4586,33 @@
     .param p3, "arg1"    # I
 
     .prologue
-    .line 2737
+    .line 2787
     iget-object v1, p1, Landroid/os/Message;->replyTo:Landroid/os/Messenger;
 
     if-nez v1, :cond_0
 
-    .line 2742
+    .line 2792
     :goto_0
     return-void
 
-    .line 2738
+    .line 2788
     :cond_0
     invoke-direct {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->obtainMessage(Landroid/os/Message;)Landroid/os/Message;
 
     move-result-object v0
 
-    .line 2739
+    .line 2789
     .local v0, "dstMsg":Landroid/os/Message;
     iput p2, v0, Landroid/os/Message;->what:I
 
-    .line 2740
+    .line 2790
     iput p3, v0, Landroid/os/Message;->arg1:I
 
-    .line 2741
+    .line 2791
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mReplyChannel:Lcom/android/internal/util/AsyncChannel;
-    invoke-static {v1}, Landroid/net/wifi/p2p/WifiP2pService;->access$12800(Landroid/net/wifi/p2p/WifiP2pService;)Lcom/android/internal/util/AsyncChannel;
+    invoke-static {v1}, Landroid/net/wifi/p2p/WifiP2pService;->access$13300(Landroid/net/wifi/p2p/WifiP2pService;)Lcom/android/internal/util/AsyncChannel;
 
     move-result-object v1
 
@@ -4510,33 +4628,33 @@
     .param p3, "obj"    # Ljava/lang/Object;
 
     .prologue
-    .line 2745
+    .line 2795
     iget-object v1, p1, Landroid/os/Message;->replyTo:Landroid/os/Messenger;
 
     if-nez v1, :cond_0
 
-    .line 2750
+    .line 2800
     :goto_0
     return-void
 
-    .line 2746
+    .line 2796
     :cond_0
     invoke-direct {p0, p1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->obtainMessage(Landroid/os/Message;)Landroid/os/Message;
 
     move-result-object v0
 
-    .line 2747
+    .line 2797
     .local v0, "dstMsg":Landroid/os/Message;
     iput p2, v0, Landroid/os/Message;->what:I
 
-    .line 2748
+    .line 2798
     iput-object p3, v0, Landroid/os/Message;->obj:Ljava/lang/Object;
 
-    .line 2749
+    .line 2799
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mReplyChannel:Lcom/android/internal/util/AsyncChannel;
-    invoke-static {v1}, Landroid/net/wifi/p2p/WifiP2pService;->access$12800(Landroid/net/wifi/p2p/WifiP2pService;)Lcom/android/internal/util/AsyncChannel;
+    invoke-static {v1}, Landroid/net/wifi/p2p/WifiP2pService;->access$13300(Landroid/net/wifi/p2p/WifiP2pService;)Lcom/android/internal/util/AsyncChannel;
 
     move-result-object v1
 
@@ -4551,24 +4669,45 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 2555
+    .line 2605
     iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mWifiP2pInfo:Landroid/net/wifi/p2p/WifiP2pInfo;
 
     iput-boolean v1, v0, Landroid/net/wifi/p2p/WifiP2pInfo;->groupFormed:Z
 
-    .line 2556
+    .line 2606
     iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mWifiP2pInfo:Landroid/net/wifi/p2p/WifiP2pInfo;
 
     iput-boolean v1, v0, Landroid/net/wifi/p2p/WifiP2pInfo;->isGroupOwner:Z
 
-    .line 2557
+    .line 2607
     iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mWifiP2pInfo:Landroid/net/wifi/p2p/WifiP2pInfo;
 
     const/4 v1, 0x0
 
     iput-object v1, v0, Landroid/net/wifi/p2p/WifiP2pInfo;->groupOwnerAddress:Ljava/net/InetAddress;
 
-    .line 2558
+    .line 2608
+    return-void
+.end method
+
+.method private sendMiracastModeChanged(I)V
+    .locals 2
+    .param p1, "mode"    # I
+
+    .prologue
+    .line 2128
+    iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
+
+    # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mWifiChannel:Lcom/android/internal/util/AsyncChannel;
+    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService;->access$300(Landroid/net/wifi/p2p/WifiP2pService;)Lcom/android/internal/util/AsyncChannel;
+
+    move-result-object v0
+
+    const v1, 0x23011
+
+    invoke-virtual {v0, v1, p1}, Lcom/android/internal/util/AsyncChannel;->sendMessage(II)V
+
+    .line 2130
     return-void
 .end method
 
@@ -4576,20 +4715,20 @@
     .locals 5
 
     .prologue
-    .line 2087
+    .line 2116
     new-instance v0, Landroid/content/Intent;
 
     const-string v1, "android.net.wifi.p2p.CONNECTION_STATE_CHANGE"
 
     invoke-direct {v0, v1}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 2088
+    .line 2117
     .local v0, "intent":Landroid/content/Intent;
     const/high16 v1, 0x24000000
 
     invoke-virtual {v0, v1}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
 
-    .line 2090
+    .line 2119
     const-string/jumbo v1, "wifiP2pInfo"
 
     new-instance v2, Landroid/net/wifi/p2p/WifiP2pInfo;
@@ -4600,7 +4739,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;
 
-    .line 2091
+    .line 2120
     const-string/jumbo v1, "networkInfo"
 
     new-instance v2, Landroid/net/NetworkInfo;
@@ -4616,7 +4755,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;
 
-    .line 2092
+    .line 2121
     const-string/jumbo v1, "p2pGroupInfo"
 
     new-instance v2, Landroid/net/wifi/p2p/WifiP2pGroup;
@@ -4627,7 +4766,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;
 
-    .line 2093
+    .line 2122
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mContext:Landroid/content/Context;
@@ -4639,7 +4778,7 @@
 
     invoke-virtual {v1, v0, v2}, Landroid/content/Context;->sendStickyBroadcastAsUser(Landroid/content/Intent;Landroid/os/UserHandle;)V
 
-    .line 2094
+    .line 2123
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mWifiChannel:Lcom/android/internal/util/AsyncChannel;
@@ -4662,7 +4801,7 @@
 
     invoke-virtual {v1, v2, v3}, Lcom/android/internal/util/AsyncChannel;->sendMessage(ILjava/lang/Object;)V
 
-    .line 2096
+    .line 2125
     return-void
 .end method
 
@@ -4671,7 +4810,7 @@
     .param p1, "started"    # Z
 
     .prologue
-    .line 2058
+    .line 2087
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mDiscoveryStarted:Z
@@ -4681,31 +4820,31 @@
 
     if-ne v1, p1, :cond_0
 
-    .line 2069
+    .line 2098
     :goto_0
     return-void
 
-    .line 2059
+    .line 2088
     :cond_0
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # setter for: Landroid/net/wifi/p2p/WifiP2pService;->mDiscoveryStarted:Z
     invoke-static {v1, p1}, Landroid/net/wifi/p2p/WifiP2pService;->access$3702(Landroid/net/wifi/p2p/WifiP2pService;Z)Z
 
-    .line 2063
+    .line 2092
     new-instance v0, Landroid/content/Intent;
 
     const-string v1, "android.net.wifi.p2p.DISCOVERY_STATE_CHANGE"
 
     invoke-direct {v0, v1}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 2064
+    .line 2093
     .local v0, "intent":Landroid/content/Intent;
     const/high16 v1, 0x4000000
 
     invoke-virtual {v0, v1}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
 
-    .line 2065
+    .line 2094
     const-string v2, "discoveryState"
 
     if-eqz p1, :cond_1
@@ -4715,7 +4854,7 @@
     :goto_1
     invoke-virtual {v0, v2, v1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
 
-    .line 2068
+    .line 2097
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mContext:Landroid/content/Context;
@@ -4729,7 +4868,7 @@
 
     goto :goto_0
 
-    .line 2065
+    .line 2094
     :cond_1
     const/4 v1, 0x1
 
@@ -4740,20 +4879,20 @@
     .locals 3
 
     .prologue
-    .line 2100
+    .line 2134
     new-instance v0, Landroid/content/Intent;
 
     const-string v1, "android.net.wifi.p2p.PERSISTENT_GROUPS_CHANGED"
 
     invoke-direct {v0, v1}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 2101
+    .line 2135
     .local v0, "intent":Landroid/content/Intent;
     const/high16 v1, 0x4000000
 
     invoke-virtual {v0, v1}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
 
-    .line 2102
+    .line 2136
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mContext:Landroid/content/Context;
@@ -4765,7 +4904,7 @@
 
     invoke-virtual {v1, v0, v2}, Landroid/content/Context;->sendStickyBroadcastAsUser(Landroid/content/Intent;Landroid/os/UserHandle;)V
 
-    .line 2103
+    .line 2137
     return-void
 .end method
 
@@ -4774,30 +4913,30 @@
     .param p1, "enabled"    # Z
 
     .prologue
-    .line 2045
+    .line 2074
     new-instance v0, Landroid/content/Intent;
 
     const-string v1, "android.net.wifi.p2p.STATE_CHANGED"
 
     invoke-direct {v0, v1}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 2046
+    .line 2075
     .local v0, "intent":Landroid/content/Intent;
     const/high16 v1, 0x4000000
 
     invoke-virtual {v0, v1}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
 
-    .line 2047
+    .line 2076
     if-eqz p1, :cond_0
 
-    .line 2048
+    .line 2077
     const-string/jumbo v1, "wifi_p2p_state"
 
     const/4 v2, 0x2
 
     invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
 
-    .line 2054
+    .line 2083
     :goto_0
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
@@ -4810,10 +4949,10 @@
 
     invoke-virtual {v1, v0, v2}, Landroid/content/Context;->sendStickyBroadcastAsUser(Landroid/content/Intent;Landroid/os/UserHandle;)V
 
-    .line 2055
+    .line 2084
     return-void
 
-    .line 2051
+    .line 2080
     :cond_0
     const-string/jumbo v1, "wifi_p2p_state"
 
@@ -4828,14 +4967,14 @@
     .locals 4
 
     .prologue
-    .line 2079
+    .line 2108
     new-instance v0, Landroid/content/Intent;
 
     const-string v1, "android.net.wifi.p2p.PEERS_CHANGED"
 
     invoke-direct {v0, v1}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 2080
+    .line 2109
     .local v0, "intent":Landroid/content/Intent;
     const-string/jumbo v1, "wifiP2pDeviceList"
 
@@ -4847,12 +4986,12 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;
 
-    .line 2081
+    .line 2110
     const/high16 v1, 0x4000000
 
     invoke-virtual {v0, v1}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
 
-    .line 2082
+    .line 2111
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mContext:Landroid/content/Context;
@@ -4864,7 +5003,7 @@
 
     invoke-virtual {v1, v0, v2}, Landroid/content/Context;->sendBroadcastAsUser(Landroid/content/Intent;Landroid/os/UserHandle;)V
 
-    .line 2083
+    .line 2112
     return-void
 .end method
 
@@ -4875,11 +5014,11 @@
     .prologue
     const/4 v7, 0x0
 
-    .line 2950
+    .line 3000
     iget-object v5, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mClientInfoList:Ljava/util/HashMap;
-    invoke-static {v5}, Landroid/net/wifi/p2p/WifiP2pService;->access$12500(Landroid/net/wifi/p2p/WifiP2pService;)Ljava/util/HashMap;
+    invoke-static {v5}, Landroid/net/wifi/p2p/WifiP2pService;->access$13000(Landroid/net/wifi/p2p/WifiP2pService;)Ljava/util/HashMap;
 
     move-result-object v5
 
@@ -4906,10 +5045,10 @@
 
     check-cast v0, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;
 
-    .line 2951
+    .line 3001
     .local v0, "c":Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;
     # getter for: Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->mReqList:Landroid/util/SparseArray;
-    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$12900(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/util/SparseArray;
+    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13400(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/util/SparseArray;
 
     move-result-object v5
 
@@ -4923,34 +5062,34 @@
 
     check-cast v4, Landroid/net/wifi/p2p/nsd/WifiP2pServiceRequest;
 
-    .line 2952
+    .line 3002
     .local v4, "req":Landroid/net/wifi/p2p/nsd/WifiP2pServiceRequest;
     if-eqz v4, :cond_0
 
-    .line 2953
+    .line 3003
     invoke-static {}, Landroid/os/Message;->obtain()Landroid/os/Message;
 
     move-result-object v3
 
-    .line 2954
+    .line 3004
     .local v3, "msg":Landroid/os/Message;
     const v5, 0x22032
 
     iput v5, v3, Landroid/os/Message;->what:I
 
-    .line 2955
+    .line 3005
     iput v7, v3, Landroid/os/Message;->arg1:I
 
-    .line 2956
+    .line 3006
     iput v7, v3, Landroid/os/Message;->arg2:I
 
-    .line 2957
+    .line 3007
     iput-object p1, v3, Landroid/os/Message;->obj:Ljava/lang/Object;
 
-    .line 2959
+    .line 3009
     :try_start_0
     # getter for: Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->mMessenger:Landroid/os/Messenger;
-    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13100(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/os/Messenger;
+    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13600(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/os/Messenger;
 
     move-result-object v5
 
@@ -4960,20 +5099,20 @@
 
     goto :goto_0
 
-    .line 2960
+    .line 3010
     :catch_0
     move-exception v1
 
-    .line 2962
+    .line 3012
     .local v1, "e":Landroid/os/RemoteException;
     # getter for: Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->mMessenger:Landroid/os/Messenger;
-    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13100(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/os/Messenger;
+    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13600(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/os/Messenger;
 
     move-result-object v5
 
     invoke-direct {p0, v5}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->clearClientInfo(Landroid/os/Messenger;)V
 
-    .line 2967
+    .line 3017
     .end local v0    # "c":Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;
     .end local v1    # "e":Landroid/os/RemoteException;
     .end local v3    # "msg":Landroid/os/Message;
@@ -4986,20 +5125,20 @@
     .locals 4
 
     .prologue
-    .line 2072
+    .line 2101
     new-instance v0, Landroid/content/Intent;
 
     const-string v1, "android.net.wifi.p2p.THIS_DEVICE_CHANGED"
 
     invoke-direct {v0, v1}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 2073
+    .line 2102
     .local v0, "intent":Landroid/content/Intent;
     const/high16 v1, 0x4000000
 
     invoke-virtual {v0, v1}, Landroid/content/Intent;->addFlags(I)Landroid/content/Intent;
 
-    .line 2074
+    .line 2103
     const-string/jumbo v1, "wifiP2pDevice"
 
     new-instance v2, Landroid/net/wifi/p2p/WifiP2pDevice;
@@ -5015,7 +5154,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;
 
-    .line 2075
+    .line 2104
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mContext:Landroid/content/Context;
@@ -5027,7 +5166,7 @@
 
     invoke-virtual {v1, v0, v2}, Landroid/content/Context;->sendStickyBroadcastAsUser(Landroid/content/Intent;Landroid/os/UserHandle;)V
 
-    .line 2076
+    .line 2105
     return-void
 .end method
 
@@ -5038,14 +5177,14 @@
     .prologue
     const/4 v0, 0x0
 
-    .line 2587
+    .line 2637
     if-nez p1, :cond_0
 
-    .line 2600
+    .line 2650
     :goto_0
     return v0
 
-    .line 2589
+    .line 2639
     :cond_0
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mWifiNative:Landroid/net/wifi/WifiNative;
 
@@ -5055,7 +5194,7 @@
 
     if-nez v1, :cond_1
 
-    .line 2590
+    .line 2640
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -5078,7 +5217,7 @@
 
     goto :goto_0
 
-    .line 2594
+    .line 2644
     :cond_1
     iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
@@ -5089,7 +5228,7 @@
 
     iput-object p1, v0, Landroid/net/wifi/p2p/WifiP2pDevice;->deviceName:Ljava/lang/String;
 
-    .line 2595
+    .line 2645
     iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mWifiNative:Landroid/net/wifi/WifiNative;
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -5121,7 +5260,7 @@
 
     invoke-virtual {v0, v1}, Landroid/net/wifi/WifiNative;->setP2pSsidPostfix(Ljava/lang/String;)Z
 
-    .line 2597
+    .line 2647
     iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mContext:Landroid/content/Context;
@@ -5137,10 +5276,10 @@
 
     invoke-static {v0, v1, p1}, Landroid/provider/Settings$Global;->putString(Landroid/content/ContentResolver;Ljava/lang/String;Ljava/lang/String;)Z
 
-    .line 2599
+    .line 2649
     invoke-direct {p0}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->sendThisDeviceChangedBroadcast()V
 
-    .line 2600
+    .line 2650
     const/4 v0, 0x1
 
     goto :goto_0
@@ -5155,35 +5294,35 @@
 
     const/4 v2, 0x0
 
-    .line 2606
+    .line 2656
     invoke-virtual {p1}, Landroid/net/wifi/p2p/WifiP2pWfdInfo;->isWfdEnabled()Z
 
     move-result v3
 
     if-nez v3, :cond_0
 
-    .line 2607
+    .line 2657
     iget-object v3, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mWifiNative:Landroid/net/wifi/WifiNative;
 
     invoke-virtual {v3, v2}, Landroid/net/wifi/WifiNative;->setWfdEnable(Z)Z
 
     move-result v0
 
-    .line 2614
+    .line 2664
     .local v0, "success":Z
     :goto_0
     if-nez v0, :cond_2
 
-    .line 2615
+    .line 2665
     const-string v1, "Failed to set wfd properties"
 
     invoke-virtual {p0, v1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->loge(Ljava/lang/String;)V
 
-    .line 2621
+    .line 2671
     :goto_1
     return v2
 
-    .line 2609
+    .line 2659
     .end local v0    # "success":Z
     :cond_0
     iget-object v3, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mWifiNative:Landroid/net/wifi/WifiNative;
@@ -5218,7 +5357,7 @@
 
     goto :goto_2
 
-    .line 2619
+    .line 2669
     .restart local v0    # "success":Z
     :cond_2
     iget-object v2, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
@@ -5230,12 +5369,12 @@
 
     iput-object p1, v2, Landroid/net/wifi/p2p/WifiP2pDevice;->wfdInfo:Landroid/net/wifi/p2p/WifiP2pWfdInfo;
 
-    .line 2620
+    .line 2670
     invoke-direct {p0}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->sendThisDeviceChangedBroadcast()V
 
     move v2, v1
 
-    .line 2621
+    .line 2671
     goto :goto_1
 .end method
 
@@ -5244,14 +5383,14 @@
     .param p1, "serverInetAddress"    # Ljava/net/InetAddress;
 
     .prologue
-    .line 2549
+    .line 2599
     iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mWifiP2pInfo:Landroid/net/wifi/p2p/WifiP2pInfo;
 
     const/4 v1, 0x1
 
     iput-boolean v1, v0, Landroid/net/wifi/p2p/WifiP2pInfo;->groupFormed:Z
 
-    .line 2550
+    .line 2600
     iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mWifiP2pInfo:Landroid/net/wifi/p2p/WifiP2pInfo;
 
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mGroup:Landroid/net/wifi/p2p/WifiP2pGroup;
@@ -5262,12 +5401,12 @@
 
     iput-boolean v1, v0, Landroid/net/wifi/p2p/WifiP2pInfo;->isGroupOwner:Z
 
-    .line 2551
+    .line 2601
     iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mWifiP2pInfo:Landroid/net/wifi/p2p/WifiP2pInfo;
 
     iput-object p1, v0, Landroid/net/wifi/p2p/WifiP2pInfo;->groupOwnerAddress:Ljava/net/InetAddress;
 
-    .line 2552
+    .line 2602
     return-void
 .end method
 
@@ -5276,11 +5415,14 @@
     .param p1, "intf"    # Ljava/lang/String;
 
     .prologue
-    .line 2106
+    .line 2146
     const/4 v1, 0x0
 
-    .line 2108
+    .line 2148
     .local v1, "ifcg":Landroid/net/InterfaceConfiguration;
+    invoke-direct {p0}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->checkAndSetConnectivityInstance()V
+
+    .line 2151
     :try_start_0
     iget-object v2, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
@@ -5290,7 +5432,10 @@
 
     move-result-object v1
 
-    .line 2109
+    .line 2152
+    if-eqz v1, :cond_0
+
+    .line 2153
     new-instance v2, Landroid/net/LinkAddress;
 
     const-string v3, "192.168.49.1"
@@ -5305,36 +5450,36 @@
 
     invoke-virtual {v1, v2}, Landroid/net/InterfaceConfiguration;->setLinkAddress(Landroid/net/LinkAddress;)V
 
-    .line 2111
+    .line 2155
     invoke-virtual {v1}, Landroid/net/InterfaceConfiguration;->setInterfaceUp()V
 
-    .line 2112
+    .line 2156
     iget-object v2, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     iget-object v2, v2, Landroid/net/wifi/p2p/WifiP2pService;->mNwService:Landroid/os/INetworkManagementService;
 
     invoke-interface {v2, p1, v1}, Landroid/os/INetworkManagementService;->setInterfaceConfig(Ljava/lang/String;Landroid/net/InterfaceConfiguration;)V
 
-    .line 2114
+    .line 2157
     iget-object v2, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
-    iget-object v2, v2, Landroid/net/wifi/p2p/WifiP2pService;->mNwService:Landroid/os/INetworkManagementService;
+    # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mCm:Landroid/net/ConnectivityManager;
+    invoke-static {v2}, Landroid/net/wifi/p2p/WifiP2pService;->access$12700(Landroid/net/wifi/p2p/WifiP2pService;)Landroid/net/ConnectivityManager;
 
-    # getter for: Landroid/net/wifi/p2p/WifiP2pService;->DHCP_RANGE:[Ljava/lang/String;
-    invoke-static {}, Landroid/net/wifi/p2p/WifiP2pService;->access$12200()[Ljava/lang/String;
+    move-result-object v2
 
-    move-result-object v3
+    invoke-virtual {v2, p1}, Landroid/net/ConnectivityManager;->tether(Ljava/lang/String;)I
 
-    invoke-interface {v2, v3}, Landroid/os/INetworkManagementService;->startTethering([Ljava/lang/String;)V
-    :try_end_0
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+    move-result v2
 
-    .line 2120
+    if-eqz v2, :cond_0
+
+    .line 2158
     new-instance v2, Ljava/lang/StringBuilder;
 
     invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v3, "Started Dhcp server on "
+    const-string v3, "Error tethering on "
 
     invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -5348,17 +5493,19 @@
 
     move-result-object v2
 
-    invoke-virtual {p0, v2}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->logd(Ljava/lang/String;)V
+    invoke-virtual {p0, v2}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->loge(Ljava/lang/String;)V
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 2121
+    .line 2168
     :goto_0
     return-void
 
-    .line 2115
+    .line 2162
     :catch_0
     move-exception v0
 
-    .line 2116
+    .line 2163
     .local v0, "e":Ljava/lang/Exception;
     new-instance v2, Ljava/lang/StringBuilder;
 
@@ -5391,6 +5538,31 @@
     invoke-virtual {p0, v2}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->loge(Ljava/lang/String;)V
 
     goto :goto_0
+
+    .line 2167
+    .end local v0    # "e":Ljava/lang/Exception;
+    :cond_0
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v3, "Started Dhcp server on "
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-virtual {p0, v2}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->logd(Ljava/lang/String;)V
+
+    goto :goto_0
 .end method
 
 .method private stopDhcpServer(Ljava/lang/String;)V
@@ -5398,30 +5570,62 @@
     .param p1, "intf"    # Ljava/lang/String;
 
     .prologue
-    .line 2125
+    .line 2171
+    invoke-direct {p0}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->checkAndSetConnectivityInstance()V
+
+    .line 2173
     :try_start_0
     iget-object v1, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
-    iget-object v1, v1, Landroid/net/wifi/p2p/WifiP2pService;->mNwService:Landroid/os/INetworkManagementService;
+    # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mCm:Landroid/net/ConnectivityManager;
+    invoke-static {v1}, Landroid/net/wifi/p2p/WifiP2pService;->access$12700(Landroid/net/wifi/p2p/WifiP2pService;)Landroid/net/ConnectivityManager;
 
-    invoke-interface {v1}, Landroid/os/INetworkManagementService;->stopTethering()V
+    move-result-object v1
+
+    invoke-virtual {v1, p1}, Landroid/net/ConnectivityManager;->untether(Ljava/lang/String;)I
+
+    move-result v1
+
+    if-eqz v1, :cond_0
+
+    .line 2174
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v2, "Error Untether on "
+
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {p0, v1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->loge(Ljava/lang/String;)V
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 2131
+    .line 2181
+    :cond_0
     const-string v1, "Stopped Dhcp server"
 
     invoke-virtual {p0, v1}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->logd(Ljava/lang/String;)V
 
-    .line 2132
+    .line 2182
     :goto_0
     return-void
 
-    .line 2126
+    .line 2176
     :catch_0
     move-exception v0
 
-    .line 2127
+    .line 2177
     .local v0, "e":Ljava/lang/Exception;
     new-instance v1, Ljava/lang/StringBuilder;
 
@@ -5451,27 +5655,27 @@
     .param p1, "reload"    # Z
 
     .prologue
-    .line 2285
+    .line 2335
     iget-object v13, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mWifiNative:Landroid/net/wifi/WifiNative;
 
     invoke-virtual {v13}, Landroid/net/wifi/WifiNative;->listNetworks()Ljava/lang/String;
 
     move-result-object v8
 
-    .line 2286
+    .line 2336
     .local v8, "listStr":Ljava/lang/String;
     if-nez v8, :cond_1
 
-    .line 2352
+    .line 2402
     :cond_0
     :goto_0
     return-void
 
-    .line 2288
+    .line 2338
     :cond_1
     const/4 v6, 0x0
 
-    .line 2289
+    .line 2339
     .local v6, "isSaveRequired":Z
     const-string v13, "\n"
 
@@ -5479,18 +5683,18 @@
 
     move-result-object v7
 
-    .line 2290
+    .line 2340
     .local v7, "lines":[Ljava/lang/String;
     if-eqz v7, :cond_0
 
-    .line 2292
+    .line 2342
     if-eqz p1, :cond_2
 
     iget-object v13, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mGroups:Landroid/net/wifi/p2p/WifiP2pGroupList;
 
     invoke-virtual {v13}, Landroid/net/wifi/p2p/WifiP2pGroupList;->clear()Z
 
-    .line 2295
+    .line 2345
     :cond_2
     const/4 v5, 0x1
 
@@ -5500,7 +5704,7 @@
 
     if-ge v5, v13, :cond_8
 
-    .line 2296
+    .line 2346
     aget-object v13, v7, v5
 
     const-string v14, "\t"
@@ -5509,7 +5713,7 @@
 
     move-result-object v11
 
-    .line 2297
+    .line 2347
     .local v11, "result":[Ljava/lang/String;
     if-eqz v11, :cond_3
 
@@ -5519,36 +5723,36 @@
 
     if-ge v13, v14, :cond_4
 
-    .line 2295
+    .line 2345
     :cond_3
     :goto_2
     add-int/lit8 v5, v5, 0x1
 
     goto :goto_1
 
-    .line 2301
+    .line 2351
     :cond_4
     const/4 v10, -0x1
 
-    .line 2302
+    .line 2352
     .local v10, "netId":I
     const/4 v13, 0x1
 
     aget-object v12, v11, v13
 
-    .line 2303
+    .line 2353
     .local v12, "ssid":Ljava/lang/String;
     const/4 v13, 0x2
 
     aget-object v0, v11, v13
 
-    .line 2304
+    .line 2354
     .local v0, "bssid":Ljava/lang/String;
     const/4 v13, 0x3
 
     aget-object v3, v11, v13
 
-    .line 2306
+    .line 2356
     .local v3, "flags":Ljava/lang/String;
     const/4 v13, 0x0
 
@@ -5561,7 +5765,7 @@
 
     move-result v10
 
-    .line 2312
+    .line 2362
     const-string v13, "[CURRENT]"
 
     invoke-virtual {v3, v13}, Ljava/lang/String;->indexOf(Ljava/lang/String;)I
@@ -5572,7 +5776,7 @@
 
     if-ne v13, v14, :cond_3
 
-    .line 2315
+    .line 2365
     const-string v13, "[P2P-PERSISTENT]"
 
     invoke-virtual {v3, v13}, Ljava/lang/String;->indexOf(Ljava/lang/String;)I
@@ -5583,28 +5787,28 @@
 
     if-ne v13, v14, :cond_5
 
-    .line 2321
+    .line 2371
     iget-object v13, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mWifiNative:Landroid/net/wifi/WifiNative;
 
     invoke-virtual {v13, v10}, Landroid/net/wifi/WifiNative;->removeNetwork(I)Z
 
-    .line 2322
+    .line 2372
     const/4 v6, 0x1
 
-    .line 2323
+    .line 2373
     goto :goto_2
 
-    .line 2307
+    .line 2357
     :catch_0
     move-exception v2
 
-    .line 2308
+    .line 2358
     .local v2, "e":Ljava/lang/NumberFormatException;
     invoke-virtual {v2}, Ljava/lang/NumberFormatException;->printStackTrace()V
 
     goto :goto_2
 
-    .line 2326
+    .line 2376
     .end local v2    # "e":Ljava/lang/NumberFormatException;
     :cond_5
     iget-object v13, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mGroups:Landroid/net/wifi/p2p/WifiP2pGroupList;
@@ -5615,19 +5819,19 @@
 
     if-nez v13, :cond_3
 
-    .line 2330
+    .line 2380
     new-instance v4, Landroid/net/wifi/p2p/WifiP2pGroup;
 
     invoke-direct {v4}, Landroid/net/wifi/p2p/WifiP2pGroup;-><init>()V
 
-    .line 2331
+    .line 2381
     .local v4, "group":Landroid/net/wifi/p2p/WifiP2pGroup;
     invoke-virtual {v4, v10}, Landroid/net/wifi/p2p/WifiP2pGroup;->setNetworkId(I)V
 
-    .line 2332
+    .line 2382
     invoke-virtual {v4, v12}, Landroid/net/wifi/p2p/WifiP2pGroup;->setNetworkName(Ljava/lang/String;)V
 
-    .line 2333
+    .line 2383
     iget-object v13, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mWifiNative:Landroid/net/wifi/WifiNative;
 
     const-string/jumbo v14, "mode"
@@ -5636,7 +5840,7 @@
 
     move-result-object v9
 
-    .line 2334
+    .line 2384
     .local v9, "mode":Ljava/lang/String;
     if-eqz v9, :cond_6
 
@@ -5648,12 +5852,12 @@
 
     if-eqz v13, :cond_6
 
-    .line 2335
+    .line 2385
     const/4 v13, 0x1
 
     invoke-virtual {v4, v13}, Landroid/net/wifi/p2p/WifiP2pGroup;->setIsGroupOwner(Z)V
 
-    .line 2337
+    .line 2387
     :cond_6
     iget-object v13, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
@@ -5670,7 +5874,7 @@
 
     if-eqz v13, :cond_7
 
-    .line 2338
+    .line 2388
     iget-object v13, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mThisDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
@@ -5680,33 +5884,33 @@
 
     invoke-virtual {v4, v13}, Landroid/net/wifi/p2p/WifiP2pGroup;->setOwner(Landroid/net/wifi/p2p/WifiP2pDevice;)V
 
-    .line 2344
+    .line 2394
     :goto_3
     iget-object v13, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mGroups:Landroid/net/wifi/p2p/WifiP2pGroupList;
 
     invoke-virtual {v13, v4}, Landroid/net/wifi/p2p/WifiP2pGroupList;->add(Landroid/net/wifi/p2p/WifiP2pGroup;)V
 
-    .line 2345
+    .line 2395
     const/4 v6, 0x1
 
     goto :goto_2
 
-    .line 2340
+    .line 2390
     :cond_7
     new-instance v1, Landroid/net/wifi/p2p/WifiP2pDevice;
 
     invoke-direct {v1}, Landroid/net/wifi/p2p/WifiP2pDevice;-><init>()V
 
-    .line 2341
+    .line 2391
     .local v1, "device":Landroid/net/wifi/p2p/WifiP2pDevice;
     iput-object v0, v1, Landroid/net/wifi/p2p/WifiP2pDevice;->deviceAddress:Ljava/lang/String;
 
-    .line 2342
+    .line 2392
     invoke-virtual {v4, v1}, Landroid/net/wifi/p2p/WifiP2pGroup;->setOwner(Landroid/net/wifi/p2p/WifiP2pDevice;)V
 
     goto :goto_3
 
-    .line 2348
+    .line 2398
     .end local v0    # "bssid":Ljava/lang/String;
     .end local v1    # "device":Landroid/net/wifi/p2p/WifiP2pDevice;
     .end local v3    # "flags":Ljava/lang/String;
@@ -5720,13 +5924,13 @@
 
     if-eqz v6, :cond_0
 
-    .line 2349
+    .line 2399
     :cond_9
     iget-object v13, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->mWifiNative:Landroid/net/wifi/WifiNative;
 
     invoke-virtual {v13}, Landroid/net/wifi/WifiNative;->saveConfig()Z
 
-    .line 2350
+    .line 2400
     invoke-direct {p0}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->sendP2pPersistentGroupsChangedBroadcast()V
 
     goto/16 :goto_0
@@ -5738,20 +5942,20 @@
     .prologue
     const/4 v5, 0x0
 
-    .line 2774
+    .line 2824
     invoke-direct {p0}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->clearSupplicantServiceRequest()V
 
-    .line 2776
+    .line 2826
     new-instance v4, Ljava/lang/StringBuffer;
 
     invoke-direct {v4}, Ljava/lang/StringBuffer;-><init>()V
 
-    .line 2777
+    .line 2827
     .local v4, "sb":Ljava/lang/StringBuffer;
     iget-object v6, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mClientInfoList:Ljava/util/HashMap;
-    invoke-static {v6}, Landroid/net/wifi/p2p/WifiP2pService;->access$12500(Landroid/net/wifi/p2p/WifiP2pService;)Ljava/util/HashMap;
+    invoke-static {v6}, Landroid/net/wifi/p2p/WifiP2pService;->access$13000(Landroid/net/wifi/p2p/WifiP2pService;)Ljava/util/HashMap;
 
     move-result-object v6
 
@@ -5777,14 +5981,14 @@
 
     check-cast v0, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;
 
-    .line 2780
+    .line 2830
     .local v0, "c":Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;
     const/4 v1, 0x0
 
     .local v1, "i":I
     :goto_0
     # getter for: Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->mReqList:Landroid/util/SparseArray;
-    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$12900(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/util/SparseArray;
+    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13400(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/util/SparseArray;
 
     move-result-object v6
 
@@ -5794,9 +5998,9 @@
 
     if-ge v1, v6, :cond_0
 
-    .line 2781
+    .line 2831
     # getter for: Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->mReqList:Landroid/util/SparseArray;
-    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$12900(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/util/SparseArray;
+    invoke-static {v0}, Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;->access$13400(Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;)Landroid/util/SparseArray;
 
     move-result-object v6
 
@@ -5806,24 +6010,24 @@
 
     check-cast v3, Landroid/net/wifi/p2p/nsd/WifiP2pServiceRequest;
 
-    .line 2782
+    .line 2832
     .local v3, "req":Landroid/net/wifi/p2p/nsd/WifiP2pServiceRequest;
     if-eqz v3, :cond_1
 
-    .line 2783
+    .line 2833
     invoke-virtual {v3}, Landroid/net/wifi/p2p/nsd/WifiP2pServiceRequest;->getSupplicantQuery()Ljava/lang/String;
 
     move-result-object v6
 
     invoke-virtual {v4, v6}, Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;
 
-    .line 2780
+    .line 2830
     :cond_1
     add-int/lit8 v1, v1, 0x1
 
     goto :goto_0
 
-    .line 2788
+    .line 2838
     .end local v0    # "c":Landroid/net/wifi/p2p/WifiP2pService$ClientInfo;
     .end local v1    # "i":I
     .end local v3    # "req":Landroid/net/wifi/p2p/nsd/WifiP2pServiceRequest;
@@ -5834,12 +6038,12 @@
 
     if-nez v6, :cond_4
 
-    .line 2796
+    .line 2846
     :cond_3
     :goto_1
     return v5
 
-    .line 2792
+    .line 2842
     :cond_4
     iget-object v6, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
@@ -5856,19 +6060,19 @@
     move-result-object v7
 
     # setter for: Landroid/net/wifi/p2p/WifiP2pService;->mServiceDiscReqId:Ljava/lang/String;
-    invoke-static {v6, v7}, Landroid/net/wifi/p2p/WifiP2pService;->access$5902(Landroid/net/wifi/p2p/WifiP2pService;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v6, v7}, Landroid/net/wifi/p2p/WifiP2pService;->access$6002(Landroid/net/wifi/p2p/WifiP2pService;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 2793
+    .line 2843
     iget-object v6, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mServiceDiscReqId:Ljava/lang/String;
-    invoke-static {v6}, Landroid/net/wifi/p2p/WifiP2pService;->access$5900(Landroid/net/wifi/p2p/WifiP2pService;)Ljava/lang/String;
+    invoke-static {v6}, Landroid/net/wifi/p2p/WifiP2pService;->access$6000(Landroid/net/wifi/p2p/WifiP2pService;)Ljava/lang/String;
 
     move-result-object v6
 
     if-eqz v6, :cond_3
 
-    .line 2796
+    .line 2846
     const/4 v5, 0x1
 
     goto :goto_1
@@ -5879,7 +6083,7 @@
     .param p1, "status"    # I
 
     .prologue
-    .line 2657
+    .line 2707
     iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->this$0:Landroid/net/wifi/p2p/WifiP2pService;
 
     # getter for: Landroid/net/wifi/p2p/WifiP2pService;->mThisDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
@@ -5889,10 +6093,10 @@
 
     iput p1, v0, Landroid/net/wifi/p2p/WifiP2pDevice;->status:I
 
-    .line 2658
+    .line 2708
     invoke-direct {p0}, Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;->sendThisDeviceChangedBroadcast()V
 
-    .line 2659
+    .line 2709
     return-void
 .end method
 
@@ -5905,10 +6109,10 @@
     .param p3, "args"    # [Ljava/lang/String;
 
     .prologue
-    .line 2036
+    .line 2065
     invoke-super {p0, p1, p2, p3}, Lcom/android/internal/util/StateMachine;->dump(Ljava/io/FileDescriptor;Ljava/io/PrintWriter;[Ljava/lang/String;)V
 
-    .line 2037
+    .line 2066
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -5931,7 +6135,7 @@
 
     invoke-virtual {p2, v0}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 2038
+    .line 2067
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -5954,7 +6158,7 @@
 
     invoke-virtual {p2, v0}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 2039
+    .line 2068
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -5977,7 +6181,7 @@
 
     invoke-virtual {p2, v0}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 2040
+    .line 2069
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -6000,10 +6204,10 @@
 
     invoke-virtual {p2, v0}, Ljava/io/PrintWriter;->println(Ljava/lang/String;)V
 
-    .line 2041
+    .line 2070
     invoke-virtual {p2}, Ljava/io/PrintWriter;->println()V
 
-    .line 2042
+    .line 2071
     return-void
 .end method
 
@@ -6012,12 +6216,12 @@
     .param p1, "s"    # Ljava/lang/String;
 
     .prologue
-    .line 2762
+    .line 2812
     const-string v0, "WifiP2pService"
 
     invoke-static {v0, p1}, Landroid/util/Slog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 2763
+    .line 2813
     return-void
 .end method
 
@@ -6026,11 +6230,11 @@
     .param p1, "s"    # Ljava/lang/String;
 
     .prologue
-    .line 2767
+    .line 2817
     const-string v0, "WifiP2pService"
 
     invoke-static {v0, p1}, Landroid/util/Slog;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 2768
+    .line 2818
     return-void
 .end method

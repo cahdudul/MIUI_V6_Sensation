@@ -27,8 +27,6 @@
 .method constructor <init>(Lcom/android/server/power/PowerManagerService;J)V
     .locals 0
 
-    .prologue
-    .line 1211
     iput-object p1, p0, Lcom/android/server/power/PowerManagerService$1;->this$0:Lcom/android/server/power/PowerManagerService;
 
     iput-wide p2, p0, Lcom/android/server/power/PowerManagerService$1;->val$eventTime:J
@@ -43,14 +41,10 @@
 .method public run()V
     .locals 5
 
-    .prologue
-    .line 1214
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
 
     move-result-wide v0
 
-    .line 1216
-    .local v0, "ident":J
     :try_start_0
     iget-object v2, p0, Lcom/android/server/power/PowerManagerService$1;->this$0:Lcom/android/server/power/PowerManagerService;
 
@@ -61,13 +55,10 @@
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 1218
     invoke-static {v0, v1}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
-    .line 1220
     return-void
 
-    .line 1218
     :catchall_0
     move-exception v2
 

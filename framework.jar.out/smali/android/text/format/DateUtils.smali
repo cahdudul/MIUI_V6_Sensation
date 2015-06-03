@@ -384,7 +384,7 @@
 
     .line 487
     .local v0, "hours":I
-    const v4, 0x1130014
+    const v4, 0x1120015
 
     new-array v5, v9, [Ljava/lang/Object;
 
@@ -420,7 +420,7 @@
 
     .line 491
     .local v1, "minutes":I
-    const v4, 0x1130013
+    const v4, 0x1120014
 
     new-array v5, v9, [Ljava/lang/Object;
 
@@ -451,7 +451,7 @@
 
     .line 495
     .local v3, "seconds":I
-    const v4, 0x1130012
+    const v4, 0x1120013
 
     new-array v5, v9, [Ljava/lang/Object;
 
@@ -1075,7 +1075,7 @@
 
     .line 402
     .local v16, "relativeClause":Ljava/lang/CharSequence;
-    const v3, 0x10404be
+    const v3, 0x10404d5
 
     const/4 v4, 0x2
 
@@ -1129,7 +1129,7 @@
 
     .line 405
     .local v10, "dateClause":Ljava/lang/CharSequence;
-    const v3, 0x104011c
+    const v3, 0x1040133
 
     const/4 v4, 0x2
 
@@ -1289,7 +1289,7 @@
     if-eqz v7, :cond_5
 
     .line 451
-    const v8, 0x1130005
+    const v8, 0x1120006
 
     .line 456
     .local v8, "resId":I
@@ -1322,7 +1322,7 @@
     .end local v5    # "format":Ljava/lang/String;
     .end local v8    # "resId":I
     :cond_5
-    const v8, 0x1130009
+    const v8, 0x112000a
 
     .restart local v8    # "resId":I
     goto :goto_2
@@ -1442,7 +1442,7 @@
     if-eqz v11, :cond_2
 
     .line 305
-    const v19, 0x113000a
+    const v19, 0x112000b
 
     .line 354
     .local v19, "resId":I
@@ -1504,7 +1504,7 @@
     .restart local v14    # "duration":J
     .restart local v17    # "past":Z
     :cond_2
-    const v19, 0x1130001
+    const v19, 0x1120002
 
     .restart local v19    # "resId":I
     goto :goto_2
@@ -1515,7 +1515,7 @@
     if-eqz v11, :cond_4
 
     .line 311
-    const v19, 0x113000e
+    const v19, 0x112000f
 
     .restart local v19    # "resId":I
     goto :goto_2
@@ -1523,7 +1523,7 @@
     .line 313
     .end local v19    # "resId":I
     :cond_4
-    const v19, 0x1130006
+    const v19, 0x1120007
 
     .restart local v19    # "resId":I
     goto :goto_2
@@ -1557,7 +1557,7 @@
     if-eqz v11, :cond_6
 
     .line 320
-    const v19, 0x113000b
+    const v19, 0x112000c
 
     .restart local v19    # "resId":I
     goto :goto_2
@@ -1565,7 +1565,7 @@
     .line 322
     .end local v19    # "resId":I
     :cond_6
-    const v19, 0x1130002
+    const v19, 0x1120003
 
     .restart local v19    # "resId":I
     goto :goto_2
@@ -1576,7 +1576,7 @@
     if-eqz v11, :cond_8
 
     .line 326
-    const v19, 0x113000f
+    const v19, 0x1120010
 
     .restart local v19    # "resId":I
     goto :goto_2
@@ -1584,7 +1584,7 @@
     .line 328
     .end local v19    # "resId":I
     :cond_8
-    const v19, 0x1130007
+    const v19, 0x1120008
 
     .restart local v19    # "resId":I
     goto :goto_2
@@ -1618,7 +1618,7 @@
     if-eqz v11, :cond_a
 
     .line 335
-    const v19, 0x113000c
+    const v19, 0x112000d
 
     .restart local v19    # "resId":I
     goto :goto_2
@@ -1626,7 +1626,7 @@
     .line 337
     .end local v19    # "resId":I
     :cond_a
-    const v19, 0x1130003
+    const v19, 0x1120004
 
     .restart local v19    # "resId":I
     goto :goto_2
@@ -1637,7 +1637,7 @@
     if-eqz v11, :cond_c
 
     .line 341
-    const v19, 0x1130010
+    const v19, 0x1120011
 
     .restart local v19    # "resId":I
     goto :goto_2
@@ -1645,7 +1645,7 @@
     .line 343
     .end local v19    # "resId":I
     :cond_c
-    const v19, 0x1130008
+    const v19, 0x1120009
 
     .restart local v19    # "resId":I
     goto :goto_2
@@ -1811,7 +1811,7 @@
 
     .line 923
     .local v12, "result":Ljava/lang/String;
-    const v10, 0x10404b0
+    const v10, 0x10404c7
 
     .line 937
     .local v10, "prepositionId":I
@@ -1877,7 +1877,7 @@
 
     .line 930
     .restart local v12    # "result":Ljava/lang/String;
-    const v10, 0x10404af
+    const v10, 0x10404c6
 
     .line 931
     .restart local v10    # "prepositionId":I
@@ -1904,7 +1904,7 @@
 
     .line 935
     .restart local v12    # "result":Ljava/lang/String;
-    const v10, 0x10404af
+    const v10, 0x10404c6
 
     .restart local v10    # "prepositionId":I
     goto :goto_0
@@ -1987,7 +1987,7 @@
     sput-object v0, Landroid/text/format/DateUtils;->sLastConfig:Landroid/content/res/Configuration;
 
     .line 471
-    const v2, 0x10404c3
+    const v2, 0x10404da
 
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -1996,7 +1996,7 @@
     sput-object v2, Landroid/text/format/DateUtils;->sElapsedFormatMMSS:Ljava/lang/String;
 
     .line 472
-    const v2, 0x10404c4
+    const v2, 0x10404db
 
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 

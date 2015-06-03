@@ -77,6 +77,11 @@ then
     #cp -rf overlay/framework2/smali/* $BUILD_OUT/framework2/smali
 fi
 
+if [ $2 = "$BUILD_OUT/services" ]
+then
+    applyPatch "overlay/services"
+fi
+
 if [ $2 = "$BUILD_OUT/telephony-common" ]
 then
     # remove all files at out/framework1 those exist in framework.jar.out
@@ -92,4 +97,3 @@ then
             rm -rf "$file"
     done
 fi
-# MIUI_V6_Sensation

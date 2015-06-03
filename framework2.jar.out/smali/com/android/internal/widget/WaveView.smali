@@ -426,7 +426,7 @@
     .line 569
     iget-object v0, p0, Lcom/android/internal/widget/WaveView;->mContext:Landroid/content/Context;
 
-    const v1, 0x10405ec
+    const v1, 0x1040603
 
     invoke-virtual {v0, v1}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 

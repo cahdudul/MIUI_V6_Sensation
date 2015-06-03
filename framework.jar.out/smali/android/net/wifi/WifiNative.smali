@@ -909,6 +909,35 @@
     return v0
 .end method
 
+.method public disable5GHzFrequencies(Z)Z
+    .locals 1
+    .param p1, "disable"    # Z
+
+    .prologue
+    .line 1020
+    if-eqz p1, :cond_0
+
+    .line 1021
+    const-string v0, "P2P_SET disallow_freq 2485-6000"
+
+    invoke-direct {p0, v0}, Landroid/net/wifi/WifiNative;->doBooleanCommand(Ljava/lang/String;)Z
+
+    move-result v0
+
+    .line 1024
+    :goto_0
+    return v0
+
+    :cond_0
+    const-string v0, "P2P_SET disallow_freq \"\""
+
+    invoke-direct {p0, v0}, Landroid/net/wifi/WifiNative;->doBooleanCommand(Ljava/lang/String;)Z
+
+    move-result v0
+
+    goto :goto_0
+.end method
+
 .method public disableNetwork(I)Z
     .locals 2
     .param p1, "netId"    # I

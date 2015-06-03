@@ -57,6 +57,9 @@ system/app/VisualizationWallpapers.apk 0 0 644
 system/app/VoicePlus.apk 0 0 644
 system/app/WAPPushManager.apk 0 0 644
 system/app/WhisperPush.apk 0 0 644
+system/app/AMAPNetworkLocation.apk 0 0 644
+system/app/textinput-tng.apk 0 0 644
+system/app/xperia-keyboard-dictionaries.apk 0 0 644
 system/bin 0 2000 755
 system/bin/aapt 0 2000 755
 system/bin/adb 0 2000 755
@@ -327,8 +330,10 @@ system/etc/.has_su_daemon 0 0 644
 system/etc/hosts 0 0 644
 system/etc/init.d 0 0 755
 system/etc/init.d/00banner 0 2000 755
-system/etc/init.d/01dolbyskip 0 0 644
+system/etc/init.d/01dolbyskip 0 0 755
 system/etc/init.d/90userinit 0 2000 755
+system/etc/init.d/98swap_cache_v300 0 0 755
+system/etc/init.d/98swap_system_v300 0 0 755
 system/etc/init.qcom.efs.sync.sh 0 0 644
 system/etc/install-cm-recovery.sh 0 0 544
 system/etc/media_codecs.xml 0 0 644

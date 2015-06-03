@@ -180,7 +180,7 @@
 
     .line 26
     .local v0, "res":Landroid/content/res/Resources;
-    const v1, 0x1110069
+    const v1, 0x111006b
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -289,7 +289,7 @@
 
     .line 54
     .local v1, "res":Landroid/content/res/Resources;
-    const v2, 0x1040115
+    const v2, 0x104012c
 
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -324,7 +324,7 @@
 
     move-result-object v0
 
-    const v1, 0x111006e
+    const v1, 0x1110070
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getBoolean(I)Z
 

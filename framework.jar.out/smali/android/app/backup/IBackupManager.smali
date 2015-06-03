@@ -79,7 +79,23 @@
     .end annotation
 .end method
 
+.method public abstract fullBackupNoninteractive(Landroid/os/ParcelFileDescriptor;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLandroid/app/backup/IFullBackupRestoreObserver;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract fullRestore(Landroid/os/ParcelFileDescriptor;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract fullRestoreNoninteractive(Landroid/os/ParcelFileDescriptor;ZLandroid/app/backup/IFullBackupRestoreObserver;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

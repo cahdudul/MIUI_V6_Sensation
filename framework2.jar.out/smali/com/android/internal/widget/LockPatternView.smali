@@ -2564,7 +2564,7 @@
 
     .prologue
     .line 432
-    const v0, 0x104041c
+    const v0, 0x1040433
 
     invoke-direct {p0, v0}, Lcom/android/internal/widget/LockPatternView;->sendAccessEvent(I)V
 
@@ -2590,7 +2590,7 @@
 
     .prologue
     .line 453
-    const v0, 0x104041b
+    const v0, 0x1040432
 
     invoke-direct {p0, v0}, Lcom/android/internal/widget/LockPatternView;->sendAccessEvent(I)V
 
@@ -2614,7 +2614,7 @@
 
     .prologue
     .line 446
-    const v0, 0x104041d
+    const v0, 0x1040434
 
     invoke-direct {p0, v0}, Lcom/android/internal/widget/LockPatternView;->sendAccessEvent(I)V
 
@@ -2640,7 +2640,7 @@
 
     .prologue
     .line 439
-    const v0, 0x104041a
+    const v0, 0x1040431
 
     invoke-direct {p0, v0}, Lcom/android/internal/widget/LockPatternView;->sendAccessEvent(I)V
 
@@ -3773,7 +3773,7 @@
 .end method
 
 .method protected onRestoreInstanceState(Landroid/os/Parcelable;)V
-    .locals 2
+    .locals 3
     .param p1, "state"    # Landroid/os/Parcelable;
 
     .prologue
@@ -3791,6 +3791,13 @@
     invoke-super {p0, v1}, Landroid/view/View;->onRestoreInstanceState(Landroid/os/Parcelable;)V
 
     .line 1089
+    invoke-virtual {v0}, Lcom/android/internal/widget/LockPatternView$SavedState;->getPatternSize()B
+
+    move-result v1
+
+    iput-byte v1, p0, Lcom/android/internal/widget/LockPatternView;->mPatternSize:B
+
+    .line 1090
     iget-object v1, p0, Lcom/android/internal/widget/LockPatternView;->mLockPatternUtils:Lcom/android/internal/widget/LockPatternUtils;
 
     if-eqz v1, :cond_0
@@ -3798,17 +3805,17 @@
     .line 1090
     sget-object v1, Lcom/android/internal/widget/LockPatternView$DisplayMode;->Correct:Lcom/android/internal/widget/LockPatternView$DisplayMode;
 
-    iget-object p0, p0, Lcom/android/internal/widget/LockPatternView;->mLockPatternUtils:Lcom/android/internal/widget/LockPatternUtils;
+    iget-object v2, p0, Lcom/android/internal/widget/LockPatternView;->mLockPatternUtils:Lcom/android/internal/widget/LockPatternUtils;
 
     invoke-virtual {v0}, Lcom/android/internal/widget/LockPatternView$SavedState;->getSerializedPattern()Ljava/lang/String;
 
-    move-result-object v1
+    move-result-object v2
 
-    invoke-static {v1}, Lcom/android/internal/widget/LockPatternUtils;->stringToPattern(Ljava/lang/String;)Ljava/util/List;
+    invoke-static {v2}, Lcom/android/internal/widget/LockPatternUtils;->stringToPattern(Ljava/lang/String;)Ljava/util/List;
 
-    move-result-object p0
+    move-result-object v2
 
-    invoke-virtual {p0, v1, p0}, Lcom/android/internal/widget/LockPatternView;->setPattern(Lcom/android/internal/widget/LockPatternView$DisplayMode;Ljava/util/List;)V
+    invoke-virtual {p0, v1, v2}, Lcom/android/internal/widget/LockPatternView;->setPattern(Lcom/android/internal/widget/LockPatternView$DisplayMode;Ljava/util/List;)V
 
     .line 1094
     :cond_0
@@ -3818,18 +3825,11 @@
 
     invoke-virtual {v0}, Lcom/android/internal/widget/LockPatternView$SavedState;->getDisplayMode()I
 
-    move-result p0
+    move-result v2
 
-    aget-object v1, v1, p0
+    aget-object v1, v1, v2
 
     iput-object v1, p0, Lcom/android/internal/widget/LockPatternView;->mPatternDisplayMode:Lcom/android/internal/widget/LockPatternView$DisplayMode;
-
-    .line 1095
-    invoke-virtual {v0}, Lcom/android/internal/widget/LockPatternView$SavedState;->getPatternSize()B
-
-    move-result v1
-
-    iput-byte v1, p0, Lcom/android/internal/widget/LockPatternView;->mPatternSize:B
 
     .line 1096
     invoke-virtual {v0}, Lcom/android/internal/widget/LockPatternView$SavedState;->isInputEnabled()Z

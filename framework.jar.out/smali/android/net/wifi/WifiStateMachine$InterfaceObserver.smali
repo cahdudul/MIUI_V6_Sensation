@@ -26,16 +26,16 @@
     .param p2, "wifiStateMachine"    # Landroid/net/wifi/WifiStateMachine;
 
     .prologue
-    .line 245
+    .line 247
     iput-object p1, p0, Landroid/net/wifi/WifiStateMachine$InterfaceObserver;->this$0:Landroid/net/wifi/WifiStateMachine;
 
-    .line 246
+    .line 248
     invoke-direct {p0}, Lcom/android/server/net/BaseNetworkObserver;-><init>()V
 
-    .line 247
+    .line 249
     iput-object p2, p0, Landroid/net/wifi/WifiStateMachine$InterfaceObserver;->mWifiStateMachine:Landroid/net/wifi/WifiStateMachine;
 
-    .line 248
+    .line 250
     return-void
 .end method
 
@@ -49,7 +49,7 @@
     .param p4, "scope"    # I
 
     .prologue
-    .line 263
+    .line 265
     iget-object v0, p0, Landroid/net/wifi/WifiStateMachine$InterfaceObserver;->mWifiStateMachine:Landroid/net/wifi/WifiStateMachine;
 
     # getter for: Landroid/net/wifi/WifiStateMachine;->mInterfaceName:Ljava/lang/String;
@@ -63,7 +63,7 @@
 
     if-eqz v0, :cond_0
 
-    .line 268
+    .line 270
     iget-object v0, p0, Landroid/net/wifi/WifiStateMachine$InterfaceObserver;->mWifiStateMachine:Landroid/net/wifi/WifiStateMachine;
 
     const v1, 0x2008d
@@ -74,7 +74,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/net/wifi/WifiStateMachine;->sendMessage(ILjava/lang/Object;)V
 
-    .line 270
+    .line 272
     :cond_0
     return-void
 .end method
@@ -87,7 +87,7 @@
     .param p4, "scope"    # I
 
     .prologue
-    .line 252
+    .line 254
     iget-object v0, p0, Landroid/net/wifi/WifiStateMachine$InterfaceObserver;->mWifiStateMachine:Landroid/net/wifi/WifiStateMachine;
 
     # getter for: Landroid/net/wifi/WifiStateMachine;->mInterfaceName:Ljava/lang/String;
@@ -101,7 +101,7 @@
 
     if-eqz v0, :cond_0
 
-    .line 257
+    .line 259
     iget-object v0, p0, Landroid/net/wifi/WifiStateMachine$InterfaceObserver;->mWifiStateMachine:Landroid/net/wifi/WifiStateMachine;
 
     const v1, 0x2008c
@@ -112,7 +112,7 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/net/wifi/WifiStateMachine;->sendMessage(ILjava/lang/Object;)V
 
-    .line 259
+    .line 261
     :cond_0
     return-void
 .end method

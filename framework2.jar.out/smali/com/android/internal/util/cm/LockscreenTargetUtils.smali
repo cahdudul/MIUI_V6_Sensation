@@ -154,7 +154,7 @@
     if-eqz v6, :cond_0
 
     .line 215
-    const v6, 0x10400f0
+    const v6, 0x1040106
 
     invoke-virtual {p0, v6}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -321,7 +321,7 @@
 
     .line 188
     .local v1, "inset":I
-    const v7, 0x10400f0
+    const v7, 0x1040106
 
     invoke-virtual {p0, v7}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -467,7 +467,7 @@
 
     .line 124
     .local v7, "activelayer":[Landroid/graphics/drawable/InsetDrawable;
-    const v0, 0x10400f0
+    const v0, 0x1040106
 
     invoke-virtual {p0, v0}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 

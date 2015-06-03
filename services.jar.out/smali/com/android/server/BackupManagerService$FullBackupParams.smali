@@ -17,6 +17,10 @@
 # instance fields
 .field public allApps:Z
 
+.field public domainTokens:[Ljava/lang/String;
+
+.field public excludeFilesRegex:Ljava/lang/String;
+
 .field public includeApks:Z
 
 .field public includeObbs:Z
@@ -27,11 +31,13 @@
 
 .field public packages:[Ljava/lang/String;
 
+.field public shouldKillAfterBackup:Z
+
 .field final synthetic this$0:Lcom/android/server/BackupManagerService;
 
 
 # direct methods
-.method constructor <init>(Lcom/android/server/BackupManagerService;Landroid/os/ParcelFileDescriptor;ZZZZZ[Ljava/lang/String;)V
+.method constructor <init>(Lcom/android/server/BackupManagerService;Landroid/os/ParcelFileDescriptor;ZZZZZ[Ljava/lang/String;ZZ)V
     .locals 0
     .param p2, "output"    # Landroid/os/ParcelFileDescriptor;
     .param p3, "saveApks"    # Z
@@ -40,34 +46,42 @@
     .param p6, "doAllApps"    # Z
     .param p7, "doSystem"    # Z
     .param p8, "pkgList"    # [Ljava/lang/String;
+    .param p9, "killAfterBackup"    # Z
+    .param p10, "ignoreEncryptionCheck"    # Z
 
     .prologue
-    .line 405
+    .line 441
     iput-object p1, p0, Lcom/android/server/BackupManagerService$FullBackupParams;->this$0:Lcom/android/server/BackupManagerService;
 
     invoke-direct {p0, p1}, Lcom/android/server/BackupManagerService$FullParams;-><init>(Lcom/android/server/BackupManagerService;)V
 
-    .line 406
+    .line 442
     iput-object p2, p0, Lcom/android/server/BackupManagerService$FullBackupParams;->fd:Landroid/os/ParcelFileDescriptor;
 
-    .line 407
+    .line 443
     iput-boolean p3, p0, Lcom/android/server/BackupManagerService$FullBackupParams;->includeApks:Z
 
-    .line 408
+    .line 444
     iput-boolean p4, p0, Lcom/android/server/BackupManagerService$FullBackupParams;->includeObbs:Z
 
-    .line 409
+    .line 445
     iput-boolean p5, p0, Lcom/android/server/BackupManagerService$FullBackupParams;->includeShared:Z
 
-    .line 410
+    .line 446
     iput-boolean p6, p0, Lcom/android/server/BackupManagerService$FullBackupParams;->allApps:Z
 
-    .line 411
+    .line 447
     iput-boolean p7, p0, Lcom/android/server/BackupManagerService$FullBackupParams;->includeSystem:Z
 
-    .line 412
+    .line 448
     iput-object p8, p0, Lcom/android/server/BackupManagerService$FullBackupParams;->packages:[Ljava/lang/String;
 
-    .line 413
+    .line 449
+    iput-boolean p9, p0, Lcom/android/server/BackupManagerService$FullBackupParams;->shouldKillAfterBackup:Z
+
+    .line 450
+    iput-boolean p10, p0, Lcom/android/server/BackupManagerService$FullBackupParams;->ignoreEncryptionPasswordCheck:Z
+
+    .line 451
     return-void
 .end method

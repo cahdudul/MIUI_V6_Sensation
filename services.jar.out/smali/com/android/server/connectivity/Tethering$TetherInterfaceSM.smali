@@ -83,194 +83,125 @@
     .param p4, "usb"    # Z
 
     .prologue
-    .line 871
+    .line 984
     iput-object p1, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->this$0:Lcom/android/server/connectivity/Tethering;
 
-    .line 872
+    .line 985
     invoke-direct {p0, p2, p3}, Lcom/android/internal/util/StateMachine;-><init>(Ljava/lang/String;Landroid/os/Looper;)V
 
-    .line 873
+    .line 986
     iput-object p2, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->mIfaceName:Ljava/lang/String;
 
-    .line 874
+    .line 987
     iput-boolean p4, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->mUsb:Z
 
-    .line 875
+    .line 988
     const/4 v0, 0x0
 
     invoke-direct {p0, v0}, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->setLastError(I)V
 
-    .line 877
+    .line 990
     new-instance v0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM$InitialState;
 
     invoke-direct {v0, p0}, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM$InitialState;-><init>(Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;)V
 
     iput-object v0, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->mInitialState:Lcom/android/internal/util/State;
 
-    .line 878
+    .line 991
     iget-object v0, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->mInitialState:Lcom/android/internal/util/State;
 
     invoke-virtual {p0, v0}, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->addState(Lcom/android/internal/util/State;)V
 
-    .line 879
+    .line 992
     new-instance v0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM$StartingState;
 
     invoke-direct {v0, p0}, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM$StartingState;-><init>(Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;)V
 
     iput-object v0, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->mStartingState:Lcom/android/internal/util/State;
 
-    .line 880
+    .line 993
     iget-object v0, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->mStartingState:Lcom/android/internal/util/State;
 
     invoke-virtual {p0, v0}, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->addState(Lcom/android/internal/util/State;)V
 
-    .line 881
+    .line 994
     new-instance v0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM$TetheredState;
 
     invoke-direct {v0, p0}, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM$TetheredState;-><init>(Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;)V
 
     iput-object v0, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->mTetheredState:Lcom/android/internal/util/State;
 
-    .line 882
+    .line 995
     iget-object v0, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->mTetheredState:Lcom/android/internal/util/State;
 
     invoke-virtual {p0, v0}, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->addState(Lcom/android/internal/util/State;)V
 
-    .line 883
+    .line 996
     new-instance v0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM$UnavailableState;
 
     invoke-direct {v0, p0}, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM$UnavailableState;-><init>(Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;)V
 
     iput-object v0, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->mUnavailableState:Lcom/android/internal/util/State;
 
-    .line 884
+    .line 997
     iget-object v0, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->mUnavailableState:Lcom/android/internal/util/State;
 
     invoke-virtual {p0, v0}, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->addState(Lcom/android/internal/util/State;)V
 
-    .line 886
+    .line 999
     iget-object v0, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->mInitialState:Lcom/android/internal/util/State;
 
     invoke-virtual {p0, v0}, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->setInitialState(Lcom/android/internal/util/State;)V
 
-    .line 887
+    .line 1000
     return-void
 .end method
 
-.method static synthetic access$1100(Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;I)V
+.method static synthetic access$1600(Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;Z)V
+    .locals 0
+    .param p0, "x0"    # Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;
+    .param p1, "x1"    # Z
+
+    .prologue
+    .line 941
+    invoke-direct {p0, p1}, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->setAvailable(Z)V
+
+    return-void
+.end method
+
+.method static synthetic access$1700(Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;Z)V
+    .locals 0
+    .param p0, "x0"    # Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;
+    .param p1, "x1"    # Z
+
+    .prologue
+    .line 941
+    invoke-direct {p0, p1}, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->setTethered(Z)V
+
+    return-void
+.end method
+
+.method static synthetic access$1900(Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;I)V
     .locals 0
     .param p0, "x0"    # Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;
     .param p1, "x1"    # I
 
     .prologue
-    .line 828
+    .line 941
     invoke-direct {p0, p1}, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->setLastError(I)V
 
     return-void
 .end method
 
-.method static synthetic access$1200(Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;)Lcom/android/internal/util/State;
+.method static synthetic access$2000(Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;)Lcom/android/internal/util/State;
     .locals 1
     .param p0, "x0"    # Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;
 
     .prologue
-    .line 828
+    .line 941
     iget-object v0, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->mStartingState:Lcom/android/internal/util/State;
 
     return-object v0
-.end method
-
-.method static synthetic access$1300(Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;Lcom/android/internal/util/IState;)V
-    .locals 0
-    .param p0, "x0"    # Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;
-    .param p1, "x1"    # Lcom/android/internal/util/IState;
-
-    .prologue
-    .line 828
-    invoke-virtual {p0, p1}, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->transitionTo(Lcom/android/internal/util/IState;)V
-
-    return-void
-.end method
-
-.method static synthetic access$1400(Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;)Lcom/android/internal/util/State;
-    .locals 1
-    .param p0, "x0"    # Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;
-
-    .prologue
-    .line 828
-    iget-object v0, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->mUnavailableState:Lcom/android/internal/util/State;
-
-    return-object v0
-.end method
-
-.method static synthetic access$1500(Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;Lcom/android/internal/util/IState;)V
-    .locals 0
-    .param p0, "x0"    # Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;
-    .param p1, "x1"    # Lcom/android/internal/util/IState;
-
-    .prologue
-    .line 828
-    invoke-virtual {p0, p1}, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->transitionTo(Lcom/android/internal/util/IState;)V
-
-    return-void
-.end method
-
-.method static synthetic access$1600(Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;)Lcom/android/internal/util/State;
-    .locals 1
-    .param p0, "x0"    # Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;
-
-    .prologue
-    .line 828
-    iget-object v0, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->mInitialState:Lcom/android/internal/util/State;
-
-    return-object v0
-.end method
-
-.method static synthetic access$1700(Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;Lcom/android/internal/util/IState;)V
-    .locals 0
-    .param p0, "x0"    # Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;
-    .param p1, "x1"    # Lcom/android/internal/util/IState;
-
-    .prologue
-    .line 828
-    invoke-virtual {p0, p1}, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->transitionTo(Lcom/android/internal/util/IState;)V
-
-    return-void
-.end method
-
-.method static synthetic access$1800(Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;)Lcom/android/internal/util/State;
-    .locals 1
-    .param p0, "x0"    # Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;
-
-    .prologue
-    .line 828
-    iget-object v0, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->mTetheredState:Lcom/android/internal/util/State;
-
-    return-object v0
-.end method
-
-.method static synthetic access$1900(Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;Lcom/android/internal/util/IState;)V
-    .locals 0
-    .param p0, "x0"    # Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;
-    .param p1, "x1"    # Lcom/android/internal/util/IState;
-
-    .prologue
-    .line 828
-    invoke-virtual {p0, p1}, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->transitionTo(Lcom/android/internal/util/IState;)V
-
-    return-void
-.end method
-
-.method static synthetic access$2000(Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;Lcom/android/internal/util/IState;)V
-    .locals 0
-    .param p0, "x0"    # Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;
-    .param p1, "x1"    # Lcom/android/internal/util/IState;
-
-    .prologue
-    .line 828
-    invoke-virtual {p0, p1}, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->transitionTo(Lcom/android/internal/util/IState;)V
-
-    return-void
 .end method
 
 .method static synthetic access$2100(Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;Lcom/android/internal/util/IState;)V
@@ -279,10 +210,21 @@
     .param p1, "x1"    # Lcom/android/internal/util/IState;
 
     .prologue
-    .line 828
+    .line 941
     invoke-virtual {p0, p1}, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->transitionTo(Lcom/android/internal/util/IState;)V
 
     return-void
+.end method
+
+.method static synthetic access$2200(Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;)Lcom/android/internal/util/State;
+    .locals 1
+    .param p0, "x0"    # Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;
+
+    .prologue
+    .line 941
+    iget-object v0, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->mUnavailableState:Lcom/android/internal/util/State;
+
+    return-object v0
 .end method
 
 .method static synthetic access$2300(Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;Lcom/android/internal/util/IState;)V
@@ -291,22 +233,44 @@
     .param p1, "x1"    # Lcom/android/internal/util/IState;
 
     .prologue
-    .line 828
+    .line 941
     invoke-virtual {p0, p1}, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->transitionTo(Lcom/android/internal/util/IState;)V
 
     return-void
 .end method
 
-.method static synthetic access$2600(Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;Lcom/android/internal/util/IState;)V
+.method static synthetic access$2400(Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;)Lcom/android/internal/util/State;
+    .locals 1
+    .param p0, "x0"    # Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;
+
+    .prologue
+    .line 941
+    iget-object v0, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->mInitialState:Lcom/android/internal/util/State;
+
+    return-object v0
+.end method
+
+.method static synthetic access$2500(Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;Lcom/android/internal/util/IState;)V
     .locals 0
     .param p0, "x0"    # Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;
     .param p1, "x1"    # Lcom/android/internal/util/IState;
 
     .prologue
-    .line 828
+    .line 941
     invoke-virtual {p0, p1}, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->transitionTo(Lcom/android/internal/util/IState;)V
 
     return-void
+.end method
+
+.method static synthetic access$2600(Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;)Lcom/android/internal/util/State;
+    .locals 1
+    .param p0, "x0"    # Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;
+
+    .prologue
+    .line 941
+    iget-object v0, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->mTetheredState:Lcom/android/internal/util/State;
+
+    return-object v0
 .end method
 
 .method static synthetic access$2700(Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;Lcom/android/internal/util/IState;)V
@@ -315,7 +279,7 @@
     .param p1, "x1"    # Lcom/android/internal/util/IState;
 
     .prologue
-    .line 828
+    .line 941
     invoke-virtual {p0, p1}, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->transitionTo(Lcom/android/internal/util/IState;)V
 
     return-void
@@ -327,7 +291,7 @@
     .param p1, "x1"    # Lcom/android/internal/util/IState;
 
     .prologue
-    .line 828
+    .line 941
     invoke-virtual {p0, p1}, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->transitionTo(Lcom/android/internal/util/IState;)V
 
     return-void
@@ -339,44 +303,80 @@
     .param p1, "x1"    # Lcom/android/internal/util/IState;
 
     .prologue
-    .line 828
+    .line 941
     invoke-virtual {p0, p1}, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->transitionTo(Lcom/android/internal/util/IState;)V
 
     return-void
 .end method
 
-.method static synthetic access$3000(Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;Lcom/android/internal/util/IState;)V
+.method static synthetic access$3100(Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;Lcom/android/internal/util/IState;)V
     .locals 0
     .param p0, "x0"    # Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;
     .param p1, "x1"    # Lcom/android/internal/util/IState;
 
     .prologue
-    .line 828
+    .line 941
     invoke-virtual {p0, p1}, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->transitionTo(Lcom/android/internal/util/IState;)V
 
     return-void
 .end method
 
-.method static synthetic access$800(Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;Z)V
+.method static synthetic access$3400(Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;Lcom/android/internal/util/IState;)V
     .locals 0
     .param p0, "x0"    # Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;
-    .param p1, "x1"    # Z
+    .param p1, "x1"    # Lcom/android/internal/util/IState;
 
     .prologue
-    .line 828
-    invoke-direct {p0, p1}, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->setAvailable(Z)V
+    .line 941
+    invoke-virtual {p0, p1}, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->transitionTo(Lcom/android/internal/util/IState;)V
 
     return-void
 .end method
 
-.method static synthetic access$900(Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;Z)V
+.method static synthetic access$3500(Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;Lcom/android/internal/util/IState;)V
     .locals 0
     .param p0, "x0"    # Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;
-    .param p1, "x1"    # Z
+    .param p1, "x1"    # Lcom/android/internal/util/IState;
 
     .prologue
-    .line 828
-    invoke-direct {p0, p1}, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->setTethered(Z)V
+    .line 941
+    invoke-virtual {p0, p1}, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->transitionTo(Lcom/android/internal/util/IState;)V
+
+    return-void
+.end method
+
+.method static synthetic access$3600(Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;Lcom/android/internal/util/IState;)V
+    .locals 0
+    .param p0, "x0"    # Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;
+    .param p1, "x1"    # Lcom/android/internal/util/IState;
+
+    .prologue
+    .line 941
+    invoke-virtual {p0, p1}, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->transitionTo(Lcom/android/internal/util/IState;)V
+
+    return-void
+.end method
+
+.method static synthetic access$3700(Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;Lcom/android/internal/util/IState;)V
+    .locals 0
+    .param p0, "x0"    # Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;
+    .param p1, "x1"    # Lcom/android/internal/util/IState;
+
+    .prologue
+    .line 941
+    invoke-virtual {p0, p1}, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->transitionTo(Lcom/android/internal/util/IState;)V
+
+    return-void
+.end method
+
+.method static synthetic access$3800(Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;Lcom/android/internal/util/IState;)V
+    .locals 0
+    .param p0, "x0"    # Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;
+    .param p1, "x1"    # Lcom/android/internal/util/IState;
+
+    .prologue
+    .line 941
+    invoke-virtual {p0, p1}, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->transitionTo(Lcom/android/internal/util/IState;)V
 
     return-void
 .end method
@@ -386,27 +386,27 @@
     .param p1, "available"    # Z
 
     .prologue
-    .line 930
+    .line 1043
     iget-object v0, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->this$0:Lcom/android/server/connectivity/Tethering;
 
     # getter for: Lcom/android/server/connectivity/Tethering;->mPublicSync:Ljava/lang/Object;
-    invoke-static {v0}, Lcom/android/server/connectivity/Tethering;->access$200(Lcom/android/server/connectivity/Tethering;)Ljava/lang/Object;
+    invoke-static {v0}, Lcom/android/server/connectivity/Tethering;->access$1000(Lcom/android/server/connectivity/Tethering;)Ljava/lang/Object;
 
     move-result-object v1
 
     monitor-enter v1
 
-    .line 931
+    .line 1044
     :try_start_0
     iput-boolean p1, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->mAvailable:Z
 
-    .line 932
+    .line 1045
     monitor-exit v1
 
-    .line 933
+    .line 1046
     return-void
 
-    .line 932
+    .line 1045
     :catchall_0
     move-exception v0
 
@@ -422,48 +422,48 @@
     .param p1, "error"    # I
 
     .prologue
-    .line 910
+    .line 1023
     iget-object v0, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->this$0:Lcom/android/server/connectivity/Tethering;
 
     # getter for: Lcom/android/server/connectivity/Tethering;->mPublicSync:Ljava/lang/Object;
-    invoke-static {v0}, Lcom/android/server/connectivity/Tethering;->access$200(Lcom/android/server/connectivity/Tethering;)Ljava/lang/Object;
+    invoke-static {v0}, Lcom/android/server/connectivity/Tethering;->access$1000(Lcom/android/server/connectivity/Tethering;)Ljava/lang/Object;
 
     move-result-object v1
 
     monitor-enter v1
 
-    .line 911
+    .line 1024
     :try_start_0
     iput p1, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->mLastError:I
 
-    .line 913
+    .line 1026
     invoke-virtual {p0}, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->isErrored()Z
 
     move-result v0
 
     if-eqz v0, :cond_0
 
-    .line 914
+    .line 1027
     iget-boolean v0, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->mUsb:Z
 
     if-eqz v0, :cond_0
 
-    .line 917
+    .line 1030
     iget-object v0, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->this$0:Lcom/android/server/connectivity/Tethering;
 
     const/4 v2, 0x0
 
     # invokes: Lcom/android/server/connectivity/Tethering;->configureUsbIface(Z)Z
-    invoke-static {v0, v2}, Lcom/android/server/connectivity/Tethering;->access$700(Lcom/android/server/connectivity/Tethering;Z)Z
+    invoke-static {v0, v2}, Lcom/android/server/connectivity/Tethering;->access$1500(Lcom/android/server/connectivity/Tethering;Z)Z
 
-    .line 920
+    .line 1033
     :cond_0
     monitor-exit v1
 
-    .line 921
+    .line 1034
     return-void
 
-    .line 920
+    .line 1033
     :catchall_0
     move-exception v0
 
@@ -479,27 +479,27 @@
     .param p1, "tethered"    # Z
 
     .prologue
-    .line 948
+    .line 1061
     iget-object v0, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->this$0:Lcom/android/server/connectivity/Tethering;
 
     # getter for: Lcom/android/server/connectivity/Tethering;->mPublicSync:Ljava/lang/Object;
-    invoke-static {v0}, Lcom/android/server/connectivity/Tethering;->access$200(Lcom/android/server/connectivity/Tethering;)Ljava/lang/Object;
+    invoke-static {v0}, Lcom/android/server/connectivity/Tethering;->access$1000(Lcom/android/server/connectivity/Tethering;)Ljava/lang/Object;
 
     move-result-object v1
 
     monitor-enter v1
 
-    .line 949
+    .line 1062
     :try_start_0
     iput-boolean p1, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->mTethered:Z
 
-    .line 950
+    .line 1063
     monitor-exit v1
 
-    .line 951
+    .line 1064
     return-void
 
-    .line 950
+    .line 1063
     :catchall_0
     move-exception v0
 
@@ -516,17 +516,17 @@
     .locals 2
 
     .prologue
-    .line 904
+    .line 1017
     iget-object v0, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->this$0:Lcom/android/server/connectivity/Tethering;
 
     # getter for: Lcom/android/server/connectivity/Tethering;->mPublicSync:Ljava/lang/Object;
-    invoke-static {v0}, Lcom/android/server/connectivity/Tethering;->access$200(Lcom/android/server/connectivity/Tethering;)Ljava/lang/Object;
+    invoke-static {v0}, Lcom/android/server/connectivity/Tethering;->access$1000(Lcom/android/server/connectivity/Tethering;)Ljava/lang/Object;
 
     move-result-object v1
 
     monitor-enter v1
 
-    .line 905
+    .line 1018
     :try_start_0
     iget v0, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->mLastError:I
 
@@ -534,7 +534,7 @@
 
     return v0
 
-    .line 906
+    .line 1019
     :catchall_0
     move-exception v0
 
@@ -549,17 +549,17 @@
     .locals 2
 
     .prologue
-    .line 942
+    .line 1055
     iget-object v0, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->this$0:Lcom/android/server/connectivity/Tethering;
 
     # getter for: Lcom/android/server/connectivity/Tethering;->mPublicSync:Ljava/lang/Object;
-    invoke-static {v0}, Lcom/android/server/connectivity/Tethering;->access$200(Lcom/android/server/connectivity/Tethering;)Ljava/lang/Object;
+    invoke-static {v0}, Lcom/android/server/connectivity/Tethering;->access$1000(Lcom/android/server/connectivity/Tethering;)Ljava/lang/Object;
 
     move-result-object v1
 
     monitor-enter v1
 
-    .line 943
+    .line 1056
     :try_start_0
     iget-object v0, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->mIfaceName:Ljava/lang/String;
 
@@ -567,7 +567,7 @@
 
     return-object v0
 
-    .line 944
+    .line 1057
     :catchall_0
     move-exception v0
 
@@ -582,17 +582,17 @@
     .locals 2
 
     .prologue
-    .line 924
+    .line 1037
     iget-object v0, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->this$0:Lcom/android/server/connectivity/Tethering;
 
     # getter for: Lcom/android/server/connectivity/Tethering;->mPublicSync:Ljava/lang/Object;
-    invoke-static {v0}, Lcom/android/server/connectivity/Tethering;->access$200(Lcom/android/server/connectivity/Tethering;)Ljava/lang/Object;
+    invoke-static {v0}, Lcom/android/server/connectivity/Tethering;->access$1000(Lcom/android/server/connectivity/Tethering;)Ljava/lang/Object;
 
     move-result-object v1
 
     monitor-enter v1
 
-    .line 925
+    .line 1038
     :try_start_0
     iget-boolean v0, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->mAvailable:Z
 
@@ -600,7 +600,7 @@
 
     return v0
 
-    .line 926
+    .line 1039
     :catchall_0
     move-exception v0
 
@@ -615,17 +615,17 @@
     .locals 2
 
     .prologue
-    .line 954
+    .line 1067
     iget-object v0, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->this$0:Lcom/android/server/connectivity/Tethering;
 
     # getter for: Lcom/android/server/connectivity/Tethering;->mPublicSync:Ljava/lang/Object;
-    invoke-static {v0}, Lcom/android/server/connectivity/Tethering;->access$200(Lcom/android/server/connectivity/Tethering;)Ljava/lang/Object;
+    invoke-static {v0}, Lcom/android/server/connectivity/Tethering;->access$1000(Lcom/android/server/connectivity/Tethering;)Ljava/lang/Object;
 
     move-result-object v1
 
     monitor-enter v1
 
-    .line 955
+    .line 1068
     :try_start_0
     iget v0, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->mLastError:I
 
@@ -643,7 +643,7 @@
 
     goto :goto_0
 
-    .line 956
+    .line 1069
     :catchall_0
     move-exception v0
 
@@ -658,17 +658,17 @@
     .locals 2
 
     .prologue
-    .line 936
+    .line 1049
     iget-object v0, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->this$0:Lcom/android/server/connectivity/Tethering;
 
     # getter for: Lcom/android/server/connectivity/Tethering;->mPublicSync:Ljava/lang/Object;
-    invoke-static {v0}, Lcom/android/server/connectivity/Tethering;->access$200(Lcom/android/server/connectivity/Tethering;)Ljava/lang/Object;
+    invoke-static {v0}, Lcom/android/server/connectivity/Tethering;->access$1000(Lcom/android/server/connectivity/Tethering;)Ljava/lang/Object;
 
     move-result-object v1
 
     monitor-enter v1
 
-    .line 937
+    .line 1050
     :try_start_0
     iget-boolean v0, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->mTethered:Z
 
@@ -676,7 +676,7 @@
 
     return v0
 
-    .line 938
+    .line 1051
     :catchall_0
     move-exception v0
 
@@ -692,15 +692,15 @@
     .param p1, "error"    # I
 
     .prologue
-    .line 1219
+    .line 1334
     invoke-direct {p0, p1}, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->setLastError(I)V
 
-    .line 1220
+    .line 1335
     iget-object v0, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->mInitialState:Lcom/android/internal/util/State;
 
     invoke-virtual {p0, v0}, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->transitionTo(Lcom/android/internal/util/IState;)V
 
-    .line 1221
+    .line 1336
     return-void
 .end method
 
@@ -708,12 +708,12 @@
     .locals 4
 
     .prologue
-    .line 890
+    .line 1003
     new-instance v1, Ljava/lang/String;
 
     invoke-direct {v1}, Ljava/lang/String;-><init>()V
 
-    .line 891
+    .line 1004
     .local v1, "res":Ljava/lang/String;
     new-instance v2, Ljava/lang/StringBuilder;
 
@@ -739,12 +739,12 @@
 
     move-result-object v1
 
-    .line 892
+    .line 1005
     invoke-virtual {p0}, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->getCurrentState()Lcom/android/internal/util/IState;
 
     move-result-object v0
 
-    .line 893
+    .line 1006
     .local v0, "current":Lcom/android/internal/util/IState;
     iget-object v2, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->mInitialState:Lcom/android/internal/util/State;
 
@@ -768,7 +768,7 @@
 
     move-result-object v1
 
-    .line 894
+    .line 1007
     :cond_0
     iget-object v2, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->mStartingState:Lcom/android/internal/util/State;
 
@@ -792,7 +792,7 @@
 
     move-result-object v1
 
-    .line 895
+    .line 1008
     :cond_1
     iget-object v2, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->mTetheredState:Lcom/android/internal/util/State;
 
@@ -816,7 +816,7 @@
 
     move-result-object v1
 
-    .line 896
+    .line 1009
     :cond_2
     iget-object v2, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->mUnavailableState:Lcom/android/internal/util/State;
 
@@ -840,7 +840,7 @@
 
     move-result-object v1
 
-    .line 897
+    .line 1010
     :cond_3
     iget-boolean v2, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->mAvailable:Z
 
@@ -864,7 +864,7 @@
 
     move-result-object v1
 
-    .line 898
+    .line 1011
     :cond_4
     iget-boolean v2, p0, Lcom/android/server/connectivity/Tethering$TetherInterfaceSM;->mTethered:Z
 
@@ -888,7 +888,7 @@
 
     move-result-object v1
 
-    .line 899
+    .line 1012
     :cond_5
     new-instance v2, Ljava/lang/StringBuilder;
 
@@ -914,6 +914,6 @@
 
     move-result-object v1
 
-    .line 900
+    .line 1013
     return-object v1
 .end method

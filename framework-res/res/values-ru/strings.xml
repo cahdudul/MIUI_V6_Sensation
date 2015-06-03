@@ -27,18 +27,6 @@
     <string name="storage_internal">Внутренняя память</string>
     <string name="storage_sd_card">SD-карта</string>
     <string name="storage_usb">USB-накопитель</string>
-    <string name="pinpuk_attempts">"
-Осталось попыток:"</string>
-    <string name="lockscreen_sim_error_message_short">Карта недействительна.</string>
-    <string name="lockscreen_airplane_mode_on">Режим полёта</string>
-    <string name="progress_nomediapresent">Отсутствует внешний накопитель</string>
-    <string name="storage_uicc">Хранилище UICC</string>
-    <string name="stk_cc_ussd_to_dial">USSD-запрос преобразован в DIAL-запрос.</string>
-    <string name="stk_cc_ussd_to_ss">USSD-запрос преобразован в SS-запрос.</string>
-    <string name="stk_cc_ussd_to_ussd">USSD-запрос преобразован в новый USSD-запрос.</string>
-    <string name="stk_cc_ss_to_dial">SS-запрос преобразован в DIAL-запрос.</string>
-    <string name="stk_cc_ss_to_ussd">SS-запрос преобразован в USSD-запрос.</string>
-    <string name="stk_cc_ss_to_ss">SS-запрос преобразован в новый SS-запрос.</string>
     <string name="profileNameDefault">Стандартный</string>
     <string name="profileNameWork">Работа</string>
     <string name="profileNameHome">Дом</string>
@@ -105,6 +93,8 @@
     <string name="permdesc_setKeyguardWallpaper">Приложение сможет изменять обои экрана блокировки устройства.</string>
     <string name="permlab_useHardwareFramework">Взаимодействие с оборудованием</string>
     <string name="permdesc_useHardwareFramework">Приложение сможет получать доступ к подсистеме аппаратных абстракций CyanogenMod.</string>
+    <string name="permlab_keyguardApplicationWidget">установка виджета быстрого запуска для экрана блокировки</string>
+    <string name="permdesc_keyguardApplicationWidget">Приложение сможет изменять виджет быстрого запуска на экране блокировки.</string>
     <string name="immersive_mode_confirmation_bottom">Чтобы вернуться в обычный режим, проведите пальцем вверх.</string>
     <string name="app_ops_access_camera">получить доступ к камере</string>
     <string name="app_ops_access_location">получить доступ к местоположению устройства</string>
@@ -154,10 +144,11 @@
     <string name="adb_net_active_notification_title">Отладка по сети разрешена</string>
     <string name="adb_both_active_notification_title">Отладка по сети и USB разрешена</string>
     <string name="adb_active_generic_notification_message">Нажмите, чтобы отключить отладку.</string>
-    <string name="extmedia_format_message_cm">Все данные на карте (по адресу «%1$s») будут удалены. Это действие невозможно отменить!</string>
+    <string name="usb_extmedia_format_message">Все данные на USB-накопителе (по адресу «%1$s») будут удалены. Это действие невозможно отменить!</string>
+    <string name="sd_extmedia_format_message">Все данные на карте (по адресу «%1$s») будут удалены. Это действие невозможно отменить!</string>
     <string name="usb_storage_notification_manage_message">Нажмите, чтобы открыть список опций.</string>
-    <string name="sd_ext_media_checking_notification_title">Подготовка SD-карты</string>
-    <string name="sd_ext_media_checking_notification_message">Выполняется проверка карты на наличие ошибок.</string>
+    <string name="sd_ext_media_checking_notification_title">Подготовка SD-карты…</string>
+    <string name="sd_ext_media_checking_notification_message">Выполняется проверка карты на наличие ошибок…</string>
     <string name="sd_ext_media_nofs_notification_title">Пустая SD-карта</string>
     <string name="sd_ext_media_nofs_notification_message">SD-карта пуста или имеет неподдерживаемую файловую систему.</string>
     <string name="sd_ext_media_unmountable_notification_title">Повреждённая SD-карта</string>
@@ -168,8 +159,8 @@
     <string name="sd_ext_media_safe_unmount_notification_message">Теперь SD-карта может быть безопасно отключена.</string>
     <string name="sd_ext_media_nomedia_notification_title">SD-карта извлечена</string>
     <string name="sd_ext_media_nomedia_notification_message">SD-карта извлечена. Можно вставить новую карту.</string>
-    <string name="usb_ext_media_checking_notification_title">Подготовка USB-накопителя</string>
-    <string name="usb_ext_media_checking_notification_message">Выполняется проверка накопителя на наличие ошибок.</string>
+    <string name="usb_ext_media_checking_notification_title">Подготовка USB-накопителя…</string>
+    <string name="usb_ext_media_checking_notification_message">Выполняется проверка накопителя на наличие ошибок…</string>
     <string name="usb_ext_media_nofs_notification_title">Пустой USB-накопитель</string>
     <string name="usb_ext_media_nofs_notification_message">На USB-накопителе нет данных, или его файловая система не поддерживается.</string>
     <string name="usb_ext_media_unmountable_notification_title">USB-накопитель повреждён</string>
@@ -180,6 +171,35 @@
     <string name="usb_ext_media_safe_unmount_notification_message">Теперь USB-накопитель может быть безопасно отключён.</string>
     <string name="usb_ext_media_nomedia_notification_title">USB-накопитель извлечён</string>
     <string name="usb_ext_media_nomedia_notification_message">USB-накопитель отключён. Можно вставить другой накопитель.</string>
+    <string name="progress_nomediapresent">Отсутствует внешний накопитель</string>
+    <string name="lockscreen_sim_error_message_short">Сбой SIM-карты.</string>
+    <string name="lockscreen_airplane_mode_on">Режим полёта</string>
+    <string name="lockscreen_sim_locked_message_cm">SIM/RUIM-карта заблокирована.</string>
+    <string name="pinpuk_attempts">"
+Осталось попыток:"</string>
+    <string name="stk_cc_ussd_to_dial">USSD-запрос преобразован в DIAL-запрос.</string>
+    <string name="stk_cc_ussd_to_ss">USSD-запрос преобразован в SS-запрос.</string>
+    <string name="stk_cc_ussd_to_ussd">USSD-запрос преобразован в новый USSD-запрос.</string>
+    <string name="stk_cc_ss_to_dial">SS-запрос преобразован в DIAL-запрос.</string>
+    <string name="stk_cc_ss_to_ussd">SS-запрос преобразован в USSD-запрос.</string>
+    <string name="stk_cc_ss_to_ss">SS-запрос преобразован в новый SS-запрос.</string>
+    <string name="theme_install_error_title">Не удалось установить тему</string>
+    <string name="theme_install_error_message">Сбой при установке «%s»</string>
+    <string name="storage_uicc">Хранилище UICC</string>
+    <string name="sd_progress_unmounting">Отключение SD-карты…</string>
+    <string name="sd_progress_erasing">Очистка SD-карты…</string>
+    <string name="sd_format_error">Не удалось очистить SD-карту.</string>
+    <string name="sd_media_bad_removal">SD-карта была извлечена до отключения.</string>
+    <string name="sd_media_checking">Выполняется проверка SD-карты.</string>
+    <string name="sd_media_removed">SD-карта была отключена.</string>
+    <string name="sd_media_shared">Сейчас SD-карта используется компьютером.</string>
+    <string name="usb_progress_unmounting">Отключение USB-накопителя…</string>
+    <string name="usb_progress_erasing">Очистка USB-накопителя…</string>
+    <string name="usb_format_error">Не удалось очистить USB-накопитель.</string>
+    <string name="usb_media_bad_removal">USB-накопитель был извлечён до отключения.</string>
+    <string name="usb_media_checking">USB-накопитель проверяется.</string>
+    <string name="usb_media_removed">USB-накопитель извлечён.</string>
+    <string name="usb_media_shared">Сейчас USB-накопитель используется компьютером.</string>
     <string name="numeric_date_template" formatted="false">%s.%s.%s</string>
     <string name="month_day_year" formatted="false">%-e %B %Y г.</string>
     <string name="time_of_day" formatted="false">%-k:%M:%S</string>

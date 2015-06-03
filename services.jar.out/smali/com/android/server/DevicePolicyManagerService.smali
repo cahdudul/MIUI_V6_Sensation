@@ -22,7 +22,7 @@
 
 .field private static final EXPIRATION_GRACE_PERIOD_MS:J = 0x19bfcc00L
 
-.field private static final MONITORING_CERT_NOTIFICATION_ID:I = 0x104018d
+.field private static final MONITORING_CERT_NOTIFICATION_ID:I = 0x10401a4
 
 .field private static final MS_PER_DAY:J = 0x5265c00L
 
@@ -2267,7 +2267,7 @@
     .local v16, "user":Landroid/content/pm/UserInfo;
     const/4 v1, 0x0
 
-    const v2, 0x104018d
+    const v2, 0x10401a4
 
     invoke-virtual/range {v16 .. v16}, Landroid/content/pm/UserInfo;->getUserHandle()Landroid/os/UserHandle;
 
@@ -2300,7 +2300,7 @@
 
     iget-object v1, v0, Lcom/android/server/DevicePolicyManagerService;->mContext:Landroid/content/Context;
 
-    const v2, 0x104018f
+    const v2, 0x10401a6
 
     const/4 v4, 0x1
 
@@ -2377,7 +2377,7 @@
 
     iget-object v2, v0, Lcom/android/server/DevicePolicyManagerService;->mContext:Landroid/content/Context;
 
-    const v4, 0x104018d
+    const v4, 0x10401a4
 
     invoke-virtual {v2, v4}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -2466,7 +2466,7 @@
     .restart local v16    # "user":Landroid/content/pm/UserInfo;
     const/4 v1, 0x0
 
-    const v2, 0x104018d
+    const v2, 0x10401a4
 
     invoke-virtual/range {v16 .. v16}, Landroid/content/pm/UserInfo;->getUserHandle()Landroid/os/UserHandle;
 
@@ -2498,7 +2498,7 @@
 
     iget-object v1, v0, Lcom/android/server/DevicePolicyManagerService;->mContext:Landroid/content/Context;
 
-    const v2, 0x104018e
+    const v2, 0x10401a5
 
     invoke-virtual {v1, v2}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -2518,7 +2518,7 @@
     :cond_3
     const/4 v1, 0x0
 
-    const v2, 0x104018d
+    const v2, 0x10401a4
 
     sget-object v4, Landroid/os/UserHandle;->CURRENT:Landroid/os/UserHandle;
 

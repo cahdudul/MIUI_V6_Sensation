@@ -23,7 +23,7 @@
     .locals 0
 
     .prologue
-    .line 1992
+    .line 1994
     iput-object p1, p0, Lcom/android/internal/telephony/CallManager$CmHandler;->this$0:Lcom/android/internal/telephony/CallManager;
 
     invoke-direct {p0}, Landroid/os/Handler;-><init>()V
@@ -40,17 +40,17 @@
     .prologue
     const/4 v9, 0x0
 
-    .line 1997
+    .line 1999
     iget v6, p1, Landroid/os/Message;->what:I
 
     packed-switch v6, :pswitch_data_0
 
-    .line 2125
+    .line 2127
     :cond_0
     :goto_0
     return-void
 
-    .line 2000
+    .line 2002
     :pswitch_0
     iget-object v6, p0, Lcom/android/internal/telephony/CallManager$CmHandler;->this$0:Lcom/android/internal/telephony/CallManager;
 
@@ -64,7 +64,7 @@
 
     goto :goto_0
 
-    .line 2004
+    .line 2006
     :pswitch_1
     iget-object v6, p0, Lcom/android/internal/telephony/CallManager$CmHandler;->this$0:Lcom/android/internal/telephony/CallManager;
 
@@ -78,7 +78,7 @@
 
     goto :goto_0
 
-    .line 2008
+    .line 2010
     :pswitch_2
     iget-object v6, p0, Lcom/android/internal/telephony/CallManager$CmHandler;->this$0:Lcom/android/internal/telephony/CallManager;
 
@@ -110,7 +110,7 @@
 
     if-nez v6, :cond_2
 
-    .line 2010
+    .line 2012
     :cond_1
     iget-object v6, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
 
@@ -120,7 +120,7 @@
 
     check-cast v1, Lcom/android/internal/telephony/Connection;
 
-    .line 2012
+    .line 2014
     .local v1, "c":Lcom/android/internal/telephony/Connection;
     :try_start_0
     const-string v6, "CallManager"
@@ -149,7 +149,7 @@
 
     invoke-static {v6, v7}, Landroid/telephony/Rlog;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 2013
+    .line 2015
     invoke-virtual {v1}, Lcom/android/internal/telephony/Connection;->getCall()Lcom/android/internal/telephony/Call;
 
     move-result-object v6
@@ -160,11 +160,11 @@
 
     goto :goto_0
 
-    .line 2014
+    .line 2016
     :catch_0
     move-exception v2
 
-    .line 2015
+    .line 2017
     .local v2, "e":Lcom/android/internal/telephony/CallStateException;
     const-string v6, "CallManager"
 
@@ -174,7 +174,7 @@
 
     goto :goto_0
 
-    .line 2018
+    .line 2020
     .end local v1    # "c":Lcom/android/internal/telephony/Connection;
     .end local v2    # "e":Lcom/android/internal/telephony/CallStateException;
     :cond_2
@@ -190,7 +190,7 @@
 
     goto :goto_0
 
-    .line 2023
+    .line 2025
     :pswitch_3
     iget-object v6, p0, Lcom/android/internal/telephony/CallManager$CmHandler;->this$0:Lcom/android/internal/telephony/CallManager;
 
@@ -204,7 +204,7 @@
 
     goto/16 :goto_0
 
-    .line 2028
+    .line 2030
     :pswitch_4
     iget-object v6, p0, Lcom/android/internal/telephony/CallManager$CmHandler;->this$0:Lcom/android/internal/telephony/CallManager;
 
@@ -214,7 +214,7 @@
 
     if-nez v6, :cond_0
 
-    .line 2029
+    .line 2031
     iget-object v6, p0, Lcom/android/internal/telephony/CallManager$CmHandler;->this$0:Lcom/android/internal/telephony/CallManager;
 
     iget-object v7, v6, Lcom/android/internal/telephony/CallManager;->mIncomingRingRegistrants:Landroid/os/RegistrantList;
@@ -227,7 +227,7 @@
 
     goto/16 :goto_0
 
-    .line 2034
+    .line 2036
     :pswitch_5
     iget-object v6, p0, Lcom/android/internal/telephony/CallManager$CmHandler;->this$0:Lcom/android/internal/telephony/CallManager;
 
@@ -241,7 +241,7 @@
 
     goto/16 :goto_0
 
-    .line 2038
+    .line 2040
     :pswitch_6
     iget-object v6, p0, Lcom/android/internal/telephony/CallManager$CmHandler;->this$0:Lcom/android/internal/telephony/CallManager;
 
@@ -255,7 +255,7 @@
 
     goto/16 :goto_0
 
-    .line 2042
+    .line 2044
     :pswitch_7
     iget-object v6, p0, Lcom/android/internal/telephony/CallManager$CmHandler;->this$0:Lcom/android/internal/telephony/CallManager;
 
@@ -269,7 +269,7 @@
 
     goto/16 :goto_0
 
-    .line 2046
+    .line 2048
     :pswitch_8
     iget-object v6, p0, Lcom/android/internal/telephony/CallManager$CmHandler;->this$0:Lcom/android/internal/telephony/CallManager;
 
@@ -283,7 +283,7 @@
 
     goto/16 :goto_0
 
-    .line 2050
+    .line 2052
     :pswitch_9
     iget-object v6, p0, Lcom/android/internal/telephony/CallManager$CmHandler;->this$0:Lcom/android/internal/telephony/CallManager;
 
@@ -297,7 +297,7 @@
 
     goto/16 :goto_0
 
-    .line 2054
+    .line 2056
     :pswitch_a
     iget-object v6, p0, Lcom/android/internal/telephony/CallManager$CmHandler;->this$0:Lcom/android/internal/telephony/CallManager;
 
@@ -311,7 +311,7 @@
 
     goto/16 :goto_0
 
-    .line 2058
+    .line 2060
     :pswitch_b
     iget-object v6, p0, Lcom/android/internal/telephony/CallManager$CmHandler;->this$0:Lcom/android/internal/telephony/CallManager;
 
@@ -325,7 +325,7 @@
 
     goto/16 :goto_0
 
-    .line 2062
+    .line 2064
     :pswitch_c
     iget-object v6, p0, Lcom/android/internal/telephony/CallManager$CmHandler;->this$0:Lcom/android/internal/telephony/CallManager;
 
@@ -339,7 +339,7 @@
 
     goto/16 :goto_0
 
-    .line 2066
+    .line 2068
     :pswitch_d
     iget-object v6, p0, Lcom/android/internal/telephony/CallManager$CmHandler;->this$0:Lcom/android/internal/telephony/CallManager;
 
@@ -353,7 +353,7 @@
 
     goto/16 :goto_0
 
-    .line 2070
+    .line 2072
     :pswitch_e
     iget-object v6, p0, Lcom/android/internal/telephony/CallManager$CmHandler;->this$0:Lcom/android/internal/telephony/CallManager;
 
@@ -367,7 +367,7 @@
 
     goto/16 :goto_0
 
-    .line 2074
+    .line 2076
     :pswitch_f
     iget-object v6, p0, Lcom/android/internal/telephony/CallManager$CmHandler;->this$0:Lcom/android/internal/telephony/CallManager;
 
@@ -381,7 +381,7 @@
 
     goto/16 :goto_0
 
-    .line 2078
+    .line 2080
     :pswitch_10
     iget-object v6, p0, Lcom/android/internal/telephony/CallManager$CmHandler;->this$0:Lcom/android/internal/telephony/CallManager;
 
@@ -395,7 +395,7 @@
 
     goto/16 :goto_0
 
-    .line 2082
+    .line 2084
     :pswitch_11
     iget-object v6, p0, Lcom/android/internal/telephony/CallManager$CmHandler;->this$0:Lcom/android/internal/telephony/CallManager;
 
@@ -409,7 +409,7 @@
 
     goto/16 :goto_0
 
-    .line 2086
+    .line 2088
     :pswitch_12
     iget-object v6, p0, Lcom/android/internal/telephony/CallManager$CmHandler;->this$0:Lcom/android/internal/telephony/CallManager;
 
@@ -423,7 +423,7 @@
 
     goto/16 :goto_0
 
-    .line 2090
+    .line 2092
     :pswitch_13
     iget-object v6, p0, Lcom/android/internal/telephony/CallManager$CmHandler;->this$0:Lcom/android/internal/telephony/CallManager;
 
@@ -437,13 +437,13 @@
 
     goto/16 :goto_0
 
-    .line 2094
+    .line 2096
     :pswitch_14
     iget-object v0, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
 
     check-cast v0, Landroid/os/AsyncResult;
 
-    .line 2095
+    .line 2097
     .local v0, "ar":Landroid/os/AsyncResult;
     if-eqz v0, :cond_3
 
@@ -455,7 +455,7 @@
 
     if-nez v6, :cond_3
 
-    .line 2096
+    .line 2098
     iget-object v6, p0, Lcom/android/internal/telephony/CallManager$CmHandler;->this$0:Lcom/android/internal/telephony/CallManager;
 
     iget-object v7, v6, Lcom/android/internal/telephony/CallManager;->mCallModifyRegistrants:Landroid/os/RegistrantList;
@@ -472,7 +472,7 @@
 
     goto/16 :goto_0
 
-    .line 2099
+    .line 2101
     :cond_3
     const-string v6, "CallManager"
 
@@ -498,7 +498,7 @@
 
     goto/16 :goto_0
 
-    .line 2106
+    .line 2108
     .end local v0    # "ar":Landroid/os/AsyncResult;
     :pswitch_15
     const/4 v3, 0x0
@@ -515,7 +515,7 @@
 
     if-ge v3, v6, :cond_0
 
-    .line 2108
+    .line 2110
     iget-object v6, p0, Lcom/android/internal/telephony/CallManager$CmHandler;->this$0:Lcom/android/internal/telephony/CallManager;
 
     iget-object v6, v6, Lcom/android/internal/telephony/CallManager;->mPostDialCharacterRegistrants:Landroid/os/RegistrantList;
@@ -530,26 +530,26 @@
 
     move-result-object v4
 
-    .line 2109
+    .line 2111
     .local v4, "notifyMsg":Landroid/os/Message;
     iget-object v6, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
 
     iput-object v6, v4, Landroid/os/Message;->obj:Ljava/lang/Object;
 
-    .line 2110
+    .line 2112
     iget v6, p1, Landroid/os/Message;->arg1:I
 
     iput v6, v4, Landroid/os/Message;->arg1:I
 
-    .line 2111
+    .line 2113
     invoke-virtual {v4}, Landroid/os/Message;->sendToTarget()V
 
-    .line 2106
+    .line 2108
     add-int/lit8 v3, v3, 0x1
 
     goto :goto_1
 
-    .line 2116
+    .line 2118
     .end local v3    # "i":I
     .end local v4    # "notifyMsg":Landroid/os/Message;
     :pswitch_16
@@ -557,7 +557,7 @@
 
     check-cast v5, Landroid/os/AsyncResult;
 
-    .line 2117
+    .line 2119
     .local v5, "res":Landroid/os/AsyncResult;
     if-eqz v5, :cond_4
 
@@ -569,7 +569,7 @@
 
     if-nez v6, :cond_4
 
-    .line 2118
+    .line 2120
     iget-object v6, p0, Lcom/android/internal/telephony/CallManager$CmHandler;->this$0:Lcom/android/internal/telephony/CallManager;
 
     iget-object v6, v6, Lcom/android/internal/telephony/CallManager;->mModifyCallResponseRegistrants:Landroid/os/RegistrantList;
@@ -584,7 +584,7 @@
 
     goto/16 :goto_0
 
-    .line 2121
+    .line 2123
     :cond_4
     const-string v6, "CallManager"
 
@@ -610,7 +610,7 @@
 
     goto/16 :goto_0
 
-    .line 1997
+    .line 1999
     :pswitch_data_0
     .packed-switch 0x64
         :pswitch_0

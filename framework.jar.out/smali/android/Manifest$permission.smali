@@ -237,6 +237,8 @@
 
 .field public static final INTERACT_ACROSS_USERS_FULL:Ljava/lang/String; = "android.permission.INTERACT_ACROSS_USERS_FULL"
 
+.field public static final INTERCEPT_PACKAGE_LAUNCH:Ljava/lang/String; = "android.permission.INTERCEPT_PACKAGE_LAUNCH"
+
 .field public static final INTERCEPT_SMS:Ljava/lang/String; = "android.permission.INTERCEPT_SMS"
 
 .field public static final INTERNAL_SYSTEM_WINDOW:Ljava/lang/String; = "android.permission.INTERNAL_SYSTEM_WINDOW"
@@ -409,6 +411,8 @@
 .field public static final SET_DEBUG_APP:Ljava/lang/String; = "android.permission.SET_DEBUG_APP"
 
 .field public static final SET_KEYBOARD_LAYOUT:Ljava/lang/String; = "android.permission.SET_KEYBOARD_LAYOUT"
+
+.field public static final SET_KEYGUARD_APPLICATION_WIDGET:Ljava/lang/String; = "android.permission.SET_KEYGUARD_APPLICATION_WIDGET"
 
 .field public static final SET_KEYGUARD_WALLPAPER:Ljava/lang/String; = "android.permission.SET_KEYGUARD_WALLPAPER"
 

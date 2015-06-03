@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <plurals name="tethered_clients_connected">
+        <item quantity="other">%d klienti ühendatud</item>
+        <item quantity="one">%d klient ühendatud</item>
+    </plurals>
     <plurals name="num_seconds_ago">
         <item quantity="other">%d sekundit tagasi</item>
         <item quantity="one">1 sekund tagasi</item>

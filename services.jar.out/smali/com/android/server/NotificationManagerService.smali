@@ -726,7 +726,7 @@
     iput v0, v1, Lcom/android/server/NotificationManagerService;->mDefaultNotificationColor:I
 
     .line 1434
-    const v18, 0x10e0021
+    const v18, 0x10e0022
 
     move/from16 v0, v18
 
@@ -741,7 +741,7 @@
     iput v0, v1, Lcom/android/server/NotificationManagerService;->mDefaultNotificationLedOn:I
 
     .line 1436
-    const v18, 0x10e0022
+    const v18, 0x10e0023
 
     move/from16 v0, v18
 
@@ -835,7 +835,7 @@
     .end local v8    # "map":[Ljava/lang/String;
     .end local v9    # "mapping":Ljava/lang/String;
     :cond_0
-    const v18, 0x1070030
+    const v18, 0x1070031
 
     const/16 v19, 0x11
 
@@ -858,7 +858,7 @@
     iput-object v0, v1, Lcom/android/server/NotificationManagerService;->mDefaultVibrationPattern:[J
 
     .line 1453
-    const v18, 0x1070031
+    const v18, 0x1070032
 
     const/16 v19, 0x11
 
@@ -881,7 +881,7 @@
     iput-object v0, v1, Lcom/android/server/NotificationManagerService;->mFallbackVibrationPattern:[J
 
     .line 1458
-    const v18, 0x1070032
+    const v18, 0x1070033
 
     const/16 v19, 0x11
 
@@ -1163,7 +1163,7 @@
     invoke-virtual/range {v18 .. v18}, Lcom/android/server/NotificationManagerService$LEDSettingsObserver;->observe()V
 
     .line 1500
-    const v18, 0x1070034
+    const v18, 0x1070035
 
     move/from16 v0, v18
 
@@ -4308,7 +4308,7 @@
     .line 744
     const-string v6, "android.intent.extra.client_label"
 
-    const v8, 0x1040591
+    const v8, 0x10405a8
 
     invoke-virtual {v4, v6, v8}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
 
@@ -4964,6 +4964,7 @@
     :goto_1
     if-nez v0, :cond_9
 
+    .line 2493
     iget-object v8, p0, Lcom/android/server/NotificationManagerService;->mNotificationLight:Lcom/android/server/LightsService$Light;
 
     invoke-virtual {v8}, Lcom/android/server/LightsService$Light;->turnOff()V
@@ -5108,6 +5109,18 @@
     .line 2516
     .local v3, "ledOffMS":I
     :goto_5
+    iget-object v8, p0, Lcom/android/server/NotificationManagerService;->mContext:Landroid/content/Context;
+
+    iget v9, p0, Lcom/android/server/NotificationManagerService;->mDefaultNotificationColor:I
+
+    invoke-static {v8, v6, v9}, Lcom/android/server/NotificationLightController;->updateNotificationLight(Landroid/content/Context;Landroid/app/Notification;I)V
+
+    iget v2, v6, Landroid/app/Notification;->ledARGB:I
+
+    iget v4, v6, Landroid/app/Notification;->ledOnMS:I
+
+    iget v3, v6, Landroid/app/Notification;->ledOffMS:I
+
     iget-object v8, p0, Lcom/android/server/NotificationManagerService;->mNotificationLight:Lcom/android/server/LightsService$Light;
 
     const/4 v9, 0x1
@@ -5161,18 +5174,6 @@
     iget v3, p0, Lcom/android/server/NotificationManagerService;->mDefaultNotificationLedOff:I
 
     .restart local v3    # "ledOffMS":I
-    iget-object v8, p0, Lcom/android/server/NotificationManagerService;->mContext:Landroid/content/Context;
-
-    iget v9, p0, Lcom/android/server/NotificationManagerService;->mDefaultNotificationColor:I
-
-    invoke-static {v8, v6, v9}, Lcom/android/server/NotificationLightController;->updateNotificationLight(Landroid/content/Context;Landroid/app/Notification;I)V
-
-    iget v2, v6, Landroid/app/Notification;->ledARGB:I
-
-    iget v4, v6, Landroid/app/Notification;->ledOnMS:I
-
-    iget v3, v6, Landroid/app/Notification;->ledOffMS:I
-
     goto :goto_5
 
     .line 2510

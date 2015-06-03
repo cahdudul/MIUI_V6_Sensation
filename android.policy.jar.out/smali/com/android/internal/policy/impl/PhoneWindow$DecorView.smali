@@ -521,7 +521,7 @@
 
     iget-object v11, p0, Lcom/android/internal/policy/impl/PhoneWindow$DecorView;->mContext:Landroid/content/Context;
 
-    const v12, 0x1040082
+    const v12, 0x1040077
 
     const/4 v13, 0x1
 

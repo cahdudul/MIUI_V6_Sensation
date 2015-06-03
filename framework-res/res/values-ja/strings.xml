@@ -27,18 +27,6 @@
     <string name="storage_internal">内部ストレージ</string>
     <string name="storage_sd_card">SDカード</string>
     <string name="storage_usb">USBストレージ</string>
-    <string name="pinpuk_attempts">"
-残り試行回数:"</string>
-    <string name="lockscreen_sim_error_message_short">無効なカードです。</string>
-    <string name="lockscreen_airplane_mode_on">機内モード</string>
-    <string name="progress_nomediapresent">取り外し可能なメディアが挿入されていません…</string>
-    <string name="storage_uicc">UICCストレージ</string>
-    <string name="stk_cc_ussd_to_dial">USSDリクエストはDIALリクエストに変更されます。</string>
-    <string name="stk_cc_ussd_to_ss">USSDリクエストはSSリクエストに変更されます。</string>
-    <string name="stk_cc_ussd_to_ussd">USSDリクエストは新しいUSSDに変更されます。</string>
-    <string name="stk_cc_ss_to_dial">SSリクエストはDIALリクエストに変更されます。</string>
-    <string name="stk_cc_ss_to_ussd">SSリクエストはUSSDリクエストに変更されます。</string>
-    <string name="stk_cc_ss_to_ss">SSリクエストは新しいSSリクエストに変更されます。</string>
     <string name="profileNameDefault">デフォルト</string>
     <string name="profileNameWork">仕事</string>
     <string name="profileNameHome">自宅</string>
@@ -105,6 +93,8 @@
     <string name="permdesc_setKeyguardWallpaper">ロック画面の壁紙の変更をアプリに許可します。</string>
     <string name="permlab_useHardwareFramework">ハードウェアフレームワークの使用</string>
     <string name="permdesc_useHardwareFramework">CMハードウェアフレームワークへのアクセスをアプリに許可します。</string>
+    <string name="permlab_keyguardApplicationWidget">キーガードアプリウィジェットの設置</string>
+    <string name="permdesc_keyguardApplicationWidget">キーガードにアプリウィジェットを設置することをアプリに許可します。</string>
     <string name="immersive_mode_confirmation_bottom">全画面表示を終了するには、上から下にスワイプ</string>
     <string name="app_ops_access_camera">カメラへのアクセス</string>
     <string name="app_ops_access_location">位置情報へのアクセス</string>
@@ -150,14 +140,15 @@
     <string name="notify_turn_wifi_off_title">WLANをOFFにする</string>
     <string name="privacy_guard_dialog_title">プライバシーガード</string>
     <string name="privacy_guard_dialog_summary">%1$sが%2$sをしようとしています。</string>
-    <string name="permission_remember_choice">選択を記憶する</string>
+    <string name="permission_remember_choice">選択を記憶</string>
     <string name="adb_net_active_notification_title">ネットワーク経由のADBが有効です</string>
     <string name="adb_both_active_notification_title">USBとネットワーク経由のADBが有効です</string>
     <string name="adb_active_generic_notification_message">タップしてデバッグを無効にします。</string>
-    <string name="extmedia_format_message_cm">カード上のすべてのデータ（ 「%1$s」パス配下）が消去されます。この操作は元に戻せません。</string>
+    <string name="usb_extmedia_format_message">USBストレージ上のすべてのデータ（ 「%1$s」パス配下）が消去されます。この操作は元に戻せません。</string>
+    <string name="sd_extmedia_format_message">カード上のすべてのデータ（ 「%1$s」パス配下）が消去されます。この操作は元に戻せません。</string>
     <string name="usb_storage_notification_manage_message">タップして管理する</string>
-    <string name="sd_ext_media_checking_notification_title">SDカードを準備中</string>
-    <string name="sd_ext_media_checking_notification_message">SDカードのエラーを確認しています。</string>
+    <string name="sd_ext_media_checking_notification_title">SDカードを準備中…</string>
+    <string name="sd_ext_media_checking_notification_message">SDカードのエラーを確認しています…</string>
     <string name="sd_ext_media_nofs_notification_title">空のSDカード</string>
     <string name="sd_ext_media_nofs_notification_message">SDカードが空であるか、サポートされていないファイルシステムを使用しています。</string>
     <string name="sd_ext_media_unmountable_notification_title">破損したSDカード</string>
@@ -168,8 +159,8 @@
     <string name="sd_ext_media_safe_unmount_notification_message">SDカードを安全に取り外すことができます。</string>
     <string name="sd_ext_media_nomedia_notification_title">SDカードが取り外されました</string>
     <string name="sd_ext_media_nomedia_notification_message">SDカードが取り外されました。新しいSDカードを挿入してください。</string>
-    <string name="usb_ext_media_checking_notification_title">USBストレージを準備中</string>
-    <string name="usb_ext_media_checking_notification_message">USBストレージのエラーを確認しています。</string>
+    <string name="usb_ext_media_checking_notification_title">USBストレージを準備中…</string>
+    <string name="usb_ext_media_checking_notification_message">USBストレージのエラーを確認しています…</string>
     <string name="usb_ext_media_nofs_notification_title">空のUSBストレージ</string>
     <string name="usb_ext_media_nofs_notification_message">USBストレージが空であるか、サポートされていないファイルシステムを使用しています。</string>
     <string name="usb_ext_media_unmountable_notification_title">破損したUSBストレージ</string>
@@ -180,6 +171,35 @@
     <string name="usb_ext_media_safe_unmount_notification_message">USBストレージを安全に取り外すことができます。</string>
     <string name="usb_ext_media_nomedia_notification_title">USBストレージが取り外されました</string>
     <string name="usb_ext_media_nomedia_notification_message">USBストレージが取り外されました。新しいメディアを挿入してください。</string>
+    <string name="progress_nomediapresent">取り外し可能なメディアが挿入されていません…</string>
+    <string name="lockscreen_sim_error_message_short">無効なカードです。</string>
+    <string name="lockscreen_airplane_mode_on">機内モード</string>
+    <string name="lockscreen_sim_locked_message_cm">SIM/RUIMカードはロックされています。</string>
+    <string name="pinpuk_attempts">"
+残り試行回数:"</string>
+    <string name="stk_cc_ussd_to_dial">USSDリクエストはDIALリクエストに変更されます。</string>
+    <string name="stk_cc_ussd_to_ss">USSDリクエストはSSリクエストに変更されます。</string>
+    <string name="stk_cc_ussd_to_ussd">USSDリクエストは新しいUSSDに変更されます。</string>
+    <string name="stk_cc_ss_to_dial">SSリクエストはDIALリクエストに変更されます。</string>
+    <string name="stk_cc_ss_to_ussd">SSリクエストはUSSDリクエストに変更されます。</string>
+    <string name="stk_cc_ss_to_ss">SSリクエストは新しいSSリクエストに変更されます。</string>
+    <string name="theme_install_error_title">テーマをインストールできませんでした</string>
+    <string name="theme_install_error_message">%sをインストールできませんでした</string>
+    <string name="storage_uicc">UICCストレージ</string>
+    <string name="sd_progress_unmounting">SDカードのマウントを解除しています…</string>
+    <string name="sd_progress_erasing">SDカードを消去しています…</string>
+    <string name="sd_format_error">SDカードを消去できませんでした。</string>
+    <string name="sd_media_bad_removal">SDカードがマウントを解除する前に取り外されました。</string>
+    <string name="sd_media_checking">SDカードを現在確認しています。</string>
+    <string name="sd_media_removed">SDカードが取り外されました。</string>
+    <string name="sd_media_shared">SDカードは現在コンピュータで使用されています。</string>
+    <string name="usb_progress_unmounting">USBストレージのマウントを解除しています…</string>
+    <string name="usb_progress_erasing">USBストレージを消去しています…</string>
+    <string name="usb_format_error">USBストレージを消去できませんでした。</string>
+    <string name="usb_media_bad_removal">USBストレージがマウントを解除する前に取り外されました。</string>
+    <string name="usb_media_checking">USBストレージを現在確認しています。</string>
+    <string name="usb_media_removed">USBストレージが取り外されました。</string>
+    <string name="usb_media_shared">USBストレージは現在コンピュータで使用されています。</string>
     <string name="numeric_date_template" formatted="false">%s/%s/%s</string>
     <string name="month_day_year" formatted="false">%Y年%-m月%-e日</string>
     <string name="time_of_day" formatted="false">%-k:%M:%S</string>
@@ -1227,11 +1247,11 @@
     <string name="dlg_confirm_kill_storage_users_text">USBストレージをONにすると、使用中のアプリの一部が停止し、USBストレージをOFFにするまで使用できなくなる場合があります。</string>
     <string name="dlg_error_title">USB操作に失敗しました</string>
     <string name="dlg_ok">OK</string>
-    <string name="usb_mtp_notification_title">メディアデバイスとして接続</string>
-    <string name="usb_ptp_notification_title">カメラとして接続</string>
-    <string name="usb_cd_installer_notification_title">インストーラとして接続</string>
-    <string name="usb_accessory_notification_title">USBアクセサリを接続しました</string>
-    <string name="usb_notification_message">他のUSBオプションをタップしてください。</string>
+    <string name="usb_mtp_notification_title">メディアデバイスとして接続しました</string>
+    <string name="usb_ptp_notification_title">カメラとして接続しました</string>
+    <string name="usb_cd_installer_notification_title">インストーラとして接続しました</string>
+    <string name="usb_accessory_notification_title">USBアクセサリに接続しました</string>
+    <string name="usb_notification_message">タップして他のUSBオプションを表示します。</string>
     <string name="extmedia_format_title">SDカードをフォーマットしますか？</string>
     <string name="extmedia_format_message">カード内のすべてのデータが失われます。</string>
     <string name="extmedia_format_button_format">フォーマット</string>
@@ -1310,7 +1330,7 @@
     <string name="submit">送信</string>
     <string name="car_mode_disable_notification_title">運転モードになっています</string>
     <string name="car_mode_disable_notification_message">タップすると運転モードを終了します</string>
-    <string name="tethered_notification_title">テザリングまたはアクセスポイントが有効です</string>
+    <string name="tethered_notification_title">テザリングが有効です</string>
     <string name="tethered_notification_message">タップしてセットアップします。</string>
     <string name="back_button_label">戻る</string>
     <string name="next_button_label">次へ</string>

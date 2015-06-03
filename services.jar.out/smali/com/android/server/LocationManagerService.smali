@@ -3830,7 +3830,7 @@
 
     .line 380
     .local v17, "providerPackageNames":Ljava/util/ArrayList;, "Ljava/util/ArrayList<Ljava/lang/String;>;"
-    const v2, 0x107002a
+    const v2, 0x107002b
 
     move-object/from16 v0, v18
 
@@ -3899,11 +3899,11 @@
 
     const-string v4, "com.android.location.service.v3.NetworkLocationProvider"
 
-    const v5, 0x1110039
+    const v5, 0x111003b
 
-    const v6, 0x10400f3
+    const v6, 0x1040109
 
-    const v7, 0x107002a
+    const v7, 0x107002b
 
     move-object/from16 v0, p0
 
@@ -3948,11 +3948,11 @@
 
     const-string v4, "com.android.location.service.FusedLocationProvider"
 
-    const v5, 0x111003a
+    const v5, 0x111003c
 
-    const v6, 0x10400f4
+    const v6, 0x104010a
 
-    const v7, 0x107002a
+    const v7, 0x107002b
 
     move-object/from16 v0, p0
 
@@ -4004,11 +4004,11 @@
 
     iget-object v2, v0, Lcom/android/server/LocationManagerService;->mContext:Landroid/content/Context;
 
-    const v3, 0x111003c
+    const v3, 0x111003e
 
-    const v4, 0x10400f5
+    const v4, 0x104010b
 
-    const v5, 0x107002a
+    const v5, 0x107002b
 
     move-object/from16 v0, p0
 
@@ -4060,11 +4060,11 @@
 
     move-result-object v4
 
-    const v5, 0x111003b
+    const v5, 0x111003d
 
-    const v6, 0x10400f4
+    const v6, 0x104010a
 
-    const v7, 0x107002a
+    const v7, 0x107002b
 
     invoke-static/range {v2 .. v7}, Lcom/android/server/location/FusedProxy;->createAndBind(Landroid/content/Context;Landroid/os/Handler;Landroid/hardware/location/IFusedLocationHardware;III)Lcom/android/server/location/FusedProxy;
 
@@ -4087,11 +4087,11 @@
 
     iget-object v2, v0, Lcom/android/server/LocationManagerService;->mContext:Landroid/content/Context;
 
-    const v3, 0x111003d
+    const v3, 0x111003f
 
-    const v4, 0x10400f6
+    const v4, 0x104010c
 
-    const v5, 0x107002a
+    const v5, 0x107002b
 
     move-object/from16 v0, p0
 
@@ -4122,7 +4122,7 @@
 
     .line 459
     :cond_5
-    const v2, 0x10400f7
+    const v2, 0x104010d
 
     move-object/from16 v0, v18
 
@@ -4187,7 +4187,7 @@
 
     .line 470
     :goto_2
-    const v2, 0x10400f8
+    const v2, 0x104010e
 
     move-object/from16 v0, v18
 

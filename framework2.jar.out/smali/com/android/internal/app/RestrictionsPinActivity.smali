@@ -97,7 +97,7 @@
 
     move-result-object v3
 
-    const v4, 0x1130018
+    const v4, 0x1120019
 
     invoke-virtual {v3, v4, v2}, Landroid/content/res/Resources;->getQuantityString(II)Ljava/lang/String;
 
@@ -174,7 +174,7 @@
     :cond_1
     iget-object v3, p0, Lcom/android/internal/app/RestrictionsPinActivity;->mPinErrorMessage:Landroid/widget/TextView;
 
-    const v4, 0x10406c5
+    const v4, 0x10406dc
 
     invoke-virtual {v3, v4}, Landroid/widget/TextView;->setText(I)V
 
@@ -188,7 +188,7 @@
     .restart local v0    # "enableInput":Z
     iget-object v3, p0, Lcom/android/internal/app/RestrictionsPinActivity;->mPinErrorMessage:Landroid/widget/TextView;
 
-    const v4, 0x10406be
+    const v4, 0x10406d5
 
     invoke-virtual {v3, v4}, Landroid/widget/TextView;->setText(I)V
 
@@ -227,7 +227,7 @@
 
     .line 62
     .local v0, "ap":Lcom/android/internal/app/AlertController$AlertParams;
-    const v2, 0x10406bc
+    const v2, 0x10406d3
 
     invoke-virtual {p0, v2}, Lcom/android/internal/app/RestrictionsPinActivity;->getString(I)Ljava/lang/String;
 
@@ -565,7 +565,7 @@
     .line 136
     iget-object v1, p0, Lcom/android/internal/app/RestrictionsPinActivity;->mPinErrorMessage:Landroid/widget/TextView;
 
-    const v2, 0x10406be
+    const v2, 0x10406d5
 
     invoke-virtual {v1, v2}, Landroid/widget/TextView;->setText(I)V
 

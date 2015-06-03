@@ -240,13 +240,9 @@
     .local v8, "fancyIconRelativePath":Ljava/lang/String;
     sget-object v0, Lmiui/maml/util/AppIconsHelper;->mRendererCoreCache:Lmiui/maml/util/RendererCoreCache;
 
-    new-instance v2, Lmiui/maml/util/FancyIconResourceLoader;
+    new-instance v5, Lmiui/maml/util/FancyIconResourceLoader;
 
-    invoke-direct {v2, v8}, Lmiui/maml/util/FancyIconResourceLoader;-><init>(Ljava/lang/String;)V
-
-    invoke-virtual {v2, p0}, Lmiui/maml/util/FancyIconResourceLoader;->setContext(Landroid/content/Context;)Lmiui/maml/ResourceLoader;
-
-    move-result-object v5
+    invoke-direct {v5, v8}, Lmiui/maml/util/FancyIconResourceLoader;-><init>(Ljava/lang/String;)V
 
     sget-object v6, Lmiui/maml/util/AppIconsHelper;->mOnCreateRootCallback:Lmiui/maml/util/RendererCoreCache$OnCreateRootCallback;
 

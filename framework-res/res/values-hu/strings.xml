@@ -27,18 +27,6 @@
     <string name="storage_internal">Belső tárhely</string>
     <string name="storage_sd_card">SD-kártya</string>
     <string name="storage_usb">USB-tár</string>
-    <string name="pinpuk_attempts">"
-Hátralevő kísérlet száma:"</string>
-    <string name="lockscreen_sim_error_message_short">Érvénytelen kártya.</string>
-    <string name="lockscreen_airplane_mode_on">Repülőgép üzemmód</string>
-    <string name="progress_nomediapresent">Nincs eltávolítható memóriakártya…</string>
-    <string name="storage_uicc">UICC tároló</string>
-    <string name="stk_cc_ussd_to_dial">USSD kérés módosítva DIAL kérésre.</string>
-    <string name="stk_cc_ussd_to_ss">USSD kérés módosítva SS kérésre.</string>
-    <string name="stk_cc_ussd_to_ussd">USSD kérés módosítva új USSD kérésre.</string>
-    <string name="stk_cc_ss_to_dial">SS kérés módosítva DIAL kérésre.</string>
-    <string name="stk_cc_ss_to_ussd">SS kérés módosítva USSD kérésre.</string>
-    <string name="stk_cc_ss_to_ss">SS kérés módosítva új SS kérésre.</string>
     <string name="profileNameDefault">Alapértelmezett</string>
     <string name="profileNameWork">Munka</string>
     <string name="profileNameHome">Otthon</string>
@@ -66,7 +54,7 @@ Hátralevő kísérlet száma:"</string>
     <string name="reboot_progress">Újraindítás…</string>
     <string name="reboot_confirm">A telefon újraindul.</string>
     <string name="permlab_preventpower">kikapcsológomb felülbírálata</string>
-    <string name="permdesc_preventpower">Lehetővé teszi egy alkalmazás számára a kikapcsológomb felülbírálatát</string>
+    <string name="permdesc_preventpower">Lehetővé teszi az alkalmazás számára a kikapcsológomb felülbírálatát</string>
     <string name="permlab_sendMockSms">SMS utánzatok küldése</string>
     <string name="permdesc_sendMockSms">Lehetővé teszi az alkalmazás számára, hogy SMS utánzatokat hozzon létre. A rosszindulatú alkalmazások folyamatos üzenet-létrehozással zavarhatják a felhasználót, és megbéníthatják az eszköz értesítési felületét.</string>
     <string name="storage_sd_dock_card">Dokkoló SD-kártyája</string>
@@ -98,13 +86,15 @@ Hátralevő kísérlet száma:"</string>
     <string name="permlab_accessThemeService">hozzáférés a témaszolgáltatáshoz</string>
     <string name="permdesc_accessThemeService">Lehetővé teszi az alkalmazás számára, hogy hozzáférjen a témaszolgáltatáshoz. Általános alkalmazásoknak soha nem kell ilyen engedély.</string>
     <string name="permlab_readThemes">téma információjának megtekintése</string>
-    <string name="permdesc_readThemesDesc">Lehetővé teszi az alkalmazásnak, hogy megtekintse a témákat és megállapítsa, melyik téma aktív.</string>
+    <string name="permdesc_readThemesDesc">Lehetővé teszi az alkalmazás számára, hogy megtekintse a témákat és megállapítsa, melyik téma aktív.</string>
     <string name="permlab_writeThemes">témák módosítása</string>
-    <string name="permdesc_writeThemesDesc">Lehetővé teszi az alkalmazásnak, hogy új témákat hozzon létre és módosítsa a jelenleg aktív témát.</string>
+    <string name="permdesc_writeThemesDesc">Lehetővé teszi az alkalmazás számára, hogy új témákat hozzon létre és módosítsa a jelenleg aktív témát.</string>
     <string name="permlab_setKeyguardWallpaper">billentyűzár háttérképének beállítása</string>
-    <string name="permdesc_setKeyguardWallpaper">Lehetővé teszi az alkalmazás számára a képernyőzár hátterének módosítását.</string>
+    <string name="permdesc_setKeyguardWallpaper">Lehetővé teszi az alkalmazás számára, hogy módosítsa a képernyőzár hátterét.</string>
     <string name="permlab_useHardwareFramework">hardver keretrendszert használ</string>
-    <string name="permdesc_useHardwareFramework">Lehetővé teszi az alkalmazás számára a CM hardver keretrendszerhez való a hozzáférést.</string>
+    <string name="permdesc_useHardwareFramework">Lehetővé teszi az alkalmazás számára, hogy a CM hardver hozzáférjen a keretrendszerhez.</string>
+    <string name="permlab_keyguardApplicationWidget">zárképernyő alkalmazás modul beállítása</string>
+    <string name="permdesc_keyguardApplicationWidget">Lehetővé teszi az alkalmazás számára, hogy a zárképernyőn alkalmazás modult állításon be.</string>
     <string name="immersive_mode_confirmation_bottom">Csúsztasson lentről felfelé a teljesképernyős módból való kilépéshez.</string>
     <string name="app_ops_access_camera">hozzáférés a kamerához</string>
     <string name="app_ops_access_location">hozzáférés a helyadataihoz</string>
@@ -154,10 +144,11 @@ Hátralevő kísérlet száma:"</string>
     <string name="adb_net_active_notification_title">ADB hálózaton keresztül engedélyezve</string>
     <string name="adb_both_active_notification_title">ADB USB-n &amp; hálózaton keresztül engedélyezve</string>
     <string name="adb_active_generic_notification_message">Érintse meg a hibakeresés letiltásához.</string>
-    <string name="extmedia_format_message_cm">Minden adat a kártyájáról (ezen az útvonalon: \"%1$s\") el fog veszni. A műveletet nem lehet visszavonni!</string>
+    <string name="usb_extmedia_format_message">Minden adat az USB tárolóról (ezen az útvonalon: \"%1$s\") el fog veszni. A műveletet nem lehet visszavonni!</string>
+    <string name="sd_extmedia_format_message">Minden adat a kártyájáról (ezen az útvonalon: \"%1$s\") el fog veszni. A műveletet nem lehet visszavonni!</string>
     <string name="usb_storage_notification_manage_message">Kezeléshez érintse meg</string>
-    <string name="sd_ext_media_checking_notification_title">SD kártya előkészítése</string>
-    <string name="sd_ext_media_checking_notification_message">SD kártya hibák ellenőrzése.</string>
+    <string name="sd_ext_media_checking_notification_title">SD kártya előkészítése…</string>
+    <string name="sd_ext_media_checking_notification_message">SD kártya ellenőrzése…</string>
     <string name="sd_ext_media_nofs_notification_title">Üres SD kártya</string>
     <string name="sd_ext_media_nofs_notification_message">Az SD kártya üres, vagy a fájlrendszere nem támogatott.</string>
     <string name="sd_ext_media_unmountable_notification_title">Sérült SD kártya</string>
@@ -168,9 +159,9 @@ Hátralevő kísérlet száma:"</string>
     <string name="sd_ext_media_safe_unmount_notification_message">Biztonságosan eltávolíthatja az SD kártyát.</string>
     <string name="sd_ext_media_nomedia_notification_title">Eltávolított SD kártya</string>
     <string name="sd_ext_media_nomedia_notification_message">SD kártya eltávolítva. Helyezzen be egy újat.</string>
-    <string name="usb_ext_media_checking_notification_title">USB tároló előkészítése</string>
-    <string name="usb_ext_media_checking_notification_message">USB tároló hibák ellenőrzése.</string>
-    <string name="usb_ext_media_nofs_notification_title">Üres USB tároló</string>
+    <string name="usb_ext_media_checking_notification_title">USB tárhely előkészítése…</string>
+    <string name="usb_ext_media_checking_notification_message">USB tároló hibáinak ellenőrzése…</string>
+    <string name="usb_ext_media_nofs_notification_title">Üres az USB tároló</string>
     <string name="usb_ext_media_nofs_notification_message">Az USB tároló üres, vagy a fájlrendszere nem támogatott.</string>
     <string name="usb_ext_media_unmountable_notification_title">Sérült USB tároló</string>
     <string name="usb_ext_media_unmountable_notification_message">Az USB tároló sérült. Próbálja meg újraformázni.</string>
@@ -180,6 +171,35 @@ Hátralevő kísérlet száma:"</string>
     <string name="usb_ext_media_safe_unmount_notification_message">Biztonságosan eltávolíthatja az USB tárolót.</string>
     <string name="usb_ext_media_nomedia_notification_title">Eltávolított USB tároló</string>
     <string name="usb_ext_media_nomedia_notification_message">USB tároló eltávolítva. Helyezzen be egy új adathordozót.</string>
+    <string name="progress_nomediapresent">Nincs eltávolítható média…</string>
+    <string name="lockscreen_sim_error_message_short">Érvénytelen kártya.</string>
+    <string name="lockscreen_airplane_mode_on">Repülőgép üzemmód</string>
+    <string name="lockscreen_sim_locked_message_cm">SIM/RUIM kártya zárolva.</string>
+    <string name="pinpuk_attempts">"
+Hátralevő kisérletek száma:"</string>
+    <string name="stk_cc_ussd_to_dial">USSD kérés módosítva DIAL kérésre.</string>
+    <string name="stk_cc_ussd_to_ss">USSD kérés módosítva SS kérésre.</string>
+    <string name="stk_cc_ussd_to_ussd">USSD kérés módosítva új USSD kérésre.</string>
+    <string name="stk_cc_ss_to_dial">SS kérés módosítva DIAL kérésre.</string>
+    <string name="stk_cc_ss_to_ussd">SS kérés módosítva USSD kérésre.</string>
+    <string name="stk_cc_ss_to_ss">SS kérés módosítva új SS kérésre.</string>
+    <string name="theme_install_error_title">Téma telepítése sikertelen</string>
+    <string name="theme_install_error_message">Sikertelen telepítés: %s</string>
+    <string name="storage_uicc">UICC tároló</string>
+    <string name="sd_progress_unmounting">SD-kártya leválasztása…</string>
+    <string name="sd_progress_erasing">SD-kártya törlése…</string>
+    <string name="sd_format_error">Nem lehet törölni az SD-kártyát.</string>
+    <string name="sd_media_bad_removal">SD-kártya eltávolításra került a leválasztás előtt.</string>
+    <string name="sd_media_checking">SD-kártya ellenőrzése folyamatban van.</string>
+    <string name="sd_media_removed">SD-kártya eltávolításra került.</string>
+    <string name="sd_media_shared">SD-kártyát jelenleg a számítógép használja.</string>
+    <string name="usb_progress_unmounting">USB tároló leválasztása…</string>
+    <string name="usb_progress_erasing">USB tároló törlése…</string>
+    <string name="usb_format_error">Nem lehet törölni az USB tárolót.</string>
+    <string name="usb_media_bad_removal">USB tároló eltávolításra került a leválasztás előtt.</string>
+    <string name="usb_media_checking">USB tároló ellenőrzése folyamatban van.</string>
+    <string name="usb_media_removed">USB tároló eltávolításra került.</string>
+    <string name="usb_media_shared">USB tárolót jelenleg a számítógép használja.</string>
     <string name="numeric_date_template" formatted="false">%s.%s.%s.</string>
     <string name="month_day_year" formatted="false">%Y. %B %-e.</string>
     <string name="time_of_day" formatted="false">%-k:%M:%S</string>

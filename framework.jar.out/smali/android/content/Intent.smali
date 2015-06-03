@@ -129,6 +129,8 @@
 
 .field public static final ACTION_INSTALL_PACKAGE:Ljava/lang/String; = "android.intent.action.INSTALL_PACKAGE"
 
+.field public static final ACTION_KEYGUARD_APPLICATION_WIDGET_LAUNCH_ACTION:Ljava/lang/String; = "android.intent.action.KEYGUARD_APPLICATION_WIDGET_LAUNCH_ACTION"
+
 .field public static final ACTION_KEYGUARD_WALLPAPER_CHANGED:Ljava/lang/String; = "android.intent.action.KEYGUARD_WALLPAPER_CHANGED"
 
 .field public static final ACTION_LOCALE_CHANGED:Ljava/lang/String; = "android.intent.action.LOCALE_CHANGED"
@@ -222,6 +224,8 @@
 
 .field public static final ACTION_REBOOT:Ljava/lang/String; = "android.intent.action.REBOOT"
 
+.field public static final ACTION_RECENTS_LONG_PRESS:Ljava/lang/String; = "android.intent.action.RECENTS_LONG_PRESS"
+
 .field public static final ACTION_REMOTE_INTENT:Ljava/lang/String; = "com.google.android.c2dm.intent.RECEIVE"
 
 .field public static final ACTION_REQUEST_SHUTDOWN:Ljava/lang/String; = "android.intent.action.ACTION_REQUEST_SHUTDOWN"
@@ -244,6 +248,8 @@
 
 .field public static final ACTION_SEND_MULTIPLE:Ljava/lang/String; = "android.intent.action.SEND_MULTIPLE"
 
+.field public static final ACTION_SET_KEYGUARD_APPLICATION_WIDGET:Ljava/lang/String; = "android.intent.action.SET_KEYGUARD_APPLICATION_WIDGET_ACTION"
+
 .field public static final ACTION_SET_WALLPAPER:Ljava/lang/String; = "android.intent.action.SET_WALLPAPER"
 
 .field public static final ACTION_SHOW_BRIGHTNESS_DIALOG:Ljava/lang/String; = "android.intent.action.SHOW_BRIGHTNESS_DIALOG"
@@ -255,6 +261,8 @@
 .field public static final ACTION_SYNC_STATE_CHANGED:Ljava/lang/String; = "android.intent.action.SYNC_STATE_CHANGED"
 
 .field public static final ACTION_SYSTEM_TUTORIAL:Ljava/lang/String; = "android.intent.action.SYSTEM_TUTORIAL"
+
+.field public static final ACTION_THEME_RESOURCES_CACHED:Ljava/lang/String; = "android.intent.action.THEME_RESOURCES_CACHED"
 
 .field public static final ACTION_TIMEZONE_CHANGED:Ljava/lang/String; = "android.intent.action.TIMEZONE_CHANGED"
 
@@ -275,6 +283,8 @@
 .end field
 
 .field public static final ACTION_UNINSTALL_PACKAGE:Ljava/lang/String; = "android.intent.action.UNINSTALL_PACKAGE"
+
+.field public static final ACTION_UNSET_KEYGUARD_APPLICATION_WIDGET:Ljava/lang/String; = "android.intent.action.UNSET_KEYGUARD_APPLICATION_WIDGET_ACTION"
 
 .field public static final ACTION_UPGRADE_SETUP:Ljava/lang/String; = "android.intent.action.UPGRADE_SETUP"
 
@@ -460,6 +470,10 @@
 
 .field public static final EXTRA_INTENT:Ljava/lang/String; = "android.intent.extra.INTENT"
 
+.field public static final EXTRA_KEYGUARD_APPLICATION_WIDGET_ICON:Ljava/lang/String; = "android.intent.extra.EXTRA_KEYGUARD_APPLICATION_WIDGET_ICON"
+
+.field public static final EXTRA_KEYGUARD_APPLICATION_WIDGET_PACKAGE_NAME:Ljava/lang/String; = "android.intent.extra.EXTRA_KEYGUARD_APPLICATION_WIDGET_PACKAGE_NAME"
+
 .field public static final EXTRA_KEY_CONFIRM:Ljava/lang/String; = "android.intent.extra.KEY_CONFIRM"
 
 .field public static final EXTRA_KEY_EVENT:Ljava/lang/String; = "android.intent.extra.KEY_EVENT"
@@ -511,6 +525,10 @@
 .field public static final EXTRA_TEMPLATE:Ljava/lang/String; = "android.intent.extra.TEMPLATE"
 
 .field public static final EXTRA_TEXT:Ljava/lang/String; = "android.intent.extra.TEXT"
+
+.field public static final EXTRA_THEME_PACKAGE_NAME:Ljava/lang/String; = "android.intent.extra.PACKAGE_NAME"
+
+.field public static final EXTRA_THEME_RESULT:Ljava/lang/String; = "android.intent.extra.RESULT"
 
 .field public static final EXTRA_TITLE:Ljava/lang/String; = "android.intent.extra.TITLE"
 
@@ -645,7 +663,7 @@
     .locals 1
 
     .prologue
-    .line 7081
+    .line 7178
     new-instance v0, Landroid/content/Intent$1;
 
     invoke-direct {v0}, Landroid/content/Intent$1;-><init>()V
@@ -659,10 +677,10 @@
     .locals 0
 
     .prologue
-    .line 3769
+    .line 3866
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 3770
+    .line 3867
     return-void
 .end method
 
@@ -679,18 +697,18 @@
     .end annotation
 
     .prologue
-    .line 3874
+    .line 3971
     .local p2, "cls":Ljava/lang/Class;, "Ljava/lang/Class<*>;"
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 3875
+    .line 3972
     new-instance v0, Landroid/content/ComponentName;
 
     invoke-direct {v0, p1, p2}, Landroid/content/ComponentName;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
 
     iput-object v0, p0, Landroid/content/Intent;->mComponent:Landroid/content/ComponentName;
 
-    .line 3876
+    .line 3973
     return-void
 .end method
 
@@ -699,45 +717,45 @@
     .param p1, "o"    # Landroid/content/Intent;
 
     .prologue
-    .line 3775
+    .line 3872
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 3776
+    .line 3873
     iget-object v0, p1, Landroid/content/Intent;->mAction:Ljava/lang/String;
 
     iput-object v0, p0, Landroid/content/Intent;->mAction:Ljava/lang/String;
 
-    .line 3777
+    .line 3874
     iget-object v0, p1, Landroid/content/Intent;->mData:Landroid/net/Uri;
 
     iput-object v0, p0, Landroid/content/Intent;->mData:Landroid/net/Uri;
 
-    .line 3778
+    .line 3875
     iget-object v0, p1, Landroid/content/Intent;->mType:Ljava/lang/String;
 
     iput-object v0, p0, Landroid/content/Intent;->mType:Ljava/lang/String;
 
-    .line 3779
+    .line 3876
     iget-object v0, p1, Landroid/content/Intent;->mPackage:Ljava/lang/String;
 
     iput-object v0, p0, Landroid/content/Intent;->mPackage:Ljava/lang/String;
 
-    .line 3780
+    .line 3877
     iget-object v0, p1, Landroid/content/Intent;->mComponent:Landroid/content/ComponentName;
 
     iput-object v0, p0, Landroid/content/Intent;->mComponent:Landroid/content/ComponentName;
 
-    .line 3781
+    .line 3878
     iget v0, p1, Landroid/content/Intent;->mFlags:I
 
     iput v0, p0, Landroid/content/Intent;->mFlags:I
 
-    .line 3782
+    .line 3879
     iget-object v0, p1, Landroid/content/Intent;->mCategories:Landroid/util/ArraySet;
 
     if-eqz v0, :cond_0
 
-    .line 3783
+    .line 3880
     new-instance v0, Landroid/util/ArraySet;
 
     iget-object v1, p1, Landroid/content/Intent;->mCategories:Landroid/util/ArraySet;
@@ -746,13 +764,13 @@
 
     iput-object v0, p0, Landroid/content/Intent;->mCategories:Landroid/util/ArraySet;
 
-    .line 3785
+    .line 3882
     :cond_0
     iget-object v0, p1, Landroid/content/Intent;->mExtras:Landroid/os/Bundle;
 
     if-eqz v0, :cond_1
 
-    .line 3786
+    .line 3883
     new-instance v0, Landroid/os/Bundle;
 
     iget-object v1, p1, Landroid/content/Intent;->mExtras:Landroid/os/Bundle;
@@ -761,13 +779,13 @@
 
     iput-object v0, p0, Landroid/content/Intent;->mExtras:Landroid/os/Bundle;
 
-    .line 3788
+    .line 3885
     :cond_1
     iget-object v0, p1, Landroid/content/Intent;->mSourceBounds:Landroid/graphics/Rect;
 
     if-eqz v0, :cond_2
 
-    .line 3789
+    .line 3886
     new-instance v0, Landroid/graphics/Rect;
 
     iget-object v1, p1, Landroid/content/Intent;->mSourceBounds:Landroid/graphics/Rect;
@@ -776,13 +794,13 @@
 
     iput-object v0, p0, Landroid/content/Intent;->mSourceBounds:Landroid/graphics/Rect;
 
-    .line 3791
+    .line 3888
     :cond_2
     iget-object v0, p1, Landroid/content/Intent;->mSelector:Landroid/content/Intent;
 
     if-eqz v0, :cond_3
 
-    .line 3792
+    .line 3889
     new-instance v0, Landroid/content/Intent;
 
     iget-object v1, p1, Landroid/content/Intent;->mSelector:Landroid/content/Intent;
@@ -791,13 +809,13 @@
 
     iput-object v0, p0, Landroid/content/Intent;->mSelector:Landroid/content/Intent;
 
-    .line 3794
+    .line 3891
     :cond_3
     iget-object v0, p1, Landroid/content/Intent;->mClipData:Landroid/content/ClipData;
 
     if-eqz v0, :cond_4
 
-    .line 3795
+    .line 3892
     new-instance v0, Landroid/content/ClipData;
 
     iget-object v1, p1, Landroid/content/Intent;->mClipData:Landroid/content/ClipData;
@@ -806,7 +824,7 @@
 
     iput-object v0, p0, Landroid/content/Intent;->mClipData:Landroid/content/ClipData;
 
-    .line 3797
+    .line 3894
     :cond_4
     iget-object v0, p1, Landroid/content/Intent;->mSenderPackageName:Ljava/lang/String;
 
@@ -821,40 +839,40 @@
     .param p2, "all"    # Z
 
     .prologue
-    .line 3804
+    .line 3901
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 3805
+    .line 3902
     iget-object v0, p1, Landroid/content/Intent;->mAction:Ljava/lang/String;
 
     iput-object v0, p0, Landroid/content/Intent;->mAction:Ljava/lang/String;
 
-    .line 3806
+    .line 3903
     iget-object v0, p1, Landroid/content/Intent;->mData:Landroid/net/Uri;
 
     iput-object v0, p0, Landroid/content/Intent;->mData:Landroid/net/Uri;
 
-    .line 3807
+    .line 3904
     iget-object v0, p1, Landroid/content/Intent;->mType:Ljava/lang/String;
 
     iput-object v0, p0, Landroid/content/Intent;->mType:Ljava/lang/String;
 
-    .line 3808
+    .line 3905
     iget-object v0, p1, Landroid/content/Intent;->mPackage:Ljava/lang/String;
 
     iput-object v0, p0, Landroid/content/Intent;->mPackage:Ljava/lang/String;
 
-    .line 3809
+    .line 3906
     iget-object v0, p1, Landroid/content/Intent;->mComponent:Landroid/content/ComponentName;
 
     iput-object v0, p0, Landroid/content/Intent;->mComponent:Landroid/content/ComponentName;
 
-    .line 3810
+    .line 3907
     iget-object v0, p1, Landroid/content/Intent;->mCategories:Landroid/util/ArraySet;
 
     if-eqz v0, :cond_0
 
-    .line 3811
+    .line 3908
     new-instance v0, Landroid/util/ArraySet;
 
     iget-object v1, p1, Landroid/content/Intent;->mCategories:Landroid/util/ArraySet;
@@ -6547,7 +6565,7 @@
 
     iput-object v0, p0, Landroid/content/Intent;->mCategories:Landroid/util/ArraySet;
 
-    .line 3813
+    .line 3910
     :cond_0
     return-void
 .end method
@@ -6681,7 +6699,7 @@
     .param p2, "flags"    # I
 
     .prologue
-    .line 3995
+    .line 4092
     const/4 v0, 0x0
 
     .local v0, "ai":Landroid/content/pm/ActivityInfo;
@@ -7550,7 +7568,7 @@
 
     invoke-virtual {p1, v2}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    .line 4233
+    .line 4330
     :cond_b
     const/4 v6, 0x0
 
@@ -7564,7 +7582,7 @@
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 4235
+    .line 4332
     :cond_c
     if-eqz p3, :cond_e
 
@@ -7593,7 +7611,7 @@
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 4243
+    .line 4340
     :cond_e
     iget-object v0, p0, Landroid/content/Intent;->mSourceBounds:Landroid/graphics/Rect;
 
@@ -7603,7 +7621,7 @@
 
     invoke-virtual {p1, v2}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    .line 4244
+    .line 4341
     :cond_f
     const/4 v6, 0x0
 
@@ -8015,7 +8033,7 @@
 
     invoke-virtual {v2, p1, p2}, Landroid/content/Intent;->writeToParcel(Landroid/os/Parcel;I)V
 
-    .line 4300
+    .line 4397
     :goto_2
     iget-object v2, p0, Landroid/content/Intent;->mClipData:Landroid/content/ClipData;
 
@@ -8038,13 +8056,13 @@
 
     return-void
 
-    .line 4043
+    .line 4140
     :cond_3
     invoke-virtual {p1, v3}, Landroid/os/Parcel;->writeInt(I)V
 
     goto :goto_2
 
-    .line 6704
+    .line 6801
     :cond_4
     invoke-virtual {p1, v3}, Landroid/os/Parcel;->writeInt(I)V
 

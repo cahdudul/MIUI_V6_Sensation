@@ -21,8 +21,6 @@
 
 .field private static final DBG:Z = false
 
-.field private static final DHCP_RANGE:[Ljava/lang/String;
-
 .field public static final DISABLED:I = 0x0
 
 .field public static final DISABLE_P2P_TIMED_OUT:I = 0x23006
@@ -57,6 +55,8 @@
 
 .field public static final P2P_CONNECTION_CHANGED:I = 0x2300b
 
+.field public static final P2P_MIRACAST_MODE_CHANGED:I = 0x23011
+
 .field private static final PEER_CONNECTION_USER_ACCEPT:I = 0x23002
 
 .field private static final PEER_CONNECTION_USER_REJECT:I = 0x23003
@@ -90,6 +90,8 @@
         }
     .end annotation
 .end field
+
+.field private mCm:Landroid/net/ConnectivityManager;
 
 .field private mContext:Landroid/content/Context;
 
@@ -134,61 +136,46 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .locals 4
+    .locals 3
 
     .prologue
-    const/4 v3, 0x1
+    const/4 v2, 0x1
 
-    const/4 v2, 0x0
-
-    .line 117
-    invoke-static {v3}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
-
-    move-result-object v0
-
-    sput-object v0, Landroid/net/wifi/p2p/WifiP2pService;->JOIN_GROUP:Ljava/lang/Boolean;
+    const/4 v1, 0x0
 
     .line 118
     invoke-static {v2}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
 
     move-result-object v0
 
-    sput-object v0, Landroid/net/wifi/p2p/WifiP2pService;->FORM_GROUP:Ljava/lang/Boolean;
+    sput-object v0, Landroid/net/wifi/p2p/WifiP2pService;->JOIN_GROUP:Ljava/lang/Boolean;
 
-    .line 120
-    invoke-static {v3}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+    .line 119
+    invoke-static {v1}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
 
     move-result-object v0
 
-    sput-object v0, Landroid/net/wifi/p2p/WifiP2pService;->RELOAD:Ljava/lang/Boolean;
+    sput-object v0, Landroid/net/wifi/p2p/WifiP2pService;->FORM_GROUP:Ljava/lang/Boolean;
 
     .line 121
     invoke-static {v2}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
 
     move-result-object v0
 
+    sput-object v0, Landroid/net/wifi/p2p/WifiP2pService;->RELOAD:Ljava/lang/Boolean;
+
+    .line 122
+    invoke-static {v1}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    move-result-object v0
+
     sput-object v0, Landroid/net/wifi/p2p/WifiP2pService;->NO_RELOAD:Ljava/lang/Boolean;
 
-    .line 125
-    sput v2, Landroid/net/wifi/p2p/WifiP2pService;->mGroupCreatingTimeoutIndex:I
+    .line 126
+    sput v1, Landroid/net/wifi/p2p/WifiP2pService;->mGroupCreatingTimeoutIndex:I
 
-    .line 128
-    sput v2, Landroid/net/wifi/p2p/WifiP2pService;->mDisableP2pTimeoutIndex:I
-
-    .line 233
-    const/4 v0, 0x2
-
-    new-array v0, v0, [Ljava/lang/String;
-
-    const-string v1, "192.168.49.2"
-
-    aput-object v1, v0, v2
-
-    const-string v1, "192.168.49.254"
-
-    aput-object v1, v0, v3
-
-    sput-object v0, Landroid/net/wifi/p2p/WifiP2pService;->DHCP_RANGE:[Ljava/lang/String;
+    .line 129
+    sput v1, Landroid/net/wifi/p2p/WifiP2pService;->mDisableP2pTimeoutIndex:I
 
     return-void
 .end method
@@ -203,33 +190,33 @@
     .line 314
     invoke-direct {p0}, Landroid/net/wifi/p2p/IWifiP2pManager$Stub;-><init>()V
 
-    .line 114
+    .line 115
     new-instance v0, Lcom/android/internal/util/AsyncChannel;
 
     invoke-direct {v0}, Lcom/android/internal/util/AsyncChannel;-><init>()V
 
     iput-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService;->mReplyChannel:Lcom/android/internal/util/AsyncChannel;
 
-    .line 187
+    .line 189
     new-instance v0, Landroid/net/wifi/p2p/WifiP2pDevice;
 
     invoke-direct {v0}, Landroid/net/wifi/p2p/WifiP2pDevice;-><init>()V
 
     iput-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService;->mThisDevice:Landroid/net/wifi/p2p/WifiP2pDevice;
 
-    .line 197
+    .line 199
     iput-boolean v4, p0, Landroid/net/wifi/p2p/WifiP2pService;->mIsInvite:Z
 
-    .line 215
+    .line 217
     iput-boolean v4, p0, Landroid/net/wifi/p2p/WifiP2pService;->mDiscoveryPostponed:Z
 
-    .line 219
+    .line 221
     iput-boolean v4, p0, Landroid/net/wifi/p2p/WifiP2pService;->mTempoarilyDisconnectedWifi:Z
 
-    .line 222
+    .line 224
     iput-byte v4, p0, Landroid/net/wifi/p2p/WifiP2pService;->mServiceTransactionId:B
 
-    .line 229
+    .line 231
     new-instance v0, Ljava/util/HashMap;
 
     invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
@@ -287,7 +274,7 @@
 
     move-result-object v1
 
-    const v2, 0x10400ed
+    const v2, 0x1040103
 
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -326,7 +313,7 @@
     return-object v0
 .end method
 
-.method static synthetic access$10500(Landroid/net/wifi/p2p/WifiP2pService;)Z
+.method static synthetic access$10800(Landroid/net/wifi/p2p/WifiP2pService;)Z
     .locals 1
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService;
 
@@ -337,7 +324,7 @@
     return v0
 .end method
 
-.method static synthetic access$10502(Landroid/net/wifi/p2p/WifiP2pService;Z)Z
+.method static synthetic access$10802(Landroid/net/wifi/p2p/WifiP2pService;Z)Z
     .locals 0
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService;
     .param p1, "x1"    # Z
@@ -349,17 +336,30 @@
     return p1
 .end method
 
-.method static synthetic access$12200()[Ljava/lang/String;
+.method static synthetic access$12700(Landroid/net/wifi/p2p/WifiP2pService;)Landroid/net/ConnectivityManager;
     .locals 1
+    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService;
 
     .prologue
     .line 101
-    sget-object v0, Landroid/net/wifi/p2p/WifiP2pService;->DHCP_RANGE:[Ljava/lang/String;
+    iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService;->mCm:Landroid/net/ConnectivityManager;
 
     return-object v0
 .end method
 
-.method static synthetic access$12300()Ljava/lang/Boolean;
+.method static synthetic access$12702(Landroid/net/wifi/p2p/WifiP2pService;Landroid/net/ConnectivityManager;)Landroid/net/ConnectivityManager;
+    .locals 0
+    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService;
+    .param p1, "x1"    # Landroid/net/ConnectivityManager;
+
+    .prologue
+    .line 101
+    iput-object p1, p0, Landroid/net/wifi/p2p/WifiP2pService;->mCm:Landroid/net/ConnectivityManager;
+
+    return-object p1
+.end method
+
+.method static synthetic access$12800()Ljava/lang/Boolean;
     .locals 1
 
     .prologue
@@ -369,7 +369,7 @@
     return-object v0
 .end method
 
-.method static synthetic access$12400()Ljava/lang/Boolean;
+.method static synthetic access$12900()Ljava/lang/Boolean;
     .locals 1
 
     .prologue
@@ -379,75 +379,13 @@
     return-object v0
 .end method
 
-.method static synthetic access$12500(Landroid/net/wifi/p2p/WifiP2pService;)Ljava/util/HashMap;
+.method static synthetic access$13000(Landroid/net/wifi/p2p/WifiP2pService;)Ljava/util/HashMap;
     .locals 1
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService;
 
     .prologue
     .line 101
     iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService;->mClientInfoList:Ljava/util/HashMap;
-
-    return-object v0
-.end method
-
-.method static synthetic access$12600(Landroid/net/wifi/p2p/WifiP2pService;)B
-    .locals 1
-    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService;
-
-    .prologue
-    .line 101
-    iget-byte v0, p0, Landroid/net/wifi/p2p/WifiP2pService;->mServiceTransactionId:B
-
-    return v0
-.end method
-
-.method static synthetic access$12602(Landroid/net/wifi/p2p/WifiP2pService;B)B
-    .locals 0
-    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService;
-    .param p1, "x1"    # B
-
-    .prologue
-    .line 101
-    iput-byte p1, p0, Landroid/net/wifi/p2p/WifiP2pService;->mServiceTransactionId:B
-
-    return p1
-.end method
-
-.method static synthetic access$12604(Landroid/net/wifi/p2p/WifiP2pService;)B
-    .locals 1
-    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService;
-
-    .prologue
-    .line 101
-    iget-byte v0, p0, Landroid/net/wifi/p2p/WifiP2pService;->mServiceTransactionId:B
-
-    add-int/lit8 v0, v0, 0x1
-
-    int-to-byte v0, v0
-
-    iput-byte v0, p0, Landroid/net/wifi/p2p/WifiP2pService;->mServiceTransactionId:B
-
-    return v0
-.end method
-
-.method static synthetic access$12700(Landroid/net/wifi/p2p/WifiP2pService;)Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
-    .locals 1
-    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService;
-
-    .prologue
-    .line 101
-    iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService;->mP2pStateMachine:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
-
-    return-object v0
-.end method
-
-.method static synthetic access$12800(Landroid/net/wifi/p2p/WifiP2pService;)Lcom/android/internal/util/AsyncChannel;
-    .locals 1
-    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService;
-
-    .prologue
-    .line 101
-    iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService;->mReplyChannel:Lcom/android/internal/util/AsyncChannel;
 
     return-object v0
 .end method
@@ -464,6 +402,68 @@
     sput v0, Landroid/net/wifi/p2p/WifiP2pService;->mDisableP2pTimeoutIndex:I
 
     return v0
+.end method
+
+.method static synthetic access$13100(Landroid/net/wifi/p2p/WifiP2pService;)B
+    .locals 1
+    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService;
+
+    .prologue
+    .line 101
+    iget-byte v0, p0, Landroid/net/wifi/p2p/WifiP2pService;->mServiceTransactionId:B
+
+    return v0
+.end method
+
+.method static synthetic access$13102(Landroid/net/wifi/p2p/WifiP2pService;B)B
+    .locals 0
+    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService;
+    .param p1, "x1"    # B
+
+    .prologue
+    .line 101
+    iput-byte p1, p0, Landroid/net/wifi/p2p/WifiP2pService;->mServiceTransactionId:B
+
+    return p1
+.end method
+
+.method static synthetic access$13104(Landroid/net/wifi/p2p/WifiP2pService;)B
+    .locals 1
+    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService;
+
+    .prologue
+    .line 101
+    iget-byte v0, p0, Landroid/net/wifi/p2p/WifiP2pService;->mServiceTransactionId:B
+
+    add-int/lit8 v0, v0, 0x1
+
+    int-to-byte v0, v0
+
+    iput-byte v0, p0, Landroid/net/wifi/p2p/WifiP2pService;->mServiceTransactionId:B
+
+    return v0
+.end method
+
+.method static synthetic access$13200(Landroid/net/wifi/p2p/WifiP2pService;)Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
+    .locals 1
+    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService;
+
+    .prologue
+    .line 101
+    iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService;->mP2pStateMachine:Landroid/net/wifi/p2p/WifiP2pService$P2pStateMachine;
+
+    return-object v0
+.end method
+
+.method static synthetic access$13300(Landroid/net/wifi/p2p/WifiP2pService;)Lcom/android/internal/util/AsyncChannel;
+    .locals 1
+    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService;
+
+    .prologue
+    .line 101
+    iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService;->mReplyChannel:Lcom/android/internal/util/AsyncChannel;
+
+    return-object v0
 .end method
 
 .method static synthetic access$1700()I
@@ -580,29 +580,6 @@
     return v0
 .end method
 
-.method static synthetic access$5000(Landroid/net/wifi/p2p/WifiP2pService;)Ljava/lang/String;
-    .locals 1
-    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService;
-
-    .prologue
-    .line 101
-    iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService;->mLastSetCountryCode:Ljava/lang/String;
-
-    return-object v0
-.end method
-
-.method static synthetic access$5002(Landroid/net/wifi/p2p/WifiP2pService;Ljava/lang/String;)Ljava/lang/String;
-    .locals 0
-    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService;
-    .param p1, "x1"    # Ljava/lang/String;
-
-    .prologue
-    .line 101
-    iput-object p1, p0, Landroid/net/wifi/p2p/WifiP2pService;->mLastSetCountryCode:Ljava/lang/String;
-
-    return-object p1
-.end method
-
 .method static synthetic access$502(Landroid/net/wifi/p2p/WifiP2pService;Z)Z
     .locals 0
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService;
@@ -615,7 +592,30 @@
     return p1
 .end method
 
-.method static synthetic access$5300(Landroid/net/wifi/p2p/WifiP2pService;)Z
+.method static synthetic access$5100(Landroid/net/wifi/p2p/WifiP2pService;)Ljava/lang/String;
+    .locals 1
+    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService;
+
+    .prologue
+    .line 101
+    iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService;->mLastSetCountryCode:Ljava/lang/String;
+
+    return-object v0
+.end method
+
+.method static synthetic access$5102(Landroid/net/wifi/p2p/WifiP2pService;Ljava/lang/String;)Ljava/lang/String;
+    .locals 0
+    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService;
+    .param p1, "x1"    # Ljava/lang/String;
+
+    .prologue
+    .line 101
+    iput-object p1, p0, Landroid/net/wifi/p2p/WifiP2pService;->mLastSetCountryCode:Ljava/lang/String;
+
+    return-object p1
+.end method
+
+.method static synthetic access$5400(Landroid/net/wifi/p2p/WifiP2pService;)Z
     .locals 1
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService;
 
@@ -626,7 +626,7 @@
     return v0
 .end method
 
-.method static synthetic access$5302(Landroid/net/wifi/p2p/WifiP2pService;Z)Z
+.method static synthetic access$5402(Landroid/net/wifi/p2p/WifiP2pService;Z)Z
     .locals 0
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService;
     .param p1, "x1"    # Z
@@ -636,29 +636,6 @@
     iput-boolean p1, p0, Landroid/net/wifi/p2p/WifiP2pService;->mAutonomousGroup:Z
 
     return p1
-.end method
-
-.method static synthetic access$5900(Landroid/net/wifi/p2p/WifiP2pService;)Ljava/lang/String;
-    .locals 1
-    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService;
-
-    .prologue
-    .line 101
-    iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService;->mServiceDiscReqId:Ljava/lang/String;
-
-    return-object v0
-.end method
-
-.method static synthetic access$5902(Landroid/net/wifi/p2p/WifiP2pService;Ljava/lang/String;)Ljava/lang/String;
-    .locals 0
-    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService;
-    .param p1, "x1"    # Ljava/lang/String;
-
-    .prologue
-    .line 101
-    iput-object p1, p0, Landroid/net/wifi/p2p/WifiP2pService;->mServiceDiscReqId:Ljava/lang/String;
-
-    return-object p1
 .end method
 
 .method static synthetic access$600(Landroid/net/wifi/p2p/WifiP2pService;)Z
@@ -672,16 +649,27 @@
     return v0
 .end method
 
-.method static synthetic access$6002(Landroid/net/wifi/p2p/WifiP2pService;Z)Z
-    .locals 0
+.method static synthetic access$6000(Landroid/net/wifi/p2p/WifiP2pService;)Ljava/lang/String;
+    .locals 1
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService;
-    .param p1, "x1"    # Z
 
     .prologue
     .line 101
-    iput-boolean p1, p0, Landroid/net/wifi/p2p/WifiP2pService;->mJoinExistingGroup:Z
+    iget-object v0, p0, Landroid/net/wifi/p2p/WifiP2pService;->mServiceDiscReqId:Ljava/lang/String;
 
-    return p1
+    return-object v0
+.end method
+
+.method static synthetic access$6002(Landroid/net/wifi/p2p/WifiP2pService;Ljava/lang/String;)Ljava/lang/String;
+    .locals 0
+    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService;
+    .param p1, "x1"    # Ljava/lang/String;
+
+    .prologue
+    .line 101
+    iput-object p1, p0, Landroid/net/wifi/p2p/WifiP2pService;->mServiceDiscReqId:Ljava/lang/String;
+
+    return-object p1
 .end method
 
 .method static synthetic access$602(Landroid/net/wifi/p2p/WifiP2pService;Z)Z
@@ -696,7 +684,19 @@
     return p1
 .end method
 
-.method static synthetic access$6300(Landroid/net/wifi/p2p/WifiP2pService;)Z
+.method static synthetic access$6102(Landroid/net/wifi/p2p/WifiP2pService;Z)Z
+    .locals 0
+    .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService;
+    .param p1, "x1"    # Z
+
+    .prologue
+    .line 101
+    iput-boolean p1, p0, Landroid/net/wifi/p2p/WifiP2pService;->mJoinExistingGroup:Z
+
+    return p1
+.end method
+
+.method static synthetic access$6400(Landroid/net/wifi/p2p/WifiP2pService;)Z
     .locals 1
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService;
 
@@ -707,7 +707,7 @@
     return v0
 .end method
 
-.method static synthetic access$6302(Landroid/net/wifi/p2p/WifiP2pService;Z)Z
+.method static synthetic access$6402(Landroid/net/wifi/p2p/WifiP2pService;Z)Z
     .locals 0
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService;
     .param p1, "x1"    # Z
@@ -719,7 +719,7 @@
     return p1
 .end method
 
-.method static synthetic access$8700()Ljava/lang/Boolean;
+.method static synthetic access$8900()Ljava/lang/Boolean;
     .locals 1
 
     .prologue
@@ -729,7 +729,7 @@
     return-object v0
 .end method
 
-.method static synthetic access$9000(Landroid/net/wifi/p2p/WifiP2pService;)Landroid/net/DhcpStateMachine;
+.method static synthetic access$9200(Landroid/net/wifi/p2p/WifiP2pService;)Landroid/net/DhcpStateMachine;
     .locals 1
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService;
 
@@ -740,7 +740,7 @@
     return-object v0
 .end method
 
-.method static synthetic access$9002(Landroid/net/wifi/p2p/WifiP2pService;Landroid/net/DhcpStateMachine;)Landroid/net/DhcpStateMachine;
+.method static synthetic access$9202(Landroid/net/wifi/p2p/WifiP2pService;Landroid/net/DhcpStateMachine;)Landroid/net/DhcpStateMachine;
     .locals 0
     .param p0, "x0"    # Landroid/net/wifi/p2p/WifiP2pService;
     .param p1, "x1"    # Landroid/net/DhcpStateMachine;

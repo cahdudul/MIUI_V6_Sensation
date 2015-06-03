@@ -141,7 +141,7 @@
 
     move-result-object v0
 
-    const v1, 0x111005f
+    const v1, 0x1110061
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -846,7 +846,7 @@
 
     const/4 v3, 0x0
 
-    const v4, 0x1040635
+    const v4, 0x104064c
 
     sget-object v5, Landroid/os/UserHandle;->ALL:Landroid/os/UserHandle;
 
@@ -947,7 +947,7 @@
 
     invoke-direct {v1, v0}, Landroid/app/Notification$Builder;-><init>(Landroid/content/Context;)V
 
-    const v3, 0x1040631
+    const v3, 0x1040648
 
     invoke-virtual {v9, v3}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -957,7 +957,7 @@
 
     move-result-object v1
 
-    const v3, 0x1040632
+    const v3, 0x1040649
 
     const/4 v4, 0x1
 
@@ -999,7 +999,7 @@
 
     const v3, 0x1080038
 
-    const v4, 0x1040635
+    const v4, 0x104064c
 
     invoke-virtual {v9, v4}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -1022,7 +1022,7 @@
 
     const/4 v3, 0x0
 
-    const v4, 0x1040635
+    const v4, 0x104064c
 
     sget-object v5, Landroid/os/UserHandle;->ALL:Landroid/os/UserHandle;
 
@@ -1056,7 +1056,7 @@
 
     invoke-direct {v1, v0}, Landroid/app/Notification$Builder;-><init>(Landroid/content/Context;)V
 
-    const v3, 0x1040633
+    const v3, 0x104064a
 
     invoke-virtual {v9, v3}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -1066,7 +1066,7 @@
 
     move-result-object v1
 
-    const v3, 0x1040634
+    const v3, 0x104064b
 
     const/4 v4, 0x1
 
@@ -1108,7 +1108,7 @@
 
     const v3, 0x1080038
 
-    const v4, 0x1040635
+    const v4, 0x104064c
 
     invoke-virtual {v9, v4}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 

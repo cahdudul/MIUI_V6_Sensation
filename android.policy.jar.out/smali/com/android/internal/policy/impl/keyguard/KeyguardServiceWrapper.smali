@@ -39,7 +39,7 @@
     .locals 1
 
     .prologue
-    .line 205
+    .line 214
     iget-object v0, p0, Lcom/android/internal/policy/impl/keyguard/KeyguardServiceWrapper;->mService:Lcom/android/internal/policy/IKeyguardService;
 
     invoke-interface {v0}, Lcom/android/internal/policy/IKeyguardService;->asBinder()Landroid/os/IBinder;
@@ -80,7 +80,16 @@
     goto :goto_0
 .end method
 
-.method public dispatch(Landroid/view/MotionEvent;)V
+.method public dispatchApplicationWidgetEvent(Landroid/view/MotionEvent;)V
+    .locals 0
+    .param p1, "event"    # Landroid/view/MotionEvent;
+
+    .prologue
+    .line 201
+    return-void
+.end method
+
+.method public dispatchCameraEvent(Landroid/view/MotionEvent;)V
     .locals 0
     .param p1, "event"    # Landroid/view/MotionEvent;
 
@@ -334,11 +343,19 @@
     goto :goto_0
 .end method
 
+.method public launchApplicationWidget()V
+    .locals 0
+
+    .prologue
+    .line 210
+    return-void
+.end method
+
 .method public launchCamera()V
     .locals 0
 
     .prologue
-    .line 201
+    .line 206
     return-void
 .end method
 

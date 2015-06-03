@@ -25,13 +25,13 @@
     .param p2, "packageName"    # Ljava/lang/String;
 
     .prologue
-    .line 572
+    .line 581
     invoke-direct {p0, p1}, Landroid/content/ContextWrapper;-><init>(Landroid/content/Context;)V
 
-    .line 573
+    .line 582
     iput-object p2, p0, Landroid/content/pm/ThemeUtils$ThemedUiContext;->mPackageName:Ljava/lang/String;
 
-    .line 574
+    .line 583
     return-void
 .end method
 
@@ -41,7 +41,7 @@
     .locals 1
 
     .prologue
-    .line 578
+    .line 587
     iget-object v0, p0, Landroid/content/pm/ThemeUtils$ThemedUiContext;->mPackageName:Ljava/lang/String;
 
     return-object v0

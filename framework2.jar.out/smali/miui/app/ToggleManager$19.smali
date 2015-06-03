@@ -26,7 +26,7 @@
     .locals 0
 
     .prologue
-    .line 1073
+    .line 1072
     iput-object p1, p0, Lmiui/app/ToggleManager$19;->this$0:Lmiui/app/ToggleManager;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -40,18 +40,18 @@
     .locals 1
 
     .prologue
-    .line 1076
+    .line 1075
     iget-object v0, p0, Lmiui/app/ToggleManager$19;->this$0:Lmiui/app/ToggleManager;
 
     # invokes: Lmiui/app/ToggleManager;->updateAdvancedSyncToggle()V
     invoke-static {v0}, Lmiui/app/ToggleManager;->access$2200(Lmiui/app/ToggleManager;)V
 
-    .line 1077
+    .line 1076
     iget-object v0, p0, Lmiui/app/ToggleManager$19;->this$0:Lmiui/app/ToggleManager;
 
     # invokes: Lmiui/app/ToggleManager;->updateSyncToggle()V
     invoke-static {v0}, Lmiui/app/ToggleManager;->access$2300(Lmiui/app/ToggleManager;)V
 
-    .line 1078
+    .line 1077
     return-void
 .end method

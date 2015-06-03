@@ -278,7 +278,7 @@
 
     move-result-object v9
 
-    const v10, 0x1110010
+    const v10, 0x1110011
 
     invoke-virtual {v9, v10}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -532,7 +532,7 @@
 
     move-result-object v9
 
-    const v10, 0x1110042
+    const v10, 0x1110044
 
     invoke-virtual {v9, v10}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -620,7 +620,7 @@
 
     move-result-object v9
 
-    const v10, 0x1110010
+    const v10, 0x1110011
 
     invoke-virtual {v9, v10}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -634,7 +634,7 @@
 
     move-result-object v9
 
-    const v10, 0x1110011
+    const v10, 0x1110012
 
     invoke-virtual {v9, v10}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -2697,7 +2697,7 @@
 
     invoke-direct {v1, v3}, Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;)V
 
-    const v3, 0x1040659
+    const v3, 0x1040670
 
     invoke-virtual {v1, v3}, Landroid/app/AlertDialog$Builder;->setMessage(I)Landroid/app/AlertDialog$Builder;
 

@@ -102,7 +102,7 @@
     .param p1, "context"    # Landroid/content/Context;
 
     .prologue
-    const v4, 0x1040069
+    const v4, 0x104005e
 
     .line 95
     invoke-direct {p0}, Landroid/app/IProfileManager$Stub;-><init>()V

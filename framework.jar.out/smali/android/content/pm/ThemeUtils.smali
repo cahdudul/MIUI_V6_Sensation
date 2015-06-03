@@ -38,6 +38,10 @@
 
 .field public static final RESTABLE_EXTENSION:Ljava/lang/String; = ".arsc"
 
+.field private static final SETTINGS_DB:Ljava/lang/String; = "/data/data/com.android.providers.settings/databases/settings.db"
+
+.field private static final SETTINGS_SECURE_TABLE:Ljava/lang/String; = "secure"
+
 .field public static final SYSTEM_ALARMS_PATH:Ljava/lang/String;
 
 .field public static final SYSTEM_MEDIA_PATH:Ljava/lang/String; = "/system/media/audio"
@@ -78,7 +82,7 @@
 
     const/4 v2, 0x0
 
-    .line 80
+    .line 85
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -107,7 +111,7 @@
 
     sput-object v0, Landroid/content/pm/ThemeUtils;->SYSTEM_THEME_FONT_PATH:Ljava/lang/String;
 
-    .line 81
+    .line 86
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -136,7 +140,7 @@
 
     sput-object v0, Landroid/content/pm/ThemeUtils;->SYSTEM_THEME_RINGTONE_PATH:Ljava/lang/String;
 
-    .line 83
+    .line 88
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -165,7 +169,7 @@
 
     sput-object v0, Landroid/content/pm/ThemeUtils;->SYSTEM_THEME_NOTIFICATION_PATH:Ljava/lang/String;
 
-    .line 85
+    .line 90
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -194,7 +198,7 @@
 
     sput-object v0, Landroid/content/pm/ThemeUtils;->SYSTEM_THEME_ALARM_PATH:Ljava/lang/String;
 
-    .line 87
+    .line 92
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -223,7 +227,7 @@
 
     sput-object v0, Landroid/content/pm/ThemeUtils;->SYSTEM_THEME_ICON_CACHE_DIR:Ljava/lang/String;
 
-    .line 93
+    .line 98
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -252,7 +256,7 @@
 
     sput-object v0, Landroid/content/pm/ThemeUtils;->SYSTEM_ALARMS_PATH:Ljava/lang/String;
 
-    .line 95
+    .line 100
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -281,7 +285,7 @@
 
     sput-object v0, Landroid/content/pm/ThemeUtils;->SYSTEM_RINGTONES_PATH:Ljava/lang/String;
 
-    .line 97
+    .line 102
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -310,7 +314,7 @@
 
     sput-object v0, Landroid/content/pm/ThemeUtils;->SYSTEM_NOTIFICATIONS_PATH:Ljava/lang/String;
 
-    .line 107
+    .line 116
     new-array v0, v4, [Ljava/lang/String;
 
     const-string/jumbo v1, "org.adw.launcher.THEMES"
@@ -323,7 +327,7 @@
 
     sput-object v0, Landroid/content/pm/ThemeUtils;->sSupportedActions:[Ljava/lang/String;
 
-    .line 113
+    .line 122
     const/4 v0, 0x3
 
     new-array v0, v0, [Ljava/lang/String;
@@ -349,10 +353,10 @@
     .locals 0
 
     .prologue
-    .line 63
+    .line 68
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 568
+    .line 577
     return-void
 .end method
 
@@ -362,12 +366,12 @@
     .param p1, "audiblePath"    # Ljava/lang/String;
 
     .prologue
-    .line 490
+    .line 499
     new-instance v1, Ljava/io/File;
 
     invoke-direct {v1, p1}, Ljava/io/File;-><init>(Ljava/lang/String;)V
 
-    .line 491
+    .line 500
     .local v1, "audibleDir":Ljava/io/File;
     invoke-virtual {v1}, Ljava/io/File;->exists()Z
 
@@ -375,18 +379,18 @@
 
     if-eqz v9, :cond_0
 
-    .line 492
+    .line 501
     invoke-virtual {v1}, Ljava/io/File;->list()[Ljava/lang/String;
 
     move-result-object v3
 
-    .line 493
+    .line 502
     .local v3, "files":[Ljava/lang/String;
     invoke-virtual {p0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
     move-result-object v6
 
-    .line 494
+    .line 503
     .local v6, "resolver":Landroid/content/ContentResolver;
     move-object v0, v3
 
@@ -402,7 +406,7 @@
 
     aget-object v7, v0, v4
 
-    .line 495
+    .line 504
     .local v7, "s":Ljava/lang/String;
     new-instance v9, Ljava/lang/StringBuilder;
 
@@ -426,13 +430,13 @@
 
     move-result-object v2
 
-    .line 496
+    .line 505
     .local v2, "filePath":Ljava/lang/String;
     invoke-static {v2}, Landroid/provider/MediaStore$Audio$Media;->getContentUriForPath(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v8
 
-    .line 497
+    .line 506
     .local v8, "uri":Landroid/net/Uri;
     new-instance v9, Ljava/lang/StringBuilder;
 
@@ -462,19 +466,19 @@
 
     invoke-virtual {v6, v8, v9, v10}, Landroid/content/ContentResolver;->delete(Landroid/net/Uri;Ljava/lang/String;[Ljava/lang/String;)I
 
-    .line 499
+    .line 508
     new-instance v9, Ljava/io/File;
 
     invoke-direct {v9, v2}, Ljava/io/File;-><init>(Ljava/lang/String;)V
 
     invoke-virtual {v9}, Ljava/io/File;->delete()Z
 
-    .line 494
+    .line 503
     add-int/lit8 v4, v4, 0x1
 
     goto :goto_0
 
-    .line 502
+    .line 511
     .end local v0    # "arr$":[Ljava/lang/String;
     .end local v2    # "filePath":Ljava/lang/String;
     .end local v3    # "files":[Ljava/lang/String;
@@ -491,46 +495,18 @@
     .locals 1
 
     .prologue
-    .line 272
+    .line 281
     sget-object v0, Landroid/content/pm/ThemeUtils;->SYSTEM_THEME_ICON_CACHE_DIR:Ljava/lang/String;
 
     invoke-static {v0}, Landroid/content/pm/ThemeUtils;->deleteFilesInDir(Ljava/lang/String;)V
 
-    .line 273
+    .line 282
     return-void
 .end method
 
 .method public static closeQuietly(Ljava/io/InputStream;)V
     .locals 1
     .param p0, "stream"    # Ljava/io/InputStream;
-
-    .prologue
-    .line 298
-    if-nez p0, :cond_0
-
-    .line 304
-    :goto_0
-    return-void
-
-    .line 301
-    :cond_0
-    :try_start_0
-    invoke-virtual {p0}, Ljava/io/InputStream;->close()V
-    :try_end_0
-    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
-
-    goto :goto_0
-
-    .line 302
-    :catch_0
-    move-exception v0
-
-    goto :goto_0
-.end method
-
-.method public static closeQuietly(Ljava/io/OutputStream;)V
-    .locals 1
-    .param p0, "stream"    # Ljava/io/OutputStream;
 
     .prologue
     .line 307
@@ -543,13 +519,41 @@
     .line 310
     :cond_0
     :try_start_0
-    invoke-virtual {p0}, Ljava/io/OutputStream;->close()V
+    invoke-virtual {p0}, Ljava/io/InputStream;->close()V
     :try_end_0
     .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
 
     goto :goto_0
 
     .line 311
+    :catch_0
+    move-exception v0
+
+    goto :goto_0
+.end method
+
+.method public static closeQuietly(Ljava/io/OutputStream;)V
+    .locals 1
+    .param p0, "stream"    # Ljava/io/OutputStream;
+
+    .prologue
+    .line 316
+    if-nez p0, :cond_0
+
+    .line 322
+    :goto_0
+    return-void
+
+    .line 319
+    :cond_0
+    :try_start_0
+    invoke-virtual {p0}, Ljava/io/OutputStream;->close()V
+    :try_end_0
+    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
+
+    goto :goto_0
+
+    .line 320
     :catch_0
     move-exception v0
 
@@ -572,21 +576,21 @@
     .end annotation
 
     .prologue
-    .line 662
+    .line 671
     .local p1, "componentMap":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
     if-nez p1, :cond_1
 
-    .line 670
+    .line 679
     :cond_0
     return-void
 
-    .line 664
+    .line 673
     :cond_1
     invoke-static {p0}, Landroid/content/pm/ThemeUtils;->getDefaultComponents(Landroid/content/Context;)Ljava/util/Map;
 
     move-result-object v1
 
-    .line 665
+    .line 674
     .local v1, "defaultComponents":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
     invoke-interface {v1}, Ljava/util/Map;->keySet()Ljava/util/Set;
 
@@ -611,7 +615,7 @@
 
     check-cast v0, Ljava/lang/String;
 
-    .line 666
+    .line 675
     .local v0, "component":Ljava/lang/String;
     invoke-interface {p1, v0}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
 
@@ -619,7 +623,7 @@
 
     if-nez v3, :cond_2
 
-    .line 667
+    .line 676
     invoke-interface {v1, v0}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     move-result-object v3
@@ -641,14 +645,14 @@
     .end annotation
 
     .prologue
-    .line 325
+    .line 334
     new-instance v15, Ljava/io/FileOutputStream;
 
     move-object/from16 v0, p2
 
     invoke-direct {v15, v0}, Ljava/io/FileOutputStream;-><init>(Ljava/lang/String;)V
 
-    .line 326
+    .line 335
     .local v15, "os":Ljava/io/OutputStream;
     new-instance v24, Ljava/util/zip/ZipOutputStream;
 
@@ -660,7 +664,7 @@
 
     invoke-direct/range {v24 .. v25}, Ljava/util/zip/ZipOutputStream;-><init>(Ljava/io/OutputStream;)V
 
-    .line 327
+    .line 336
     .local v24, "zos":Ljava/util/zip/ZipOutputStream;
     new-instance v4, Ljava/util/zip/ZipInputStream;
 
@@ -676,20 +680,20 @@
 
     invoke-direct {v4, v0}, Ljava/util/zip/ZipInputStream;-><init>(Ljava/io/InputStream;)V
 
-    .line 330
+    .line 339
     .local v4, "bootAni":Ljava/util/zip/ZipInputStream;
     const/16 v25, 0x0
 
     invoke-virtual/range {v24 .. v25}, Ljava/util/zip/ZipOutputStream;->setMethod(I)V
 
-    .line 331
+    .line 340
     const/16 v25, 0x1000
 
     move/from16 v0, v25
 
     new-array v6, v0, [B
 
-    .line 333
+    .line 342
     .local v6, "bytes":[B
     :goto_0
     invoke-virtual {v4}, Ljava/util/zip/ZipInputStream;->getNextEntry()Ljava/util/zip/ZipEntry;
@@ -699,7 +703,7 @@
     .local v23, "ze":Ljava/util/zip/ZipEntry;
     if-eqz v23, :cond_6
 
-    .line 334
+    .line 343
     new-instance v9, Ljava/util/zip/ZipEntry;
 
     invoke-virtual/range {v23 .. v23}, Ljava/util/zip/ZipEntry;->getName()Ljava/lang/String;
@@ -710,7 +714,7 @@
 
     invoke-direct {v9, v0}, Ljava/util/zip/ZipEntry;-><init>(Ljava/lang/String;)V
 
-    .line 335
+    .line 344
     .local v9, "entry":Ljava/util/zip/ZipEntry;
     const/16 v25, 0x0
 
@@ -718,7 +722,7 @@
 
     invoke-virtual {v9, v0}, Ljava/util/zip/ZipEntry;->setMethod(I)V
 
-    .line 336
+    .line 345
     invoke-virtual/range {v23 .. v23}, Ljava/util/zip/ZipEntry;->getCrc()J
 
     move-result-wide v25
@@ -727,7 +731,7 @@
 
     invoke-virtual {v9, v0, v1}, Ljava/util/zip/ZipEntry;->setCrc(J)V
 
-    .line 337
+    .line 346
     invoke-virtual/range {v23 .. v23}, Ljava/util/zip/ZipEntry;->getSize()J
 
     move-result-wide v25
@@ -736,7 +740,7 @@
 
     invoke-virtual {v9, v0, v1}, Ljava/util/zip/ZipEntry;->setSize(J)V
 
-    .line 338
+    .line 347
     invoke-virtual/range {v23 .. v23}, Ljava/util/zip/ZipEntry;->getSize()J
 
     move-result-wide v25
@@ -745,7 +749,7 @@
 
     invoke-virtual {v9, v0, v1}, Ljava/util/zip/ZipEntry;->setCompressedSize(J)V
 
-    .line 339
+    .line 348
     invoke-virtual/range {v23 .. v23}, Ljava/util/zip/ZipEntry;->getName()Ljava/lang/String;
 
     move-result-object v25
@@ -758,12 +762,12 @@
 
     if-nez v25, :cond_0
 
-    .line 341
+    .line 350
     move-object/from16 v0, v24
 
     invoke-virtual {v0, v9}, Ljava/util/zip/ZipOutputStream;->putNextEntry(Ljava/util/zip/ZipEntry;)V
 
-    .line 342
+    .line 351
     :goto_1
     invoke-virtual {v4, v6}, Ljava/util/zip/ZipInputStream;->read([B)I
 
@@ -772,7 +776,7 @@
     .local v12, "len":I
     if-lez v12, :cond_5
 
-    .line 343
+    .line 352
     const/16 v25, 0x0
 
     move-object/from16 v0, v24
@@ -783,7 +787,7 @@
 
     goto :goto_1
 
-    .line 347
+    .line 356
     .end local v12    # "len":I
     :cond_0
     new-instance v16, Ljava/io/BufferedReader;
@@ -800,7 +804,7 @@
 
     invoke-direct {v0, v1}, Ljava/io/BufferedReader;-><init>(Ljava/io/Reader;)V
 
-    .line 348
+    .line 357
     .local v16, "reader":Ljava/io/BufferedReader;
     invoke-virtual/range {v16 .. v16}, Ljava/io/BufferedReader;->readLine()Ljava/lang/String;
 
@@ -812,7 +816,7 @@
 
     move-result-object v11
 
-    .line 352
+    .line 361
     .local v11, "info":[Ljava/lang/String;
     const-string/jumbo v25, "window"
 
@@ -826,13 +830,13 @@
 
     check-cast v22, Landroid/view/WindowManager;
 
-    .line 353
+    .line 362
     .local v22, "wm":Landroid/view/WindowManager;
     new-instance v8, Landroid/util/DisplayMetrics;
 
     invoke-direct {v8}, Landroid/util/DisplayMetrics;-><init>()V
 
-    .line 354
+    .line 363
     .local v8, "dm":Landroid/util/DisplayMetrics;
     invoke-interface/range {v22 .. v22}, Landroid/view/WindowManager;->getDefaultDisplay()Landroid/view/Display;
 
@@ -842,7 +846,7 @@
 
     invoke-virtual {v0, v8}, Landroid/view/Display;->getRealMetrics(Landroid/util/DisplayMetrics;)V
 
-    .line 357
+    .line 366
     iget v0, v8, Landroid/util/DisplayMetrics;->widthPixels:I
 
     move/from16 v25, v0
@@ -857,18 +861,18 @@
 
     if-le v0, v1, :cond_2
 
-    .line 358
+    .line 367
     iget v0, v8, Landroid/util/DisplayMetrics;->heightPixels:I
 
     move/from16 v19, v0
 
-    .line 359
+    .line 368
     .local v19, "scaledWidth":I
     iget v0, v8, Landroid/util/DisplayMetrics;->widthPixels:I
 
     move/from16 v18, v0
 
-    .line 365
+    .line 374
     .local v18, "scaledHeight":I
     :goto_2
     const/16 v25, 0x0
@@ -879,7 +883,7 @@
 
     move-result v21
 
-    .line 366
+    .line 375
     .local v21, "width":I
     const/16 v25, 0x1
 
@@ -889,33 +893,33 @@
 
     move-result v10
 
-    .line 368
+    .line 377
     .local v10, "height":I
     move/from16 v0, v21
 
     if-ne v0, v10, :cond_3
 
-    .line 369
+    .line 378
     move/from16 v18, v19
 
-    .line 378
+    .line 387
     :cond_1
     :goto_3
     new-instance v7, Ljava/util/zip/CRC32;
 
     invoke-direct {v7}, Ljava/util/zip/CRC32;-><init>()V
 
-    .line 379
+    .line 388
     .local v7, "crc32":Ljava/util/zip/CRC32;
     const/16 v20, 0x0
 
-    .line 380
+    .line 389
     .local v20, "size":I
     invoke-static {v6}, Ljava/nio/ByteBuffer;->wrap([B)Ljava/nio/ByteBuffer;
 
     move-result-object v5
 
-    .line 381
+    .line 390
     .local v5, "buffer":Ljava/nio/ByteBuffer;
     const-string v25, "%d %d %s\n"
 
@@ -955,7 +959,7 @@
 
     move-result-object v13
 
-    .line 382
+    .line 391
     .local v13, "line":Ljava/lang/String;
     invoke-virtual {v13}, Ljava/lang/String;->getBytes()[B
 
@@ -965,7 +969,7 @@
 
     invoke-virtual {v5, v0}, Ljava/nio/ByteBuffer;->put([B)Ljava/nio/ByteBuffer;
 
-    .line 383
+    .line 392
     invoke-virtual {v13}, Ljava/lang/String;->getBytes()[B
 
     move-result-object v25
@@ -978,7 +982,7 @@
 
     add-int v20, v20, v25
 
-    .line 384
+    .line 393
     invoke-virtual {v13}, Ljava/lang/String;->getBytes()[B
 
     move-result-object v25
@@ -987,7 +991,7 @@
 
     invoke-virtual {v7, v0}, Ljava/util/zip/CRC32;->update([B)V
 
-    .line 385
+    .line 394
     :goto_4
     invoke-virtual/range {v16 .. v16}, Ljava/io/BufferedReader;->readLine()Ljava/lang/String;
 
@@ -995,7 +999,7 @@
 
     if-eqz v13, :cond_4
 
-    .line 386
+    .line 395
     const-string v25, "%s\n"
 
     const/16 v26, 0x1
@@ -1014,7 +1018,7 @@
 
     move-result-object v13
 
-    .line 387
+    .line 396
     invoke-virtual {v13}, Ljava/lang/String;->getBytes()[B
 
     move-result-object v25
@@ -1023,7 +1027,7 @@
 
     invoke-virtual {v5, v0}, Ljava/nio/ByteBuffer;->put([B)Ljava/nio/ByteBuffer;
 
-    .line 388
+    .line 397
     invoke-virtual {v13}, Ljava/lang/String;->getBytes()[B
 
     move-result-object v25
@@ -1036,7 +1040,7 @@
 
     add-int v20, v20, v25
 
-    .line 389
+    .line 398
     invoke-virtual {v13}, Ljava/lang/String;->getBytes()[B
 
     move-result-object v25
@@ -1047,7 +1051,7 @@
 
     goto :goto_4
 
-    .line 361
+    .line 370
     .end local v5    # "buffer":Ljava/nio/ByteBuffer;
     .end local v7    # "crc32":Ljava/util/zip/CRC32;
     .end local v10    # "height":I
@@ -1061,7 +1065,7 @@
 
     move/from16 v19, v0
 
-    .line 362
+    .line 371
     .restart local v19    # "scaledWidth":I
     iget v0, v8, Landroid/util/DisplayMetrics;->heightPixels:I
 
@@ -1070,7 +1074,7 @@
     .restart local v18    # "scaledHeight":I
     goto/16 :goto_2
 
-    .line 372
+    .line 381
     .restart local v10    # "height":I
     .restart local v21    # "width":I
     :cond_3
@@ -1088,7 +1092,7 @@
 
     div-float v17, v25, v26
 
-    .line 373
+    .line 382
     .local v17, "scale":F
     int-to-float v0, v10
 
@@ -1100,18 +1104,18 @@
 
     float-to-int v14, v0
 
-    .line 374
+    .line 383
     .local v14, "newHeight":I
     move/from16 v0, v18
 
     if-ge v14, v0, :cond_1
 
-    .line 375
+    .line 384
     move/from16 v18, v14
 
     goto/16 :goto_3
 
-    .line 391
+    .line 400
     .end local v14    # "newHeight":I
     .end local v17    # "scale":F
     .restart local v5    # "buffer":Ljava/nio/ByteBuffer;
@@ -1127,7 +1131,7 @@
 
     invoke-virtual {v9, v0, v1}, Ljava/util/zip/ZipEntry;->setCrc(J)V
 
-    .line 392
+    .line 401
     move/from16 v0, v20
 
     int-to-long v0, v0
@@ -1138,7 +1142,7 @@
 
     invoke-virtual {v9, v0, v1}, Ljava/util/zip/ZipEntry;->setSize(J)V
 
-    .line 393
+    .line 402
     move/from16 v0, v20
 
     int-to-long v0, v0
@@ -1149,12 +1153,12 @@
 
     invoke-virtual {v9, v0, v1}, Ljava/util/zip/ZipEntry;->setCompressedSize(J)V
 
-    .line 394
+    .line 403
     move-object/from16 v0, v24
 
     invoke-virtual {v0, v9}, Ljava/util/zip/ZipOutputStream;->putNextEntry(Ljava/util/zip/ZipEntry;)V
 
-    .line 395
+    .line 404
     invoke-virtual {v5}, Ljava/nio/ByteBuffer;->array()[B
 
     move-result-object v25
@@ -1171,7 +1175,7 @@
 
     invoke-virtual {v0, v1, v2, v3}, Ljava/util/zip/ZipOutputStream;->write([BII)V
 
-    .line 397
+    .line 406
     .end local v5    # "buffer":Ljava/nio/ByteBuffer;
     .end local v7    # "crc32":Ljava/util/zip/CRC32;
     .end local v8    # "dm":Landroid/util/DisplayMetrics;
@@ -1189,12 +1193,12 @@
 
     goto/16 :goto_0
 
-    .line 399
+    .line 408
     .end local v9    # "entry":Ljava/util/zip/ZipEntry;
     :cond_6
     invoke-virtual/range {v24 .. v24}, Ljava/util/zip/ZipOutputStream;->close()V
 
-    .line 400
+    .line 409
     return-void
 .end method
 
@@ -1202,12 +1206,12 @@
     .locals 1
 
     .prologue
-    .line 261
+    .line 270
     sget-object v0, Landroid/content/pm/ThemeUtils;->SYSTEM_THEME_ALARM_PATH:Ljava/lang/String;
 
     invoke-static {v0}, Landroid/content/pm/ThemeUtils;->createDirIfNotExists(Ljava/lang/String;)V
 
-    .line 262
+    .line 271
     return-void
 .end method
 
@@ -1222,236 +1226,10 @@
     .prologue
     const/4 v2, -0x1
 
-    .line 190
-    new-instance v0, Ljava/io/File;
-
-    const-string v1, "/data/resource-cache/"
-
-    invoke-direct {v0, v1}, Ljava/io/File;-><init>(Ljava/lang/String;)V
-
-    .line 191
-    .local v0, "file":Ljava/io/File;
-    invoke-virtual {v0}, Ljava/io/File;->exists()Z
-
-    move-result v1
-
-    if-nez v1, :cond_0
-
-    invoke-virtual {v0}, Ljava/io/File;->mkdir()Z
-
-    move-result v1
-
-    if-nez v1, :cond_0
-
-    .line 192
-    new-instance v1, Ljava/io/IOException;
-
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v3, "Could not create dir: "
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v0}, Ljava/io/File;->toString()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-direct {v1, v2}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
-
-    throw v1
-
-    .line 194
-    :cond_0
-    const/16 v1, 0x1fd
-
-    invoke-static {v0, v1, v2, v2}, Landroid/os/FileUtils;->setPermissions(Ljava/io/File;III)I
-
-    .line 195
-    return-void
-.end method
-
-.method private static createDirIfNotExists(Ljava/lang/String;)V
-    .locals 3
-    .param p0, "dirPath"    # Ljava/lang/String;
-
-    .prologue
-    const/4 v2, -0x1
-
-    .line 220
-    invoke-static {p0}, Landroid/content/pm/ThemeUtils;->dirExists(Ljava/lang/String;)Z
-
-    move-result v1
-
-    if-nez v1, :cond_0
-
-    .line 221
-    new-instance v0, Ljava/io/File;
-
-    invoke-direct {v0, p0}, Ljava/io/File;-><init>(Ljava/lang/String;)V
-
-    .line 222
-    .local v0, "dir":Ljava/io/File;
-    invoke-virtual {v0}, Ljava/io/File;->mkdir()Z
-
-    move-result v1
-
-    if-eqz v1, :cond_0
-
-    .line 223
-    const/16 v1, 0x1fd
-
-    invoke-static {v0, v1, v2, v2}, Landroid/os/FileUtils;->setPermissions(Ljava/io/File;III)I
-
-    .line 227
-    .end local v0    # "dir":Ljava/io/File;
-    :cond_0
-    return-void
-.end method
-
-.method public static createFontDirIfNotExists()V
-    .locals 1
-
-    .prologue
-    .line 240
-    sget-object v0, Landroid/content/pm/ThemeUtils;->SYSTEM_THEME_FONT_PATH:Ljava/lang/String;
-
-    invoke-static {v0}, Landroid/content/pm/ThemeUtils;->createDirIfNotExists(Ljava/lang/String;)V
-
-    .line 241
-    return-void
-.end method
-
-.method public static createIconCacheDirIfNotExists()V
-    .locals 1
-
-    .prologue
-    .line 268
-    sget-object v0, Landroid/content/pm/ThemeUtils;->SYSTEM_THEME_ICON_CACHE_DIR:Ljava/lang/String;
-
-    invoke-static {v0}, Landroid/content/pm/ThemeUtils;->createDirIfNotExists(Ljava/lang/String;)V
-
-    .line 269
-    return-void
-.end method
-
-.method public static createIconDirIfNotExists(Ljava/lang/String;)V
-    .locals 4
-    .param p0, "pkgName"    # Ljava/lang/String;
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Ljava/io/IOException;
-        }
-    .end annotation
-
-    .prologue
-    const/4 v2, -0x1
-
-    .line 207
-    new-instance v0, Ljava/io/File;
-
-    invoke-static {p0}, Landroid/content/pm/ThemeUtils;->getIconPackDir(Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v1
-
-    invoke-direct {v0, v1}, Ljava/io/File;-><init>(Ljava/lang/String;)V
-
-    .line 208
-    .local v0, "file":Ljava/io/File;
-    invoke-virtual {v0}, Ljava/io/File;->exists()Z
-
-    move-result v1
-
-    if-nez v1, :cond_0
-
-    invoke-virtual {v0}, Ljava/io/File;->mkdir()Z
-
-    move-result v1
-
-    if-nez v1, :cond_0
-
-    .line 209
-    new-instance v1, Ljava/io/IOException;
-
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
-
-    const-string v3, "Could not create dir: "
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v0}, Ljava/io/File;->toString()Ljava/lang/String;
-
-    move-result-object v3
-
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    move-result-object v2
-
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    move-result-object v2
-
-    invoke-direct {v1, v2}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
-
-    throw v1
-
-    .line 211
-    :cond_0
-    const/16 v1, 0x1fd
-
-    invoke-static {v0, v1, v2, v2}, Landroid/os/FileUtils;->setPermissions(Ljava/io/File;III)I
-
-    .line 212
-    return-void
-.end method
-
-.method public static createNotificationDirIfNotExists()V
-    .locals 1
-
-    .prologue
-    .line 254
-    sget-object v0, Landroid/content/pm/ThemeUtils;->SYSTEM_THEME_NOTIFICATION_PATH:Ljava/lang/String;
-
-    invoke-static {v0}, Landroid/content/pm/ThemeUtils;->createDirIfNotExists(Ljava/lang/String;)V
-
-    .line 255
-    return-void
-.end method
-
-.method public static createResourcesDirIfNotExists(Ljava/lang/String;Ljava/lang/String;)V
-    .locals 4
-    .param p0, "targetPkgName"    # Ljava/lang/String;
-    .param p1, "overlayApkPath"    # Ljava/lang/String;
-    .annotation system Ldalvik/annotation/Throws;
-        value = {
-            Ljava/io/IOException;
-        }
-    .end annotation
-
-    .prologue
-    const/4 v2, -0x1
-
     .line 199
     new-instance v0, Ljava/io/File;
 
-    invoke-static {p0, p1}, Landroid/content/pm/ThemeUtils;->getResDir(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v1
+    const-string v1, "/data/resource-cache/"
 
     invoke-direct {v0, v1}, Ljava/io/File;-><init>(Ljava/lang/String;)V
 
@@ -1508,16 +1286,242 @@
     return-void
 .end method
 
+.method private static createDirIfNotExists(Ljava/lang/String;)V
+    .locals 3
+    .param p0, "dirPath"    # Ljava/lang/String;
+
+    .prologue
+    const/4 v2, -0x1
+
+    .line 229
+    invoke-static {p0}, Landroid/content/pm/ThemeUtils;->dirExists(Ljava/lang/String;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_0
+
+    .line 230
+    new-instance v0, Ljava/io/File;
+
+    invoke-direct {v0, p0}, Ljava/io/File;-><init>(Ljava/lang/String;)V
+
+    .line 231
+    .local v0, "dir":Ljava/io/File;
+    invoke-virtual {v0}, Ljava/io/File;->mkdir()Z
+
+    move-result v1
+
+    if-eqz v1, :cond_0
+
+    .line 232
+    const/16 v1, 0x1fd
+
+    invoke-static {v0, v1, v2, v2}, Landroid/os/FileUtils;->setPermissions(Ljava/io/File;III)I
+
+    .line 236
+    .end local v0    # "dir":Ljava/io/File;
+    :cond_0
+    return-void
+.end method
+
+.method public static createFontDirIfNotExists()V
+    .locals 1
+
+    .prologue
+    .line 249
+    sget-object v0, Landroid/content/pm/ThemeUtils;->SYSTEM_THEME_FONT_PATH:Ljava/lang/String;
+
+    invoke-static {v0}, Landroid/content/pm/ThemeUtils;->createDirIfNotExists(Ljava/lang/String;)V
+
+    .line 250
+    return-void
+.end method
+
+.method public static createIconCacheDirIfNotExists()V
+    .locals 1
+
+    .prologue
+    .line 277
+    sget-object v0, Landroid/content/pm/ThemeUtils;->SYSTEM_THEME_ICON_CACHE_DIR:Ljava/lang/String;
+
+    invoke-static {v0}, Landroid/content/pm/ThemeUtils;->createDirIfNotExists(Ljava/lang/String;)V
+
+    .line 278
+    return-void
+.end method
+
+.method public static createIconDirIfNotExists(Ljava/lang/String;)V
+    .locals 4
+    .param p0, "pkgName"    # Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/io/IOException;
+        }
+    .end annotation
+
+    .prologue
+    const/4 v2, -0x1
+
+    .line 216
+    new-instance v0, Ljava/io/File;
+
+    invoke-static {p0}, Landroid/content/pm/ThemeUtils;->getIconPackDir(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-direct {v0, v1}, Ljava/io/File;-><init>(Ljava/lang/String;)V
+
+    .line 217
+    .local v0, "file":Ljava/io/File;
+    invoke-virtual {v0}, Ljava/io/File;->exists()Z
+
+    move-result v1
+
+    if-nez v1, :cond_0
+
+    invoke-virtual {v0}, Ljava/io/File;->mkdir()Z
+
+    move-result v1
+
+    if-nez v1, :cond_0
+
+    .line 218
+    new-instance v1, Ljava/io/IOException;
+
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v3, "Could not create dir: "
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v0}, Ljava/io/File;->toString()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-direct {v1, v2}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+
+    throw v1
+
+    .line 220
+    :cond_0
+    const/16 v1, 0x1fd
+
+    invoke-static {v0, v1, v2, v2}, Landroid/os/FileUtils;->setPermissions(Ljava/io/File;III)I
+
+    .line 221
+    return-void
+.end method
+
+.method public static createNotificationDirIfNotExists()V
+    .locals 1
+
+    .prologue
+    .line 263
+    sget-object v0, Landroid/content/pm/ThemeUtils;->SYSTEM_THEME_NOTIFICATION_PATH:Ljava/lang/String;
+
+    invoke-static {v0}, Landroid/content/pm/ThemeUtils;->createDirIfNotExists(Ljava/lang/String;)V
+
+    .line 264
+    return-void
+.end method
+
+.method public static createResourcesDirIfNotExists(Ljava/lang/String;Ljava/lang/String;)V
+    .locals 4
+    .param p0, "targetPkgName"    # Ljava/lang/String;
+    .param p1, "overlayApkPath"    # Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/io/IOException;
+        }
+    .end annotation
+
+    .prologue
+    const/4 v2, -0x1
+
+    .line 208
+    new-instance v0, Ljava/io/File;
+
+    invoke-static {p0, p1}, Landroid/content/pm/ThemeUtils;->getResDir(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-direct {v0, v1}, Ljava/io/File;-><init>(Ljava/lang/String;)V
+
+    .line 209
+    .local v0, "file":Ljava/io/File;
+    invoke-virtual {v0}, Ljava/io/File;->exists()Z
+
+    move-result v1
+
+    if-nez v1, :cond_0
+
+    invoke-virtual {v0}, Ljava/io/File;->mkdir()Z
+
+    move-result v1
+
+    if-nez v1, :cond_0
+
+    .line 210
+    new-instance v1, Ljava/io/IOException;
+
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v3, "Could not create dir: "
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v0}, Ljava/io/File;->toString()Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-direct {v1, v2}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+
+    throw v1
+
+    .line 212
+    :cond_0
+    const/16 v1, 0x1fd
+
+    invoke-static {v0, v1, v2, v2}, Landroid/os/FileUtils;->setPermissions(Ljava/io/File;III)I
+
+    .line 213
+    return-void
+.end method
+
 .method public static createRingtoneDirIfNotExists()V
     .locals 1
 
     .prologue
-    .line 247
+    .line 256
     sget-object v0, Landroid/content/pm/ThemeUtils;->SYSTEM_THEME_RINGTONE_PATH:Ljava/lang/String;
 
     invoke-static {v0}, Landroid/content/pm/ThemeUtils;->createDirIfNotExists(Ljava/lang/String;)V
 
-    .line 248
+    .line 257
     return-void
 .end method
 
@@ -1525,12 +1529,12 @@
     .locals 1
 
     .prologue
-    .line 233
+    .line 242
     const-string v0, "/data/system/theme"
 
     invoke-static {v0}, Landroid/content/pm/ThemeUtils;->createDirIfNotExists(Ljava/lang/String;)V
 
-    .line 234
+    .line 243
     return-void
 .end method
 
@@ -1543,7 +1547,7 @@
 
     goto :goto_0
 
-    .line 506
+    .line 515
     :try_start_0
     const-string v1, "com.android.systemui"
 
@@ -1553,7 +1557,7 @@
 
     move-result-object v0
 
-    .line 508
+    .line 517
     .local v0, "uiContext":Landroid/content/Context;
     new-instance v1, Landroid/content/pm/ThemeUtils$ThemedUiContext;
 
@@ -1565,16 +1569,16 @@
     :try_end_0
     .catch Landroid/content/pm/PackageManager$NameNotFoundException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 512
+    .line 521
     .end local v0    # "uiContext":Landroid/content/Context;
     :goto_0
     return-object v1
 
-    .line 509
+    .line 518
     :catch_0
     move-exception v1
 
-    .line 512
+    .line 521
     const/4 v1, 0x0
 
     goto :goto_0
@@ -1585,22 +1589,22 @@
     .param p0, "dirPath"    # Ljava/lang/String;
 
     .prologue
-    .line 277
+    .line 286
     new-instance v3, Ljava/io/File;
 
     invoke-direct {v3, p0}, Ljava/io/File;-><init>(Ljava/lang/String;)V
 
-    .line 278
+    .line 287
     .local v3, "fontDir":Ljava/io/File;
     invoke-virtual {v3}, Ljava/io/File;->listFiles()[Ljava/io/File;
 
     move-result-object v2
 
-    .line 279
+    .line 288
     .local v2, "files":[Ljava/io/File;
     if-eqz v2, :cond_0
 
-    .line 280
+    .line 289
     invoke-virtual {v3}, Ljava/io/File;->listFiles()[Ljava/io/File;
 
     move-result-object v0
@@ -1617,16 +1621,16 @@
 
     aget-object v1, v0, v4
 
-    .line 281
+    .line 290
     .local v1, "file":Ljava/io/File;
     invoke-virtual {v1}, Ljava/io/File;->delete()Z
 
-    .line 280
+    .line 289
     add-int/lit8 v4, v4, 0x1
 
     goto :goto_0
 
-    .line 284
+    .line 293
     .end local v0    # "arr$":[Ljava/io/File;
     .end local v1    # "file":Ljava/io/File;
     .end local v4    # "i$":I
@@ -1640,12 +1644,12 @@
     .param p0, "dirPath"    # Ljava/lang/String;
 
     .prologue
-    .line 215
+    .line 224
     new-instance v0, Ljava/io/File;
 
     invoke-direct {v0, p0}, Ljava/io/File;-><init>(Ljava/lang/String;)V
 
-    .line 216
+    .line 225
     .local v0, "dir":Ljava/io/File;
     invoke-virtual {v0}, Ljava/io/File;->exists()Z
 
@@ -1683,71 +1687,230 @@
     .end annotation
 
     .prologue
-    .line 584
+    .line 593
     new-instance v0, Ljava/util/ArrayList;
 
     const/16 v1, 0x9
 
     invoke-direct {v0, v1}, Ljava/util/ArrayList;-><init>(I)V
 
-    .line 585
+    .line 594
     .local v0, "components":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
     const-string/jumbo v1, "mods_fonts"
 
     invoke-interface {v0, v1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 586
+    .line 595
     const-string/jumbo v1, "mods_homescreen"
 
     invoke-interface {v0, v1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 587
+    .line 596
     const-string/jumbo v1, "mods_alarms"
 
     invoke-interface {v0, v1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 588
+    .line 597
     const-string/jumbo v1, "mods_bootanim"
 
     invoke-interface {v0, v1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 589
+    .line 598
     const-string/jumbo v1, "mods_icons"
 
     invoke-interface {v0, v1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 590
+    .line 599
     const-string/jumbo v1, "mods_lockscreen"
 
     invoke-interface {v0, v1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 591
+    .line 600
     const-string/jumbo v1, "mods_notifications"
 
     invoke-interface {v0, v1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 592
+    .line 601
     const-string/jumbo v1, "mods_overlays"
 
     invoke-interface {v0, v1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 593
+    .line 602
     const-string/jumbo v1, "mods_ringtones"
 
     invoke-interface {v0, v1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 594
+    .line 603
     const-string/jumbo v1, "mods_status_bar"
 
     invoke-interface {v0, v1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 595
+    .line 604
     const-string/jumbo v1, "mods_navigation_bar"
 
     invoke-interface {v0, v1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 596
+    .line 605
     return-object v0
+.end method
+
+.method public static getBootThemeDirty()Landroid/content/res/ThemeConfig;
+    .locals 12
+
+    .prologue
+    .line 692
+    const/4 v9, 0x0
+
+    .line 693
+    .local v9, "config":Landroid/content/res/ThemeConfig;
+    const/4 v0, 0x0
+
+    .line 695
+    .local v0, "db":Landroid/database/sqlite/SQLiteDatabase;
+    :try_start_0
+    const-string v1, "/data/data/com.android.providers.settings/databases/settings.db"
+
+    const/4 v5, 0x0
+
+    const/4 v6, 0x1
+
+    invoke-static {v1, v5, v6}, Landroid/database/sqlite/SQLiteDatabase;->openDatabase(Ljava/lang/String;Landroid/database/sqlite/SQLiteDatabase$CursorFactory;I)Landroid/database/sqlite/SQLiteDatabase;
+
+    move-result-object v0
+
+    .line 697
+    if-eqz v0, :cond_1
+
+    .line 698
+    const-string/jumbo v3, "name=?"
+
+    .line 699
+    .local v3, "selection":Ljava/lang/String;
+    const/4 v1, 0x1
+
+    new-array v4, v1, [Ljava/lang/String;
+
+    const/4 v1, 0x0
+
+    const-string/jumbo v5, "themeConfig"
+
+    aput-object v5, v4, v1
+
+    .line 701
+    .local v4, "selectionArgs":[Ljava/lang/String;
+    const/4 v1, 0x1
+
+    new-array v2, v1, [Ljava/lang/String;
+
+    const/4 v1, 0x0
+
+    const-string/jumbo v5, "value"
+
+    aput-object v5, v2, v1
+
+    .line 702
+    .local v2, "columns":[Ljava/lang/String;
+    const-string/jumbo v1, "secure"
+
+    const/4 v5, 0x0
+
+    const/4 v6, 0x0
+
+    const/4 v7, 0x0
+
+    invoke-virtual/range {v0 .. v7}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+
+    move-result-object v8
+
+    .line 704
+    .local v8, "c":Landroid/database/Cursor;
+    if-eqz v8, :cond_1
+
+    .line 705
+    invoke-interface {v8}, Landroid/database/Cursor;->getCount()I
+
+    move-result v1
+
+    if-lez v1, :cond_0
+
+    .line 706
+    invoke-interface {v8}, Landroid/database/Cursor;->moveToFirst()Z
+
+    .line 707
+    const/4 v1, 0x0
+
+    invoke-interface {v8, v1}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
+
+    move-result-object v11
+
+    .line 708
+    .local v11, "json":Ljava/lang/String;
+    if-eqz v11, :cond_0
+
+    .line 709
+    invoke-static {v11}, Landroid/content/res/ThemeConfig;->fromJson(Ljava/lang/String;)Landroid/content/res/ThemeConfig;
+
+    move-result-object v9
+
+    .line 712
+    .end local v11    # "json":Ljava/lang/String;
+    :cond_0
+    invoke-interface {v8}, Landroid/database/Cursor;->close()V
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 718
+    .end local v2    # "columns":[Ljava/lang/String;
+    .end local v3    # "selection":Ljava/lang/String;
+    .end local v4    # "selectionArgs":[Ljava/lang/String;
+    .end local v8    # "c":Landroid/database/Cursor;
+    :cond_1
+    if-eqz v0, :cond_2
+
+    .line 719
+    invoke-virtual {v0}, Landroid/database/sqlite/SQLiteDatabase;->close()V
+
+    .line 723
+    :cond_2
+    :goto_0
+    return-object v9
+
+    .line 715
+    :catch_0
+    move-exception v10
+
+    .line 716
+    .local v10, "e":Ljava/lang/Exception;
+    :try_start_1
+    const-string v1, "ThemeUtils"
+
+    const-string v5, "Unable to open /data/data/com.android.providers.settings/databases/settings.db"
+
+    invoke-static {v1, v5, v10}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    .line 718
+    if-eqz v0, :cond_2
+
+    .line 719
+    invoke-virtual {v0}, Landroid/database/sqlite/SQLiteDatabase;->close()V
+
+    goto :goto_0
+
+    .line 718
+    .end local v10    # "e":Ljava/lang/Exception;
+    :catchall_0
+    move-exception v1
+
+    if-eqz v0, :cond_3
+
+    .line 719
+    invoke-virtual {v0}, Landroid/database/sqlite/SQLiteDatabase;->close()V
+
+    :cond_3
+    throw v1
 .end method
 
 .method public static getCommonPackageName(Ljava/lang/String;)Ljava/lang/String;
@@ -1755,7 +1918,7 @@
     .param p0, "themePackageName"    # Ljava/lang/String;
 
     .prologue
-    .line 184
+    .line 193
     invoke-static {p0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
     move-result v0
@@ -1764,7 +1927,7 @@
 
     const/4 v0, 0x0
 
-    .line 186
+    .line 195
     :goto_0
     return-object v0
 
@@ -1781,19 +1944,19 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 469
+    .line 478
     packed-switch p0, :pswitch_data_0
 
-    .line 483
+    .line 492
     :pswitch_0
     const/4 v1, 0x0
 
-    .line 486
+    .line 495
     .local v1, "path":Ljava/lang/String;
     :goto_0
     return-object v1
 
-    .line 471
+    .line 480
     .end local v1    # "path":Ljava/lang/String;
     :pswitch_1
     const-string/jumbo v2, "ro.config.alarm_alert"
@@ -1802,7 +1965,7 @@
 
     move-result-object v0
 
-    .line 472
+    .line 481
     .local v0, "name":Ljava/lang/String;
     if-eqz v0, :cond_0
 
@@ -1830,12 +1993,12 @@
 
     move-result-object v1
 
-    .line 473
+    .line 482
     .restart local v1    # "path":Ljava/lang/String;
     :cond_0
     goto :goto_0
 
-    .line 475
+    .line 484
     .end local v0    # "name":Ljava/lang/String;
     .end local v1    # "path":Ljava/lang/String;
     :pswitch_2
@@ -1845,7 +2008,7 @@
 
     move-result-object v0
 
-    .line 476
+    .line 485
     .restart local v0    # "name":Ljava/lang/String;
     if-eqz v0, :cond_1
 
@@ -1873,12 +2036,12 @@
 
     move-result-object v1
 
-    .line 477
+    .line 486
     .restart local v1    # "path":Ljava/lang/String;
     :cond_1
     goto :goto_0
 
-    .line 479
+    .line 488
     .end local v0    # "name":Ljava/lang/String;
     .end local v1    # "path":Ljava/lang/String;
     :pswitch_3
@@ -1888,7 +2051,7 @@
 
     move-result-object v0
 
-    .line 480
+    .line 489
     .restart local v0    # "name":Ljava/lang/String;
     if-eqz v0, :cond_2
 
@@ -1916,12 +2079,12 @@
 
     move-result-object v1
 
-    .line 481
+    .line 490
     .restart local v1    # "path":Ljava/lang/String;
     :cond_2
     goto :goto_0
 
-    .line 469
+    .line 478
     nop
 
     :pswitch_data_0
@@ -1950,16 +2113,16 @@
     .end annotation
 
     .prologue
-    .line 632
+    .line 641
     invoke-static {p0}, Landroid/content/pm/ThemeUtils;->getDefaultThemePackageName(Landroid/content/Context;)Ljava/lang/String;
 
     move-result-object v3
 
-    .line 633
+    .line 642
     .local v3, "defaultThemePkg":Ljava/lang/String;
     const/4 v2, 0x0
 
-    .line 634
+    .line 643
     .local v2, "defaultComponents":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
     const-string v6, "holo"
 
@@ -1967,7 +2130,7 @@
 
     move-result-object v4
 
-    .line 635
+    .line 644
     .local v4, "holoComponents":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
     const-string v6, "holo"
 
@@ -1977,12 +2140,12 @@
 
     if-nez v6, :cond_0
 
-    .line 636
+    .line 645
     invoke-static {p0, v3}, Landroid/content/pm/ThemeUtils;->getSupportedComponents(Landroid/content/Context;Ljava/lang/String;)Ljava/util/List;
 
     move-result-object v2
 
-    .line 639
+    .line 648
     :cond_0
     new-instance v1, Ljava/util/HashMap;
 
@@ -1992,11 +2155,11 @@
 
     invoke-direct {v1, v6}, Ljava/util/HashMap;-><init>(I)V
 
-    .line 640
+    .line 649
     .local v1, "componentMap":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
     if-eqz v2, :cond_1
 
-    .line 641
+    .line 650
     invoke-interface {v2}, Ljava/util/List;->iterator()Ljava/util/Iterator;
 
     move-result-object v5
@@ -2015,13 +2178,13 @@
 
     check-cast v0, Ljava/lang/String;
 
-    .line 642
+    .line 651
     .local v0, "component":Ljava/lang/String;
     invoke-interface {v1, v0, v3}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     goto :goto_0
 
-    .line 645
+    .line 654
     .end local v0    # "component":Ljava/lang/String;
     .end local v5    # "i$":Ljava/util/Iterator;
     :cond_1
@@ -2044,7 +2207,7 @@
 
     check-cast v0, Ljava/lang/String;
 
-    .line 646
+    .line 655
     .restart local v0    # "component":Ljava/lang/String;
     invoke-interface {v1, v0}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
 
@@ -2052,14 +2215,14 @@
 
     if-nez v6, :cond_2
 
-    .line 647
+    .line 656
     const-string v6, "holo"
 
     invoke-interface {v1, v0, v6}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     goto :goto_1
 
-    .line 651
+    .line 660
     .end local v0    # "component":Ljava/lang/String;
     :cond_3
     return-object v1
@@ -2070,7 +2233,7 @@
     .param p0, "context"    # Landroid/content/Context;
 
     .prologue
-    .line 551
+    .line 560
     invoke-virtual {p0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
     move-result-object v3
@@ -2081,7 +2244,7 @@
 
     move-result-object v0
 
-    .line 553
+    .line 562
     .local v0, "defaultThemePkg":Ljava/lang/String;
     invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
@@ -2089,12 +2252,12 @@
 
     if-nez v3, :cond_0
 
-    .line 554
+    .line 563
     invoke-virtual {p0}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
 
     move-result-object v2
 
-    .line 556
+    .line 565
     .local v2, "pm":Landroid/content/pm/PackageManager;
     const/4 v3, 0x0
 
@@ -2107,19 +2270,19 @@
 
     if-eqz v3, :cond_0
 
-    .line 565
+    .line 574
     .end local v0    # "defaultThemePkg":Ljava/lang/String;
     .end local v2    # "pm":Landroid/content/pm/PackageManager;
     :goto_0
     return-object v0
 
-    .line 559
+    .line 568
     .restart local v0    # "defaultThemePkg":Ljava/lang/String;
     .restart local v2    # "pm":Landroid/content/pm/PackageManager;
     :catch_0
     move-exception v1
 
-    .line 561
+    .line 570
     .local v1, "e":Landroid/content/pm/PackageManager$NameNotFoundException;
     const-string v3, "ThemeUtils"
 
@@ -2149,7 +2312,7 @@
 
     invoke-static {v3, v4, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 565
+    .line 574
     .end local v1    # "e":Landroid/content/pm/PackageManager$NameNotFoundException;
     .end local v2    # "pm":Landroid/content/pm/PackageManager;
     :cond_0
@@ -2163,21 +2326,21 @@
     .param p0, "assets"    # [Ljava/lang/String;
 
     .prologue
-    .line 539
+    .line 548
     if-nez p0, :cond_1
 
     const/4 v2, 0x0
 
-    .line 547
+    .line 556
     :cond_0
     :goto_0
     return-object v2
 
-    .line 540
+    .line 549
     :cond_1
     const/4 v2, 0x0
 
-    .line 541
+    .line 550
     .local v2, "filename":Ljava/lang/String;
     move-object v0, p0
 
@@ -2193,7 +2356,7 @@
 
     aget-object v1, v0, v3
 
-    .line 542
+    .line 551
     .local v1, "asset":Ljava/lang/String;
     invoke-virtual {v1}, Ljava/lang/String;->isEmpty()Z
 
@@ -2201,13 +2364,13 @@
 
     if-nez v5, :cond_2
 
-    .line 543
+    .line 552
     move-object v2, v1
 
-    .line 544
+    .line 553
     goto :goto_0
 
-    .line 541
+    .line 550
     :cond_2
     add-int/lit8 v3, v3, 0x1
 
@@ -2219,7 +2382,7 @@
     .param p0, "pkgName"    # Ljava/lang/String;
 
     .prologue
-    .line 164
+    .line 173
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -2256,7 +2419,7 @@
     .param p0, "pkgName"    # Ljava/lang/String;
 
     .prologue
-    .line 168
+    .line 177
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -2287,7 +2450,7 @@
     .param p0, "pkgName"    # Ljava/lang/String;
 
     .prologue
-    .line 160
+    .line 169
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -2314,7 +2477,7 @@
     .param p0, "pkgName"    # Ljava/lang/String;
 
     .prologue
-    .line 172
+    .line 181
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
@@ -2351,28 +2514,28 @@
     .end annotation
 
     .prologue
-    .line 287
+    .line 296
     if-eqz p0, :cond_0
 
     if-nez p1, :cond_1
 
-    .line 288
+    .line 297
     :cond_0
     const/4 v2, 0x0
 
-    .line 294
+    .line 303
     :goto_0
     return-object v2
 
-    .line 289
+    .line 298
     :cond_1
     const/4 v2, 0x0
 
-    .line 290
+    .line 299
     .local v2, "is":Ljava/io/InputStream;
     const-string v0, "file:///android_asset/"
 
-    .line 291
+    .line 300
     .local v0, "ASSET_BASE":Ljava/lang/String;
     invoke-virtual {v0}, Ljava/lang/String;->length()I
 
@@ -2382,18 +2545,18 @@
 
     move-result-object p1
 
-    .line 292
+    .line 301
     invoke-virtual {p0}, Landroid/content/Context;->getAssets()Landroid/content/res/AssetManager;
 
     move-result-object v1
 
-    .line 293
+    .line 302
     .local v1, "assets":Landroid/content/res/AssetManager;
     invoke-virtual {v1, p1}, Landroid/content/res/AssetManager;->open(Ljava/lang/String;)Ljava/io/InputStream;
 
     move-result-object v2
 
-    .line 294
+    .line 303
     goto :goto_0
 .end method
 
@@ -2407,26 +2570,26 @@
     .end annotation
 
     .prologue
-    .line 522
+    .line 531
     const-string v2, "lockscreen"
 
     invoke-virtual {p0, v2}, Landroid/content/res/AssetManager;->list(Ljava/lang/String;)[Ljava/lang/String;
 
     move-result-object v1
 
-    .line 523
+    .line 532
     .local v1, "assets":[Ljava/lang/String;
     invoke-static {v1}, Landroid/content/pm/ThemeUtils;->getFirstNonEmptyAsset([Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 524
+    .line 533
     .local v0, "asset":Ljava/lang/String;
     if-nez v0, :cond_0
 
     const/4 v2, 0x0
 
-    .line 525
+    .line 534
     :goto_0
     return-object v2
 
@@ -2457,26 +2620,26 @@
     .param p0, "targetPkgName"    # Ljava/lang/String;
 
     .prologue
-    .line 176
+    .line 185
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
 
-    .line 177
+    .line 186
     .local v0, "sb":Ljava/lang/StringBuilder;
     const-string v1, "assets/overlays/"
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 178
+    .line 187
     invoke-virtual {v0, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 179
+    .line 188
     const/16 v1, 0x2f
 
     invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    .line 180
+    .line 189
     invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     move-result-object v1
@@ -2490,7 +2653,7 @@
     .param p1, "overlayPkg"    # Landroid/content/pm/PackageInfo;
 
     .prologue
-    .line 146
+    .line 155
     iget-object v0, p1, Landroid/content/pm/PackageInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;
 
     iget-object v0, v0, Landroid/content/pm/ApplicationInfo;->publicSourceDir:Ljava/lang/String;
@@ -2508,7 +2671,7 @@
     .param p1, "overlayPkg"    # Landroid/content/pm/PackageParser$Package;
 
     .prologue
-    .line 150
+    .line 159
     iget-object v0, p1, Landroid/content/pm/PackageParser$Package;->applicationInfo:Landroid/content/pm/ApplicationInfo;
 
     iget-object v0, v0, Landroid/content/pm/ApplicationInfo;->publicSourceDir:Ljava/lang/String;
@@ -2526,7 +2689,7 @@
     .param p1, "overlayApkPath"    # Ljava/lang/String;
 
     .prologue
-    .line 154
+    .line 163
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -2557,7 +2720,7 @@
 
     move-result-object v0
 
-    .line 155
+    .line 164
     .local v0, "restableName":Ljava/lang/String;
     const-string v1, "@"
 
@@ -2573,7 +2736,7 @@
 
     move-result-object v0
 
-    .line 156
+    .line 165
     :cond_0
     new-instance v1, Ljava/lang/StringBuilder;
 
@@ -2602,7 +2765,7 @@
     .param p1, "overlayPkg"    # Landroid/content/pm/PackageInfo;
 
     .prologue
-    .line 127
+    .line 136
     iget-object v0, p1, Landroid/content/pm/PackageInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;
 
     iget-object v0, v0, Landroid/content/pm/ApplicationInfo;->publicSourceDir:Ljava/lang/String;
@@ -2620,7 +2783,7 @@
     .param p1, "overlayPkg"    # Landroid/content/pm/PackageParser$Package;
 
     .prologue
-    .line 131
+    .line 140
     iget-object v0, p1, Landroid/content/pm/PackageParser$Package;->applicationInfo:Landroid/content/pm/ApplicationInfo;
 
     iget-object v0, v0, Landroid/content/pm/ApplicationInfo;->publicSourceDir:Ljava/lang/String;
@@ -2638,7 +2801,7 @@
     .param p1, "overlayApkPath"    # Ljava/lang/String;
 
     .prologue
-    .line 135
+    .line 144
     new-instance v1, Ljava/lang/StringBuilder;
 
     invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
@@ -2661,7 +2824,7 @@
 
     move-result-object v0
 
-    .line 136
+    .line 145
     .local v0, "restablePath":Ljava/lang/String;
     return-object v0
 .end method
@@ -2688,16 +2851,16 @@
 
     const/4 v12, 0x1
 
-    .line 605
+    .line 614
     new-instance v11, Ljava/util/ArrayList;
 
     invoke-direct {v11}, Ljava/util/ArrayList;-><init>()V
 
-    .line 607
+    .line 616
     .local v11, "supportedComponents":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
     const-string/jumbo v3, "pkg_name= ?"
 
-    .line 608
+    .line 617
     .local v3, "selection":Ljava/lang/String;
     new-array v4, v12, [Ljava/lang/String;
 
@@ -2705,7 +2868,7 @@
 
     aput-object p1, v4, v0
 
-    .line 609
+    .line 618
     .local v4, "selectionArgs":[Ljava/lang/String;
     invoke-virtual {p0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
@@ -2719,7 +2882,7 @@
 
     move-result-object v7
 
-    .line 612
+    .line 621
     .local v7, "c":Landroid/database/Cursor;
     if-eqz v7, :cond_1
 
@@ -2729,12 +2892,12 @@
 
     if-eqz v0, :cond_1
 
-    .line 613
+    .line 622
     invoke-static {}, Landroid/content/pm/ThemeUtils;->getAllComponents()Ljava/util/List;
 
     move-result-object v6
 
-    .line 614
+    .line 623
     .local v6, "allComponents":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
     invoke-interface {v6}, Ljava/util/List;->iterator()Ljava/util/Iterator;
 
@@ -2755,13 +2918,13 @@
 
     check-cast v8, Ljava/lang/String;
 
-    .line 615
+    .line 624
     .local v8, "component":Ljava/lang/String;
     invoke-interface {v7, v8}, Landroid/database/Cursor;->getColumnIndex(Ljava/lang/String;)I
 
     move-result v10
 
-    .line 616
+    .line 625
     .local v10, "index":I
     invoke-interface {v7, v10}, Landroid/database/Cursor;->getInt(I)I
 
@@ -2769,12 +2932,12 @@
 
     if-ne v0, v12, :cond_0
 
-    .line 617
+    .line 626
     invoke-interface {v11, v8}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
     goto :goto_0
 
-    .line 621
+    .line 630
     .end local v6    # "allComponents":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
     .end local v8    # "component":Ljava/lang/String;
     .end local v9    # "i$":Ljava/util/Iterator;
@@ -2793,26 +2956,26 @@
     .end annotation
 
     .prologue
-    .line 529
+    .line 538
     const-string/jumbo v2, "wallpapers"
 
     invoke-virtual {p0, v2}, Landroid/content/res/AssetManager;->list(Ljava/lang/String;)[Ljava/lang/String;
 
     move-result-object v1
 
-    .line 530
+    .line 539
     .local v1, "assets":[Ljava/lang/String;
     invoke-static {v1}, Landroid/content/pm/ThemeUtils;->getFirstNonEmptyAsset([Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
-    .line 531
+    .line 540
     .local v0, "asset":Ljava/lang/String;
     if-nez v0, :cond_0
 
     const/4 v2, 0x0
 
-    .line 532
+    .line 541
     :goto_0
     return-object v2
 
@@ -2843,7 +3006,7 @@
     .param p0, "fileName"    # Ljava/lang/String;
 
     .prologue
-    .line 403
+    .line 412
     if-eqz p0, :cond_1
 
     const-string v0, ".mp3"
@@ -2880,18 +3043,18 @@
     .param p1, "receiver"    # Landroid/content/BroadcastReceiver;
 
     .prologue
-    .line 516
+    .line 525
     new-instance v0, Landroid/content/IntentFilter;
 
     const-string/jumbo v1, "org.cyanogenmod.intent.action.THEME_CHANGED"
 
     invoke-direct {v0, v1}, Landroid/content/IntentFilter;-><init>(Ljava/lang/String;)V
 
-    .line 518
+    .line 527
     .local v0, "filter":Landroid/content/IntentFilter;
     invoke-virtual {p0, p1, v0}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
 
-    .line 519
+    .line 528
     return-void
 .end method
 
@@ -2903,12 +3066,12 @@
     .param p3, "name"    # Ljava/lang/String;
 
     .prologue
-    .line 408
+    .line 417
     invoke-virtual/range {p1 .. p1}, Ljava/io/File;->getAbsolutePath()Ljava/lang/String;
 
     move-result-object v13
 
-    .line 409
+    .line 418
     .local v13, "path":Ljava/lang/String;
     const-string v1, ".ogg"
 
@@ -2922,32 +3085,32 @@
 
     const-string v11, "audio/ogg"
 
-    .line 410
+    .line 419
     .local v11, "mimeType":Ljava/lang/String;
     :goto_0
     new-instance v14, Landroid/content/ContentValues;
 
     invoke-direct {v14}, Landroid/content/ContentValues;-><init>()V
 
-    .line 411
+    .line 420
     .local v14, "values":Landroid/content/ContentValues;
     const-string v1, "_data"
 
     invoke-virtual {v14, v1, v13}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 412
+    .line 421
     const-string/jumbo v1, "title"
 
     move-object/from16 v0, p3
 
     invoke-virtual {v14, v1, v0}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 413
+    .line 422
     const-string/jumbo v1, "mime_type"
 
     invoke-virtual {v14, v1, v11}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 414
+    .line 423
     const-string v1, "_size"
 
     invoke-virtual/range {p1 .. p1}, Ljava/io/File;->length()J
@@ -2960,7 +3123,7 @@
 
     invoke-virtual {v14, v1, v3}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Long;)V
 
-    .line 415
+    .line 424
     const-string v3, "is_ringtone"
 
     const/4 v1, 0x1
@@ -2978,7 +3141,7 @@
 
     invoke-virtual {v14, v3, v1}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Boolean;)V
 
-    .line 416
+    .line 425
     const-string v3, "is_notification"
 
     const/4 v1, 0x2
@@ -2996,7 +3159,7 @@
 
     invoke-virtual {v14, v3, v1}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Boolean;)V
 
-    .line 417
+    .line 426
     const-string v3, "is_alarm"
 
     const/4 v1, 0x4
@@ -3014,7 +3177,7 @@
 
     invoke-virtual {v14, v3, v1}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Boolean;)V
 
-    .line 418
+    .line 427
     const-string v1, "is_music"
 
     const/4 v3, 0x0
@@ -3025,16 +3188,16 @@
 
     invoke-virtual {v14, v1, v3}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Boolean;)V
 
-    .line 420
+    .line 429
     invoke-static {v13}, Landroid/provider/MediaStore$Audio$Media;->getContentUriForPath(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v2
 
-    .line 421
+    .line 430
     .local v2, "uri":Landroid/net/Uri;
     const/4 v12, 0x0
 
-    .line 422
+    .line 431
     .local v12, "newUri":Landroid/net/Uri;
     invoke-virtual {p0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
@@ -3082,7 +3245,7 @@
 
     move-result-object v7
 
-    .line 426
+    .line 435
     .local v7, "c":Landroid/database/Cursor;
     if-eqz v7, :cond_0
 
@@ -3092,21 +3255,21 @@
 
     if-lez v1, :cond_0
 
-    .line 427
+    .line 436
     invoke-interface {v7}, Landroid/database/Cursor;->moveToFirst()Z
 
-    .line 428
+    .line 437
     const/4 v1, 0x0
 
     invoke-interface {v7, v1}, Landroid/database/Cursor;->getLong(I)J
 
     move-result-wide v9
 
-    .line 429
+    .line 438
     .local v9, "id":J
     invoke-interface {v7}, Landroid/database/Cursor;->close()V
 
-    .line 430
+    .line 439
     const-string v1, "content://media/internal/audio/media"
 
     invoke-static {v1}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
@@ -3135,7 +3298,7 @@
 
     move-result-object v12
 
-    .line 431
+    .line 440
     invoke-virtual {p0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
     move-result-object v1
@@ -3162,12 +3325,12 @@
 
     invoke-virtual {v1, v2, v14, v3, v4}, Landroid/content/ContentResolver;->update(Landroid/net/Uri;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
 
-    .line 433
+    .line 442
     .end local v9    # "id":J
     :cond_0
     if-nez v12, :cond_1
 
-    .line 434
+    .line 443
     invoke-virtual {p0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
     move-result-object v1
@@ -3176,7 +3339,7 @@
 
     move-result-object v12
 
-    .line 436
+    .line 445
     :cond_1
     :try_start_0
     move/from16 v0, p2
@@ -3185,13 +3348,13 @@
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 440
+    .line 449
     const/4 v1, 0x1
 
     :goto_4
     return v1
 
-    .line 409
+    .line 418
     .end local v2    # "uri":Landroid/net/Uri;
     .end local v7    # "c":Landroid/database/Cursor;
     .end local v11    # "mimeType":Ljava/lang/String;
@@ -3202,7 +3365,7 @@
 
     goto/16 :goto_0
 
-    .line 415
+    .line 424
     .restart local v11    # "mimeType":Ljava/lang/String;
     .restart local v14    # "values":Landroid/content/ContentValues;
     :cond_3
@@ -3210,26 +3373,26 @@
 
     goto/16 :goto_1
 
-    .line 416
+    .line 425
     :cond_4
     const/4 v1, 0x0
 
     goto/16 :goto_2
 
-    .line 417
+    .line 426
     :cond_5
     const/4 v1, 0x0
 
     goto/16 :goto_3
 
-    .line 437
+    .line 446
     .restart local v2    # "uri":Landroid/net/Uri;
     .restart local v7    # "c":Landroid/database/Cursor;
     .restart local v12    # "newUri":Landroid/net/Uri;
     :catch_0
     move-exception v8
 
-    .line 438
+    .line 447
     .local v8, "e":Ljava/lang/Exception;
     const/4 v1, 0x0
 
@@ -3248,21 +3411,21 @@
 
     const/4 v11, 0x0
 
-    .line 444
+    .line 453
     invoke-static {p1}, Landroid/content/pm/ThemeUtils;->getDefaultAudiblePath(I)Ljava/lang/String;
 
     move-result-object v6
 
-    .line 445
+    .line 454
     .local v6, "audiblePath":Ljava/lang/String;
     if-eqz v6, :cond_2
 
-    .line 446
+    .line 455
     invoke-static {v6}, Landroid/provider/MediaStore$Audio$Media;->getContentUriForPath(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v1
 
-    .line 447
+    .line 456
     .local v1, "uri":Landroid/net/Uri;
     invoke-virtual {p0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
@@ -3304,7 +3467,7 @@
 
     move-result-object v7
 
-    .line 451
+    .line 460
     .local v7, "c":Landroid/database/Cursor;
     if-eqz v7, :cond_0
 
@@ -3314,19 +3477,19 @@
 
     if-lez v0, :cond_0
 
-    .line 452
+    .line 461
     invoke-interface {v7}, Landroid/database/Cursor;->moveToFirst()Z
 
-    .line 453
+    .line 462
     invoke-interface {v7, v11}, Landroid/database/Cursor;->getLong(I)J
 
     move-result-wide v8
 
-    .line 454
+    .line 463
     .local v8, "id":J
     invoke-interface {v7}, Landroid/database/Cursor;->close()V
 
-    .line 455
+    .line 464
     const-string v0, "content://media/internal/audio/media"
 
     invoke-static {v0}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
@@ -3355,18 +3518,18 @@
 
     move-result-object v1
 
-    .line 458
+    .line 467
     .end local v8    # "id":J
     :cond_0
     if-eqz v1, :cond_1
 
-    .line 459
+    .line 468
     invoke-static {p0, p1, v1}, Landroid/media/RingtoneManager;->setActualDefaultRingtoneUri(Landroid/content/Context;ILandroid/net/Uri;)V
 
     :cond_1
     move v0, v10
 
-    .line 463
+    .line 472
     .end local v1    # "uri":Landroid/net/Uri;
     .end local v7    # "c":Landroid/database/Cursor;
     :goto_0
@@ -3375,6 +3538,6 @@
     :cond_2
     move v0, v11
 
-    .line 461
+    .line 470
     goto :goto_0
 .end method

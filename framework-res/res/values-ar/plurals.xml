@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <plurals name="tethered_clients_connected">
+        <item quantity="other">%d جهاز متّصل</item>
+        <item quantity="zero">لا أجهزة متّصلة (%d)</item>
+        <item quantity="one">جهاز واحد متّصل (%d)</item>
+        <item quantity="two">جهازان متّصلان (%d)</item>
+        <item quantity="few">%d أجهزة متّصلة</item>
+        <item quantity="many">%d جهازًا متّصلًا</item>
+    </plurals>
     <plurals name="pinpuk_attempts">
         <item quantity="other">‏يتبقى لديك %d من المحاولات يتم بعدها قفل بطاقة SIM.</item>
         <item quantity="one">‏يتبقى لديك محاولة واحدة (%d) يتم بعدها قفل بطاقة SIM.</item>

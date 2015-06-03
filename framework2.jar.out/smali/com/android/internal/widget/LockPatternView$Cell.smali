@@ -34,7 +34,7 @@
 
     invoke-static {v0}, Lcom/android/internal/widget/LockPatternView$Cell;->updateSize(B)V
 
-    .line 148
+    .line 149
     return-void
 .end method
 
@@ -58,7 +58,6 @@
     .line 157
     iput p2, p0, Lcom/android/internal/widget/LockPatternView$Cell;->column:I
 
-    .line 158
     return-void
 .end method
 

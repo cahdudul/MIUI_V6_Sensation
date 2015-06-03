@@ -218,7 +218,7 @@
 
     iget-object v3, v0, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
 
-    invoke-static {v3}, Lcom/android/internal/telephony/IccProviderException;->getErrorCauseFromException(Ljava/lang/Throwable;)I
+    invoke-static {v3}, Lcom/android/internal/telephony/MiuiIccProviderException;->getErrorCauseFromException(Ljava/lang/Throwable;)I
 
     move-result v3
 
@@ -301,7 +301,7 @@
 
     iget-object v2, v0, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
 
-    invoke-static {v2}, Lcom/android/internal/telephony/IccProviderException;->getErrorCauseFromException(Ljava/lang/Throwable;)I
+    invoke-static {v2}, Lcom/android/internal/telephony/MiuiIccProviderException;->getErrorCauseFromException(Ljava/lang/Throwable;)I
 
     move-result v2
 
@@ -397,7 +397,7 @@
 
     iget-object v3, v0, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
 
-    invoke-static {v3}, Lcom/android/internal/telephony/IccProviderException;->getErrorCauseFromException(Ljava/lang/Throwable;)I
+    invoke-static {v3}, Lcom/android/internal/telephony/MiuiIccProviderException;->getErrorCauseFromException(Ljava/lang/Throwable;)I
 
     move-result v3
 

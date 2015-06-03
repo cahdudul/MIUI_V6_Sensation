@@ -26,7 +26,7 @@
     .locals 0
 
     .prologue
-    .line 1972
+    .line 1961
     iput-object p1, p0, Lmiui/app/ToggleManager$22;->this$0:Lmiui/app/ToggleManager;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -42,12 +42,12 @@
     .param p2, "filename"    # Ljava/lang/String;
 
     .prologue
-    .line 1976
+    .line 1965
     invoke-virtual {p2}, Ljava/lang/String;->toLowerCase()Ljava/lang/String;
 
     move-result-object p2
 
-    .line 1977
+    .line 1966
     const-string v0, "png"
 
     invoke-virtual {p2, v0}, Ljava/lang/String;->endsWith(Ljava/lang/String;)Z
@@ -72,11 +72,11 @@
 
     if-eqz v0, :cond_1
 
-    .line 1979
+    .line 1968
     :cond_0
     const/4 v0, 0x1
 
-    .line 1981
+    .line 1970
     :goto_0
     return v0
 

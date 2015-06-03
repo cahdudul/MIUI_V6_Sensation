@@ -216,7 +216,7 @@
 
     iget-object v2, v2, Lcom/android/server/am/ActivityManagerService;->mContext:Landroid/content/Context;
 
-    const v3, 0x10404ce
+    const v3, 0x10404e5
 
     const/4 v4, 0x1
 
@@ -236,7 +236,7 @@
 
     iget-object v3, v3, Lcom/android/server/am/ActivityManagerService;->mContext:Landroid/content/Context;
 
-    const v4, 0x10404cf
+    const v4, 0x10404e6
 
     const/4 v5, 0x1
 

@@ -43,7 +43,7 @@
     .locals 1
 
     .prologue
-    .line 916
+    .line 911
     new-instance v0, Landroid/app/ActivityManager$TaskThumbnails$1;
 
     invoke-direct {v0}, Landroid/app/ActivityManager$TaskThumbnails$1;-><init>()V
@@ -57,10 +57,10 @@
     .locals 0
 
     .prologue
-    .line 880
+    .line 875
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 881
+    .line 876
     return-void
 .end method
 
@@ -69,13 +69,13 @@
     .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 925
+    .line 920
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 926
+    .line 921
     invoke-virtual {p0, p1}, Landroid/app/ActivityManager$TaskThumbnails;->readFromParcel(Landroid/os/Parcel;)V
 
-    .line 927
+    .line 922
     return-void
 .end method
 
@@ -85,7 +85,7 @@
     .param p2, "x1"    # Landroid/app/ActivityManager$1;
 
     .prologue
-    .line 872
+    .line 867
     invoke-direct {p0, p1}, Landroid/app/ActivityManager$TaskThumbnails;-><init>(Landroid/os/Parcel;)V
 
     return-void
@@ -97,7 +97,7 @@
     .locals 1
 
     .prologue
-    .line 892
+    .line 887
     const/4 v0, 0x0
 
     return v0
@@ -108,7 +108,7 @@
     .param p1, "index"    # I
 
     .prologue
-    .line 885
+    .line 880
     :try_start_0
     iget-object v1, p0, Landroid/app/ActivityManager$TaskThumbnails;->retriever:Landroid/app/IThumbnailRetriever;
 
@@ -118,15 +118,15 @@
 
     move-result-object v1
 
-    .line 887
+    .line 882
     :goto_0
     return-object v1
 
-    .line 886
+    .line 881
     :catch_0
     move-exception v0
 
-    .line 887
+    .line 882
     .local v0, "e":Landroid/os/RemoteException;
     const/4 v1, 0x0
 
@@ -138,14 +138,14 @@
     .param p1, "source"    # Landroid/os/Parcel;
 
     .prologue
-    .line 907
+    .line 902
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
     if-eqz v0, :cond_0
 
-    .line 908
+    .line 903
     sget-object v0, Landroid/graphics/Bitmap;->CREATOR:Landroid/os/Parcelable$Creator;
 
     invoke-interface {v0, p1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
@@ -156,7 +156,7 @@
 
     iput-object v0, p0, Landroid/app/ActivityManager$TaskThumbnails;->mainThumbnail:Landroid/graphics/Bitmap;
 
-    .line 912
+    .line 907
     :goto_0
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
@@ -164,7 +164,7 @@
 
     iput v0, p0, Landroid/app/ActivityManager$TaskThumbnails;->numSubThumbbails:I
 
-    .line 913
+    .line 908
     invoke-virtual {p1}, Landroid/os/Parcel;->readStrongBinder()Landroid/os/IBinder;
 
     move-result-object v0
@@ -175,10 +175,10 @@
 
     iput-object v0, p0, Landroid/app/ActivityManager$TaskThumbnails;->retriever:Landroid/app/IThumbnailRetriever;
 
-    .line 914
+    .line 909
     return-void
 
-    .line 910
+    .line 905
     :cond_0
     const/4 v0, 0x0
 
@@ -195,36 +195,36 @@
     .prologue
     const/4 v1, 0x0
 
-    .line 896
+    .line 891
     iget-object v0, p0, Landroid/app/ActivityManager$TaskThumbnails;->mainThumbnail:Landroid/graphics/Bitmap;
 
     if-eqz v0, :cond_0
 
-    .line 897
+    .line 892
     const/4 v0, 0x1
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 898
+    .line 893
     iget-object v0, p0, Landroid/app/ActivityManager$TaskThumbnails;->mainThumbnail:Landroid/graphics/Bitmap;
 
     invoke-virtual {v0, p1, v1}, Landroid/graphics/Bitmap;->writeToParcel(Landroid/os/Parcel;I)V
 
-    .line 902
+    .line 897
     :goto_0
     iget v0, p0, Landroid/app/ActivityManager$TaskThumbnails;->numSubThumbbails:I
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 903
+    .line 898
     iget-object v0, p0, Landroid/app/ActivityManager$TaskThumbnails;->retriever:Landroid/app/IThumbnailRetriever;
 
     invoke-virtual {p1, v0}, Landroid/os/Parcel;->writeStrongInterface(Landroid/os/IInterface;)V
 
-    .line 904
+    .line 899
     return-void
 
-    .line 900
+    .line 895
     :cond_0
     invoke-virtual {p1, v1}, Landroid/os/Parcel;->writeInt(I)V
 

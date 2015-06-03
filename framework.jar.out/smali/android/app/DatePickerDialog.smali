@@ -71,7 +71,7 @@
     .local v1, "themeContext":Landroid/content/Context;
     const/4 v3, -0x1
 
-    const v4, 0x1040539
+    const v4, 0x1040550
 
     invoke-virtual {v1, v4}, Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;
 
@@ -281,7 +281,7 @@
     iput-boolean v1, p0, Landroid/app/DatePickerDialog;->mTitleNeedsUpdate:Z
 
     .line 176
-    const v1, 0x1040537
+    const v1, 0x104054e
 
     invoke-virtual {p0, v1}, Landroid/app/DatePickerDialog;->setTitle(I)V
 

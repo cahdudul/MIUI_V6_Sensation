@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <plurals name="tethered_clients_connected">
+        <item quantity="other">%d대의 클라이언트 연결됨</item>
+    </plurals>
     <plurals name="pinpuk_attempts">
         <item quantity="other">%d회 이상 실패할 경우 SIM이 잠깁니다.</item>
         <item quantity="one">%d회 이상 실패할 경우 SIM이 잠깁니다.</item>

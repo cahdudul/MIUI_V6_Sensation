@@ -230,11 +230,11 @@
 
     const/4 v6, 0x0
 
-    new-instance v7, Lcom/android/internal/telephony/IccProviderException;
+    new-instance v7, Lcom/android/internal/telephony/MiuiIccProviderException;
 
     const/16 v8, -0x3f5
 
-    invoke-direct {v7, v8}, Lcom/android/internal/telephony/IccProviderException;-><init>(I)V
+    invoke-direct {v7, v8}, Lcom/android/internal/telephony/MiuiIccProviderException;-><init>(I)V
 
     invoke-direct {v0, v4, v6, v7}, Landroid/os/AsyncResult;-><init>(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Throwable;)V
 
@@ -402,9 +402,9 @@
 
     move-result-object v0
 
-    new-instance v1, Lcom/android/internal/telephony/IccProviderException;
+    new-instance v1, Lcom/android/internal/telephony/MiuiIccProviderException;
 
-    invoke-direct {v1, p2}, Lcom/android/internal/telephony/IccProviderException;-><init>(I)V
+    invoke-direct {v1, p2}, Lcom/android/internal/telephony/MiuiIccProviderException;-><init>(I)V
 
     iput-object v1, v0, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
 
@@ -872,11 +872,11 @@
 
     move-result-object v2
 
-    new-instance v3, Lcom/android/internal/telephony/IccProviderException;
+    new-instance v3, Lcom/android/internal/telephony/MiuiIccProviderException;
 
     const/16 v4, -0x3f6
 
-    invoke-direct {v3, v4}, Lcom/android/internal/telephony/IccProviderException;-><init>(I)V
+    invoke-direct {v3, v4}, Lcom/android/internal/telephony/MiuiIccProviderException;-><init>(I)V
 
     iput-object v3, v2, Landroid/os/AsyncResult;->exception:Ljava/lang/Throwable;
 

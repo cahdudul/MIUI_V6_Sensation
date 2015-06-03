@@ -14,6 +14,8 @@
 # static fields
 .field private static final CM_SETUPWIZARD_PACKAGE:Ljava/lang/String; = "com.cyanogenmod.account"
 
+.field private static final DEBUG:Z = false
+
 .field private static final GOOGLE_SETUPWIZARD_PACKAGE:Ljava/lang/String; = "com.google.android.setupwizard"
 
 .field private static final MAX_ICON_CACHE_SIZE:J = 0x2000000L
@@ -54,7 +56,31 @@
     .end annotation
 .end field
 
+.field private mPM:Landroid/content/pm/PackageManager;
+
+.field private final mProcessingListeners:Landroid/os/RemoteCallbackList;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Landroid/os/RemoteCallbackList",
+            "<",
+            "Landroid/content/res/IThemeProcessingListener;",
+            ">;"
+        }
+    .end annotation
+.end field
+
 .field private mProgress:I
+
+.field private final mThemesToProcessQueue:Ljava/util/ArrayList;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/ArrayList",
+            "<",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+.end field
 
 .field private mWallpaperChangeReceiver:Landroid/content/BroadcastReceiver;
 
@@ -68,7 +94,7 @@
     .locals 1
 
     .prologue
-    .line 88
+    .line 94
     const-class v0, Lcom/android/server/ThemeService;
 
     invoke-virtual {v0}, Ljava/lang/Class;->getName()Ljava/lang/String;
@@ -87,59 +113,75 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 138
+    .line 196
     invoke-direct {p0}, Landroid/content/res/IThemeService$Stub;-><init>()V
 
-    .line 100
+    .line 109
     iput-boolean v2, p0, Lcom/android/server/ThemeService;->mWallpaperChangedByUs:Z
 
-    .line 101
+    .line 110
     const-wide/16 v0, 0x0
 
     iput-wide v0, p0, Lcom/android/server/ThemeService;->mIconCacheSize:J
 
-    .line 103
+    .line 112
     iput-boolean v2, p0, Lcom/android/server/ThemeService;->mIsThemeApplying:Z
 
-    .line 105
+    .line 114
     new-instance v0, Landroid/os/RemoteCallbackList;
 
     invoke-direct {v0}, Landroid/os/RemoteCallbackList;-><init>()V
 
     iput-object v0, p0, Lcom/android/server/ThemeService;->mClients:Landroid/os/RemoteCallbackList;
 
-    .line 902
+    .line 117
+    new-instance v0, Landroid/os/RemoteCallbackList;
+
+    invoke-direct {v0}, Landroid/os/RemoteCallbackList;-><init>()V
+
+    iput-object v0, p0, Lcom/android/server/ThemeService;->mProcessingListeners:Landroid/os/RemoteCallbackList;
+
+    .line 120
+    new-instance v0, Ljava/util/ArrayList;
+
+    invoke-direct {v0, v2}, Ljava/util/ArrayList;-><init>(I)V
+
+    iput-object v0, p0, Lcom/android/server/ThemeService;->mThemesToProcessQueue:Ljava/util/ArrayList;
+
+    .line 1041
     new-instance v0, Lcom/android/server/ThemeService$1;
 
     invoke-direct {v0, p0}, Lcom/android/server/ThemeService$1;-><init>(Lcom/android/server/ThemeService;)V
 
     iput-object v0, p0, Lcom/android/server/ThemeService;->mWallpaperChangeReceiver:Landroid/content/BroadcastReceiver;
 
-    .line 916
+    .line 1055
     new-instance v0, Lcom/android/server/ThemeService$2;
 
     invoke-direct {v0, p0}, Lcom/android/server/ThemeService$2;-><init>(Lcom/android/server/ThemeService;)V
 
     iput-object v0, p0, Lcom/android/server/ThemeService;->mOldestFilesFirstComparator:Ljava/util/Comparator;
 
-    .line 139
+    .line 197
     iput-object p1, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
 
-    .line 140
+    .line 198
     new-instance v0, Landroid/os/HandlerThread;
 
     const-string v1, "ThemeServiceWorker"
 
-    invoke-direct {v0, v1}, Landroid/os/HandlerThread;-><init>(Ljava/lang/String;)V
+    const/16 v2, 0xa
+
+    invoke-direct {v0, v1, v2}, Landroid/os/HandlerThread;-><init>(Ljava/lang/String;I)V
 
     iput-object v0, p0, Lcom/android/server/ThemeService;->mWorker:Landroid/os/HandlerThread;
 
-    .line 141
+    .line 199
     iget-object v0, p0, Lcom/android/server/ThemeService;->mWorker:Landroid/os/HandlerThread;
 
     invoke-virtual {v0}, Landroid/os/HandlerThread;->start()V
 
-    .line 142
+    .line 200
     new-instance v0, Lcom/android/server/ThemeService$ThemeWorkerHandler;
 
     iget-object v1, p0, Lcom/android/server/ThemeService;->mWorker:Landroid/os/HandlerThread;
@@ -152,32 +194,32 @@
 
     iput-object v0, p0, Lcom/android/server/ThemeService;->mHandler:Lcom/android/server/ThemeService$ThemeWorkerHandler;
 
-    .line 143
+    .line 201
     sget-object v0, Lcom/android/server/ThemeService;->TAG:Ljava/lang/String;
 
     const-string v1, "Spawned worker thread"
 
     invoke-static {v0, v1}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 146
+    .line 204
     invoke-static {}, Landroid/content/pm/ThemeUtils;->createThemeDirIfNotExists()V
 
-    .line 147
+    .line 205
     invoke-static {}, Landroid/content/pm/ThemeUtils;->createFontDirIfNotExists()V
 
-    .line 148
+    .line 206
     invoke-static {}, Landroid/content/pm/ThemeUtils;->createAlarmDirIfNotExists()V
 
-    .line 149
+    .line 207
     invoke-static {}, Landroid/content/pm/ThemeUtils;->createNotificationDirIfNotExists()V
 
-    .line 150
+    .line 208
     invoke-static {}, Landroid/content/pm/ThemeUtils;->createRingtoneDirIfNotExists()V
 
-    .line 151
+    .line 209
     invoke-static {}, Landroid/content/pm/ThemeUtils;->createIconCacheDirIfNotExists()V
 
-    .line 152
+    .line 210
     return-void
 .end method
 
@@ -187,7 +229,7 @@
     .param p1, "x1"    # Ljava/util/Map;
 
     .prologue
-    .line 87
+    .line 93
     invoke-direct {p0, p1}, Lcom/android/server/ThemeService;->doApplyTheme(Ljava/util/Map;)V
 
     return-void
@@ -198,8 +240,43 @@
     .param p0, "x0"    # Lcom/android/server/ThemeService;
 
     .prologue
-    .line 87
+    .line 93
     invoke-direct {p0}, Lcom/android/server/ThemeService;->doApplyDefaultTheme()V
+
+    return-void
+.end method
+
+.method static synthetic access$1000(Lcom/android/server/ThemeService;)Z
+    .locals 1
+    .param p0, "x0"    # Lcom/android/server/ThemeService;
+
+    .prologue
+    .line 93
+    iget-boolean v0, p0, Lcom/android/server/ThemeService;->mWallpaperChangedByUs:Z
+
+    return v0
+.end method
+
+.method static synthetic access$1002(Lcom/android/server/ThemeService;Z)Z
+    .locals 0
+    .param p0, "x0"    # Lcom/android/server/ThemeService;
+    .param p1, "x1"    # Z
+
+    .prologue
+    .line 93
+    iput-boolean p1, p0, Lcom/android/server/ThemeService;->mWallpaperChangedByUs:Z
+
+    return p1
+.end method
+
+.method static synthetic access$1100(Lcom/android/server/ThemeService;Ljava/util/Map;)V
+    .locals 0
+    .param p0, "x0"    # Lcom/android/server/ThemeService;
+    .param p1, "x1"    # Ljava/util/Map;
+
+    .prologue
+    .line 93
+    invoke-direct {p0, p1}, Lcom/android/server/ThemeService;->updateProvider(Ljava/util/Map;)V
 
     return-void
 .end method
@@ -209,55 +286,93 @@
     .param p0, "x0"    # Lcom/android/server/ThemeService;
 
     .prologue
-    .line 87
+    .line 93
     invoke-direct {p0}, Lcom/android/server/ThemeService;->doBuildIconCache()V
 
     return-void
 .end method
 
-.method static synthetic access$300()Ljava/lang/String;
+.method static synthetic access$300(Lcom/android/server/ThemeService;)Ljava/util/ArrayList;
     .locals 1
+    .param p0, "x0"    # Lcom/android/server/ThemeService;
 
     .prologue
-    .line 87
-    sget-object v0, Lcom/android/server/ThemeService;->TAG:Ljava/lang/String;
+    .line 93
+    iget-object v0, p0, Lcom/android/server/ThemeService;->mThemesToProcessQueue:Ljava/util/ArrayList;
 
     return-object v0
 .end method
 
-.method static synthetic access$400(Lcom/android/server/ThemeService;)Z
+.method static synthetic access$400(Lcom/android/server/ThemeService;)Landroid/content/pm/PackageManager;
     .locals 1
     .param p0, "x0"    # Lcom/android/server/ThemeService;
 
     .prologue
-    .line 87
-    iget-boolean v0, p0, Lcom/android/server/ThemeService;->mWallpaperChangedByUs:Z
+    .line 93
+    iget-object v0, p0, Lcom/android/server/ThemeService;->mPM:Landroid/content/pm/PackageManager;
 
-    return v0
+    return-object v0
 .end method
 
-.method static synthetic access$402(Lcom/android/server/ThemeService;Z)Z
-    .locals 0
+.method static synthetic access$500(Lcom/android/server/ThemeService;Landroid/content/pm/PackageInfo;)Ljava/lang/String;
+    .locals 1
     .param p0, "x0"    # Lcom/android/server/ThemeService;
-    .param p1, "x1"    # Z
+    .param p1, "x1"    # Landroid/content/pm/PackageInfo;
 
     .prologue
-    .line 87
-    iput-boolean p1, p0, Lcom/android/server/ThemeService;->mWallpaperChangedByUs:Z
+    .line 93
+    invoke-direct {p0, p1}, Lcom/android/server/ThemeService;->getThemeName(Landroid/content/pm/PackageInfo;)Ljava/lang/String;
 
-    return p1
+    move-result-object v0
+
+    return-object v0
 .end method
 
-.method static synthetic access$500(Lcom/android/server/ThemeService;Ljava/util/Map;)V
+.method static synthetic access$600(Lcom/android/server/ThemeService;Ljava/lang/String;)V
     .locals 0
     .param p0, "x0"    # Lcom/android/server/ThemeService;
-    .param p1, "x1"    # Ljava/util/Map;
+    .param p1, "x1"    # Ljava/lang/String;
 
     .prologue
-    .line 87
-    invoke-direct {p0, p1}, Lcom/android/server/ThemeService;->updateProvider(Ljava/util/Map;)V
+    .line 93
+    invoke-direct {p0, p1}, Lcom/android/server/ThemeService;->postFailedThemeInstallNotification(Ljava/lang/String;)V
 
     return-void
+.end method
+
+.method static synthetic access$700(Lcom/android/server/ThemeService;Ljava/lang/String;I)V
+    .locals 0
+    .param p0, "x0"    # Lcom/android/server/ThemeService;
+    .param p1, "x1"    # Ljava/lang/String;
+    .param p2, "x2"    # I
+
+    .prologue
+    .line 93
+    invoke-direct {p0, p1, p2}, Lcom/android/server/ThemeService;->sendThemeResourcesCachedBroadcast(Ljava/lang/String;I)V
+
+    return-void
+.end method
+
+.method static synthetic access$800(Lcom/android/server/ThemeService;Ljava/lang/String;)V
+    .locals 0
+    .param p0, "x0"    # Lcom/android/server/ThemeService;
+    .param p1, "x1"    # Ljava/lang/String;
+
+    .prologue
+    .line 93
+    invoke-direct {p0, p1}, Lcom/android/server/ThemeService;->postFinishedProcessing(Ljava/lang/String;)V
+
+    return-void
+.end method
+
+.method static synthetic access$900()Ljava/lang/String;
+    .locals 1
+
+    .prologue
+    .line 93
+    sget-object v0, Lcom/android/server/ThemeService;->TAG:Ljava/lang/String;
+
+    return-object v0
 .end method
 
 .method private applyBootAnimation(Ljava/lang/String;)Z
@@ -265,10 +380,10 @@
     .param p1, "themePath"    # Ljava/lang/String;
 
     .prologue
-    .line 874
+    .line 1013
     const/4 v3, 0x0
 
-    .line 876
+    .line 1015
     .local v3, "success":Z
     :try_start_0
     new-instance v5, Ljava/util/zip/ZipFile;
@@ -279,7 +394,7 @@
 
     invoke-direct {v5, v6}, Ljava/util/zip/ZipFile;-><init>(Ljava/io/File;)V
 
-    .line 877
+    .line 1016
     .local v5, "zip":Ljava/util/zip/ZipFile;
     const-string v6, "assets/bootanimation/bootanimation.zip"
 
@@ -287,14 +402,14 @@
 
     move-result-object v4
 
-    .line 878
+    .line 1017
     .local v4, "ze":Ljava/util/zip/ZipEntry;
     if-eqz v4, :cond_0
 
-    .line 879
+    .line 1018
     invoke-direct {p0}, Lcom/android/server/ThemeService;->clearBootAnimation()V
 
-    .line 880
+    .line 1019
     new-instance v2, Ljava/io/BufferedInputStream;
 
     invoke-virtual {v5, v4}, Ljava/util/zip/ZipFile;->getInputStream(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
@@ -303,7 +418,7 @@
 
     invoke-direct {v2, v6}, Ljava/io/BufferedInputStream;-><init>(Ljava/io/InputStream;)V
 
-    .line 881
+    .line 1020
     .local v2, "is":Ljava/io/BufferedInputStream;
     new-instance v6, Ljava/lang/StringBuilder;
 
@@ -331,13 +446,13 @@
 
     move-result-object v0
 
-    .line 883
+    .line 1022
     .local v0, "bootAnimationPath":Ljava/lang/String;
     iget-object v6, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
 
     invoke-static {v6, v2, v0}, Landroid/content/pm/ThemeUtils;->copyAndScaleBootAnimation(Landroid/content/Context;Ljava/io/InputStream;Ljava/lang/String;)V
 
-    .line 884
+    .line 1023
     const/16 v6, 0x1e4
 
     const/4 v7, -0x1
@@ -346,7 +461,7 @@
 
     invoke-static {v0, v6, v7, v8}, Landroid/os/FileUtils;->setPermissions(Ljava/lang/String;III)I
 
-    .line 887
+    .line 1026
     .end local v0    # "bootAnimationPath":Ljava/lang/String;
     .end local v2    # "is":Ljava/io/BufferedInputStream;
     :cond_0
@@ -354,20 +469,20 @@
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 888
+    .line 1027
     const/4 v3, 0x1
 
-    .line 893
+    .line 1032
     .end local v4    # "ze":Ljava/util/zip/ZipEntry;
     .end local v5    # "zip":Ljava/util/zip/ZipFile;
     :goto_0
     return v3
 
-    .line 889
+    .line 1028
     :catch_0
     move-exception v1
 
-    .line 890
+    .line 1029
     .local v1, "e":Ljava/lang/Exception;
     sget-object v6, Lcom/android/server/ThemeService;->TAG:Ljava/lang/String;
 
@@ -408,7 +523,7 @@
     .end annotation
 
     .prologue
-    .line 766
+    .line 836
     .local p1, "components":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
     new-instance v1, Landroid/content/Intent;
 
@@ -416,7 +531,7 @@
 
     invoke-direct {v1, v2}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 767
+    .line 837
     .local v1, "intent":Landroid/content/Intent;
     new-instance v0, Ljava/util/ArrayList;
 
@@ -426,20 +541,20 @@
 
     invoke-direct {v0, v2}, Ljava/util/ArrayList;-><init>(Ljava/util/Collection;)V
 
-    .line 768
+    .line 838
     .local v0, "componentsArrayList":Ljava/util/ArrayList;
     const-string v2, "components"
 
     invoke-virtual {v1, v2, v0}, Landroid/content/Intent;->putStringArrayListExtra(Ljava/lang/String;Ljava/util/ArrayList;)Landroid/content/Intent;
 
-    .line 769
+    .line 839
     iget-object v2, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
 
     sget-object v3, Landroid/os/UserHandle;->ALL:Landroid/os/UserHandle;
 
     invoke-virtual {v2, v1, v3}, Landroid/content/Context;->sendBroadcastAsUser(Landroid/content/Intent;Landroid/os/UserHandle;)V
 
-    .line 770
+    .line 840
     return-void
 .end method
 
@@ -447,7 +562,7 @@
     .locals 3
 
     .prologue
-    .line 897
+    .line 1036
     new-instance v0, Ljava/io/File;
 
     new-instance v1, Ljava/lang/StringBuilder;
@@ -478,7 +593,7 @@
 
     invoke-direct {v0, v1}, Ljava/io/File;-><init>(Ljava/lang/String;)V
 
-    .line 898
+    .line 1037
     .local v0, "anim":Ljava/io/File;
     invoke-virtual {v0}, Ljava/io/File;->exists()Z
 
@@ -486,10 +601,10 @@
 
     if-eqz v1, :cond_0
 
-    .line 899
+    .line 1038
     invoke-virtual {v0}, Ljava/io/File;->delete()Z
 
-    .line 900
+    .line 1039
     :cond_0
     return-void
 .end method
@@ -514,7 +629,7 @@
     .end annotation
 
     .prologue
-    .line 649
+    .line 707
     .local p1, "componentMap":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
     new-instance v0, Landroid/content/res/ThemeConfig$Builder;
 
@@ -522,7 +637,7 @@
 
     invoke-direct {v0, v1}, Landroid/content/res/ThemeConfig$Builder;-><init>(Landroid/content/res/ThemeConfig;)V
 
-    .line 651
+    .line 709
     .local v0, "builder":Landroid/content/res/ThemeConfig$Builder;
     const-string v1, "mods_icons"
 
@@ -532,7 +647,7 @@
 
     if-eqz v1, :cond_0
 
-    .line 652
+    .line 710
     if-nez p2, :cond_5
 
     const-string v1, "mods_icons"
@@ -546,7 +661,7 @@
     :goto_0
     invoke-virtual {v0, v1}, Landroid/content/res/ThemeConfig$Builder;->defaultIcon(Ljava/lang/String;)Landroid/content/res/ThemeConfig$Builder;
 
-    .line 656
+    .line 714
     :cond_0
     const-string v1, "mods_overlays"
 
@@ -556,7 +671,7 @@
 
     if-eqz v1, :cond_1
 
-    .line 657
+    .line 715
     if-nez p2, :cond_6
 
     const-string v1, "mods_overlays"
@@ -570,7 +685,7 @@
     :goto_1
     invoke-virtual {v0, v1}, Landroid/content/res/ThemeConfig$Builder;->defaultOverlay(Ljava/lang/String;)Landroid/content/res/ThemeConfig$Builder;
 
-    .line 661
+    .line 719
     :cond_1
     const-string v1, "mods_fonts"
 
@@ -580,7 +695,7 @@
 
     if-eqz v1, :cond_2
 
-    .line 662
+    .line 720
     if-nez p2, :cond_7
 
     const-string v1, "mods_fonts"
@@ -594,7 +709,7 @@
     :goto_2
     invoke-virtual {v0, v1}, Landroid/content/res/ThemeConfig$Builder;->defaultFont(Ljava/lang/String;)Landroid/content/res/ThemeConfig$Builder;
 
-    .line 666
+    .line 724
     :cond_2
     const-string v1, "mods_status_bar"
 
@@ -604,7 +719,7 @@
 
     if-eqz v1, :cond_3
 
-    .line 667
+    .line 725
     const-string v2, "com.android.systemui"
 
     if-nez p2, :cond_8
@@ -620,7 +735,7 @@
     :goto_3
     invoke-virtual {v0, v2, v1}, Landroid/content/res/ThemeConfig$Builder;->overlay(Ljava/lang/String;Ljava/lang/String;)Landroid/content/res/ThemeConfig$Builder;
 
-    .line 671
+    .line 729
     :cond_3
     const-string v1, "mods_navigation_bar"
 
@@ -630,7 +745,7 @@
 
     if-eqz v1, :cond_4
 
-    .line 672
+    .line 730
     const-string v2, "com.android.systemui.navbar"
 
     if-nez p2, :cond_9
@@ -646,38 +761,38 @@
     :goto_4
     invoke-virtual {v0, v2, v1}, Landroid/content/res/ThemeConfig$Builder;->overlay(Ljava/lang/String;Ljava/lang/String;)Landroid/content/res/ThemeConfig$Builder;
 
-    .line 676
+    .line 734
     :cond_4
     return-object v0
 
     :cond_5
     move-object v1, p2
 
-    .line 652
+    .line 710
     goto :goto_0
 
     :cond_6
     move-object v1, p2
 
-    .line 657
+    .line 715
     goto :goto_1
 
     :cond_7
     move-object v1, p2
 
-    .line 662
+    .line 720
     goto :goto_2
 
     :cond_8
     move-object v1, p2
 
-    .line 667
+    .line 725
     goto :goto_3
 
     :cond_9
     move-object v1, p2
 
-    .line 672
+    .line 730
     goto :goto_4
 .end method
 
@@ -685,14 +800,14 @@
     .locals 10
 
     .prologue
-    .line 247
+    .line 308
     iget-object v8, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
 
     invoke-virtual {v8}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
     move-result-object v7
 
-    .line 248
+    .line 309
     .local v7, "resolver":Landroid/content/ContentResolver;
     const-string v8, "default_theme_package"
 
@@ -700,7 +815,7 @@
 
     move-result-object v4
 
-    .line 250
+    .line 311
     .local v4, "defaultThemePkg":Ljava/lang/String;
     invoke-static {v4}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
@@ -708,14 +823,14 @@
 
     if-nez v8, :cond_2
 
-    .line 251
+    .line 312
     const-string v8, "default_theme_components"
 
     invoke-static {v7, v8}, Landroid/provider/Settings$Secure;->getString(Landroid/content/ContentResolver;Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v3
 
-    .line 254
+    .line 315
     .local v3, "defaultThemeComponents":Ljava/lang/String;
     invoke-static {v3}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
@@ -723,12 +838,12 @@
 
     if-eqz v8, :cond_0
 
-    .line 255
+    .line 316
     invoke-static {}, Landroid/content/pm/ThemeUtils;->getAllComponents()Ljava/util/List;
 
     move-result-object v2
 
-    .line 260
+    .line 321
     .local v2, "components":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
     :goto_0
     new-instance v1, Ljava/util/HashMap;
@@ -739,7 +854,7 @@
 
     invoke-direct {v1, v8}, Ljava/util/HashMap;-><init>(I)V
 
-    .line 261
+    .line 322
     .local v1, "componentMap":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
     invoke-interface {v2}, Ljava/util/List;->iterator()Ljava/util/Iterator;
 
@@ -759,13 +874,13 @@
 
     check-cast v0, Ljava/lang/String;
 
-    .line 262
+    .line 323
     .local v0, "component":Ljava/lang/String;
     invoke-interface {v1, v0, v4}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     goto :goto_1
 
-    .line 257
+    .line 318
     .end local v0    # "component":Ljava/lang/String;
     .end local v1    # "componentMap":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
     .end local v2    # "components":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
@@ -788,7 +903,7 @@
     .restart local v2    # "components":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
     goto :goto_0
 
-    .line 265
+    .line 326
     .restart local v1    # "componentMap":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
     .restart local v6    # "i$":Ljava/util/Iterator;
     :cond_1
@@ -797,7 +912,7 @@
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 270
+    .line 331
     .end local v1    # "componentMap":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
     .end local v2    # "components":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
     .end local v3    # "defaultThemeComponents":Ljava/lang/String;
@@ -806,7 +921,7 @@
     :goto_2
     return-void
 
-    .line 266
+    .line 327
     .restart local v1    # "componentMap":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
     .restart local v2    # "components":Ljava/util/List;, "Ljava/util/List<Ljava/lang/String;>;"
     .restart local v3    # "defaultThemeComponents":Ljava/lang/String;
@@ -814,7 +929,7 @@
     :catch_0
     move-exception v5
 
-    .line 267
+    .line 328
     .local v5, "e":Landroid/os/RemoteException;
     sget-object v8, Lcom/android/server/ThemeService;->TAG:Ljava/lang/String;
 
@@ -844,21 +959,21 @@
 
     const/4 v3, 0x1
 
-    .line 161
+    .line 222
     monitor-enter p0
 
-    .line 162
+    .line 223
     const/4 v1, 0x0
 
     :try_start_0
     iput v1, p0, Lcom/android/server/ThemeService;->mProgress:I
 
-    .line 163
+    .line 224
     monitor-exit p0
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 165
+    .line 226
     if-eqz p1, :cond_0
 
     invoke-interface {p1}, Ljava/util/Map;->size()I
@@ -867,15 +982,15 @@
 
     if-nez v1, :cond_1
 
-    .line 166
+    .line 227
     :cond_0
     invoke-direct {p0, v3, p1}, Lcom/android/server/ThemeService;->postFinish(ZLjava/util/Map;)V
 
-    .line 244
+    .line 305
     :goto_0
     return-void
 
-    .line 163
+    .line 224
     :catchall_0
     move-exception v1
 
@@ -886,16 +1001,16 @@
 
     throw v1
 
-    .line 169
+    .line 230
     :cond_1
     iput-boolean v3, p0, Lcom/android/server/ThemeService;->mIsThemeApplying:Z
 
-    .line 171
+    .line 232
     const/4 v1, 0x5
 
     invoke-direct {p0, v1}, Lcom/android/server/ThemeService;->incrementProgress(I)V
 
-    .line 174
+    .line 235
     const/16 v1, 0x4b
 
     invoke-interface {p1}, Ljava/util/Map;->size()I
@@ -904,7 +1019,7 @@
 
     div-int v0, v1, v2
 
-    .line 176
+    .line 237
     .local v0, "progressIncrement":I
     const-string v1, "mods_icons"
 
@@ -914,7 +1029,7 @@
 
     if-eqz v1, :cond_3
 
-    .line 177
+    .line 238
     const-string v1, "mods_icons"
 
     invoke-interface {p1, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
@@ -929,16 +1044,16 @@
 
     if-nez v1, :cond_2
 
-    .line 178
+    .line 239
     const-string v1, "mods_icons"
 
     invoke-interface {p1, v1}, Ljava/util/Map;->remove(Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 180
+    .line 241
     :cond_2
     invoke-direct {p0, v0}, Lcom/android/server/ThemeService;->incrementProgress(I)V
 
-    .line 183
+    .line 244
     :cond_3
     const-string v1, "mods_homescreen"
 
@@ -948,7 +1063,7 @@
 
     if-eqz v1, :cond_4
 
-    .line 184
+    .line 245
     const-string v1, "mods_homescreen"
 
     invoke-interface {p1, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
@@ -963,14 +1078,14 @@
 
     if-eqz v1, :cond_11
 
-    .line 185
+    .line 246
     iput-boolean v3, p0, Lcom/android/server/ThemeService;->mWallpaperChangedByUs:Z
 
-    .line 189
+    .line 250
     :goto_1
     invoke-direct {p0, v0}, Lcom/android/server/ThemeService;->incrementProgress(I)V
 
-    .line 192
+    .line 253
     :cond_4
     const-string v1, "mods_lockscreen"
 
@@ -980,7 +1095,7 @@
 
     if-eqz v1, :cond_6
 
-    .line 193
+    .line 254
     const-string v1, "mods_lockscreen"
 
     invoke-interface {p1, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
@@ -995,16 +1110,16 @@
 
     if-nez v1, :cond_5
 
-    .line 194
+    .line 255
     const-string v1, "mods_lockscreen"
 
     invoke-interface {p1, v1}, Ljava/util/Map;->remove(Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 196
+    .line 257
     :cond_5
     invoke-direct {p0, v0}, Lcom/android/server/ThemeService;->incrementProgress(I)V
 
-    .line 199
+    .line 260
     :cond_6
     const-string v1, "mods_notifications"
 
@@ -1014,7 +1129,7 @@
 
     if-eqz v1, :cond_8
 
-    .line 200
+    .line 261
     const-string v1, "mods_notifications"
 
     invoke-interface {p1, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
@@ -1029,20 +1144,20 @@
 
     if-nez v1, :cond_7
 
-    .line 201
+    .line 262
     const-string v1, "mods_notifications"
 
     invoke-interface {p1, v1}, Ljava/util/Map;->remove(Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 203
+    .line 264
     :cond_7
     invoke-direct {p0, v0}, Lcom/android/server/ThemeService;->incrementProgress(I)V
 
-    .line 206
+    .line 267
     :cond_8
     invoke-static {v4}, Landroid/os/Environment;->setUserRequired(Z)V
 
-    .line 207
+    .line 268
     const-string v1, "mods_alarms"
 
     invoke-interface {p1, v1}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
@@ -1051,7 +1166,7 @@
 
     if-eqz v1, :cond_a
 
-    .line 208
+    .line 269
     const-string v1, "mods_alarms"
 
     invoke-interface {p1, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
@@ -1066,16 +1181,16 @@
 
     if-nez v1, :cond_9
 
-    .line 209
+    .line 270
     const-string v1, "mods_alarms"
 
     invoke-interface {p1, v1}, Ljava/util/Map;->remove(Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 211
+    .line 272
     :cond_9
     invoke-direct {p0, v0}, Lcom/android/server/ThemeService;->incrementProgress(I)V
 
-    .line 214
+    .line 275
     :cond_a
     const-string v1, "mods_ringtones"
 
@@ -1085,7 +1200,7 @@
 
     if-eqz v1, :cond_c
 
-    .line 215
+    .line 276
     const-string v1, "mods_ringtones"
 
     invoke-interface {p1, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
@@ -1100,16 +1215,16 @@
 
     if-nez v1, :cond_b
 
-    .line 216
+    .line 277
     const-string v1, "mods_ringtones"
 
     invoke-interface {p1, v1}, Ljava/util/Map;->remove(Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 218
+    .line 279
     :cond_b
     invoke-direct {p0, v0}, Lcom/android/server/ThemeService;->incrementProgress(I)V
 
-    .line 221
+    .line 282
     :cond_c
     const-string v1, "mods_bootanim"
 
@@ -1119,7 +1234,7 @@
 
     if-eqz v1, :cond_e
 
-    .line 222
+    .line 283
     const-string v1, "mods_bootanim"
 
     invoke-interface {p1, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
@@ -1134,20 +1249,20 @@
 
     if-nez v1, :cond_d
 
-    .line 223
+    .line 284
     const-string v1, "mods_bootanim"
 
     invoke-interface {p1, v1}, Ljava/util/Map;->remove(Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 225
+    .line 286
     :cond_d
     invoke-direct {p0, v0}, Lcom/android/server/ThemeService;->incrementProgress(I)V
 
-    .line 227
+    .line 288
     :cond_e
     invoke-static {v3}, Landroid/os/Environment;->setUserRequired(Z)V
 
-    .line 229
+    .line 290
     const-string v1, "mods_fonts"
 
     invoke-interface {p1, v1}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
@@ -1156,7 +1271,7 @@
 
     if-eqz v1, :cond_10
 
-    .line 230
+    .line 291
     const-string v1, "mods_fonts"
 
     invoke-interface {p1, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
@@ -1171,34 +1286,34 @@
 
     if-nez v1, :cond_f
 
-    .line 231
+    .line 292
     const-string v1, "mods_fonts"
 
     invoke-interface {p1, v1}, Ljava/util/Map;->remove(Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 233
+    .line 294
     :cond_f
     invoke-direct {p0, v0}, Lcom/android/server/ThemeService;->incrementProgress(I)V
 
-    .line 236
+    .line 297
     :cond_10
     invoke-direct {p0, p1}, Lcom/android/server/ThemeService;->updateProvider(Ljava/util/Map;)V
 
-    .line 238
+    .line 299
     invoke-direct {p0, p1}, Lcom/android/server/ThemeService;->updateConfiguration(Ljava/util/Map;)Z
 
-    .line 240
+    .line 301
     invoke-direct {p0, p1}, Lcom/android/server/ThemeService;->killLaunchers(Ljava/util/Map;)V
 
-    .line 242
+    .line 303
     invoke-direct {p0, v3, p1}, Lcom/android/server/ThemeService;->postFinish(ZLjava/util/Map;)V
 
-    .line 243
+    .line 304
     iput-boolean v4, p0, Lcom/android/server/ThemeService;->mIsThemeApplying:Z
 
     goto/16 :goto_0
 
-    .line 187
+    .line 248
     :cond_11
     const-string v1, "mods_homescreen"
 
@@ -1211,37 +1326,31 @@
     .locals 9
 
     .prologue
-    .line 924
-    iget-object v6, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
-
-    invoke-virtual {v6}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
-
-    move-result-object v5
-
-    .line 925
-    .local v5, "pm":Landroid/content/pm/PackageManager;
+    .line 1063
     new-instance v4, Landroid/content/Intent;
 
-    const-string v6, "android.intent.action.MAIN"
+    const-string v5, "android.intent.action.MAIN"
 
-    const/4 v7, 0x0
+    const/4 v6, 0x0
 
-    invoke-direct {v4, v6, v7}, Landroid/content/Intent;-><init>(Ljava/lang/String;Landroid/net/Uri;)V
+    invoke-direct {v4, v5, v6}, Landroid/content/Intent;-><init>(Ljava/lang/String;Landroid/net/Uri;)V
 
-    .line 926
+    .line 1064
     .local v4, "mainIntent":Landroid/content/Intent;
-    const-string v6, "android.intent.category.LAUNCHER"
+    const-string v5, "android.intent.category.LAUNCHER"
 
-    invoke-virtual {v4, v6}, Landroid/content/Intent;->addCategory(Ljava/lang/String;)Landroid/content/Intent;
+    invoke-virtual {v4, v5}, Landroid/content/Intent;->addCategory(Ljava/lang/String;)Landroid/content/Intent;
 
-    .line 928
+    .line 1066
+    iget-object v5, p0, Lcom/android/server/ThemeService;->mPM:Landroid/content/pm/PackageManager;
+
     const/4 v6, 0x0
 
     invoke-virtual {v5, v4, v6}, Landroid/content/pm/PackageManager;->queryIntentActivities(Landroid/content/Intent;I)Ljava/util/List;
 
     move-result-object v3
 
-    .line 929
+    .line 1067
     .local v3, "infos":Ljava/util/List;, "Ljava/util/List<Landroid/content/pm/ResolveInfo;>;"
     invoke-interface {v3}, Ljava/util/List;->iterator()Ljava/util/Iterator;
 
@@ -1251,9 +1360,9 @@
     :goto_0
     invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
 
-    move-result v6
+    move-result v5
 
-    if-eqz v6, :cond_0
+    if-eqz v5, :cond_0
 
     invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -1261,9 +1370,11 @@
 
     check-cast v2, Landroid/content/pm/ResolveInfo;
 
-    .line 931
+    .line 1069
     .local v2, "info":Landroid/content/pm/ResolveInfo;
     :try_start_0
+    iget-object v5, p0, Lcom/android/server/ThemeService;->mPM:Landroid/content/pm/PackageManager;
+
     new-instance v6, Landroid/content/ComponentName;
 
     iget-object v7, v2, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
@@ -1282,41 +1393,111 @@
 
     goto :goto_0
 
-    .line 933
+    .line 1071
     :catch_0
     move-exception v0
 
-    .line 934
+    .line 1072
     .local v0, "e":Ljava/lang/Exception;
-    sget-object v6, Lcom/android/server/ThemeService;->TAG:Ljava/lang/String;
+    sget-object v5, Lcom/android/server/ThemeService;->TAG:Ljava/lang/String;
 
-    new-instance v7, Ljava/lang/StringBuilder;
+    new-instance v6, Ljava/lang/StringBuilder;
 
-    invoke-direct {v7}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v8, "Unable to fetch icon for "
+    const-string v7, "Unable to fetch icon for "
 
-    invoke-virtual {v7, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v7
+    move-result-object v6
 
-    invoke-virtual {v7, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    invoke-virtual {v6, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    move-result-object v7
+    move-result-object v6
 
-    invoke-virtual {v7}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v7
+    move-result-object v6
 
-    invoke-static {v6, v7, v0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    invoke-static {v5, v6, v0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
     goto :goto_0
 
-    .line 937
+    .line 1075
     .end local v0    # "e":Ljava/lang/Exception;
     .end local v2    # "info":Landroid/content/pm/ResolveInfo;
     :cond_0
     return-void
+.end method
+
+.method private getThemeName(Landroid/content/pm/PackageInfo;)Ljava/lang/String;
+    .locals 2
+    .param p1, "pi"    # Landroid/content/pm/PackageInfo;
+
+    .prologue
+    const/4 v1, 0x0
+
+    .line 1127
+    iget-object v0, p1, Landroid/content/pm/PackageInfo;->themeInfos:[Landroid/content/pm/ThemeInfo;
+
+    if-eqz v0, :cond_0
+
+    iget-object v0, p1, Landroid/content/pm/PackageInfo;->themeInfos:[Landroid/content/pm/ThemeInfo;
+
+    array-length v0, v0
+
+    if-lez v0, :cond_0
+
+    .line 1128
+    iget-object v0, p1, Landroid/content/pm/PackageInfo;->themeInfos:[Landroid/content/pm/ThemeInfo;
+
+    aget-object v0, v0, v1
+
+    iget-object v0, v0, Landroid/content/pm/ThemeInfo;->name:Ljava/lang/String;
+
+    .line 1135
+    :goto_0
+    return-object v0
+
+    .line 1129
+    :cond_0
+    iget-object v0, p1, Landroid/content/pm/PackageInfo;->legacyThemeInfos:[Landroid/content/pm/LegacyThemeInfo;
+
+    if-eqz v0, :cond_1
+
+    iget-object v0, p1, Landroid/content/pm/PackageInfo;->legacyThemeInfos:[Landroid/content/pm/LegacyThemeInfo;
+
+    array-length v0, v0
+
+    if-lez v0, :cond_1
+
+    .line 1130
+    iget-object v0, p1, Landroid/content/pm/PackageInfo;->legacyThemeInfos:[Landroid/content/pm/LegacyThemeInfo;
+
+    aget-object v0, v0, v1
+
+    iget-object v0, v0, Landroid/content/pm/LegacyThemeInfo;->name:Ljava/lang/String;
+
+    goto :goto_0
+
+    .line 1131
+    :cond_1
+    iget-boolean v0, p1, Landroid/content/pm/PackageInfo;->isLegacyIconPackApk:Z
+
+    if-eqz v0, :cond_2
+
+    .line 1132
+    iget-object v0, p1, Landroid/content/pm/PackageInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;
+
+    iget-object v0, v0, Landroid/content/pm/ApplicationInfo;->name:Ljava/lang/String;
+
+    goto :goto_0
+
+    .line 1135
+    :cond_2
+    const/4 v0, 0x0
+
+    goto :goto_0
 .end method
 
 .method private handlesThemeChanges(Ljava/lang/String;Ljava/util/List;)Z
@@ -1334,7 +1515,7 @@
     .end annotation
 
     .prologue
-    .line 720
+    .line 777
     .local p2, "infos":Ljava/util/List;, "Ljava/util/List<Landroid/content/pm/ResolveInfo;>;"
     if-eqz p2, :cond_1
 
@@ -1344,7 +1525,7 @@
 
     if-lez v2, :cond_1
 
-    .line 721
+    .line 778
     invoke-interface {p2}, Ljava/util/List;->iterator()Ljava/util/Iterator;
 
     move-result-object v0
@@ -1363,7 +1544,7 @@
 
     check-cast v1, Landroid/content/pm/ResolveInfo;
 
-    .line 722
+    .line 779
     .local v1, "info":Landroid/content/pm/ResolveInfo;
     iget-object v2, v1, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
 
@@ -1377,10 +1558,10 @@
 
     if-eqz v2, :cond_0
 
-    .line 723
+    .line 780
     const/4 v2, 0x1
 
-    .line 727
+    .line 784
     .end local v0    # "i$":Ljava/util/Iterator;
     .end local v1    # "info":Landroid/content/pm/ResolveInfo;
     :goto_0
@@ -1399,10 +1580,10 @@
     .prologue
     const/16 v1, 0x64
 
-    .line 773
+    .line 843
     monitor-enter p0
 
-    .line 774
+    .line 844
     :try_start_0
     iget v0, p0, Lcom/android/server/ThemeService;->mProgress:I
 
@@ -1410,7 +1591,7 @@
 
     iput v0, p0, Lcom/android/server/ThemeService;->mProgress:I
 
-    .line 775
+    .line 845
     iget v0, p0, Lcom/android/server/ThemeService;->mProgress:I
 
     if-le v0, v1, :cond_0
@@ -1419,19 +1600,19 @@
 
     iput v0, p0, Lcom/android/server/ThemeService;->mProgress:I
 
-    .line 776
+    .line 846
     :cond_0
     monitor-exit p0
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 777
+    .line 847
     invoke-direct {p0}, Lcom/android/server/ThemeService;->postProgress()V
 
-    .line 778
+    .line 848
     return-void
 
-    .line 776
+    .line 846
     :catchall_0
     move-exception v0
 
@@ -1448,7 +1629,7 @@
     .param p1, "info"    # Landroid/content/pm/ResolveInfo;
 
     .prologue
-    .line 715
+    .line 772
     const-string v0, "com.google.android.setupwizard"
 
     iget-object v1, p1, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
@@ -1502,83 +1683,79 @@
     .local p1, "componentMap":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
     const/4 v11, 0x0
 
-    .line 682
-    const-string v9, "mods_icons"
+    .line 740
+    const-string v8, "mods_icons"
 
-    invoke-interface {p1, v9}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
+    invoke-interface {p1, v8}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
 
-    move-result v9
+    move-result v8
 
-    if-nez v9, :cond_1
+    if-nez v8, :cond_1
 
-    const-string v9, "mods_overlays"
+    const-string v8, "mods_overlays"
 
-    invoke-interface {p1, v9}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
+    invoke-interface {p1, v8}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
 
-    move-result v9
+    move-result v8
 
-    if-nez v9, :cond_1
+    if-nez v8, :cond_1
 
-    .line 712
+    .line 769
     :cond_0
     return-void
 
-    .line 687
+    .line 745
     :cond_1
-    iget-object v9, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
+    iget-object v8, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
 
-    const-string v10, "activity"
+    const-string v9, "activity"
 
-    invoke-virtual {v9, v10}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+    invoke-virtual {v8, v9}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
 
     move-result-object v0
 
     check-cast v0, Landroid/app/ActivityManager;
 
-    .line 689
+    .line 748
     .local v0, "am":Landroid/app/ActivityManager;
-    iget-object v9, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
-
-    invoke-virtual {v9}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
-
-    move-result-object v7
-
-    .line 691
-    .local v7, "pm":Landroid/content/pm/PackageManager;
     new-instance v2, Landroid/content/Intent;
 
     invoke-direct {v2}, Landroid/content/Intent;-><init>()V
 
-    .line 692
+    .line 749
     .local v2, "homeIntent":Landroid/content/Intent;
-    const-string v9, "android.intent.action.MAIN"
+    const-string v8, "android.intent.action.MAIN"
 
-    invoke-virtual {v2, v9}, Landroid/content/Intent;->setAction(Ljava/lang/String;)Landroid/content/Intent;
+    invoke-virtual {v2, v8}, Landroid/content/Intent;->setAction(Ljava/lang/String;)Landroid/content/Intent;
 
-    .line 693
-    const-string v9, "android.intent.category.HOME"
+    .line 750
+    const-string v8, "android.intent.category.HOME"
 
-    invoke-virtual {v2, v9}, Landroid/content/Intent;->addCategory(Ljava/lang/String;)Landroid/content/Intent;
+    invoke-virtual {v2, v8}, Landroid/content/Intent;->addCategory(Ljava/lang/String;)Landroid/content/Intent;
 
-    .line 695
-    invoke-virtual {v7, v2, v11}, Landroid/content/pm/PackageManager;->queryIntentActivities(Landroid/content/Intent;I)Ljava/util/List;
+    .line 752
+    iget-object v8, p0, Lcom/android/server/ThemeService;->mPM:Landroid/content/pm/PackageManager;
+
+    invoke-virtual {v8, v2, v11}, Landroid/content/pm/PackageManager;->queryIntentActivities(Landroid/content/Intent;I)Ljava/util/List;
 
     move-result-object v5
 
-    .line 696
+    .line 753
     .local v5, "infos":Ljava/util/List;, "Ljava/util/List<Landroid/content/pm/ResolveInfo;>;"
+    iget-object v8, p0, Lcom/android/server/ThemeService;->mPM:Landroid/content/pm/PackageManager;
+
     new-instance v9, Landroid/content/Intent;
 
     const-string v10, "org.cyanogenmod.intent.action.THEME_CHANGED"
 
     invoke-direct {v9, v10}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    invoke-virtual {v7, v9, v11}, Landroid/content/pm/PackageManager;->queryBroadcastReceivers(Landroid/content/Intent;I)Ljava/util/List;
+    invoke-virtual {v8, v9, v11}, Landroid/content/pm/PackageManager;->queryBroadcastReceivers(Landroid/content/Intent;I)Ljava/util/List;
 
-    move-result-object v8
+    move-result-object v7
 
-    .line 698
-    .local v8, "themeChangeInfos":Ljava/util/List;, "Ljava/util/List<Landroid/content/pm/ResolveInfo;>;"
+    .line 755
+    .local v7, "themeChangeInfos":Ljava/util/List;, "Ljava/util/List<Landroid/content/pm/ResolveInfo;>;"
     invoke-interface {v5}, Ljava/util/List;->iterator()Ljava/util/Iterator;
 
     move-result-object v3
@@ -1588,9 +1765,9 @@
     :goto_0
     invoke-interface {v3}, Ljava/util/Iterator;->hasNext()Z
 
-    move-result v9
+    move-result v8
 
-    if-eqz v9, :cond_0
+    if-eqz v8, :cond_0
 
     invoke-interface {v3}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
@@ -1598,74 +1775,74 @@
 
     check-cast v4, Landroid/content/pm/ResolveInfo;
 
-    .line 699
+    .line 756
     .local v4, "info":Landroid/content/pm/ResolveInfo;
-    iget-object v9, v4, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
+    iget-object v8, v4, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
 
-    if-eqz v9, :cond_2
+    if-eqz v8, :cond_2
 
-    iget-object v9, v4, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
+    iget-object v8, v4, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
 
-    iget-object v9, v9, Landroid/content/pm/ActivityInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;
+    iget-object v8, v8, Landroid/content/pm/ActivityInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;
 
-    if-eqz v9, :cond_2
+    if-eqz v8, :cond_2
 
     invoke-direct {p0, v4}, Lcom/android/server/ThemeService;->isSetupActivity(Landroid/content/pm/ResolveInfo;)Z
 
-    move-result v9
+    move-result v8
 
-    if-nez v9, :cond_2
+    if-nez v8, :cond_2
 
-    iget-object v9, v4, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
+    iget-object v8, v4, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
 
-    iget-object v9, v9, Landroid/content/pm/ActivityInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;
+    iget-object v8, v8, Landroid/content/pm/ActivityInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;
 
-    iget-object v9, v9, Landroid/content/pm/ApplicationInfo;->packageName:Ljava/lang/String;
+    iget-object v8, v8, Landroid/content/pm/ApplicationInfo;->packageName:Ljava/lang/String;
 
-    invoke-direct {p0, v9, v8}, Lcom/android/server/ThemeService;->handlesThemeChanges(Ljava/lang/String;Ljava/util/List;)Z
+    invoke-direct {p0, v8, v7}, Lcom/android/server/ThemeService;->handlesThemeChanges(Ljava/lang/String;Ljava/util/List;)Z
 
-    move-result v9
+    move-result v8
 
-    if-nez v9, :cond_2
+    if-nez v8, :cond_2
 
-    .line 702
-    iget-object v9, v4, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
+    .line 759
+    iget-object v8, v4, Landroid/content/pm/ResolveInfo;->activityInfo:Landroid/content/pm/ActivityInfo;
 
-    iget-object v9, v9, Landroid/content/pm/ActivityInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;
+    iget-object v8, v8, Landroid/content/pm/ActivityInfo;->applicationInfo:Landroid/content/pm/ApplicationInfo;
 
-    iget-object v6, v9, Landroid/content/pm/ApplicationInfo;->packageName:Ljava/lang/String;
+    iget-object v6, v8, Landroid/content/pm/ApplicationInfo;->packageName:Ljava/lang/String;
 
-    .line 703
+    .line 760
     .local v6, "pkgToStop":Ljava/lang/String;
-    sget-object v9, Lcom/android/server/ThemeService;->TAG:Ljava/lang/String;
+    sget-object v8, Lcom/android/server/ThemeService;->TAG:Ljava/lang/String;
 
-    new-instance v10, Ljava/lang/StringBuilder;
+    new-instance v9, Ljava/lang/StringBuilder;
 
-    invoke-direct {v10}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {v9}, Ljava/lang/StringBuilder;-><init>()V
 
-    const-string v11, "Force stopping "
+    const-string v10, "Force stopping "
 
-    invoke-virtual {v10, v11}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v10
+    move-result-object v9
 
-    invoke-virtual {v10, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v9, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v10
+    move-result-object v9
 
-    const-string v11, " for theme change"
+    const-string v10, " for theme change"
 
-    invoke-virtual {v10, v11}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v9, v10}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    move-result-object v10
+    move-result-object v9
 
-    invoke-virtual {v10}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v9}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    move-result-object v10
+    move-result-object v9
 
-    invoke-static {v9, v10}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-static {v8, v9}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 705
+    .line 762
     :try_start_0
     invoke-virtual {v0, v6}, Landroid/app/ActivityManager;->forceStopPackage(Ljava/lang/String;)V
     :try_end_0
@@ -1673,19 +1850,117 @@
 
     goto :goto_0
 
-    .line 706
+    .line 763
     :catch_0
     move-exception v1
 
-    .line 707
+    .line 764
     .local v1, "e":Ljava/lang/Exception;
-    sget-object v9, Lcom/android/server/ThemeService;->TAG:Ljava/lang/String;
+    sget-object v8, Lcom/android/server/ThemeService;->TAG:Ljava/lang/String;
 
-    const-string v10, "Unable to force stop package, did you forget platform signature?"
+    const-string v9, "Unable to force stop package, did you forget platform signature?"
 
-    invoke-static {v9, v10, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    invoke-static {v8, v9, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
     goto :goto_0
+.end method
+
+.method private postFailedThemeInstallNotification(Ljava/lang/String;)V
+    .locals 7
+    .param p1, "name"    # Ljava/lang/String;
+
+    .prologue
+    const/4 v6, 0x1
+
+    const/4 v5, 0x0
+
+    .line 1110
+    iget-object v2, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
+
+    const-string v3, "notification"
+
+    invoke-virtual {v2, v3}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/app/NotificationManager;
+
+    .line 1112
+    .local v0, "nm":Landroid/app/NotificationManager;
+    new-instance v2, Landroid/app/Notification$Builder;
+
+    iget-object v3, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
+
+    invoke-direct {v2, v3}, Landroid/app/Notification$Builder;-><init>(Landroid/content/Context;)V
+
+    invoke-virtual {v2, v6}, Landroid/app/Notification$Builder;->setAutoCancel(Z)Landroid/app/Notification$Builder;
+
+    move-result-object v2
+
+    invoke-virtual {v2, v5}, Landroid/app/Notification$Builder;->setOngoing(Z)Landroid/app/Notification$Builder;
+
+    move-result-object v2
+
+    iget-object v3, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
+
+    const v4, 0x10400f0
+
+    invoke-virtual {v3, v4}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v2, v3}, Landroid/app/Notification$Builder;->setContentTitle(Ljava/lang/CharSequence;)Landroid/app/Notification$Builder;
+
+    move-result-object v2
+
+    iget-object v3, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
+
+    const v4, 0x10400f1
+
+    invoke-virtual {v3, v4}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+
+    move-result-object v3
+
+    new-array v4, v6, [Ljava/lang/Object;
+
+    aput-object p1, v4, v5
+
+    invoke-static {v3, v4}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v2, v3}, Landroid/app/Notification$Builder;->setContentText(Ljava/lang/CharSequence;)Landroid/app/Notification$Builder;
+
+    move-result-object v2
+
+    const v3, 0x1080078
+
+    invoke-virtual {v2, v3}, Landroid/app/Notification$Builder;->setSmallIcon(I)Landroid/app/Notification$Builder;
+
+    move-result-object v2
+
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+
+    move-result-wide v3
+
+    invoke-virtual {v2, v3, v4}, Landroid/app/Notification$Builder;->setWhen(J)Landroid/app/Notification$Builder;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Landroid/app/Notification$Builder;->build()Landroid/app/Notification;
+
+    move-result-object v1
+
+    .line 1123
+    .local v1, "notice":Landroid/app/Notification;
+    invoke-virtual {p1}, Ljava/lang/String;->hashCode()I
+
+    move-result v2
+
+    invoke-virtual {v0, v2, v1}, Landroid/app/NotificationManager;->notify(ILandroid/app/Notification;)V
+
+    .line 1124
+    return-void
 .end method
 
 .method private postFinish(ZLjava/util/Map;)V
@@ -1706,28 +1981,28 @@
     .local p2, "componentMap":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
     const/4 v6, 0x0
 
-    .line 744
+    .line 801
     monitor-enter p0
 
-    .line 745
+    .line 802
     const/4 v4, 0x0
 
     :try_start_0
     iput v4, p0, Lcom/android/server/ThemeService;->mProgress:I
 
-    .line 746
+    .line 803
     monitor-exit p0
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 748
+    .line 805
     iget-object v4, p0, Lcom/android/server/ThemeService;->mClients:Landroid/os/RemoteCallbackList;
 
     invoke-virtual {v4}, Landroid/os/RemoteCallbackList;->beginBroadcast()I
 
     move-result v0
 
-    .line 749
+    .line 806
     .local v0, "N":I
     const/4 v2, 0x0
 
@@ -1735,7 +2010,7 @@
     :goto_0
     if-ge v2, v0, :cond_0
 
-    .line 750
+    .line 807
     iget-object v4, p0, Lcom/android/server/ThemeService;->mClients:Landroid/os/RemoteCallbackList;
 
     invoke-virtual {v4, v6}, Landroid/os/RemoteCallbackList;->getBroadcastItem(I)Landroid/os/IInterface;
@@ -1744,20 +2019,20 @@
 
     check-cast v3, Landroid/content/res/IThemeChangeListener;
 
-    .line 752
+    .line 809
     .local v3, "listener":Landroid/content/res/IThemeChangeListener;
     :try_start_1
     invoke-interface {v3, p1}, Landroid/content/res/IThemeChangeListener;->onFinish(Z)V
     :try_end_1
     .catch Landroid/os/RemoteException; {:try_start_1 .. :try_end_1} :catch_0
 
-    .line 749
+    .line 806
     :goto_1
     add-int/lit8 v2, v2, 0x1
 
     goto :goto_0
 
-    .line 746
+    .line 803
     .end local v0    # "N":I
     .end local v2    # "i":I
     .end local v3    # "listener":Landroid/content/res/IThemeChangeListener;
@@ -1771,14 +2046,14 @@
 
     throw v4
 
-    .line 753
+    .line 810
     .restart local v0    # "N":I
     .restart local v2    # "i":I
     .restart local v3    # "listener":Landroid/content/res/IThemeChangeListener;
     :catch_0
     move-exception v1
 
-    .line 754
+    .line 811
     .local v1, "e":Landroid/os/RemoteException;
     sget-object v4, Lcom/android/server/ThemeService;->TAG:Ljava/lang/String;
 
@@ -1788,7 +2063,7 @@
 
     goto :goto_1
 
-    .line 757
+    .line 814
     .end local v1    # "e":Landroid/os/RemoteException;
     .end local v3    # "listener":Landroid/content/res/IThemeChangeListener;
     :cond_0
@@ -1796,29 +2071,30 @@
 
     invoke-virtual {v4}, Landroid/os/RemoteCallbackList;->finishBroadcast()V
 
-    .line 760
+    .line 817
     if-eqz p1, :cond_1
 
-    .line 761
+    .line 818
     invoke-direct {p0, p2}, Lcom/android/server/ThemeService;->broadcastThemeChange(Ljava/util/Map;)V
 
-    .line 763
+    .line 820
     :cond_1
     return-void
 .end method
 
-.method private postProgress()V
+.method private postFinishedProcessing(Ljava/lang/String;)V
     .locals 6
+    .param p1, "pkgName"    # Ljava/lang/String;
 
     .prologue
-    .line 731
-    iget-object v4, p0, Lcom/android/server/ThemeService;->mClients:Landroid/os/RemoteCallbackList;
+    .line 823
+    iget-object v4, p0, Lcom/android/server/ThemeService;->mProcessingListeners:Landroid/os/RemoteCallbackList;
 
     invoke-virtual {v4}, Landroid/os/RemoteCallbackList;->beginBroadcast()I
 
     move-result v0
 
-    .line 732
+    .line 824
     .local v0, "N":I
     const/4 v2, 0x0
 
@@ -1826,7 +2102,76 @@
     :goto_0
     if-ge v2, v0, :cond_0
 
-    .line 733
+    .line 825
+    iget-object v4, p0, Lcom/android/server/ThemeService;->mProcessingListeners:Landroid/os/RemoteCallbackList;
+
+    const/4 v5, 0x0
+
+    invoke-virtual {v4, v5}, Landroid/os/RemoteCallbackList;->getBroadcastItem(I)Landroid/os/IInterface;
+
+    move-result-object v3
+
+    check-cast v3, Landroid/content/res/IThemeProcessingListener;
+
+    .line 827
+    .local v3, "listener":Landroid/content/res/IThemeProcessingListener;
+    :try_start_0
+    invoke-interface {v3, p1}, Landroid/content/res/IThemeProcessingListener;->onFinishedProcessing(Ljava/lang/String;)V
+    :try_end_0
+    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 824
+    :goto_1
+    add-int/lit8 v2, v2, 0x1
+
+    goto :goto_0
+
+    .line 828
+    :catch_0
+    move-exception v1
+
+    .line 829
+    .local v1, "e":Landroid/os/RemoteException;
+    sget-object v4, Lcom/android/server/ThemeService;->TAG:Ljava/lang/String;
+
+    const-string v5, "Unable to post progress to listener"
+
+    invoke-static {v4, v5, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+
+    goto :goto_1
+
+    .line 832
+    .end local v1    # "e":Landroid/os/RemoteException;
+    .end local v3    # "listener":Landroid/content/res/IThemeProcessingListener;
+    :cond_0
+    iget-object v4, p0, Lcom/android/server/ThemeService;->mProcessingListeners:Landroid/os/RemoteCallbackList;
+
+    invoke-virtual {v4}, Landroid/os/RemoteCallbackList;->finishBroadcast()V
+
+    .line 833
+    return-void
+.end method
+
+.method private postProgress()V
+    .locals 6
+
+    .prologue
+    .line 788
+    iget-object v4, p0, Lcom/android/server/ThemeService;->mClients:Landroid/os/RemoteCallbackList;
+
+    invoke-virtual {v4}, Landroid/os/RemoteCallbackList;->beginBroadcast()I
+
+    move-result v0
+
+    .line 789
+    .local v0, "N":I
+    const/4 v2, 0x0
+
+    .local v2, "i":I
+    :goto_0
+    if-ge v2, v0, :cond_0
+
+    .line 790
     iget-object v4, p0, Lcom/android/server/ThemeService;->mClients:Landroid/os/RemoteCallbackList;
 
     const/4 v5, 0x0
@@ -1837,7 +2182,7 @@
 
     check-cast v3, Landroid/content/res/IThemeChangeListener;
 
-    .line 735
+    .line 792
     .local v3, "listener":Landroid/content/res/IThemeChangeListener;
     :try_start_0
     iget v4, p0, Lcom/android/server/ThemeService;->mProgress:I
@@ -1846,17 +2191,17 @@
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 732
+    .line 789
     :goto_1
     add-int/lit8 v2, v2, 0x1
 
     goto :goto_0
 
-    .line 736
+    .line 793
     :catch_0
     move-exception v1
 
-    .line 737
+    .line 794
     .local v1, "e":Landroid/os/RemoteException;
     sget-object v4, Lcom/android/server/ThemeService;->TAG:Ljava/lang/String;
 
@@ -1866,7 +2211,7 @@
 
     goto :goto_1
 
-    .line 740
+    .line 797
     .end local v1    # "e":Landroid/os/RemoteException;
     .end local v3    # "listener":Landroid/content/res/IThemeChangeListener;
     :cond_0
@@ -1874,7 +2219,122 @@
 
     invoke-virtual {v4}, Landroid/os/RemoteCallbackList;->finishBroadcast()V
 
-    .line 741
+    .line 798
+    return-void
+.end method
+
+.method private processInstalledThemes()V
+    .locals 9
+
+    .prologue
+    const/4 v8, 0x4
+
+    const/4 v7, 0x0
+
+    .line 1078
+    iget-object v5, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
+
+    invoke-static {v5}, Landroid/content/pm/ThemeUtils;->getDefaultThemePackageName(Landroid/content/Context;)Ljava/lang/String;
+
+    move-result-object v0
+
+    .line 1081
+    .local v0, "defaultTheme":Ljava/lang/String;
+    const-string v5, "holo"
+
+    invoke-virtual {v5, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v5
+
+    if-nez v5, :cond_0
+
+    .line 1082
+    iget-object v5, p0, Lcom/android/server/ThemeService;->mHandler:Lcom/android/server/ThemeService$ThemeWorkerHandler;
+
+    invoke-virtual {v5, v8, v7, v7, v0}, Lcom/android/server/ThemeService$ThemeWorkerHandler;->obtainMessage(IIILjava/lang/Object;)Landroid/os/Message;
+
+    move-result-object v3
+
+    .line 1084
+    .local v3, "msg":Landroid/os/Message;
+    iget-object v5, p0, Lcom/android/server/ThemeService;->mHandler:Lcom/android/server/ThemeService$ThemeWorkerHandler;
+
+    invoke-virtual {v5, v3}, Lcom/android/server/ThemeService$ThemeWorkerHandler;->sendMessage(Landroid/os/Message;)Z
+
+    .line 1087
+    .end local v3    # "msg":Landroid/os/Message;
+    :cond_0
+    iget-object v5, p0, Lcom/android/server/ThemeService;->mPM:Landroid/content/pm/PackageManager;
+
+    invoke-virtual {v5, v7}, Landroid/content/pm/PackageManager;->getInstalledPackages(I)Ljava/util/List;
+
+    move-result-object v4
+
+    .line 1088
+    .local v4, "packages":Ljava/util/List;, "Ljava/util/List<Landroid/content/pm/PackageInfo;>;"
+    invoke-interface {v4}, Ljava/util/List;->iterator()Ljava/util/Iterator;
+
+    move-result-object v1
+
+    .local v1, "i$":Ljava/util/Iterator;
+    :cond_1
+    :goto_0
+    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v5
+
+    if-eqz v5, :cond_3
+
+    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v2
+
+    check-cast v2, Landroid/content/pm/PackageInfo;
+
+    .line 1089
+    .local v2, "info":Landroid/content/pm/PackageInfo;
+    iget-object v5, v2, Landroid/content/pm/PackageInfo;->packageName:Ljava/lang/String;
+
+    invoke-virtual {v0, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v5
+
+    if-nez v5, :cond_1
+
+    iget-boolean v5, v2, Landroid/content/pm/PackageInfo;->isThemeApk:Z
+
+    if-nez v5, :cond_2
+
+    iget-boolean v5, v2, Landroid/content/pm/PackageInfo;->isLegacyThemeApk:Z
+
+    if-nez v5, :cond_2
+
+    iget-boolean v5, v2, Landroid/content/pm/PackageInfo;->isLegacyIconPackApk:Z
+
+    if-eqz v5, :cond_1
+
+    .line 1091
+    :cond_2
+    iget-object v5, p0, Lcom/android/server/ThemeService;->mHandler:Lcom/android/server/ThemeService$ThemeWorkerHandler;
+
+    iget-object v6, v2, Landroid/content/pm/PackageInfo;->packageName:Ljava/lang/String;
+
+    invoke-virtual {v5, v8, v7, v7, v6}, Lcom/android/server/ThemeService$ThemeWorkerHandler;->obtainMessage(IIILjava/lang/Object;)Landroid/os/Message;
+
+    move-result-object v3
+
+    .line 1093
+    .restart local v3    # "msg":Landroid/os/Message;
+    iget-object v5, p0, Lcom/android/server/ThemeService;->mHandler:Lcom/android/server/ThemeService$ThemeWorkerHandler;
+
+    invoke-virtual {v5, v3}, Lcom/android/server/ThemeService$ThemeWorkerHandler;->sendMessage(Landroid/os/Message;)Z
+
+    goto :goto_0
+
+    .line 1096
+    .end local v2    # "info":Landroid/content/pm/PackageInfo;
+    .end local v3    # "msg":Landroid/os/Message;
+    :cond_3
     return-void
 .end method
 
@@ -1882,7 +2342,7 @@
     .locals 12
 
     .prologue
-    .line 860
+    .line 999
     sget-object v8, Lcom/android/server/ThemeService;->TAG:Ljava/lang/String;
 
     new-instance v9, Ljava/lang/StringBuilder;
@@ -1907,26 +2367,26 @@
 
     invoke-static {v8, v9}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 861
+    .line 1000
     new-instance v1, Ljava/io/File;
 
     sget-object v8, Landroid/content/pm/ThemeUtils;->SYSTEM_THEME_ICON_CACHE_DIR:Ljava/lang/String;
 
     invoke-direct {v1, v8}, Ljava/io/File;-><init>(Ljava/lang/String;)V
 
-    .line 862
+    .line 1001
     .local v1, "cacheDir":Ljava/io/File;
     invoke-virtual {v1}, Ljava/io/File;->listFiles()[Ljava/io/File;
 
     move-result-object v3
 
-    .line 863
+    .line 1002
     .local v3, "files":[Ljava/io/File;
     iget-object v8, p0, Lcom/android/server/ThemeService;->mOldestFilesFirstComparator:Ljava/util/Comparator;
 
     invoke-static {v3, v8}, Ljava/util/Arrays;->sort([Ljava/lang/Object;Ljava/util/Comparator;)V
 
-    .line 864
+    .line 1003
     move-object v0, v3
 
     .local v0, "arr$":[Ljava/io/File;
@@ -1941,7 +2401,7 @@
 
     aget-object v2, v0, v4
 
-    .line 865
+    .line 1004
     .local v2, "f":Ljava/io/File;
     invoke-virtual {v2}, Ljava/io/File;->isDirectory()Z
 
@@ -1949,12 +2409,12 @@
 
     if-nez v8, :cond_0
 
-    .line 866
+    .line 1005
     invoke-virtual {v2}, Ljava/io/File;->length()J
 
     move-result-wide v6
 
-    .line 867
+    .line 1006
     .local v6, "size":J
     invoke-virtual {v2}, Ljava/io/File;->delete()Z
 
@@ -1968,7 +2428,7 @@
 
     iput-wide v8, p0, Lcom/android/server/ThemeService;->mIconCacheSize:J
 
-    .line 869
+    .line 1008
     .end local v6    # "size":J
     :cond_0
     iget-wide v8, p0, Lcom/android/server/ThemeService;->mIconCacheSize:J
@@ -1979,17 +2439,52 @@
 
     if-gtz v8, :cond_2
 
-    .line 871
+    .line 1010
     .end local v2    # "f":Ljava/io/File;
     :cond_1
     return-void
 
-    .line 864
+    .line 1003
     .restart local v2    # "f":Ljava/io/File;
     :cond_2
     add-int/lit8 v4, v4, 0x1
 
     goto :goto_0
+.end method
+
+.method private sendThemeResourcesCachedBroadcast(Ljava/lang/String;I)V
+    .locals 3
+    .param p1, "themePkgName"    # Ljava/lang/String;
+    .param p2, "resultCode"    # I
+
+    .prologue
+    .line 1099
+    new-instance v0, Landroid/content/Intent;
+
+    const-string v1, "android.intent.action.THEME_RESOURCES_CACHED"
+
+    invoke-direct {v0, v1}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
+
+    .line 1100
+    .local v0, "intent":Landroid/content/Intent;
+    const-string v1, "android.intent.extra.PACKAGE_NAME"
+
+    invoke-virtual {v0, v1, p1}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+
+    .line 1101
+    const-string v1, "android.intent.extra.RESULT"
+
+    invoke-virtual {v0, v1, p2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
+
+    .line 1102
+    iget-object v1, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
+
+    sget-object v2, Landroid/os/UserHandle;->ALL:Landroid/os/UserHandle;
+
+    invoke-virtual {v1, v0, v2}, Landroid/content/Context;->sendBroadcastAsUser(Landroid/content/Intent;Landroid/os/UserHandle;)V
+
+    .line 1103
+    return-void
 .end method
 
 .method private setCustomLockScreenWallpaper(Ljava/lang/String;)Z
@@ -1999,14 +2494,14 @@
     .prologue
     const/4 v7, 0x0
 
-    .line 505
+    .line 564
     iget-object v8, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
 
     invoke-static {v8}, Landroid/app/WallpaperManager;->getInstance(Landroid/content/Context;)Landroid/app/WallpaperManager;
 
     move-result-object v5
 
-    .line 507
+    .line 566
     .local v5, "wm":Landroid/app/WallpaperManager;
     :try_start_0
     const-string v8, "holo"
@@ -2017,7 +2512,7 @@
 
     if-eqz v8, :cond_0
 
-    .line 508
+    .line 567
     iget-object v8, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
 
     invoke-virtual {v8}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
@@ -2030,11 +2525,11 @@
 
     move-result-object v1
 
-    .line 510
+    .line 569
     .local v1, "bmp":Landroid/graphics/Bitmap;
     invoke-virtual {v5, v1}, Landroid/app/WallpaperManager;->setKeyguardBitmap(Landroid/graphics/Bitmap;)V
 
-    .line 532
+    .line 591
     .end local v1    # "bmp":Landroid/graphics/Bitmap;
     :goto_0
     const/4 v7, 0x1
@@ -2042,7 +2537,7 @@
     :goto_1
     return v7
 
-    .line 511
+    .line 570
     :cond_0
     invoke-static {p1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
@@ -2050,18 +2545,18 @@
 
     if-eqz v8, :cond_1
 
-    .line 512
+    .line 571
     invoke-virtual {v5}, Landroid/app/WallpaperManager;->clearKeyguardWallpaper()V
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
     goto :goto_0
 
-    .line 528
+    .line 587
     :catch_0
     move-exception v2
 
-    .line 529
+    .line 588
     .local v2, "e":Ljava/lang/Exception;
     sget-object v8, Lcom/android/server/ThemeService;->TAG:Ljava/lang/String;
 
@@ -2087,7 +2582,7 @@
 
     goto :goto_1
 
-    .line 515
+    .line 574
     .end local v2    # "e":Ljava/lang/Exception;
     :cond_1
     :try_start_1
@@ -2099,23 +2594,23 @@
 
     move-result-object v4
 
-    .line 517
+    .line 576
     .local v4, "themeCtx":Landroid/content/Context;
     invoke-virtual {v4}, Landroid/content/Context;->getAssets()Landroid/content/res/AssetManager;
 
     move-result-object v0
 
-    .line 518
+    .line 577
     .local v0, "assetManager":Landroid/content/res/AssetManager;
     invoke-static {v0}, Landroid/content/pm/ThemeUtils;->getLockscreenWallpaperPath(Landroid/content/res/AssetManager;)Ljava/lang/String;
 
     move-result-object v6
 
-    .line 519
+    .line 578
     .local v6, "wpPath":Ljava/lang/String;
     if-nez v6, :cond_2
 
-    .line 520
+    .line 579
     sget-object v8, Lcom/android/server/ThemeService;->TAG:Ljava/lang/String;
 
     const-string v9, "Not setting lockscreen wp because wallpaper file was not found."
@@ -2124,7 +2619,7 @@
 
     goto :goto_1
 
-    .line 523
+    .line 582
     :cond_2
     new-instance v8, Ljava/lang/StringBuilder;
 
@@ -2148,7 +2643,7 @@
 
     move-result-object v3
 
-    .line 526
+    .line 585
     .local v3, "is":Ljava/io/InputStream;
     invoke-virtual {v5, v3}, Landroid/app/WallpaperManager;->setKeyguardStream(Ljava/io/InputStream;)V
     :try_end_1
@@ -2162,7 +2657,7 @@
     .param p1, "pkgName"    # Ljava/lang/String;
 
     .prologue
-    .line 368
+    .line 427
     sget-object v0, Landroid/content/pm/ThemeUtils;->SYSTEM_THEME_ALARM_PATH:Ljava/lang/String;
 
     const-string v1, "alarms"
@@ -2184,12 +2679,12 @@
     .param p4, "pkgName"    # Ljava/lang/String;
 
     .prologue
-    .line 384
+    .line 443
     iget-object v10, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
 
     invoke-static {v10, p1}, Landroid/content/pm/ThemeUtils;->clearAudibles(Landroid/content/Context;Ljava/lang/String;)V
 
-    .line 385
+    .line 444
     const-string v10, "holo"
 
     move-object/from16 v0, p4
@@ -2200,7 +2695,7 @@
 
     if-eqz v10, :cond_1
 
-    .line 386
+    .line 445
     iget-object v10, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
 
     move/from16 v0, p3
@@ -2211,38 +2706,34 @@
 
     if-nez v10, :cond_0
 
-    .line 387
+    .line 446
     sget-object v10, Lcom/android/server/ThemeService;->TAG:Ljava/lang/String;
 
     const-string v11, "There was an error installing the default audio file"
 
     invoke-static {v10, v11}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 388
+    .line 447
     const/4 v10, 0x0
 
-    .line 442
+    .line 501
     :goto_0
     return v10
 
-    .line 390
+    .line 449
     :cond_0
     const/4 v10, 0x1
 
     goto :goto_0
 
-    .line 393
+    .line 452
     :cond_1
     const/4 v8, 0x0
 
-    .line 395
+    .line 454
     .local v8, "pi":Landroid/content/pm/PackageInfo;
     :try_start_0
-    iget-object v10, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
-
-    invoke-virtual {v10}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
-
-    move-result-object v10
+    iget-object v10, p0, Lcom/android/server/ThemeService;->mPM:Landroid/content/pm/PackageManager;
 
     const/4 v11, 0x0
 
@@ -2254,14 +2745,14 @@
 
     move-result-object v8
 
-    .line 400
+    .line 459
     if-eqz v8, :cond_2
 
     iget-boolean v10, v8, Landroid/content/pm/PackageInfo;->isLegacyThemeApk:Z
 
     if-eqz v10, :cond_2
 
-    .line 401
+    .line 460
     move/from16 v0, p3
 
     invoke-direct {p0, p1, v0, v8}, Lcom/android/server/ThemeService;->updateLegacyAudible(Ljava/lang/String;ILandroid/content/pm/PackageInfo;)Z
@@ -2270,11 +2761,11 @@
 
     goto :goto_0
 
-    .line 396
+    .line 455
     :catch_0
     move-exception v4
 
-    .line 397
+    .line 456
     .local v4, "e":Landroid/content/pm/PackageManager$NameNotFoundException;
     sget-object v10, Lcom/android/server/ThemeService;->TAG:Ljava/lang/String;
 
@@ -2298,12 +2789,12 @@
 
     invoke-static {v10, v11, v4}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 398
+    .line 457
     const/4 v10, 0x0
 
     goto :goto_0
 
-    .line 408
+    .line 467
     .end local v4    # "e":Landroid/content/pm/PackageManager$NameNotFoundException;
     :cond_2
     :try_start_1
@@ -2317,13 +2808,13 @@
 
     move-result-object v9
 
-    .line 409
+    .line 468
     .local v9, "themeCtx":Landroid/content/Context;
     invoke-virtual {v9}, Landroid/content/Context;->getAssets()Landroid/content/res/AssetManager;
 
     move-result-object v3
 
-    .line 410
+    .line 469
     .local v3, "assetManager":Landroid/content/res/AssetManager;
     invoke-virtual {v3, p2}, Landroid/content/res/AssetManager;->list(Ljava/lang/String;)[Ljava/lang/String;
     :try_end_1
@@ -2331,7 +2822,7 @@
 
     move-result-object v2
 
-    .line 415
+    .line 474
     .local v2, "assetList":[Ljava/lang/String;
     if-eqz v2, :cond_3
 
@@ -2339,7 +2830,7 @@
 
     if-nez v10, :cond_4
 
-    .line 416
+    .line 475
     :cond_3
     sget-object v10, Lcom/android/server/ThemeService;->TAG:Ljava/lang/String;
 
@@ -2347,19 +2838,19 @@
 
     invoke-static {v10, v11}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 417
+    .line 476
     const/4 v10, 0x0
 
     goto :goto_0
 
-    .line 411
+    .line 470
     .end local v2    # "assetList":[Ljava/lang/String;
     .end local v3    # "assetManager":Landroid/content/res/AssetManager;
     .end local v9    # "themeCtx":Landroid/content/Context;
     :catch_1
     move-exception v4
 
-    .line 412
+    .line 471
     .local v4, "e":Ljava/lang/Exception;
     sget-object v10, Lcom/android/server/ThemeService;->TAG:Ljava/lang/String;
 
@@ -2385,12 +2876,12 @@
 
     invoke-static {v10, v11, v4}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 413
+    .line 472
     const/4 v10, 0x0
 
     goto :goto_0
 
-    .line 422
+    .line 481
     .end local v4    # "e":Ljava/lang/Exception;
     .restart local v2    # "assetList":[Ljava/lang/String;
     .restart local v3    # "assetManager":Landroid/content/res/AssetManager;
@@ -2400,7 +2891,7 @@
 
     aget-object v1, v2, v10
 
-    .line 423
+    .line 482
     .local v1, "asset":Ljava/lang/String;
     invoke-static {v1}, Landroid/content/pm/ThemeUtils;->isValidAudible(Ljava/lang/String;)Z
 
@@ -2412,15 +2903,15 @@
 
     goto :goto_0
 
-    .line 425
+    .line 484
     :cond_5
     const/4 v5, 0x0
 
-    .line 426
+    .line 485
     .local v5, "is":Ljava/io/InputStream;
     const/4 v6, 0x0
 
-    .line 428
+    .line 487
     .local v6, "os":Ljava/io/OutputStream;
     :try_start_2
     new-instance v10, Ljava/lang/StringBuilder;
@@ -2455,16 +2946,16 @@
 
     move-result-object v5
 
-    .line 430
+    .line 489
     new-instance v7, Ljava/io/File;
 
     invoke-direct {v7, p1, v1}, Ljava/io/File;-><init>(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 431
+    .line 490
     .local v7, "outFile":Ljava/io/File;
     invoke-static {v5, v7}, Landroid/os/FileUtils;->copyToFile(Ljava/io/InputStream;Ljava/io/File;)Z
 
-    .line 432
+    .line 491
     const/16 v10, 0x1e7
 
     const/4 v11, -0x1
@@ -2473,7 +2964,7 @@
 
     invoke-static {v7, v10, v11, v12}, Landroid/os/FileUtils;->setPermissions(Ljava/io/File;III)I
 
-    .line 434
+    .line 493
     iget-object v10, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
 
     iget-object v11, v8, Landroid/content/pm/PackageInfo;->themeInfos:[Landroid/content/pm/ThemeInfo;
@@ -2491,23 +2982,23 @@
     .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_2} :catch_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    .line 439
+    .line 498
     invoke-static {v5}, Landroid/content/pm/ThemeUtils;->closeQuietly(Ljava/io/InputStream;)V
 
-    .line 440
+    .line 499
     invoke-static {v6}, Landroid/content/pm/ThemeUtils;->closeQuietly(Ljava/io/OutputStream;)V
 
-    .line 442
+    .line 501
     const/4 v10, 0x1
 
     goto/16 :goto_0
 
-    .line 435
+    .line 494
     .end local v7    # "outFile":Ljava/io/File;
     :catch_2
     move-exception v4
 
-    .line 436
+    .line 495
     .restart local v4    # "e":Ljava/lang/Exception;
     :try_start_3
     sget-object v10, Lcom/android/server/ThemeService;->TAG:Ljava/lang/String;
@@ -2536,28 +3027,28 @@
     :try_end_3
     .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
-    .line 437
+    .line 496
     const/4 v10, 0x0
 
-    .line 439
+    .line 498
     invoke-static {v5}, Landroid/content/pm/ThemeUtils;->closeQuietly(Ljava/io/InputStream;)V
 
-    .line 440
+    .line 499
     invoke-static {v6}, Landroid/content/pm/ThemeUtils;->closeQuietly(Ljava/io/OutputStream;)V
 
     goto/16 :goto_0
 
-    .line 439
+    .line 498
     .end local v4    # "e":Ljava/lang/Exception;
     :catchall_0
     move-exception v10
 
     invoke-static {v5}, Landroid/content/pm/ThemeUtils;->closeQuietly(Ljava/io/InputStream;)V
 
-    .line 440
+    .line 499
     invoke-static {v6}, Landroid/content/pm/ThemeUtils;->closeQuietly(Ljava/io/OutputStream;)V
 
-    .line 439
+    .line 498
     throw v10
 .end method
 
@@ -2566,69 +3057,63 @@
     .param p1, "pkgName"    # Ljava/lang/String;
 
     .prologue
-    const/4 v3, 0x1
+    const/4 v2, 0x1
 
-    const/4 v4, 0x0
+    const/4 v3, 0x0
 
-    .line 351
-    const-string v5, "holo"
+    .line 411
+    const-string v4, "holo"
 
-    invoke-virtual {v5, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v4, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result v5
+    move-result v4
 
-    if-eqz v5, :cond_0
+    if-eqz v4, :cond_0
 
-    .line 352
+    .line 412
     invoke-direct {p0}, Lcom/android/server/ThemeService;->clearBootAnimation()V
 
-    .line 364
+    .line 423
     :goto_0
-    return v3
+    return v2
 
-    .line 356
+    .line 417
     :cond_0
-    iget-object v5, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
+    :try_start_0
+    iget-object v4, p0, Lcom/android/server/ThemeService;->mPM:Landroid/content/pm/PackageManager;
 
-    invoke-virtual {v5}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
-
-    move-result-object v2
-
-    .line 358
-    .local v2, "pm":Landroid/content/pm/PackageManager;
     const/4 v5, 0x0
 
-    :try_start_0
-    invoke-virtual {v2, p1, v5}, Landroid/content/pm/PackageManager;->getApplicationInfo(Ljava/lang/String;I)Landroid/content/pm/ApplicationInfo;
+    invoke-virtual {v4, p1, v5}, Landroid/content/pm/PackageManager;->getApplicationInfo(Ljava/lang/String;I)Landroid/content/pm/ApplicationInfo;
 
     move-result-object v0
 
-    .line 359
+    .line 418
     .local v0, "ai":Landroid/content/pm/ApplicationInfo;
-    iget-object v5, v0, Landroid/content/pm/ApplicationInfo;->sourceDir:Ljava/lang/String;
+    iget-object v4, v0, Landroid/content/pm/ApplicationInfo;->sourceDir:Ljava/lang/String;
 
-    invoke-direct {p0, v5}, Lcom/android/server/ThemeService;->applyBootAnimation(Ljava/lang/String;)Z
+    invoke-direct {p0, v4}, Lcom/android/server/ThemeService;->applyBootAnimation(Ljava/lang/String;)Z
     :try_end_0
     .catch Landroid/content/pm/PackageManager$NameNotFoundException; {:try_start_0 .. :try_end_0} :catch_0
 
     goto :goto_0
 
-    .line 360
+    .line 419
     .end local v0    # "ai":Landroid/content/pm/ApplicationInfo;
     :catch_0
     move-exception v1
 
-    .line 361
+    .line 420
     .local v1, "e":Landroid/content/pm/PackageManager$NameNotFoundException;
-    sget-object v3, Lcom/android/server/ThemeService;->TAG:Ljava/lang/String;
+    sget-object v2, Lcom/android/server/ThemeService;->TAG:Ljava/lang/String;
 
-    const-string v5, "Changing boot animation failed"
+    const-string v4, "Changing boot animation failed"
 
-    invoke-static {v3, v5, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    invoke-static {v2, v4, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    move v3, v4
+    move v2, v3
 
-    .line 362
+    .line 421
     goto :goto_0
 .end method
 
@@ -2646,29 +3131,29 @@
     .end annotation
 
     .prologue
-    .line 613
+    .line 671
     .local p1, "components":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
     invoke-static {}, Landroid/app/ActivityManagerNative;->getDefault()Landroid/app/IActivityManager;
 
     move-result-object v0
 
-    .line 614
+    .line 672
     .local v0, "am":Landroid/app/IActivityManager;
     if-eqz v0, :cond_1
 
-    .line 615
+    .line 673
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
 
     move-result-wide v7
 
-    .line 617
+    .line 675
     .local v7, "token":J
     :try_start_0
     invoke-interface {v0}, Landroid/app/IActivityManager;->getConfiguration()Landroid/content/res/Configuration;
 
     move-result-object v1
 
-    .line 618
+    .line 676
     .local v1, "config":Landroid/content/res/Configuration;
     const/4 v9, 0x0
 
@@ -2676,13 +3161,13 @@
 
     move-result-object v6
 
-    .line 619
+    .line 677
     .local v6, "themeBuilder":Landroid/content/res/ThemeConfig$Builder;
     invoke-virtual {v6}, Landroid/content/res/ThemeConfig$Builder;->build()Landroid/content/res/ThemeConfig;
 
     move-result-object v5
 
-    .line 624
+    .line 682
     .local v5, "newConfig":Landroid/content/res/ThemeConfig;
     iget-object v9, v1, Landroid/content/res/Configuration;->themeConfig:Landroid/content/res/ThemeConfig;
 
@@ -2692,7 +3177,7 @@
 
     if-eqz v9, :cond_0
 
-    .line 627
+    .line 685
     iget-object v9, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
 
     invoke-virtual {v9}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
@@ -2705,13 +3190,13 @@
 
     move-result-object v3
 
-    .line 630
+    .line 688
     .local v3, "defaultThemePkg":Ljava/lang/String;
     invoke-static {v1, p1, v3}, Lcom/android/server/ThemeService;->createBuilderFrom(Landroid/content/res/Configuration;Ljava/util/Map;Ljava/lang/String;)Landroid/content/res/ThemeConfig$Builder;
 
     move-result-object v2
 
-    .line 632
+    .line 690
     .local v2, "defaultBuilder":Landroid/content/res/ThemeConfig$Builder;
     invoke-virtual {v2}, Landroid/content/res/ThemeConfig$Builder;->build()Landroid/content/res/ThemeConfig;
 
@@ -2719,25 +3204,25 @@
 
     iput-object v9, v1, Landroid/content/res/Configuration;->themeConfig:Landroid/content/res/ThemeConfig;
 
-    .line 633
+    .line 691
     invoke-interface {v0, v1}, Landroid/app/IActivityManager;->updateConfiguration(Landroid/content/res/Configuration;)V
 
-    .line 636
+    .line 694
     .end local v2    # "defaultBuilder":Landroid/content/res/ThemeConfig$Builder;
     .end local v3    # "defaultThemePkg":Ljava/lang/String;
     :cond_0
     iput-object v5, v1, Landroid/content/res/Configuration;->themeConfig:Landroid/content/res/ThemeConfig;
 
-    .line 637
+    .line 695
     invoke-interface {v0, v1}, Landroid/app/IActivityManager;->updateConfiguration(Landroid/content/res/Configuration;)V
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 641
+    .line 699
     invoke-static {v7, v8}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
-    .line 644
+    .line 702
     .end local v1    # "config":Landroid/content/res/Configuration;
     .end local v5    # "newConfig":Landroid/content/res/ThemeConfig;
     .end local v6    # "themeBuilder":Landroid/content/res/ThemeConfig$Builder;
@@ -2748,16 +3233,16 @@
     :goto_0
     return v9
 
-    .line 638
+    .line 696
     .restart local v7    # "token":J
     :catch_0
     move-exception v4
 
-    .line 639
+    .line 697
     .local v4, "e":Landroid/os/RemoteException;
     const/4 v9, 0x0
 
-    .line 641
+    .line 699
     invoke-static {v7, v8}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
     goto :goto_0
@@ -2776,12 +3261,12 @@
     .param p1, "pkgName"    # Ljava/lang/String;
 
     .prologue
-    .line 305
+    .line 365
     sget-object v11, Landroid/content/pm/ThemeUtils;->SYSTEM_THEME_FONT_PATH:Ljava/lang/String;
 
     invoke-static {v11}, Landroid/content/pm/ThemeUtils;->deleteFilesInDir(Ljava/lang/String;)V
 
-    .line 307
+    .line 367
     const-string v11, "holo"
 
     invoke-virtual {p1, v11}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
@@ -2790,7 +3275,7 @@
 
     if-nez v11, :cond_2
 
-    .line 312
+    .line 372
     :try_start_0
     iget-object v11, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
 
@@ -2800,13 +3285,13 @@
 
     move-result-object v10
 
-    .line 313
+    .line 373
     .local v10, "themeCtx":Landroid/content/Context;
     invoke-virtual {v10}, Landroid/content/Context;->getAssets()Landroid/content/res/AssetManager;
 
     move-result-object v3
 
-    .line 314
+    .line 374
     .local v3, "assetManager":Landroid/content/res/AssetManager;
     const-string v11, "fonts"
 
@@ -2816,7 +3301,7 @@
 
     move-result-object v2
 
-    .line 319
+    .line 379
     .local v2, "assetList":[Ljava/lang/String;
     if-eqz v2, :cond_0
 
@@ -2824,7 +3309,7 @@
 
     if-nez v11, :cond_1
 
-    .line 320
+    .line 380
     :cond_0
     sget-object v11, Lcom/android/server/ThemeService;->TAG:Ljava/lang/String;
 
@@ -2832,21 +3317,21 @@
 
     invoke-static {v11, v12}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 321
+    .line 381
     const/4 v11, 0x0
 
-    .line 347
+    .line 407
     .end local v2    # "assetList":[Ljava/lang/String;
     .end local v3    # "assetManager":Landroid/content/res/AssetManager;
     .end local v10    # "themeCtx":Landroid/content/Context;
     :goto_0
     return v11
 
-    .line 315
+    .line 375
     :catch_0
     move-exception v4
 
-    .line 316
+    .line 376
     .local v4, "e":Ljava/lang/Exception;
     sget-object v11, Lcom/android/server/ThemeService;->TAG:Ljava/lang/String;
 
@@ -2870,12 +3355,12 @@
 
     invoke-static {v11, v12, v4}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 317
+    .line 377
     const/4 v11, 0x0
 
     goto :goto_0
 
-    .line 325
+    .line 385
     .end local v4    # "e":Ljava/lang/Exception;
     .restart local v2    # "assetList":[Ljava/lang/String;
     .restart local v3    # "assetManager":Landroid/content/res/AssetManager;
@@ -2895,15 +3380,15 @@
 
     aget-object v1, v0, v5
 
-    .line 326
+    .line 386
     .local v1, "asset":Ljava/lang/String;
     const/4 v6, 0x0
 
-    .line 327
+    .line 387
     .local v6, "is":Ljava/io/InputStream;
     const/4 v8, 0x0
 
-    .line 329
+    .line 389
     .local v8, "os":Ljava/io/OutputStream;
     :try_start_1
     new-instance v11, Ljava/lang/StringBuilder;
@@ -2928,18 +3413,18 @@
 
     move-result-object v6
 
-    .line 331
+    .line 391
     new-instance v9, Ljava/io/File;
 
     sget-object v11, Landroid/content/pm/ThemeUtils;->SYSTEM_THEME_FONT_PATH:Ljava/lang/String;
 
     invoke-direct {v9, v11, v1}, Ljava/io/File;-><init>(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 332
+    .line 392
     .local v9, "outFile":Ljava/io/File;
     invoke-static {v6, v9}, Landroid/os/FileUtils;->copyToFile(Ljava/io/InputStream;Ljava/io/File;)Z
 
-    .line 333
+    .line 393
     const/16 v11, 0x1e7
 
     const/4 v12, -0x1
@@ -2951,23 +3436,23 @@
     .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 339
+    .line 399
     invoke-static {v6}, Landroid/content/pm/ThemeUtils;->closeQuietly(Ljava/io/InputStream;)V
 
-    .line 340
+    .line 400
     invoke-static {v8}, Landroid/content/pm/ThemeUtils;->closeQuietly(Ljava/io/OutputStream;)V
 
-    .line 325
+    .line 385
     add-int/lit8 v5, v5, 0x1
 
     goto :goto_1
 
-    .line 335
+    .line 395
     .end local v9    # "outFile":Ljava/io/File;
     :catch_1
     move-exception v4
 
-    .line 336
+    .line 396
     .restart local v4    # "e":Ljava/lang/Exception;
     :try_start_2
     sget-object v11, Lcom/android/server/ThemeService;->TAG:Ljava/lang/String;
@@ -2994,31 +3479,31 @@
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    .line 337
+    .line 397
     const/4 v11, 0x0
 
-    .line 339
+    .line 399
     invoke-static {v6}, Landroid/content/pm/ThemeUtils;->closeQuietly(Ljava/io/InputStream;)V
 
-    .line 340
+    .line 400
     invoke-static {v8}, Landroid/content/pm/ThemeUtils;->closeQuietly(Ljava/io/OutputStream;)V
 
     goto :goto_0
 
-    .line 339
+    .line 399
     .end local v4    # "e":Ljava/lang/Exception;
     :catchall_0
     move-exception v11
 
     invoke-static {v6}, Landroid/content/pm/ThemeUtils;->closeQuietly(Ljava/io/InputStream;)V
 
-    .line 340
+    .line 400
     invoke-static {v8}, Landroid/content/pm/ThemeUtils;->closeQuietly(Ljava/io/OutputStream;)V
 
-    .line 339
+    .line 399
     throw v11
 
-    .line 346
+    .line 406
     .end local v0    # "arr$":[Ljava/lang/String;
     .end local v1    # "asset":Ljava/lang/String;
     .end local v2    # "assetList":[Ljava/lang/String;
@@ -3035,79 +3520,72 @@
 
     invoke-static {v11, v12}, Landroid/os/SystemProperties;->set(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 347
+    .line 407
     const/4 v11, 0x1
 
     goto/16 :goto_0
 .end method
 
 .method private updateIcons(Ljava/lang/String;)Z
-    .locals 4
+    .locals 3
     .param p1, "pkgName"    # Ljava/lang/String;
 
     .prologue
-    .line 289
+    .line 350
     :try_start_0
-    iget-object v2, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
+    const-string v1, "holo"
 
-    invoke-virtual {v2}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+    invoke-virtual {p1, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    move-result-object v1
+    move-result v1
 
-    .line 290
-    .local v1, "pm":Landroid/content/pm/PackageManager;
-    const-string v2, "holo"
+    if-eqz v1, :cond_0
 
-    invoke-virtual {p1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    .line 351
+    iget-object v1, p0, Lcom/android/server/ThemeService;->mPM:Landroid/content/pm/PackageManager;
 
-    move-result v2
-
-    if-eqz v2, :cond_0
-
-    .line 291
     const/4 v2, 0x0
 
     invoke-virtual {v1, v2}, Landroid/content/pm/PackageManager;->updateIconMaps(Ljava/lang/String;)V
 
-    .line 300
+    .line 360
     :goto_0
-    const/4 v2, 0x1
+    const/4 v1, 0x1
 
-    .end local v1    # "pm":Landroid/content/pm/PackageManager;
     :goto_1
-    return v2
+    return v1
 
-    .line 293
-    .restart local v1    # "pm":Landroid/content/pm/PackageManager;
+    .line 353
     :cond_0
+    iget-object v1, p0, Lcom/android/server/ThemeService;->mPM:Landroid/content/pm/PackageManager;
+
     invoke-virtual {v1, p1}, Landroid/content/pm/PackageManager;->updateIconMaps(Ljava/lang/String;)V
 
-    .line 294
-    iget-object v2, p0, Lcom/android/server/ThemeService;->mHandler:Lcom/android/server/ThemeService$ThemeWorkerHandler;
+    .line 354
+    iget-object v1, p0, Lcom/android/server/ThemeService;->mHandler:Lcom/android/server/ThemeService$ThemeWorkerHandler;
 
-    const/4 v3, 0x3
+    const/4 v2, 0x3
 
-    invoke-virtual {v2, v3}, Lcom/android/server/ThemeService$ThemeWorkerHandler;->sendEmptyMessage(I)Z
+    invoke-virtual {v1, v2}, Lcom/android/server/ThemeService$ThemeWorkerHandler;->sendEmptyMessage(I)Z
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
     goto :goto_0
 
-    .line 296
-    .end local v1    # "pm":Landroid/content/pm/PackageManager;
+    .line 356
     :catch_0
     move-exception v0
 
-    .line 297
+    .line 357
     .local v0, "e":Ljava/lang/Exception;
-    sget-object v2, Lcom/android/server/ThemeService;->TAG:Ljava/lang/String;
+    sget-object v1, Lcom/android/server/ThemeService;->TAG:Ljava/lang/String;
 
-    const-string v3, "Changing icons failed"
+    const-string v2, "Changing icons failed"
 
-    invoke-static {v2, v3, v0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    invoke-static {v1, v2, v0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 298
-    const/4 v2, 0x0
+    .line 358
+    const/4 v1, 0x0
 
     goto :goto_1
 .end method
@@ -3121,10 +3599,10 @@
     .prologue
     const/4 v7, 0x0
 
-    .line 446
+    .line 505
     iget-object v5, p3, Landroid/content/pm/PackageInfo;->packageName:Ljava/lang/String;
 
-    .line 447
+    .line 506
     .local v5, "pkgName":Ljava/lang/String;
     iget-object v8, p3, Landroid/content/pm/PackageInfo;->legacyThemeInfos:[Landroid/content/pm/LegacyThemeInfo;
 
@@ -3136,12 +3614,12 @@
 
     if-nez v8, :cond_1
 
-    .line 490
+    .line 549
     :cond_0
     :goto_0
     return v7
 
-    .line 453
+    .line 512
     :cond_1
     :try_start_0
     iget-object v8, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
@@ -3154,13 +3632,13 @@
 
     move-result-object v6
 
-    .line 462
+    .line 521
     .local v6, "themeCtx":Landroid/content/Context;
     packed-switch p2, :pswitch_data_0
 
     goto :goto_0
 
-    .line 467
+    .line 526
     :pswitch_0
     iget-object v8, p3, Landroid/content/pm/PackageInfo;->legacyThemeInfos:[Landroid/content/pm/LegacyThemeInfo;
 
@@ -3168,7 +3646,7 @@
 
     iget-object v0, v8, Landroid/content/pm/LegacyThemeInfo;->ringtoneFileName:Ljava/lang/String;
 
-    .line 472
+    .line 531
     .local v0, "asset":Ljava/lang/String;
     :goto_1
     invoke-static {v0}, Landroid/content/pm/ThemeUtils;->isValidAudible(Ljava/lang/String;)Z
@@ -3177,14 +3655,14 @@
 
     if-eqz v8, :cond_0
 
-    .line 474
+    .line 533
     const/4 v2, 0x0
 
-    .line 475
+    .line 534
     .local v2, "is":Ljava/io/InputStream;
     const/4 v3, 0x0
 
-    .line 477
+    .line 536
     .local v3, "os":Ljava/io/OutputStream;
     :try_start_1
     new-instance v8, Ljava/lang/StringBuilder;
@@ -3209,7 +3687,7 @@
 
     move-result-object v2
 
-    .line 478
+    .line 537
     new-instance v4, Ljava/io/File;
 
     const/16 v8, 0x2f
@@ -3226,11 +3704,11 @@
 
     invoke-direct {v4, p1, v8}, Ljava/io/File;-><init>(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 479
+    .line 538
     .local v4, "outFile":Ljava/io/File;
     invoke-static {v2, v4}, Landroid/os/FileUtils;->copyToFile(Ljava/io/InputStream;Ljava/io/File;)Z
 
-    .line 480
+    .line 539
     const/16 v8, 0x1e7
 
     const/4 v9, -0x1
@@ -3239,7 +3717,7 @@
 
     invoke-static {v4, v8, v9, v10}, Landroid/os/FileUtils;->setPermissions(Ljava/io/File;III)I
 
-    .line 482
+    .line 541
     iget-object v8, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
 
     iget-object v9, p3, Landroid/content/pm/PackageInfo;->legacyThemeInfos:[Landroid/content/pm/LegacyThemeInfo;
@@ -3255,18 +3733,18 @@
     .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 487
+    .line 546
     invoke-static {v2}, Landroid/content/pm/ThemeUtils;->closeQuietly(Ljava/io/InputStream;)V
 
-    .line 488
+    .line 547
     invoke-static {v3}, Landroid/content/pm/ThemeUtils;->closeQuietly(Ljava/io/OutputStream;)V
 
-    .line 490
+    .line 549
     const/4 v7, 0x1
 
     goto :goto_0
 
-    .line 454
+    .line 513
     .end local v0    # "asset":Ljava/lang/String;
     .end local v2    # "is":Ljava/io/InputStream;
     .end local v3    # "os":Ljava/io/OutputStream;
@@ -3275,7 +3753,7 @@
     :catch_0
     move-exception v1
 
-    .line 455
+    .line 514
     .local v1, "e":Ljava/lang/Exception;
     sget-object v8, Lcom/android/server/ThemeService;->TAG:Ljava/lang/String;
 
@@ -3301,7 +3779,7 @@
 
     goto :goto_0
 
-    .line 464
+    .line 523
     .end local v1    # "e":Ljava/lang/Exception;
     .restart local v6    # "themeCtx":Landroid/content/Context;
     :pswitch_1
@@ -3311,17 +3789,17 @@
 
     iget-object v0, v8, Landroid/content/pm/LegacyThemeInfo;->notificationFileName:Ljava/lang/String;
 
-    .line 465
+    .line 524
     .restart local v0    # "asset":Ljava/lang/String;
     goto :goto_1
 
-    .line 483
+    .line 542
     .restart local v2    # "is":Ljava/io/InputStream;
     .restart local v3    # "os":Ljava/io/OutputStream;
     :catch_1
     move-exception v1
 
-    .line 484
+    .line 543
     .restart local v1    # "e":Ljava/lang/Exception;
     :try_start_2
     sget-object v8, Lcom/android/server/ThemeService;->TAG:Ljava/lang/String;
@@ -3348,28 +3826,28 @@
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    .line 487
+    .line 546
     invoke-static {v2}, Landroid/content/pm/ThemeUtils;->closeQuietly(Ljava/io/InputStream;)V
 
-    .line 488
+    .line 547
     invoke-static {v3}, Landroid/content/pm/ThemeUtils;->closeQuietly(Ljava/io/OutputStream;)V
 
     goto/16 :goto_0
 
-    .line 487
+    .line 546
     .end local v1    # "e":Ljava/lang/Exception;
     :catchall_0
     move-exception v7
 
     invoke-static {v2}, Landroid/content/pm/ThemeUtils;->closeQuietly(Ljava/io/InputStream;)V
 
-    .line 488
+    .line 547
     invoke-static {v3}, Landroid/content/pm/ThemeUtils;->closeQuietly(Ljava/io/OutputStream;)V
 
-    .line 487
+    .line 546
     throw v7
 
-    .line 462
+    .line 521
     :pswitch_data_0
     .packed-switch 0x1
         :pswitch_0
@@ -3382,16 +3860,16 @@
     .param p1, "pkgName"    # Ljava/lang/String;
 
     .prologue
-    .line 495
+    .line 554
     invoke-direct {p0, p1}, Lcom/android/server/ThemeService;->setCustomLockScreenWallpaper(Ljava/lang/String;)Z
 
     move-result v0
 
-    .line 497
+    .line 556
     .local v0, "success":Z
     if-eqz v0, :cond_0
 
-    .line 498
+    .line 557
     iget-object v1, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
 
     new-instance v2, Landroid/content/Intent;
@@ -3404,7 +3882,7 @@
 
     invoke-virtual {v1, v2, v3}, Landroid/content/Context;->sendBroadcastAsUser(Landroid/content/Intent;Landroid/os/UserHandle;)V
 
-    .line 501
+    .line 560
     :cond_0
     return v0
 .end method
@@ -3414,7 +3892,7 @@
     .param p1, "pkgName"    # Ljava/lang/String;
 
     .prologue
-    .line 373
+    .line 432
     sget-object v0, Landroid/content/pm/ThemeUtils;->SYSTEM_THEME_NOTIFICATION_PATH:Ljava/lang/String;
 
     const-string v1, "notifications"
@@ -3445,12 +3923,12 @@
     .local p1, "componentMap":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
     const/4 v7, 0x0
 
-    .line 273
+    .line 334
     new-instance v3, Landroid/content/ContentValues;
 
     invoke-direct {v3}, Landroid/content/ContentValues;-><init>()V
 
-    .line 275
+    .line 336
     .local v3, "values":Landroid/content/ContentValues;
     invoke-interface {p1}, Ljava/util/Map;->keySet()Ljava/util/Set;
 
@@ -3475,7 +3953,7 @@
 
     check-cast v0, Ljava/lang/String;
 
-    .line 276
+    .line 337
     .local v0, "component":Ljava/lang/String;
     const-string v6, "value"
 
@@ -3487,10 +3965,10 @@
 
     invoke-virtual {v3, v6, v5}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 277
+    .line 338
     const-string v4, "key=?"
 
-    .line 278
+    .line 339
     .local v4, "where":Ljava/lang/String;
     const/4 v5, 0x1
 
@@ -3502,13 +3980,13 @@
 
     aput-object v5, v2, v7
 
-    .line 279
+    .line 340
     .local v2, "selectionArgs":[Ljava/lang/String;
     aget-object v5, v2, v7
 
     if-eqz v5, :cond_0
 
-    .line 282
+    .line 343
     iget-object v5, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
 
     invoke-virtual {v5}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
@@ -3521,7 +3999,7 @@
 
     goto :goto_0
 
-    .line 285
+    .line 346
     .end local v0    # "component":Ljava/lang/String;
     .end local v2    # "selectionArgs":[Ljava/lang/String;
     .end local v4    # "where":Ljava/lang/String;
@@ -3534,7 +4012,7 @@
     .param p1, "pkgName"    # Ljava/lang/String;
 
     .prologue
-    .line 378
+    .line 437
     sget-object v0, Landroid/content/pm/ThemeUtils;->SYSTEM_THEME_RINGTONE_PATH:Ljava/lang/String;
 
     const-string v1, "ringtones"
@@ -3549,14 +4027,14 @@
 .end method
 
 .method private updateWallpaper(Ljava/lang/String;)Z
-    .locals 19
+    .locals 18
     .param p1, "pkgName"    # Ljava/lang/String;
 
     .prologue
-    .line 536
+    .line 595
     const-string v4, "pkg_name= ?"
 
-    .line 537
+    .line 596
     .local v4, "selection":Ljava/lang/String;
     const/4 v1, 0x1
 
@@ -3566,7 +4044,7 @@
 
     aput-object p1, v5, v1
 
-    .line 538
+    .line 597
     .local v5, "selectionArgs":[Ljava/lang/String;
     move-object/from16 v0, p0
 
@@ -3586,21 +4064,21 @@
 
     move-result-object v8
 
-    .line 541
+    .line 600
     .local v8, "c":Landroid/database/Cursor;
     invoke-interface {v8}, Landroid/database/Cursor;->moveToFirst()Z
 
-    .line 542
+    .line 601
     move-object/from16 v0, p0
 
     iget-object v1, v0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
 
     invoke-static {v1}, Landroid/app/WallpaperManager;->getInstance(Landroid/content/Context;)Landroid/app/WallpaperManager;
 
-    move-result-object v17
+    move-result-object v16
 
-    .line 543
-    .local v17, "wm":Landroid/app/WallpaperManager;
+    .line 602
+    .local v16, "wm":Landroid/app/WallpaperManager;
     const-string v1, "holo"
 
     move-object/from16 v0, p1
@@ -3611,32 +4089,32 @@
 
     if-eqz v1, :cond_0
 
-    .line 545
+    .line 604
     :try_start_0
-    invoke-virtual/range {v17 .. v17}, Landroid/app/WallpaperManager;->clear()V
+    invoke-virtual/range {v16 .. v16}, Landroid/app/WallpaperManager;->clear()V
     :try_end_0
     .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 549
+    .line 608
     invoke-interface {v8}, Landroid/database/Cursor;->close()V
 
-    .line 609
+    .line 667
     :goto_0
     const/4 v1, 0x1
 
     :goto_1
     return v1
 
-    .line 546
+    .line 605
     :catch_0
     move-exception v9
 
-    .line 547
+    .line 606
     .local v9, "e":Ljava/io/IOException;
     const/4 v1, 0x0
 
-    .line 549
+    .line 608
     invoke-interface {v8}, Landroid/database/Cursor;->close()V
 
     goto :goto_1
@@ -3649,7 +4127,7 @@
 
     throw v1
 
-    .line 551
+    .line 610
     :cond_0
     invoke-static/range {p1 .. p1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
@@ -3657,31 +4135,31 @@
 
     if-eqz v1, :cond_1
 
-    .line 553
+    .line 612
     const/4 v1, 0x0
 
     :try_start_1
-    move-object/from16 v0, v17
+    move-object/from16 v0, v16
 
     invoke-virtual {v0, v1}, Landroid/app/WallpaperManager;->clear(Z)V
     :try_end_1
     .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_1
 
-    .line 557
+    .line 616
     invoke-interface {v8}, Landroid/database/Cursor;->close()V
 
     goto :goto_0
 
-    .line 554
+    .line 613
     :catch_1
     move-exception v9
 
-    .line 555
+    .line 614
     .restart local v9    # "e":Ljava/io/IOException;
     const/4 v1, 0x0
 
-    .line 557
+    .line 616
     invoke-interface {v8}, Landroid/database/Cursor;->close()V
 
     goto :goto_1
@@ -3694,11 +4172,11 @@
 
     throw v1
 
-    .line 560
+    .line 619
     :cond_1
     const/4 v10, 0x0
 
-    .line 562
+    .line 621
     .local v10, "in":Ljava/io/InputStream;
     :try_start_2
     move-object/from16 v0, p0
@@ -3711,10 +4189,10 @@
 
     invoke-virtual {v1, v0, v2}, Landroid/content/Context;->createPackageContext(Ljava/lang/String;I)Landroid/content/Context;
 
-    move-result-object v14
+    move-result-object v13
 
-    .line 564
-    .local v14, "themeContext":Landroid/content/Context;
+    .line 623
+    .local v13, "themeContext":Landroid/content/Context;
     const-string v1, "is_legacy_theme"
 
     invoke-interface {v8, v1}, Landroid/database/Cursor;->getColumnIndex(Ljava/lang/String;)I
@@ -3731,12 +4209,12 @@
 
     const/4 v11, 0x1
 
-    .line 566
+    .line 625
     .local v11, "isLegacyTheme":Z
     :goto_2
     if-nez v11, :cond_6
 
-    .line 567
+    .line 626
     const-string v1, "wallpaper_uri"
 
     invoke-interface {v8, v1}, Landroid/database/Cursor;->getColumnIndex(Ljava/lang/String;)I
@@ -3745,55 +4223,53 @@
 
     invoke-interface {v8, v1}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
 
-    move-result-object v16
+    move-result-object v15
 
-    .line 569
-    .local v16, "wallpaper":Ljava/lang/String;
-    if-eqz v16, :cond_4
+    .line 628
+    .local v15, "wallpaper":Ljava/lang/String;
+    if-eqz v15, :cond_4
 
-    .line 570
-    invoke-static/range {v16 .. v16}, Landroid/webkit/URLUtil;->isAssetUrl(Ljava/lang/String;)Z
+    .line 629
+    invoke-static {v15}, Landroid/webkit/URLUtil;->isAssetUrl(Ljava/lang/String;)Z
 
     move-result v1
 
     if-eqz v1, :cond_3
 
-    .line 571
-    move-object/from16 v0, v16
-
-    invoke-static {v14, v0}, Landroid/content/pm/ThemeUtils;->getInputStreamFromAsset(Landroid/content/Context;Ljava/lang/String;)Ljava/io/InputStream;
+    .line 630
+    invoke-static {v13, v15}, Landroid/content/pm/ThemeUtils;->getInputStreamFromAsset(Landroid/content/Context;Ljava/lang/String;)Ljava/io/InputStream;
 
     move-result-object v10
 
-    .line 589
+    .line 648
     :goto_3
-    move-object/from16 v0, v17
+    move-object/from16 v0, v16
 
     invoke-virtual {v0, v10}, Landroid/app/WallpaperManager;->setStream(Ljava/io/InputStream;)V
     :try_end_2
     .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_2} :catch_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_2
 
-    .line 605
-    .end local v16    # "wallpaper":Ljava/lang/String;
+    .line 663
+    .end local v15    # "wallpaper":Ljava/lang/String;
     :goto_4
     invoke-static {v10}, Landroid/content/pm/ThemeUtils;->closeQuietly(Ljava/io/InputStream;)V
 
-    .line 606
+    .line 664
     invoke-interface {v8}, Landroid/database/Cursor;->close()V
 
     goto :goto_0
 
-    .line 564
+    .line 623
     .end local v11    # "isLegacyTheme":Z
     :cond_2
     const/4 v11, 0x0
 
     goto :goto_2
 
-    .line 573
+    .line 632
     .restart local v11    # "isLegacyTheme":Z
-    .restart local v16    # "wallpaper":Ljava/lang/String;
+    .restart local v15    # "wallpaper":Ljava/lang/String;
     :cond_3
     :try_start_3
     move-object/from16 v0, p0
@@ -3804,7 +4280,7 @@
 
     move-result-object v1
 
-    invoke-static/range {v16 .. v16}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
+    invoke-static {v15}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
 
     move-result-object v2
 
@@ -3814,7 +4290,7 @@
 
     goto :goto_3
 
-    .line 578
+    .line 637
     :cond_4
     move-object/from16 v0, p0
 
@@ -3826,25 +4302,25 @@
 
     invoke-virtual {v1, v0, v2}, Landroid/content/Context;->createPackageContext(Ljava/lang/String;I)Landroid/content/Context;
 
-    move-result-object v15
+    move-result-object v14
 
-    .line 580
-    .local v15, "themeCtx":Landroid/content/Context;
-    invoke-virtual {v15}, Landroid/content/Context;->getAssets()Landroid/content/res/AssetManager;
+    .line 639
+    .local v14, "themeCtx":Landroid/content/Context;
+    invoke-virtual {v14}, Landroid/content/Context;->getAssets()Landroid/content/res/AssetManager;
 
     move-result-object v7
 
-    .line 581
+    .line 640
     .local v7, "assetManager":Landroid/content/res/AssetManager;
     invoke-static {v7}, Landroid/content/pm/ThemeUtils;->getWallpaperPath(Landroid/content/res/AssetManager;)Ljava/lang/String;
 
-    move-result-object v18
+    move-result-object v17
 
-    .line 582
-    .local v18, "wpPath":Ljava/lang/String;
-    if-nez v18, :cond_5
+    .line 641
+    .local v17, "wpPath":Ljava/lang/String;
+    if-nez v17, :cond_5
 
-    .line 583
+    .line 642
     sget-object v1, Lcom/android/server/ThemeService;->TAG:Ljava/lang/String;
 
     const-string v2, "Not setting wp because wallpaper file was not found."
@@ -3854,31 +4330,31 @@
     .catch Ljava/lang/Exception; {:try_start_3 .. :try_end_3} :catch_2
     .catchall {:try_start_3 .. :try_end_3} :catchall_2
 
-    .line 584
+    .line 643
     const/4 v1, 0x0
 
-    .line 605
+    .line 663
     invoke-static {v10}, Landroid/content/pm/ThemeUtils;->closeQuietly(Ljava/io/InputStream;)V
 
-    .line 606
+    .line 664
     .end local v7    # "assetManager":Landroid/content/res/AssetManager;
     .end local v11    # "isLegacyTheme":Z
-    .end local v14    # "themeContext":Landroid/content/Context;
-    .end local v15    # "themeCtx":Landroid/content/Context;
-    .end local v16    # "wallpaper":Ljava/lang/String;
-    .end local v18    # "wpPath":Ljava/lang/String;
+    .end local v13    # "themeContext":Landroid/content/Context;
+    .end local v14    # "themeCtx":Landroid/content/Context;
+    .end local v15    # "wallpaper":Ljava/lang/String;
+    .end local v17    # "wpPath":Ljava/lang/String;
     :goto_5
     invoke-interface {v8}, Landroid/database/Cursor;->close()V
 
     goto/16 :goto_1
 
-    .line 586
+    .line 645
     .restart local v7    # "assetManager":Landroid/content/res/AssetManager;
     .restart local v11    # "isLegacyTheme":Z
-    .restart local v14    # "themeContext":Landroid/content/Context;
-    .restart local v15    # "themeCtx":Landroid/content/Context;
-    .restart local v16    # "wallpaper":Ljava/lang/String;
-    .restart local v18    # "wpPath":Ljava/lang/String;
+    .restart local v13    # "themeContext":Landroid/content/Context;
+    .restart local v14    # "themeCtx":Landroid/content/Context;
+    .restart local v15    # "wallpaper":Ljava/lang/String;
+    .restart local v17    # "wpPath":Ljava/lang/String;
     :cond_5
     :try_start_4
     new-instance v1, Ljava/lang/StringBuilder;
@@ -3891,7 +4367,7 @@
 
     move-result-object v1
 
-    move-object/from16 v0, v18
+    move-object/from16 v0, v17
 
     invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
@@ -3901,37 +4377,31 @@
 
     move-result-object v1
 
-    invoke-static {v15, v1}, Landroid/content/pm/ThemeUtils;->getInputStreamFromAsset(Landroid/content/Context;Ljava/lang/String;)Ljava/io/InputStream;
+    invoke-static {v14, v1}, Landroid/content/pm/ThemeUtils;->getInputStreamFromAsset(Landroid/content/Context;Ljava/lang/String;)Ljava/io/InputStream;
 
     move-result-object v10
 
     goto :goto_3
 
-    .line 591
+    .line 650
     .end local v7    # "assetManager":Landroid/content/res/AssetManager;
-    .end local v15    # "themeCtx":Landroid/content/Context;
-    .end local v16    # "wallpaper":Ljava/lang/String;
-    .end local v18    # "wpPath":Ljava/lang/String;
+    .end local v14    # "themeCtx":Landroid/content/Context;
+    .end local v15    # "wallpaper":Ljava/lang/String;
+    .end local v17    # "wpPath":Ljava/lang/String;
     :cond_6
     move-object/from16 v0, p0
 
-    iget-object v1, v0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
+    iget-object v1, v0, Lcom/android/server/ThemeService;->mPM:Landroid/content/pm/PackageManager;
 
-    invoke-virtual {v1}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
-
-    move-result-object v13
-
-    .line 592
-    .local v13, "pm":Landroid/content/pm/PackageManager;
-    const/4 v1, 0x0
+    const/4 v2, 0x0
 
     move-object/from16 v0, p1
 
-    invoke-virtual {v13, v0, v1}, Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
+    invoke-virtual {v1, v0, v2}, Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
 
     move-result-object v12
 
-    .line 593
+    .line 651
     .local v12, "pi":Landroid/content/pm/PackageInfo;
     iget-object v1, v12, Landroid/content/pm/PackageInfo;->legacyThemeInfos:[Landroid/content/pm/LegacyThemeInfo;
 
@@ -3943,12 +4413,12 @@
 
     if-lez v1, :cond_7
 
-    .line 596
-    invoke-static {v14}, Landroid/app/WallpaperManager;->getInstance(Landroid/content/Context;)Landroid/app/WallpaperManager;
+    .line 654
+    invoke-static {v13}, Landroid/app/WallpaperManager;->getInstance(Landroid/content/Context;)Landroid/app/WallpaperManager;
 
-    move-result-object v17
+    move-result-object v16
 
-    .line 597
+    .line 655
     iget-object v1, v12, Landroid/content/pm/PackageInfo;->legacyThemeInfos:[Landroid/content/pm/LegacyThemeInfo;
 
     const/4 v2, 0x0
@@ -3957,59 +4427,56 @@
 
     iget v1, v1, Landroid/content/pm/LegacyThemeInfo;->wallpaperResourceId:I
 
-    move-object/from16 v0, v17
+    move-object/from16 v0, v16
 
     invoke-virtual {v0, v1}, Landroid/app/WallpaperManager;->setResource(I)V
     :try_end_4
     .catch Ljava/lang/Exception; {:try_start_4 .. :try_end_4} :catch_2
     .catchall {:try_start_4 .. :try_end_4} :catchall_2
 
-    goto/16 :goto_4
+    goto :goto_4
 
-    .line 602
+    .line 660
     .end local v11    # "isLegacyTheme":Z
     .end local v12    # "pi":Landroid/content/pm/PackageInfo;
-    .end local v13    # "pm":Landroid/content/pm/PackageManager;
-    .end local v14    # "themeContext":Landroid/content/Context;
+    .end local v13    # "themeContext":Landroid/content/Context;
     :catch_2
     move-exception v9
 
-    .line 603
+    .line 661
     .local v9, "e":Ljava/lang/Exception;
     const/4 v1, 0x0
 
-    .line 605
+    .line 663
     invoke-static {v10}, Landroid/content/pm/ThemeUtils;->closeQuietly(Ljava/io/InputStream;)V
 
     goto :goto_5
 
-    .line 599
+    .line 657
     .end local v9    # "e":Ljava/lang/Exception;
     .restart local v11    # "isLegacyTheme":Z
     .restart local v12    # "pi":Landroid/content/pm/PackageInfo;
-    .restart local v13    # "pm":Landroid/content/pm/PackageManager;
-    .restart local v14    # "themeContext":Landroid/content/Context;
+    .restart local v13    # "themeContext":Landroid/content/Context;
     :cond_7
     const/4 v1, 0x0
 
-    .line 605
+    .line 663
     invoke-static {v10}, Landroid/content/pm/ThemeUtils;->closeQuietly(Ljava/io/InputStream;)V
 
     goto :goto_5
 
     .end local v11    # "isLegacyTheme":Z
     .end local v12    # "pi":Landroid/content/pm/PackageInfo;
-    .end local v13    # "pm":Landroid/content/pm/PackageManager;
-    .end local v14    # "themeContext":Landroid/content/Context;
+    .end local v13    # "themeContext":Landroid/content/Context;
     :catchall_2
     move-exception v1
 
     invoke-static {v10}, Landroid/content/pm/ThemeUtils;->closeQuietly(Ljava/io/InputStream;)V
 
-    .line 606
+    .line 664
     invoke-interface {v8}, Landroid/database/Cursor;->close()V
 
-    .line 605
+    .line 663
     throw v1
 .end method
 
@@ -4019,7 +4486,7 @@
     .locals 4
 
     .prologue
-    .line 806
+    .line 905
     iget-object v1, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
 
     const-string v2, "android.permission.ACCESS_THEME_MANAGER"
@@ -4028,23 +4495,23 @@
 
     invoke-virtual {v1, v2, v3}, Landroid/content/Context;->enforceCallingOrSelfPermission(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 808
+    .line 907
     invoke-static {}, Landroid/os/Message;->obtain()Landroid/os/Message;
 
     move-result-object v0
 
-    .line 809
+    .line 908
     .local v0, "msg":Landroid/os/Message;
     const/4 v1, 0x2
 
     iput v1, v0, Landroid/os/Message;->what:I
 
-    .line 810
+    .line 909
     iget-object v1, p0, Lcom/android/server/ThemeService;->mHandler:Lcom/android/server/ThemeService$ThemeWorkerHandler;
 
     invoke-virtual {v1, v0}, Lcom/android/server/ThemeService$ThemeWorkerHandler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 811
+    .line 910
     return-void
 .end method
 
@@ -4059,12 +4526,12 @@
     .end annotation
 
     .prologue
-    .line 831
+    .line 928
     invoke-static {}, Landroid/os/Binder;->clearCallingIdentity()J
 
     move-result-wide v5
 
-    .line 834
+    .line 931
     .local v5, "token":J
     new-instance v0, Ljava/io/File;
 
@@ -4072,7 +4539,7 @@
 
     invoke-direct {v0, v7}, Ljava/io/File;-><init>(Ljava/lang/String;)V
 
-    .line 835
+    .line 932
     .local v0, "cacheDir":Ljava/io/File;
     invoke-virtual {v0}, Ljava/io/File;->listFiles()[Ljava/io/File;
 
@@ -4082,25 +4549,25 @@
 
     if-nez v7, :cond_0
 
-    .line 836
+    .line 933
     const-wide/16 v7, 0x0
 
     iput-wide v7, p0, Lcom/android/server/ThemeService;->mIconCacheSize:J
 
-    .line 839
+    .line 936
     :cond_0
     :try_start_0
     new-instance v3, Ljava/io/File;
 
     invoke-direct {v3, v0, p2}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
 
-    .line 840
+    .line 937
     .local v3, "outFile":Ljava/io/File;
     new-instance v2, Ljava/io/FileOutputStream;
 
     invoke-direct {v2, v3}, Ljava/io/FileOutputStream;-><init>(Ljava/io/File;)V
 
-    .line 841
+    .line 938
     .local v2, "os":Ljava/io/FileOutputStream;
     sget-object v7, Landroid/graphics/Bitmap$CompressFormat;->PNG:Landroid/graphics/Bitmap$CompressFormat;
 
@@ -4108,10 +4575,10 @@
 
     invoke-virtual {p1, v7, v8, v2}, Landroid/graphics/Bitmap;->compress(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
 
-    .line 842
+    .line 939
     invoke-virtual {v2}, Ljava/io/FileOutputStream;->close()V
 
-    .line 843
+    .line 940
     const/16 v7, 0x1fc
 
     const/4 v8, -0x1
@@ -4120,7 +4587,7 @@
 
     invoke-static {v3, v7, v8, v9}, Landroid/os/FileUtils;->setPermissions(Ljava/io/File;III)I
 
-    .line 846
+    .line 943
     iget-wide v7, p0, Lcom/android/server/ThemeService;->mIconCacheSize:J
 
     invoke-virtual {v3}, Ljava/io/File;->length()J
@@ -4131,7 +4598,7 @@
 
     iput-wide v7, p0, Lcom/android/server/ThemeService;->mIconCacheSize:J
 
-    .line 847
+    .line 944
     iget-wide v7, p0, Lcom/android/server/ThemeService;->mIconCacheSize:J
 
     const-wide/32 v9, 0x2000000
@@ -4140,35 +4607,35 @@
 
     if-lez v7, :cond_1
 
-    .line 848
+    .line 945
     invoke-direct {p0}, Lcom/android/server/ThemeService;->purgeIconCache()V
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 850
+    .line 947
     :cond_1
     const/4 v4, 0x1
 
-    .line 855
+    .line 952
     .end local v2    # "os":Ljava/io/FileOutputStream;
     .end local v3    # "outFile":Ljava/io/File;
     .local v4, "success":Z
     :goto_0
     invoke-static {v5, v6}, Landroid/os/Binder;->restoreCallingIdentity(J)V
 
-    .line 856
+    .line 953
     return v4
 
-    .line 851
+    .line 948
     .end local v4    # "success":Z
     :catch_0
     move-exception v1
 
-    .line 852
+    .line 949
     .local v1, "e":Ljava/lang/Exception;
     const/4 v4, 0x0
 
-    .line 853
+    .line 950
     .restart local v4    # "success":Z
     sget-object v7, Lcom/android/server/ThemeService;->TAG:Ljava/lang/String;
 
@@ -4204,7 +4671,7 @@
     .end annotation
 
     .prologue
-    .line 822
+    .line 920
     iget-object v0, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
 
     const-string v1, "android.permission.ACCESS_THEME_MANAGER"
@@ -4213,10 +4680,10 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/content/Context;->enforceCallingOrSelfPermission(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 824
+    .line 921
     monitor-enter p0
 
-    .line 825
+    .line 922
     :try_start_0
     iget v0, p0, Lcom/android/server/ThemeService;->mProgress:I
 
@@ -4224,7 +4691,7 @@
 
     return v0
 
-    .line 826
+    .line 923
     :catchall_0
     move-exception v0
 
@@ -4244,7 +4711,7 @@
     .end annotation
 
     .prologue
-    .line 815
+    .line 914
     iget-object v0, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
 
     const-string v1, "android.permission.ACCESS_THEME_MANAGER"
@@ -4253,10 +4720,147 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/content/Context;->enforceCallingOrSelfPermission(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 817
+    .line 915
     iget-boolean v0, p0, Lcom/android/server/ThemeService;->mIsThemeApplying:Z
 
     return v0
+.end method
+
+.method public isThemeBeingProcessed(Ljava/lang/String;)Z
+    .locals 3
+    .param p1, "themePkgName"    # Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .prologue
+    .line 975
+    iget-object v0, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
+
+    const-string v1, "android.permission.ACCESS_THEME_MANAGER"
+
+    const/4 v2, 0x0
+
+    invoke-virtual {v0, v1, v2}, Landroid/content/Context;->enforceCallingOrSelfPermission(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 977
+    iget-object v1, p0, Lcom/android/server/ThemeService;->mThemesToProcessQueue:Ljava/util/ArrayList;
+
+    monitor-enter v1
+
+    .line 978
+    :try_start_0
+    iget-object v0, p0, Lcom/android/server/ThemeService;->mThemesToProcessQueue:Ljava/util/ArrayList;
+
+    invoke-virtual {v0, p1}, Ljava/util/ArrayList;->contains(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    monitor-exit v1
+
+    return v0
+
+    .line 979
+    :catchall_0
+    move-exception v0
+
+    monitor-exit v1
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    throw v0
+.end method
+
+.method public processThemeResources(Ljava/lang/String;)Z
+    .locals 6
+    .param p1, "themePkgName"    # Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .prologue
+    const/4 v2, 0x0
+
+    .line 958
+    iget-object v3, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
+
+    const-string v4, "android.permission.ACCESS_THEME_MANAGER"
+
+    const/4 v5, 0x0
+
+    invoke-virtual {v3, v4, v5}, Landroid/content/Context;->enforceCallingOrSelfPermission(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 961
+    :try_start_0
+    iget-object v3, p0, Lcom/android/server/ThemeService;->mPM:Landroid/content/pm/PackageManager;
+
+    const/4 v4, 0x0
+
+    invoke-virtual {v3, p1, v4}, Landroid/content/pm/PackageManager;->getPackageInfo(Ljava/lang/String;I)Landroid/content/pm/PackageInfo;
+    :try_end_0
+    .catch Landroid/content/pm/PackageManager$NameNotFoundException; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 967
+    iget-object v3, p0, Lcom/android/server/ThemeService;->mHandler:Lcom/android/server/ThemeService$ThemeWorkerHandler;
+
+    const/4 v4, 0x4
+
+    invoke-virtual {v3, v4, v2, v2, p1}, Lcom/android/server/ThemeService$ThemeWorkerHandler;->obtainMessage(IIILjava/lang/Object;)Landroid/os/Message;
+
+    move-result-object v1
+
+    .line 969
+    .local v1, "msg":Landroid/os/Message;
+    iget-object v2, p0, Lcom/android/server/ThemeService;->mHandler:Lcom/android/server/ThemeService$ThemeWorkerHandler;
+
+    invoke-virtual {v2, v1}, Lcom/android/server/ThemeService$ThemeWorkerHandler;->sendMessage(Landroid/os/Message;)Z
+
+    .line 970
+    const/4 v2, 0x1
+
+    .end local v1    # "msg":Landroid/os/Message;
+    :goto_0
+    return v2
+
+    .line 962
+    :catch_0
+    move-exception v0
+
+    .line 964
+    .local v0, "e":Landroid/content/pm/PackageManager$NameNotFoundException;
+    goto :goto_0
+.end method
+
+.method public registerThemeProcessingListener(Landroid/content/res/IThemeProcessingListener;)V
+    .locals 3
+    .param p1, "listener"    # Landroid/content/res/IThemeProcessingListener;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .prologue
+    .line 985
+    iget-object v0, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
+
+    const-string v1, "android.permission.ACCESS_THEME_MANAGER"
+
+    const/4 v2, 0x0
+
+    invoke-virtual {v0, v1, v2}, Landroid/content/Context;->enforceCallingOrSelfPermission(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 987
+    iget-object v0, p0, Lcom/android/server/ThemeService;->mProcessingListeners:Landroid/os/RemoteCallbackList;
+
+    invoke-virtual {v0, p1}, Landroid/os/RemoteCallbackList;->register(Landroid/os/IInterface;)Z
+
+    .line 988
+    return-void
 .end method
 
 .method public removeUpdates(Landroid/content/res/IThemeChangeListener;)V
@@ -4269,7 +4873,7 @@
     .end annotation
 
     .prologue
-    .line 789
+    .line 859
     iget-object v0, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
 
     const-string v1, "android.permission.ACCESS_THEME_MANAGER"
@@ -4278,17 +4882,17 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/content/Context;->enforceCallingOrSelfPermission(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 791
+    .line 861
     iget-object v0, p0, Lcom/android/server/ThemeService;->mClients:Landroid/os/RemoteCallbackList;
 
     invoke-virtual {v0, p1}, Landroid/os/RemoteCallbackList;->unregister(Landroid/os/IInterface;)Z
 
-    .line 792
+    .line 862
     return-void
 .end method
 
 .method public requestThemeChange(Ljava/util/Map;)V
-    .locals 4
+    .locals 7
     .param p1, "componentMap"    # Ljava/util/Map;
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -4297,35 +4901,165 @@
     .end annotation
 
     .prologue
-    .line 796
-    iget-object v1, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
+    .line 866
+    iget-object v4, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
 
-    const-string v2, "android.permission.ACCESS_THEME_MANAGER"
+    const-string v5, "android.permission.ACCESS_THEME_MANAGER"
 
-    const/4 v3, 0x0
+    const/4 v6, 0x0
 
-    invoke-virtual {v1, v2, v3}, Landroid/content/Context;->enforceCallingOrSelfPermission(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v4, v5, v6}, Landroid/content/Context;->enforceCallingOrSelfPermission(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 798
-    invoke-static {}, Landroid/os/Message;->obtain()Landroid/os/Message;
+    .line 878
+    iget-object v5, p0, Lcom/android/server/ThemeService;->mThemesToProcessQueue:Ljava/util/ArrayList;
+
+    monitor-enter v5
+
+    .line 879
+    :try_start_0
+    invoke-interface {p1}, Ljava/util/Map;->keySet()Ljava/util/Set;
+
+    move-result-object v4
+
+    invoke-interface {v4}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
 
     move-result-object v0
 
-    .line 799
-    .local v0, "msg":Landroid/os/Message;
-    const/4 v1, 0x1
+    .local v0, "i$":Ljava/util/Iterator;
+    :cond_0
+    :goto_0
+    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
 
-    iput v1, v0, Landroid/os/Message;->what:I
+    move-result v4
 
-    .line 800
-    iput-object p1, v0, Landroid/os/Message;->obj:Ljava/lang/Object;
+    if-eqz v4, :cond_2
 
-    .line 801
-    iget-object v1, p0, Lcom/android/server/ThemeService;->mHandler:Lcom/android/server/ThemeService$ThemeWorkerHandler;
+    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
-    invoke-virtual {v1, v0}, Lcom/android/server/ThemeService$ThemeWorkerHandler;->sendMessage(Landroid/os/Message;)Z
+    move-result-object v1
 
-    .line 802
+    .line 880
+    .local v1, "key":Ljava/lang/Object;
+    const-string v4, "mods_overlays"
+
+    invoke-virtual {v4, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v4
+
+    if-nez v4, :cond_1
+
+    const-string v4, "mods_navigation_bar"
+
+    invoke-virtual {v4, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v4
+
+    if-nez v4, :cond_1
+
+    const-string v4, "mods_status_bar"
+
+    invoke-virtual {v4, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v4
+
+    if-nez v4, :cond_1
+
+    const-string v4, "mods_icons"
+
+    invoke-virtual {v4, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v4
+
+    if-eqz v4, :cond_0
+
+    .line 884
+    :cond_1
+    invoke-interface {p1, v1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Ljava/lang/String;
+
+    .line 885
+    .local v3, "pkgName":Ljava/lang/String;
+    iget-object v4, p0, Lcom/android/server/ThemeService;->mThemesToProcessQueue:Ljava/util/ArrayList;
+
+    invoke-virtual {v4, v3}, Ljava/util/ArrayList;->indexOf(Ljava/lang/Object;)I
+
+    move-result v4
+
+    if-lez v4, :cond_0
+
+    .line 886
+    iget-object v4, p0, Lcom/android/server/ThemeService;->mThemesToProcessQueue:Ljava/util/ArrayList;
+
+    invoke-virtual {v4, v3}, Ljava/util/ArrayList;->remove(Ljava/lang/Object;)Z
+
+    .line 887
+    iget-object v4, p0, Lcom/android/server/ThemeService;->mThemesToProcessQueue:Ljava/util/ArrayList;
+
+    const/4 v6, 0x0
+
+    invoke-virtual {v4, v6, v3}, Ljava/util/ArrayList;->add(ILjava/lang/Object;)V
+
+    .line 890
+    iget-object v4, p0, Lcom/android/server/ThemeService;->mHandler:Lcom/android/server/ThemeService$ThemeWorkerHandler;
+
+    const/4 v6, 0x5
+
+    invoke-virtual {v4, v6}, Lcom/android/server/ThemeService$ThemeWorkerHandler;->obtainMessage(I)Landroid/os/Message;
+
+    move-result-object v2
+
+    .line 892
+    .local v2, "msg":Landroid/os/Message;
+    iget-object v4, p0, Lcom/android/server/ThemeService;->mHandler:Lcom/android/server/ThemeService$ThemeWorkerHandler;
+
+    invoke-virtual {v4, v2}, Lcom/android/server/ThemeService$ThemeWorkerHandler;->sendMessageAtFrontOfQueue(Landroid/os/Message;)Z
+
+    goto :goto_0
+
+    .line 896
+    .end local v0    # "i$":Ljava/util/Iterator;
+    .end local v1    # "key":Ljava/lang/Object;
+    .end local v2    # "msg":Landroid/os/Message;
+    .end local v3    # "pkgName":Ljava/lang/String;
+    :catchall_0
+    move-exception v4
+
+    monitor-exit v5
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    throw v4
+
+    .restart local v0    # "i$":Ljava/util/Iterator;
+    :cond_2
+    :try_start_1
+    monitor-exit v5
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    .line 897
+    invoke-static {}, Landroid/os/Message;->obtain()Landroid/os/Message;
+
+    move-result-object v2
+
+    .line 898
+    .restart local v2    # "msg":Landroid/os/Message;
+    const/4 v4, 0x1
+
+    iput v4, v2, Landroid/os/Message;->what:I
+
+    .line 899
+    iput-object p1, v2, Landroid/os/Message;->obj:Ljava/lang/Object;
+
+    .line 900
+    iget-object v4, p0, Lcom/android/server/ThemeService;->mHandler:Lcom/android/server/ThemeService$ThemeWorkerHandler;
+
+    invoke-virtual {v4, v2}, Lcom/android/server/ThemeService$ThemeWorkerHandler;->sendMessage(Landroid/os/Message;)Z
+
+    .line 901
     return-void
 .end method
 
@@ -4339,7 +5073,7 @@
     .end annotation
 
     .prologue
-    .line 782
+    .line 852
     iget-object v0, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
 
     const-string v1, "android.permission.ACCESS_THEME_MANAGER"
@@ -4348,12 +5082,12 @@
 
     invoke-virtual {v0, v1, v2}, Landroid/content/Context;->enforceCallingOrSelfPermission(Ljava/lang/String;Ljava/lang/String;)V
 
-    .line 784
+    .line 854
     iget-object v0, p0, Lcom/android/server/ThemeService;->mClients:Landroid/os/RemoteCallbackList;
 
     invoke-virtual {v0, p1}, Landroid/os/RemoteCallbackList;->register(Landroid/os/IInterface;)Z
 
-    .line 785
+    .line 855
     return-void
 .end method
 
@@ -4361,19 +5095,57 @@
     .locals 3
 
     .prologue
-    .line 156
+    .line 214
     new-instance v0, Landroid/content/IntentFilter;
 
     const-string v1, "android.intent.action.WALLPAPER_CHANGED"
 
     invoke-direct {v0, v1}, Landroid/content/IntentFilter;-><init>(Ljava/lang/String;)V
 
-    .line 157
+    .line 215
     .local v0, "filter":Landroid/content/IntentFilter;
     iget-object v1, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
 
     iget-object v2, p0, Lcom/android/server/ThemeService;->mWallpaperChangeReceiver:Landroid/content/BroadcastReceiver;
 
-    .line 158
+    .line 217
+    iget-object v1, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
+
+    invoke-virtual {v1}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+
+    move-result-object v1
+
+    iput-object v1, p0, Lcom/android/server/ThemeService;->mPM:Landroid/content/pm/PackageManager;
+
+    .line 218
+    .line 219
+    return-void
+.end method
+
+.method public unregisterThemeProcessingListener(Landroid/content/res/IThemeProcessingListener;)V
+    .locals 3
+    .param p1, "listener"    # Landroid/content/res/IThemeProcessingListener;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .prologue
+    .line 993
+    iget-object v0, p0, Lcom/android/server/ThemeService;->mContext:Landroid/content/Context;
+
+    const-string v1, "android.permission.ACCESS_THEME_MANAGER"
+
+    const/4 v2, 0x0
+
+    invoke-virtual {v0, v1, v2}, Landroid/content/Context;->enforceCallingOrSelfPermission(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 995
+    iget-object v0, p0, Lcom/android/server/ThemeService;->mProcessingListeners:Landroid/os/RemoteCallbackList;
+
+    invoke-virtual {v0, p1}, Landroid/os/RemoteCallbackList;->unregister(Landroid/os/IInterface;)Z
+
+    .line 996
     return-void
 .end method

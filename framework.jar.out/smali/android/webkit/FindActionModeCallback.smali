@@ -212,7 +212,7 @@
     .line 177
     iget-object v0, p0, Landroid/webkit/FindActionModeCallback;->mMatches:Landroid/widget/TextView;
 
-    const v1, 0x10405aa
+    const v1, 0x10405c1
 
     invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(I)V
 
@@ -231,7 +231,7 @@
 
     iget-object v1, p0, Landroid/webkit/FindActionModeCallback;->mResources:Landroid/content/res/Resources;
 
-    const v2, 0x1130017
+    const v2, 0x1120018
 
     iget v3, p0, Landroid/webkit/FindActionModeCallback;->mNumberOfMatches:I
 

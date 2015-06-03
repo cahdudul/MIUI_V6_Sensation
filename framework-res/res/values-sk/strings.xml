@@ -27,18 +27,6 @@
     <string name="storage_internal">Interné úložisko</string>
     <string name="storage_sd_card">Karta SD</string>
     <string name="storage_usb">Ukladací priestor USB</string>
-    <string name="pinpuk_attempts">"
-Zostávajúce pokusy:"</string>
-    <string name="lockscreen_sim_error_message_short">Neplatná karta.</string>
-    <string name="lockscreen_airplane_mode_on">Režim V lietadle</string>
-    <string name="progress_nomediapresent">K dispozícii nie je žiadne vymeniteľné médium…</string>
-    <string name="storage_uicc">Úložisko UICC</string>
-    <string name="stk_cc_ussd_to_dial">Požiadavka USSD bola upravená na požiadavku DIAL.</string>
-    <string name="stk_cc_ussd_to_ss">Požiadavka USSD bola upravená na požiadavku SS.</string>
-    <string name="stk_cc_ussd_to_ussd">Požiadavka USSD bola upravená na novú požiadavku USSD.</string>
-    <string name="stk_cc_ss_to_dial">Požiadavka SS bola upravená na požiadavku DIAL.</string>
-    <string name="stk_cc_ss_to_ussd">Požiadavka SS bola upravená na požiadavku USSD.</string>
-    <string name="stk_cc_ss_to_ss">Požiadavka SS bola upravená na novú požiadavku SS.</string>
     <string name="profileNameDefault">Predvolené</string>
     <string name="profileNameWork">Práca</string>
     <string name="profileNameHome">Domov</string>
@@ -66,7 +54,7 @@ Zostávajúce pokusy:"</string>
     <string name="reboot_progress">Reštartuje sa…</string>
     <string name="reboot_confirm">Váš telefón bude reštartovaný.</string>
     <string name="permlab_preventpower">zabránenie klávesy napájania</string>
-    <string name="permdesc_preventpower">Povolí aplikácii prepísať klávesu napájania</string>
+    <string name="permdesc_preventpower">Umožňuje aplikácii prepísať klávesu napájania</string>
     <string name="permlab_sendMockSms">posielať falošné SMS správy</string>
     <string name="permdesc_sendMockSms">Umožňuje aplikácii odosielať falošné SMS správy. Toto povolenie umožňuje aplikácii posielať správy do dôveryhodných aplikácií. Škodlivé aplikácie môžu posielať správy nepretržite, blokovať oznamovací systém zariadenia a vyrušovať používateľa.</string>
     <string name="storage_sd_dock_card">Karta SD v doku</string>
@@ -101,10 +89,12 @@ Zostávajúce pokusy:"</string>
     <string name="permdesc_readThemesDesc">Umožňuje aplikácii čítať vaše témy a určiť, ktorú tému ste použili.</string>
     <string name="permlab_writeThemes">upraviť vaše témy</string>
     <string name="permdesc_writeThemesDesc">Umožňuje aplikácii vkladať nové témy a upraviť tému, ktorú ste použili.</string>
-    <string name="permlab_setKeyguardWallpaper">nastaviť tapetu uzamykacej obrazovky</string>
+    <string name="permlab_setKeyguardWallpaper">nastaviť tapetu obrazovky uzamknutia</string>
     <string name="permdesc_setKeyguardWallpaper">Umožňuje aplikácii zmeniť tapetu obrazovky uzamknutia.</string>
     <string name="permlab_useHardwareFramework">používať hardvérový framework</string>
     <string name="permdesc_useHardwareFramework">Umožňuje aplikácii pristupovať k hardvérovému frameworku CM.</string>
+    <string name="permlab_keyguardApplicationWidget">nastaviť miniaplikáciu na obrazovke uzamknutia</string>
+    <string name="permdesc_keyguardApplicationWidget">Umožňuje aplikácii nastaviť miniaplikáciu na obrazovke uzamknutia.</string>
     <string name="immersive_mode_confirmation_bottom">Režim celej obrazovky ukončíte posunutím nahor.</string>
     <string name="app_ops_access_camera">prístup k fotoparátu</string>
     <string name="app_ops_access_location">prístup k polohe</string>
@@ -154,10 +144,11 @@ Zostávajúce pokusy:"</string>
     <string name="adb_net_active_notification_title">ADB cez sieť povolené</string>
     <string name="adb_both_active_notification_title">ADB cez USB a sieť povolené</string>
     <string name="adb_active_generic_notification_message">Dotykom zakážate ladenie.</string>
-    <string name="extmedia_format_message_cm">Vymažú sa všetky údaje na vašej karte (cesta \"%1$s\"). Túto akciu nemožno vrátiť späť!</string>
+    <string name="usb_extmedia_format_message">"Vymažú sa všetky údaje na vašom USB úložisku (cesta '%1$s'). Túto akciu nemožno vrátiť späť!"</string>
+    <string name="sd_extmedia_format_message">"Vymažú sa všetky údaje na vašej karte SD (cesta '%1$s'). Túto akciu nemožno vrátiť späť!"</string>
     <string name="usb_storage_notification_manage_message">Dotykom spravovať</string>
-    <string name="sd_ext_media_checking_notification_title">Karta SD sa pripravuje</string>
-    <string name="sd_ext_media_checking_notification_message">Kontrolovanie chýb karty SD.</string>
+    <string name="sd_ext_media_checking_notification_title">Príprava karty SD…</string>
+    <string name="sd_ext_media_checking_notification_message">Kontrola chýb na karte SD…</string>
     <string name="sd_ext_media_nofs_notification_title">Prázdne karta SD</string>
     <string name="sd_ext_media_nofs_notification_message">Karta SD je prázdna alebo má nepodporovaný súborový systém.</string>
     <string name="sd_ext_media_unmountable_notification_title">Poškodená karta SD</string>
@@ -168,8 +159,8 @@ Zostávajúce pokusy:"</string>
     <string name="sd_ext_media_safe_unmount_notification_message">Môžete bezpečne odstrániť kartu SD.</string>
     <string name="sd_ext_media_nomedia_notification_title">Odstránená karta SD</string>
     <string name="sd_ext_media_nomedia_notification_message">Karta SD bola odstránená. Vložiť novú.</string>
-    <string name="usb_ext_media_checking_notification_title">USB úložisko sa pripravuje</string>
-    <string name="usb_ext_media_checking_notification_message">Kontrolovanie chýb USB úložiska.</string>
+    <string name="usb_ext_media_checking_notification_title">Príprava USB úložiska…</string>
+    <string name="usb_ext_media_checking_notification_message">Kontrola chýb na USB úložisku…</string>
     <string name="usb_ext_media_nofs_notification_title">Prázdne USB úložisko</string>
     <string name="usb_ext_media_nofs_notification_message">USB úložisko je prázdne alebo má nepodporovaný súborový systém.</string>
     <string name="usb_ext_media_unmountable_notification_title">Poškodené USB úložisko</string>
@@ -180,6 +171,35 @@ Zostávajúce pokusy:"</string>
     <string name="usb_ext_media_safe_unmount_notification_message">Môžete bezpečne odstrániť USB úložisko.</string>
     <string name="usb_ext_media_nomedia_notification_title">Odstránené USB úložisko</string>
     <string name="usb_ext_media_nomedia_notification_message">USB úložisko bolo odstránené. Vložte nové médium.</string>
+    <string name="progress_nomediapresent">K dispozícii nie sú žiadne vymeniteľné médiá…</string>
+    <string name="lockscreen_sim_error_message_short">Neplatná karta.</string>
+    <string name="lockscreen_airplane_mode_on">Režim V lietadle</string>
+    <string name="lockscreen_sim_locked_message_cm">Karta SIM/RUIM je uzamknutá.</string>
+    <string name="pinpuk_attempts">"
+Zostávajúce pokusy:"</string>
+    <string name="stk_cc_ussd_to_dial">Požiadavka USSD bola upravená na požiadavku DIAL.</string>
+    <string name="stk_cc_ussd_to_ss">Požiadavka USSD bola upravená na požiadavku SS.</string>
+    <string name="stk_cc_ussd_to_ussd">Požiadavka USSD bola upravená na novú požiadavku USSD.</string>
+    <string name="stk_cc_ss_to_dial">Požiadavka SS bola upravená na požiadavku DIAL.</string>
+    <string name="stk_cc_ss_to_ussd">Požiadavka SS bola upravená na požiadavku USSD.</string>
+    <string name="stk_cc_ss_to_ss">Požiadavka SS bola upravená na novú požiadavku SS.</string>
+    <string name="theme_install_error_title">Inštalácia témy zlyhala</string>
+    <string name="theme_install_error_message">Nepodarilo sa nainštalovať tému %s</string>
+    <string name="storage_uicc">Úložisko UICC</string>
+    <string name="sd_progress_unmounting">Odpájanie karty SD…</string>
+    <string name="sd_progress_erasing">Vymazávanie karty SD…</string>
+    <string name="sd_format_error">Nie je možné vymazať kartu SD.</string>
+    <string name="sd_media_bad_removal">Karta SD bola odstránená pred jej odpojením.</string>
+    <string name="sd_media_checking">Karta SD sa v súčasnosti kontroluje.</string>
+    <string name="sd_media_removed">Karta SD bola odstránená.</string>
+    <string name="sd_media_shared">Kartu SD v súčasnosti používa počítač.</string>
+    <string name="usb_progress_unmounting">Odpájanie USB úložiska…</string>
+    <string name="usb_progress_erasing">Vymazávanie USB úložiska…</string>
+    <string name="usb_format_error">Nie je možné vymazať USB úložisko.</string>
+    <string name="usb_media_bad_removal">USB úložisko bolo odstránené pred jeho odpojením.</string>
+    <string name="usb_media_checking">USB úložisko sa v súčasnosti kontroluje.</string>
+    <string name="usb_media_removed">USB úložisko bolo odstránené.</string>
+    <string name="usb_media_shared">USB úložisko v súčasnosti používa počítač.</string>
     <string name="numeric_date_template" formatted="false">%s.%s.%s</string>
     <string name="month_day_year" formatted="false">%-e. %B %Y</string>
     <string name="time_of_day" formatted="false">%-k:%M:%S</string>

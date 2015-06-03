@@ -26,7 +26,7 @@
     .locals 0
 
     .prologue
-    .line 4546
+    .line 4556
     iput-object p1, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$19;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -40,14 +40,14 @@
     .locals 8
 
     .prologue
-    .line 4550
+    .line 4560
     new-instance v3, Landroid/content/Intent;
 
     const-string v4, "org.codeaurora.action.QUICKBOOT"
 
     invoke-direct {v3, v4}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
-    .line 4551
+    .line 4561
     .local v3, "intent":Landroid/content/Intent;
     const-string v4, "mode"
 
@@ -55,7 +55,7 @@
 
     invoke-virtual {v3, v4, v5}, Landroid/content/Intent;->putExtra(Ljava/lang/String;I)Landroid/content/Intent;
 
-    .line 4553
+    .line 4563
     :try_start_0
     iget-object v4, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$19;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
 
@@ -67,12 +67,12 @@
     :try_end_0
     .catch Landroid/content/ActivityNotFoundException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 4560
+    .line 4570
     new-instance v0, Lcom/android/internal/policy/impl/PhoneWindowManager$19$1;
 
     invoke-direct {v0, p0}, Lcom/android/internal/policy/impl/PhoneWindowManager$19$1;-><init>(Lcom/android/internal/policy/impl/PhoneWindowManager$19;)V
 
-    .line 4570
+    .line 4580
     .local v0, "broadcastReceiver":Landroid/content/BroadcastReceiver;
     new-instance v2, Landroid/content/IntentFilter;
 
@@ -80,7 +80,7 @@
 
     invoke-direct {v2, v4}, Landroid/content/IntentFilter;-><init>(Ljava/lang/String;)V
 
-    .line 4571
+    .line 4581
     .local v2, "filter":Landroid/content/IntentFilter;
     iget-object v4, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$19;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
 
@@ -92,7 +92,7 @@
 
     invoke-virtual {v4, v0, v2, v5, v6}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;Ljava/lang/String;Landroid/os/Handler;)Landroid/content/Intent;
 
-    .line 4574
+    .line 4584
     iget-object v4, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$19;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
 
     # getter for: Lcom/android/internal/policy/impl/PhoneWindowManager;->mQuickBootLock:Ljava/lang/Object;
@@ -102,7 +102,7 @@
 
     monitor-enter v5
 
-    .line 4576
+    .line 4586
     :try_start_1
     iget-object v4, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$19;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
 
@@ -118,34 +118,34 @@
     .catch Ljava/lang/InterruptedException; {:try_start_1 .. :try_end_1} :catch_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 4580
+    .line 4590
     :goto_0
     :try_start_2
     monitor-exit v5
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    .line 4582
+    .line 4592
     iget-object v4, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$19;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
 
     # invokes: Lcom/android/internal/policy/impl/PhoneWindowManager;->releaseQuickBootWakeLock()V
     invoke-static {v4}, Lcom/android/internal/policy/impl/PhoneWindowManager;->access$1200(Lcom/android/internal/policy/impl/PhoneWindowManager;)V
 
-    .line 4583
+    .line 4593
     .end local v0    # "broadcastReceiver":Landroid/content/BroadcastReceiver;
     .end local v2    # "filter":Landroid/content/IntentFilter;
     :goto_1
     return-void
 
-    .line 4554
+    .line 4564
     :catch_0
     move-exception v1
 
-    .line 4555
+    .line 4565
     .local v1, "e":Landroid/content/ActivityNotFoundException;
     invoke-virtual {v1}, Landroid/content/ActivityNotFoundException;->printStackTrace()V
 
-    .line 4556
+    .line 4566
     iget-object v4, p0, Lcom/android/internal/policy/impl/PhoneWindowManager$19;->this$0:Lcom/android/internal/policy/impl/PhoneWindowManager;
 
     # invokes: Lcom/android/internal/policy/impl/PhoneWindowManager;->releaseQuickBootWakeLock()V
@@ -153,21 +153,21 @@
 
     goto :goto_1
 
-    .line 4577
+    .line 4587
     .end local v1    # "e":Landroid/content/ActivityNotFoundException;
     .restart local v0    # "broadcastReceiver":Landroid/content/BroadcastReceiver;
     .restart local v2    # "filter":Landroid/content/IntentFilter;
     :catch_1
     move-exception v1
 
-    .line 4578
+    .line 4588
     .local v1, "e":Ljava/lang/InterruptedException;
     :try_start_3
     invoke-virtual {v1}, Ljava/lang/InterruptedException;->printStackTrace()V
 
     goto :goto_0
 
-    .line 4580
+    .line 4590
     .end local v1    # "e":Ljava/lang/InterruptedException;
     :catchall_0
     move-exception v4

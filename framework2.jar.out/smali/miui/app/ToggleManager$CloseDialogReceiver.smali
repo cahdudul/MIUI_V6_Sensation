@@ -30,32 +30,32 @@
     .param p2, "dialog"    # Landroid/app/Dialog;
 
     .prologue
-    .line 1941
+    .line 1930
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
 
-    .line 1942
+    .line 1931
     iput-object p1, p0, Lmiui/app/ToggleManager$CloseDialogReceiver;->context:Landroid/content/Context;
 
-    .line 1943
+    .line 1932
     iput-object p2, p0, Lmiui/app/ToggleManager$CloseDialogReceiver;->dialog:Landroid/app/Dialog;
 
-    .line 1944
+    .line 1933
     new-instance v0, Landroid/content/IntentFilter;
 
     const-string v1, "android.intent.action.SCREEN_OFF"
 
     invoke-direct {v0, v1}, Landroid/content/IntentFilter;-><init>(Ljava/lang/String;)V
 
-    .line 1945
+    .line 1934
     .local v0, "filter":Landroid/content/IntentFilter;
     const-string v1, "android.intent.action.CLOSE_SYSTEM_DIALOGS"
 
     invoke-virtual {v0, v1}, Landroid/content/IntentFilter;->addAction(Ljava/lang/String;)V
 
-    .line 1946
+    .line 1935
     invoke-virtual {p1, p0, v0}, Landroid/content/Context;->registerReceiver(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
 
-    .line 1947
+    .line 1936
     return-void
 .end method
 
@@ -66,12 +66,12 @@
     .param p1, "unused"    # Landroid/content/DialogInterface;
 
     .prologue
-    .line 1955
+    .line 1944
     iget-object v0, p0, Lmiui/app/ToggleManager$CloseDialogReceiver;->context:Landroid/content/Context;
 
     invoke-virtual {v0, p0}, Landroid/content/Context;->unregisterReceiver(Landroid/content/BroadcastReceiver;)V
 
-    .line 1956
+    .line 1945
     return-void
 .end method
 
@@ -81,11 +81,11 @@
     .param p2, "intent"    # Landroid/content/Intent;
 
     .prologue
-    .line 1951
+    .line 1940
     iget-object v0, p0, Lmiui/app/ToggleManager$CloseDialogReceiver;->dialog:Landroid/app/Dialog;
 
     invoke-virtual {v0}, Landroid/app/Dialog;->cancel()V
 
-    .line 1952
+    .line 1941
     return-void
 .end method

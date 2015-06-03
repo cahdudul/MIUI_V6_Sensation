@@ -24,7 +24,7 @@
     .param p2, "x0"    # Landroid/os/Handler;
 
     .prologue
-    .line 1034
+    .line 1033
     iput-object p1, p0, Lmiui/app/ToggleManager$15;->this$0:Lmiui/app/ToggleManager;
 
     invoke-direct {p0, p2}, Landroid/database/ContentObserver;-><init>(Landroid/os/Handler;)V
@@ -39,12 +39,12 @@
     .param p1, "selfChange"    # Z
 
     .prologue
-    .line 1036
+    .line 1035
     iget-object v0, p0, Lmiui/app/ToggleManager$15;->this$0:Lmiui/app/ToggleManager;
 
     # invokes: Lmiui/app/ToggleManager;->updateQuietModeToggle()V
     invoke-static {v0}, Lmiui/app/ToggleManager;->access$2000(Lmiui/app/ToggleManager;)V
 
-    .line 1037
+    .line 1036
     return-void
 .end method

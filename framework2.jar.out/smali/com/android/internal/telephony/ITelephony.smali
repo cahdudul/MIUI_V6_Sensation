@@ -47,6 +47,14 @@
     .end annotation
 .end method
 
+.method public abstract closeIccLogicalChannel(I)Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract dial(Ljava/lang/String;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -104,6 +112,14 @@
 .end method
 
 .method public abstract endCall()Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getATR()[B
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -202,6 +218,14 @@
 .end method
 
 .method public abstract getIccPin1RetryCount()I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract getLastError()I
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -357,6 +381,14 @@
     .end annotation
 .end method
 
+.method public abstract openIccLogicalChannel(Ljava/lang/String;)I
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract playDtmfTone(CZ)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -486,6 +518,30 @@
 .end method
 
 .method public abstract toggleRadioOnOff()V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract transmitIccBasicChannel(IIIIILjava/lang/String;)Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract transmitIccLogicalChannel(IIIIIILjava/lang/String;)Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract transmitIccSimIO(IIIIILjava/lang/String;)[B
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

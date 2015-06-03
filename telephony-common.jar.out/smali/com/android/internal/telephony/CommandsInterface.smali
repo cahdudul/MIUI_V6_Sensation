@@ -281,10 +281,22 @@
 .method public abstract hangupWaitingOrBackground(Landroid/os/Message;)V
 .end method
 
+.method public abstract iccCloseChannel(ILandroid/os/Message;)V
+.end method
+
+.method public abstract iccExchangeApdu(IIIIIILjava/lang/String;Landroid/os/Message;)V
+.end method
+
+.method public abstract iccGetAtr(Landroid/os/Message;)V
+.end method
+
 .method public abstract iccIO(IILjava/lang/String;IIILjava/lang/String;Ljava/lang/String;Landroid/os/Message;)V
 .end method
 
 .method public abstract iccIOForApp(IILjava/lang/String;IIILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Landroid/os/Message;)V
+.end method
+
+.method public abstract iccOpenChannel(Ljava/lang/String;Landroid/os/Message;)V
 .end method
 
 .method public abstract invokeOemRilRequestRaw([BLandroid/os/Message;)V

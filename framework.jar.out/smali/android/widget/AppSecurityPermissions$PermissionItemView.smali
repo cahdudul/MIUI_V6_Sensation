@@ -103,7 +103,7 @@
 
     .line 250
     .local v1, "ocl":Landroid/content/DialogInterface$OnClickListener;
-    const v2, 0x1040662
+    const v2, 0x1040679
 
     invoke-virtual {p1, v2, v1}, Landroid/app/AlertDialog$Builder;->setNegativeButton(ILandroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
 
@@ -272,7 +272,7 @@
 
     move-result-object v6
 
-    const v7, 0x104053b
+    const v7, 0x1040552
 
     new-array v8, v9, [Ljava/lang/Object;
 

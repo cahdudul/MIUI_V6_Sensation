@@ -59,31 +59,31 @@
     .prologue
     const/4 v1, -0x1
 
-    .line 228
+    .line 229
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 202
+    .line 203
     const-string v0, ""
 
     iput-object v0, p0, Lcom/android/server/WallpaperManagerService$WallpaperData;->name:Ljava/lang/String;
 
-    .line 222
+    .line 223
     new-instance v0, Landroid/os/RemoteCallbackList;
 
     invoke-direct {v0}, Landroid/os/RemoteCallbackList;-><init>()V
 
     iput-object v0, p0, Lcom/android/server/WallpaperManagerService$WallpaperData;->callbacks:Landroid/os/RemoteCallbackList;
 
-    .line 225
+    .line 226
     iput v1, p0, Lcom/android/server/WallpaperManagerService$WallpaperData;->width:I
 
-    .line 226
+    .line 227
     iput v1, p0, Lcom/android/server/WallpaperManagerService$WallpaperData;->height:I
 
-    .line 229
+    .line 230
     iput p1, p0, Lcom/android/server/WallpaperManagerService$WallpaperData;->userId:I
 
-    .line 230
+    .line 231
     new-instance v0, Ljava/io/File;
 
     # invokes: Lcom/android/server/WallpaperManagerService;->getWallpaperDir(I)Ljava/io/File;
@@ -97,7 +97,7 @@
 
     iput-object v0, p0, Lcom/android/server/WallpaperManagerService$WallpaperData;->wallpaperFile:Ljava/io/File;
 
-    .line 231
+    .line 232
     return-void
 .end method
 
@@ -106,7 +106,7 @@
     .param p0, "x0"    # Lcom/android/server/WallpaperManagerService$WallpaperData;
 
     .prologue
-    .line 188
+    .line 189
     iget-object v0, p0, Lcom/android/server/WallpaperManagerService$WallpaperData;->callbacks:Landroid/os/RemoteCallbackList;
 
     return-object v0

@@ -24,7 +24,7 @@
     .param p2, "x0"    # Landroid/os/Handler;
 
     .prologue
-    .line 956
+    .line 955
     iput-object p1, p0, Lmiui/app/ToggleManager$4;->this$0:Lmiui/app/ToggleManager;
 
     invoke-direct {p0, p2}, Landroid/database/ContentObserver;-><init>(Landroid/os/Handler;)V
@@ -39,12 +39,12 @@
     .param p1, "selfChange"    # Z
 
     .prologue
-    .line 959
+    .line 958
     iget-object v0, p0, Lmiui/app/ToggleManager$4;->this$0:Lmiui/app/ToggleManager;
 
     # invokes: Lmiui/app/ToggleManager;->updateDriveModeToggle()V
     invoke-static {v0}, Lmiui/app/ToggleManager;->access$600(Lmiui/app/ToggleManager;)V
 
-    .line 960
+    .line 959
     return-void
 .end method

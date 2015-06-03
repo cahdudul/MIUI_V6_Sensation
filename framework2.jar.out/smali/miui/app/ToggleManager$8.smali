@@ -24,7 +24,7 @@
     .param p2, "x0"    # Landroid/os/Handler;
 
     .prologue
-    .line 987
+    .line 986
     iput-object p1, p0, Lmiui/app/ToggleManager$8;->this$0:Lmiui/app/ToggleManager;
 
     invoke-direct {p0, p2}, Landroid/database/ContentObserver;-><init>(Landroid/os/Handler;)V
@@ -39,12 +39,12 @@
     .param p1, "selfChange"    # Z
 
     .prologue
-    .line 990
+    .line 989
     iget-object v0, p0, Lmiui/app/ToggleManager$8;->this$0:Lmiui/app/ToggleManager;
 
     # invokes: Lmiui/app/ToggleManager;->updatePrivacyModeToggle()V
     invoke-static {v0}, Lmiui/app/ToggleManager;->access$1200(Lmiui/app/ToggleManager;)V
 
-    .line 991
+    .line 990
     return-void
 .end method

@@ -1271,7 +1271,7 @@
 
     .prologue
     .line 198
-    const v0, 0x10404fa
+    const v0, 0x1040511
 
     invoke-virtual {p0, v0}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 

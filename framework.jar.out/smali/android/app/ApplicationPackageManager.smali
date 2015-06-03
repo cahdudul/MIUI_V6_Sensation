@@ -2985,6 +2985,10 @@
 
     .line 779
     .local v8, "r":Landroid/content/res/Resources;
+    iget-object v1, p1, Landroid/content/pm/ApplicationInfo;->packageName:Ljava/lang/String;
+
+    invoke-static {v8, v1}, Landroid/miui/ResourcesManager;->initMiuiResource(Landroid/content/res/Resources;Ljava/lang/String;)V
+
     if-nez v8, :cond_0
 
     .line 782
@@ -4320,6 +4324,59 @@
     goto :goto_0
 .end method
 
+.method public processThemeResources(Ljava/lang/String;)I
+    .locals 4
+    .param p1, "themePkgName"    # Ljava/lang/String;
+
+    .prologue
+    .line 1425
+    :try_start_0
+    iget-object v1, p0, Landroid/app/ApplicationPackageManager;->mPM:Landroid/content/pm/IPackageManager;
+
+    invoke-interface {v1, p1}, Landroid/content/pm/IPackageManager;->processThemeResources(Ljava/lang/String;)I
+    :try_end_0
+    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
+
+    move-result v1
+
+    .line 1430
+    :goto_0
+    return v1
+
+    .line 1426
+    :catch_0
+    move-exception v0
+
+    .line 1427
+    .local v0, "e":Landroid/os/RemoteException;
+    const-string v1, "ApplicationPackageManager"
+
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+
+    const-string v3, "Unable to process theme resources for "
+
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-static {v1, v2, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+
+    .line 1430
+    const/4 v1, 0x0
+
+    goto :goto_0
+.end method
+
 .method public queryBroadcastReceivers(Landroid/content/Intent;I)Ljava/util/List;
     .locals 1
     .param p1, "intent"    # Landroid/content/Intent;
@@ -5336,7 +5393,7 @@
     .param p2, "newState"    # Z
 
     .prologue
-    .line 1422
+    .line 1436
     :try_start_0
     iget-object v1, p0, Landroid/app/ApplicationPackageManager;->mPM:Landroid/content/pm/IPackageManager;
 
@@ -5350,15 +5407,15 @@
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 1426
+    .line 1440
     :goto_0
     return-void
 
-    .line 1423
+    .line 1437
     :catch_0
     move-exception v0
 
-    .line 1424
+    .line 1438
     .local v0, "re":Landroid/os/RemoteException;
     const-string v1, "ApplicationPackageManager"
 

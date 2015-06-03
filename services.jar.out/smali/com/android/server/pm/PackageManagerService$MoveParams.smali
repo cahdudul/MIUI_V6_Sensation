@@ -44,31 +44,31 @@
     .param p8, "user"    # Landroid/os/UserHandle;
 
     .prologue
-    .line 8536
+    .line 8689
     iput-object p1, p0, Lcom/android/server/pm/PackageManagerService$MoveParams;->this$0:Lcom/android/server/pm/PackageManagerService;
 
-    .line 8537
+    .line 8690
     invoke-direct {p0, p1, p8}, Lcom/android/server/pm/PackageManagerService$HandlerParams;-><init>(Lcom/android/server/pm/PackageManagerService;Landroid/os/UserHandle;)V
 
-    .line 8538
+    .line 8691
     iput-object p2, p0, Lcom/android/server/pm/PackageManagerService$MoveParams;->srcArgs:Lcom/android/server/pm/PackageManagerService$InstallArgs;
 
-    .line 8539
+    .line 8692
     iput-object p3, p0, Lcom/android/server/pm/PackageManagerService$MoveParams;->observer:Landroid/content/pm/IPackageMoveObserver;
 
-    .line 8540
+    .line 8693
     iput p4, p0, Lcom/android/server/pm/PackageManagerService$MoveParams;->flags:I
 
-    .line 8541
+    .line 8694
     iput-object p5, p0, Lcom/android/server/pm/PackageManagerService$MoveParams;->packageName:Ljava/lang/String;
 
-    .line 8542
+    .line 8695
     iput p7, p0, Lcom/android/server/pm/PackageManagerService$MoveParams;->uid:I
 
-    .line 8543
+    .line 8696
     if-eqz p2, :cond_0
 
-    .line 8544
+    .line 8697
     new-instance v1, Ljava/io/File;
 
     invoke-virtual {p2}, Lcom/android/server/pm/PackageManagerService$InstallArgs;->getCodePath()Ljava/lang/String;
@@ -81,7 +81,7 @@
 
     move-result-object v0
 
-    .line 8545
+    .line 8698
     .local v0, "packageUri":Landroid/net/Uri;
     # invokes: Lcom/android/server/pm/PackageManagerService;->createInstallArgs(Landroid/net/Uri;ILjava/lang/String;Ljava/lang/String;)Lcom/android/server/pm/PackageManagerService$InstallArgs;
     invoke-static {p1, v0, p4, p5, p6}, Lcom/android/server/pm/PackageManagerService;->access$3600(Lcom/android/server/pm/PackageManagerService;Landroid/net/Uri;ILjava/lang/String;Ljava/lang/String;)Lcom/android/server/pm/PackageManagerService$InstallArgs;
@@ -90,12 +90,12 @@
 
     iput-object v1, p0, Lcom/android/server/pm/PackageManagerService$MoveParams;->targetArgs:Lcom/android/server/pm/PackageManagerService$InstallArgs;
 
-    .line 8549
+    .line 8702
     .end local v0    # "packageUri":Landroid/net/Uri;
     :goto_0
     return-void
 
-    .line 8547
+    .line 8700
     :cond_0
     const/4 v1, 0x0
 
@@ -110,7 +110,7 @@
     .locals 4
 
     .prologue
-    .line 8603
+    .line 8756
     iget-object v1, p0, Lcom/android/server/pm/PackageManagerService$MoveParams;->targetArgs:Lcom/android/server/pm/PackageManagerService$InstallArgs;
 
     iget v2, p0, Lcom/android/server/pm/PackageManagerService$MoveParams;->mRet:I
@@ -119,10 +119,10 @@
 
     invoke-virtual {v1, v2, v3}, Lcom/android/server/pm/PackageManagerService$InstallArgs;->doPostInstall(II)I
 
-    .line 8604
+    .line 8757
     const/4 v0, -0x6
 
-    .line 8605
+    .line 8758
     .local v0, "currentStatus":I
     iget v1, p0, Lcom/android/server/pm/PackageManagerService$MoveParams;->mRet:I
 
@@ -130,10 +130,10 @@
 
     if-ne v1, v2, :cond_1
 
-    .line 8606
+    .line 8759
     const/4 v0, 0x1
 
-    .line 8610
+    .line 8763
     :cond_0
     :goto_0
     iget-object v1, p0, Lcom/android/server/pm/PackageManagerService$MoveParams;->this$0:Lcom/android/server/pm/PackageManagerService;
@@ -141,10 +141,10 @@
     # invokes: Lcom/android/server/pm/PackageManagerService;->processPendingMove(Lcom/android/server/pm/PackageManagerService$MoveParams;I)V
     invoke-static {v1, p0, v0}, Lcom/android/server/pm/PackageManagerService;->access$3700(Lcom/android/server/pm/PackageManagerService;Lcom/android/server/pm/PackageManagerService$MoveParams;I)V
 
-    .line 8611
+    .line 8764
     return-void
 
-    .line 8607
+    .line 8760
     :cond_1
     iget v1, p0, Lcom/android/server/pm/PackageManagerService$MoveParams;->mRet:I
 
@@ -152,7 +152,7 @@
 
     if-ne v1, v2, :cond_0
 
-    .line 8608
+    .line 8761
     const/4 v0, -0x1
 
     goto :goto_0
@@ -162,12 +162,12 @@
     .locals 1
 
     .prologue
-    .line 8615
+    .line 8768
     const/16 v0, -0x6e
 
     iput v0, p0, Lcom/android/server/pm/PackageManagerService$MoveParams;->mRet:I
 
-    .line 8616
+    .line 8769
     return-void
 .end method
 
@@ -182,12 +182,12 @@
     .prologue
     const/4 v3, 0x1
 
-    .line 8559
+    .line 8712
     const/4 v0, -0x4
 
     iput v0, p0, Lcom/android/server/pm/PackageManagerService$MoveParams;->mRet:I
 
-    .line 8561
+    .line 8714
     iget-object v0, p0, Lcom/android/server/pm/PackageManagerService$MoveParams;->targetArgs:Lcom/android/server/pm/PackageManagerService$InstallArgs;
 
     iget-object v1, p0, Lcom/android/server/pm/PackageManagerService$MoveParams;->this$0:Lcom/android/server/pm/PackageManagerService;
@@ -203,19 +203,19 @@
 
     if-nez v0, :cond_1
 
-    .line 8562
+    .line 8715
     const-string v0, "PackageManager"
 
     const-string v1, "Insufficient storage to install"
 
     invoke-static {v0, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 8599
+    .line 8752
     :cond_0
     :goto_0
     return-void
 
-    .line 8566
+    .line 8719
     :cond_1
     iget-object v0, p0, Lcom/android/server/pm/PackageManagerService$MoveParams;->srcArgs:Lcom/android/server/pm/PackageManagerService$InstallArgs;
 
@@ -225,12 +225,12 @@
 
     iput v0, p0, Lcom/android/server/pm/PackageManagerService$MoveParams;->mRet:I
 
-    .line 8567
+    .line 8720
     iget v0, p0, Lcom/android/server/pm/PackageManagerService$MoveParams;->mRet:I
 
     if-ne v0, v3, :cond_0
 
-    .line 8571
+    .line 8724
     iget-object v0, p0, Lcom/android/server/pm/PackageManagerService$MoveParams;->targetArgs:Lcom/android/server/pm/PackageManagerService$InstallArgs;
 
     iget-object v1, p0, Lcom/android/server/pm/PackageManagerService$MoveParams;->this$0:Lcom/android/server/pm/PackageManagerService;
@@ -248,12 +248,12 @@
 
     iput v0, p0, Lcom/android/server/pm/PackageManagerService$MoveParams;->mRet:I
 
-    .line 8572
+    .line 8725
     iget v0, p0, Lcom/android/server/pm/PackageManagerService$MoveParams;->mRet:I
 
     if-eq v0, v3, :cond_2
 
-    .line 8573
+    .line 8726
     iget-object v0, p0, Lcom/android/server/pm/PackageManagerService$MoveParams;->srcArgs:Lcom/android/server/pm/PackageManagerService$InstallArgs;
 
     iget v1, p0, Lcom/android/server/pm/PackageManagerService$MoveParams;->uid:I
@@ -262,7 +262,7 @@
 
     goto :goto_0
 
-    .line 8577
+    .line 8730
     :cond_2
     iget-object v0, p0, Lcom/android/server/pm/PackageManagerService$MoveParams;->srcArgs:Lcom/android/server/pm/PackageManagerService$InstallArgs;
 
@@ -274,12 +274,12 @@
 
     iput v0, p0, Lcom/android/server/pm/PackageManagerService$MoveParams;->mRet:I
 
-    .line 8578
+    .line 8731
     iget v0, p0, Lcom/android/server/pm/PackageManagerService$MoveParams;->mRet:I
 
     if-ne v0, v3, :cond_0
 
-    .line 8582
+    .line 8735
     iget-object v0, p0, Lcom/android/server/pm/PackageManagerService$MoveParams;->targetArgs:Lcom/android/server/pm/PackageManagerService$InstallArgs;
 
     iget v1, p0, Lcom/android/server/pm/PackageManagerService$MoveParams;->mRet:I
@@ -290,7 +290,7 @@
 
     iput v0, p0, Lcom/android/server/pm/PackageManagerService$MoveParams;->mRet:I
 
-    .line 8583
+    .line 8736
     iget v0, p0, Lcom/android/server/pm/PackageManagerService$MoveParams;->mRet:I
 
     if-eq v0, v3, :cond_0
@@ -302,7 +302,7 @@
     .locals 2
 
     .prologue
-    .line 8553
+    .line 8706
     new-instance v0, Ljava/lang/StringBuilder;
 
     invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V

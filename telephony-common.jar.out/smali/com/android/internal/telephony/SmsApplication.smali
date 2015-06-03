@@ -171,7 +171,7 @@
 
     .line 279
     .local v9, "r":Landroid/content/res/Resources;
-    const v11, 0x10400fa
+    const v11, 0x1040110
 
     invoke-virtual {v9, v11}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 

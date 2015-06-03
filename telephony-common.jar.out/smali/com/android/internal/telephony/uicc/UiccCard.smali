@@ -572,7 +572,7 @@
 
     move-result-object v8
 
-    const v9, 0x1110033
+    const v9, 0x1110035
 
     invoke-virtual {v8, v9}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -616,7 +616,7 @@
     .local v6, "r":Landroid/content/res/Resources;
     if-eqz p1, :cond_1
 
-    const v8, 0x1040533
+    const v8, 0x104054a
 
     invoke-virtual {v6, v8}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -627,7 +627,7 @@
     :goto_1
     if-eqz p1, :cond_2
 
-    const v8, 0x1040534
+    const v8, 0x104054b
 
     invoke-virtual {v6, v8}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -636,7 +636,7 @@
     .line 279
     .local v5, "message":Ljava/lang/String;
     :goto_2
-    const v8, 0x1040535
+    const v8, 0x104054c
 
     invoke-virtual {v6, v8}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 
@@ -711,7 +711,7 @@
     .restart local v4    # "listener":Landroid/content/DialogInterface$OnClickListener;
     .restart local v6    # "r":Landroid/content/res/Resources;
     :cond_1
-    const v8, 0x1040530
+    const v8, 0x1040547
 
     :try_start_3
     invoke-virtual {v6, v8}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
@@ -723,7 +723,7 @@
     .line 277
     .restart local v7    # "title":Ljava/lang/String;
     :cond_2
-    const v8, 0x1040531
+    const v8, 0x1040548
 
     invoke-virtual {v6, v8}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
     :try_end_3

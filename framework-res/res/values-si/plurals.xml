@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <plurals name="tethered_clients_connected">
+        <item quantity="other">සේවාලාභීන් %d සම්බන්ධවිය</item>
+        <item quantity="one">සේවාලාභීන් %d සම්බන්ධවිය</item>
+    </plurals>
     <plurals name="num_seconds_ago">
         <item quantity="other">තත්පර %d ට පෙර</item>
         <item quantity="one">තත්පර 1 කට පෙර</item>

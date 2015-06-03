@@ -75,9 +75,9 @@
     .param p2, "defRoamInd"    # I
 
     .prologue
-    const v10, 0x1040167
+    const v10, 0x104017e
 
-    const v9, 0x1040165
+    const v9, 0x104017c
 
     const/4 v8, 0x2
 
@@ -192,7 +192,7 @@
 
     iget-object v4, p0, Lcom/android/internal/telephony/cdma/EriManager;->mContext:Landroid/content/Context;
 
-    const v5, 0x1040166
+    const v5, 0x104017d
 
     invoke-virtual {v4, v5}, Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;
 
@@ -236,7 +236,7 @@
 
     iget-object v4, p0, Lcom/android/internal/telephony/cdma/EriManager;->mContext:Landroid/content/Context;
 
-    const v5, 0x1040168
+    const v5, 0x104017f
 
     invoke-virtual {v4, v5}, Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;
 
@@ -259,7 +259,7 @@
 
     iget-object v4, p0, Lcom/android/internal/telephony/cdma/EriManager;->mContext:Landroid/content/Context;
 
-    const v5, 0x1040169
+    const v5, 0x1040180
 
     invoke-virtual {v4, v5}, Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;
 
@@ -282,7 +282,7 @@
 
     iget-object v4, p0, Lcom/android/internal/telephony/cdma/EriManager;->mContext:Landroid/content/Context;
 
-    const v5, 0x104016a
+    const v5, 0x1040181
 
     invoke-virtual {v4, v5}, Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;
 
@@ -305,7 +305,7 @@
 
     iget-object v4, p0, Lcom/android/internal/telephony/cdma/EriManager;->mContext:Landroid/content/Context;
 
-    const v5, 0x104016b
+    const v5, 0x1040182
 
     invoke-virtual {v4, v5}, Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;
 
@@ -328,7 +328,7 @@
 
     iget-object v4, p0, Lcom/android/internal/telephony/cdma/EriManager;->mContext:Landroid/content/Context;
 
-    const v5, 0x104016c
+    const v5, 0x1040183
 
     invoke-virtual {v4, v5}, Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;
 
@@ -351,7 +351,7 @@
 
     iget-object v4, p0, Lcom/android/internal/telephony/cdma/EriManager;->mContext:Landroid/content/Context;
 
-    const v5, 0x104016d
+    const v5, 0x1040184
 
     invoke-virtual {v4, v5}, Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;
 
@@ -374,7 +374,7 @@
 
     iget-object v4, p0, Lcom/android/internal/telephony/cdma/EriManager;->mContext:Landroid/content/Context;
 
-    const v5, 0x104016e
+    const v5, 0x1040185
 
     invoke-virtual {v4, v5}, Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;
 
@@ -397,7 +397,7 @@
 
     iget-object v4, p0, Lcom/android/internal/telephony/cdma/EriManager;->mContext:Landroid/content/Context;
 
-    const v5, 0x104016f
+    const v5, 0x1040186
 
     invoke-virtual {v4, v5}, Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;
 
@@ -420,7 +420,7 @@
 
     iget-object v4, p0, Lcom/android/internal/telephony/cdma/EriManager;->mContext:Landroid/content/Context;
 
-    const v5, 0x1040170
+    const v5, 0x1040187
 
     invoke-virtual {v4, v5}, Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;
 
@@ -443,7 +443,7 @@
 
     iget-object v4, p0, Lcom/android/internal/telephony/cdma/EriManager;->mContext:Landroid/content/Context;
 
-    const v5, 0x1040171
+    const v5, 0x1040188
 
     invoke-virtual {v4, v5}, Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;
 
@@ -506,7 +506,7 @@
 
     iget-object v4, p0, Lcom/android/internal/telephony/cdma/EriManager;->mContext:Landroid/content/Context;
 
-    const v5, 0x1040166
+    const v5, 0x104017d
 
     invoke-virtual {v4, v5}, Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;
 
@@ -767,7 +767,7 @@
     .line 159
     new-instance v16, Ljava/io/FileInputStream;
 
-    const v2, 0x1040592
+    const v2, 0x10405a9
 
     invoke-virtual {v14, v2}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
 

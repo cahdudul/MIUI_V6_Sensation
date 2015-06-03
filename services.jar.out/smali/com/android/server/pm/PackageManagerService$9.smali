@@ -30,7 +30,7 @@
     .locals 0
 
     .prologue
-    .line 7885
+    .line 8038
     iput-object p1, p0, Lcom/android/server/pm/PackageManagerService$9;->this$0:Lcom/android/server/pm/PackageManagerService;
 
     iput p2, p0, Lcom/android/server/pm/PackageManagerService$9;->val$currentStatus:I
@@ -52,63 +52,63 @@
 
     const/4 v8, 0x1
 
-    .line 7887
+    .line 8040
     iget-object v10, p0, Lcom/android/server/pm/PackageManagerService$9;->this$0:Lcom/android/server/pm/PackageManagerService;
 
     iget-object v10, v10, Lcom/android/server/pm/PackageManagerService;->mHandler:Lcom/android/server/pm/PackageManagerService$PackageHandler;
 
     invoke-virtual {v10, p0}, Lcom/android/server/pm/PackageManagerService$PackageHandler;->removeCallbacks(Ljava/lang/Runnable;)V
 
-    .line 7889
+    .line 8042
     new-instance v5, Lcom/android/server/pm/PackageManagerService$PackageInstalledInfo;
 
     iget-object v10, p0, Lcom/android/server/pm/PackageManagerService$9;->this$0:Lcom/android/server/pm/PackageManagerService;
 
     invoke-direct {v5, v10}, Lcom/android/server/pm/PackageManagerService$PackageInstalledInfo;-><init>(Lcom/android/server/pm/PackageManagerService;)V
 
-    .line 7890
+    .line 8043
     .local v5, "res":Lcom/android/server/pm/PackageManagerService$PackageInstalledInfo;
     iget v10, p0, Lcom/android/server/pm/PackageManagerService$9;->val$currentStatus:I
 
     iput v10, v5, Lcom/android/server/pm/PackageManagerService$PackageInstalledInfo;->returnCode:I
 
-    .line 7891
+    .line 8044
     const/4 v10, -0x1
 
     iput v10, v5, Lcom/android/server/pm/PackageManagerService$PackageInstalledInfo;->uid:I
 
-    .line 7892
+    .line 8045
     const/4 v10, 0x0
 
     iput-object v10, v5, Lcom/android/server/pm/PackageManagerService$PackageInstalledInfo;->pkg:Landroid/content/pm/PackageParser$Package;
 
-    .line 7893
+    .line 8046
     new-instance v10, Lcom/android/server/pm/PackageManagerService$PackageRemovedInfo;
 
     invoke-direct {v10}, Lcom/android/server/pm/PackageManagerService$PackageRemovedInfo;-><init>()V
 
     iput-object v10, v5, Lcom/android/server/pm/PackageManagerService$PackageInstalledInfo;->removedInfo:Lcom/android/server/pm/PackageManagerService$PackageRemovedInfo;
 
-    .line 7894
+    .line 8047
     iget v10, v5, Lcom/android/server/pm/PackageManagerService$PackageInstalledInfo;->returnCode:I
 
     if-ne v10, v8, :cond_0
 
-    .line 7895
+    .line 8048
     iget-object v10, p0, Lcom/android/server/pm/PackageManagerService$9;->val$args:Lcom/android/server/pm/PackageManagerService$InstallArgs;
 
     iget v11, v5, Lcom/android/server/pm/PackageManagerService$PackageInstalledInfo;->returnCode:I
 
     invoke-virtual {v10, v11}, Lcom/android/server/pm/PackageManagerService$InstallArgs;->doPreInstall(I)I
 
-    .line 7896
+    .line 8049
     iget-object v10, p0, Lcom/android/server/pm/PackageManagerService$9;->this$0:Lcom/android/server/pm/PackageManagerService;
 
     iget-object v10, v10, Lcom/android/server/pm/PackageManagerService;->mInstallLock:Ljava/lang/Object;
 
     monitor-enter v10
 
-    .line 7897
+    .line 8050
     :try_start_0
     iget-object v11, p0, Lcom/android/server/pm/PackageManagerService$9;->this$0:Lcom/android/server/pm/PackageManagerService;
 
@@ -119,12 +119,12 @@
     # invokes: Lcom/android/server/pm/PackageManagerService;->installPackageLI(Lcom/android/server/pm/PackageManagerService$InstallArgs;ZLcom/android/server/pm/PackageManagerService$PackageInstalledInfo;)V
     invoke-static {v11, v12, v13, v5}, Lcom/android/server/pm/PackageManagerService;->access$2500(Lcom/android/server/pm/PackageManagerService;Lcom/android/server/pm/PackageManagerService$InstallArgs;ZLcom/android/server/pm/PackageManagerService$PackageInstalledInfo;)V
 
-    .line 7898
+    .line 8051
     monitor-exit v10
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 7899
+    .line 8052
     iget-object v10, p0, Lcom/android/server/pm/PackageManagerService$9;->val$args:Lcom/android/server/pm/PackageManagerService$InstallArgs;
 
     iget v11, v5, Lcom/android/server/pm/PackageManagerService$PackageInstalledInfo;->returnCode:I
@@ -133,7 +133,7 @@
 
     invoke-virtual {v10, v11, v12}, Lcom/android/server/pm/PackageManagerService$InstallArgs;->doPostInstall(II)I
 
-    .line 7905
+    .line 8058
     :cond_0
     iget-object v10, v5, Lcom/android/server/pm/PackageManagerService$PackageInstalledInfo;->removedInfo:Lcom/android/server/pm/PackageManagerService$PackageRemovedInfo;
 
@@ -143,7 +143,7 @@
 
     move v7, v8
 
-    .line 7906
+    .line 8059
     .local v7, "update":Z
     :goto_0
     if-nez v7, :cond_5
@@ -162,7 +162,7 @@
 
     move v2, v8
 
-    .line 7914
+    .line 8067
     .local v2, "doRestore":Z
     :goto_1
     iget-object v10, p0, Lcom/android/server/pm/PackageManagerService$9;->this$0:Lcom/android/server/pm/PackageManagerService;
@@ -175,7 +175,7 @@
 
     iput v8, v10, Lcom/android/server/pm/PackageManagerService;->mNextInstallToken:I
 
-    .line 7915
+    .line 8068
     :cond_1
     iget-object v10, p0, Lcom/android/server/pm/PackageManagerService$9;->this$0:Lcom/android/server/pm/PackageManagerService;
 
@@ -185,7 +185,7 @@
 
     iput v11, v10, Lcom/android/server/pm/PackageManagerService;->mNextInstallToken:I
 
-    .line 7917
+    .line 8070
     .local v6, "token":I
     new-instance v1, Lcom/android/server/pm/PackageManagerService$PostInstallData;
 
@@ -195,7 +195,7 @@
 
     invoke-direct {v1, v10, v11, v5}, Lcom/android/server/pm/PackageManagerService$PostInstallData;-><init>(Lcom/android/server/pm/PackageManagerService;Lcom/android/server/pm/PackageManagerService$InstallArgs;Lcom/android/server/pm/PackageManagerService$PackageInstalledInfo;)V
 
-    .line 7918
+    .line 8071
     .local v1, "data":Lcom/android/server/pm/PackageManagerService$PostInstallData;
     iget-object v10, p0, Lcom/android/server/pm/PackageManagerService$9;->this$0:Lcom/android/server/pm/PackageManagerService;
 
@@ -203,14 +203,14 @@
 
     invoke-virtual {v10, v6, v1}, Landroid/util/SparseArray;->put(ILjava/lang/Object;)V
 
-    .line 7921
+    .line 8074
     iget v10, v5, Lcom/android/server/pm/PackageManagerService$PackageInstalledInfo;->returnCode:I
 
     if-ne v10, v8, :cond_2
 
     if-eqz v2, :cond_2
 
-    .line 7926
+    .line 8079
     const-string v8, "backup"
 
     invoke-static {v8}, Landroid/os/ServiceManager;->getService(Ljava/lang/String;)Landroid/os/IBinder;
@@ -221,11 +221,11 @@
 
     move-result-object v0
 
-    .line 7928
+    .line 8081
     .local v0, "bm":Landroid/app/backup/IBackupManager;
     if-eqz v0, :cond_6
 
-    .line 7932
+    .line 8085
     :try_start_1
     iget-object v8, v5, Lcom/android/server/pm/PackageManagerService$PackageInstalledInfo;->pkg:Landroid/content/pm/PackageParser$Package;
 
@@ -238,13 +238,13 @@
     .catch Landroid/os/RemoteException; {:try_start_1 .. :try_end_1} :catch_1
     .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_0
 
-    .line 7945
+    .line 8098
     .end local v0    # "bm":Landroid/app/backup/IBackupManager;
     :cond_2
     :goto_2
     if-nez v2, :cond_3
 
-    .line 7949
+    .line 8102
     iget-object v8, p0, Lcom/android/server/pm/PackageManagerService$9;->this$0:Lcom/android/server/pm/PackageManagerService;
 
     iget-object v8, v8, Lcom/android/server/pm/PackageManagerService;->mHandler:Lcom/android/server/pm/PackageManagerService$PackageHandler;
@@ -255,7 +255,7 @@
 
     move-result-object v4
 
-    .line 7950
+    .line 8103
     .local v4, "msg":Landroid/os/Message;
     iget-object v8, p0, Lcom/android/server/pm/PackageManagerService$9;->this$0:Lcom/android/server/pm/PackageManagerService;
 
@@ -263,12 +263,12 @@
 
     invoke-virtual {v8, v4}, Lcom/android/server/pm/PackageManagerService$PackageHandler;->sendMessage(Landroid/os/Message;)Z
 
-    .line 7952
+    .line 8105
     .end local v4    # "msg":Landroid/os/Message;
     :cond_3
     return-void
 
-    .line 7898
+    .line 8051
     .end local v1    # "data":Lcom/android/server/pm/PackageManagerService$PostInstallData;
     .end local v2    # "doRestore":Z
     .end local v6    # "token":I
@@ -286,17 +286,17 @@
     :cond_4
     move v7, v9
 
-    .line 7905
+    .line 8058
     goto :goto_0
 
     .restart local v7    # "update":Z
     :cond_5
     move v2, v9
 
-    .line 7906
+    .line 8059
     goto :goto_1
 
-    .line 7935
+    .line 8088
     .restart local v0    # "bm":Landroid/app/backup/IBackupManager;
     .restart local v1    # "data":Lcom/android/server/pm/PackageManagerService$PostInstallData;
     .restart local v2    # "doRestore":Z
@@ -304,7 +304,7 @@
     :catch_0
     move-exception v3
 
-    .line 7936
+    .line 8089
     .local v3, "e":Ljava/lang/Exception;
     const-string v8, "PackageManager"
 
@@ -312,13 +312,13 @@
 
     invoke-static {v8, v10, v3}, Landroid/util/Slog;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 7937
+    .line 8090
     const/4 v2, 0x0
 
-    .line 7938
+    .line 8091
     goto :goto_2
 
-    .line 7940
+    .line 8093
     .end local v3    # "e":Ljava/lang/Exception;
     :cond_6
     const-string v8, "PackageManager"
@@ -327,12 +327,12 @@
 
     invoke-static {v8, v10}, Landroid/util/Slog;->e(Ljava/lang/String;Ljava/lang/String;)I
 
-    .line 7941
+    .line 8094
     const/4 v2, 0x0
 
     goto :goto_2
 
-    .line 7933
+    .line 8086
     :catch_1
     move-exception v8
 

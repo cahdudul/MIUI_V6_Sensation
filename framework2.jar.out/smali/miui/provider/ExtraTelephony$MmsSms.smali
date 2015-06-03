@@ -53,6 +53,8 @@
 
 .field public static final SYNC_STATE_ERROR:I = 0x3
 
+.field public static final SYNC_STATE_MARKED_DELETING:I = 0x10002
+
 .field public static final SYNC_STATE_NOT_UPLOADABLE:I = 0x4
 
 .field public static final SYNC_STATE_SYNCED:I = 0x2

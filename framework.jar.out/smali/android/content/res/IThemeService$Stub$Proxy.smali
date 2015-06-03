@@ -27,13 +27,13 @@
     .param p1, "remote"    # Landroid/os/IBinder;
 
     .prologue
-    .line 121
+    .line 159
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 122
+    .line 160
     iput-object p1, p0, Landroid/content/res/IThemeService$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
-    .line 123
+    .line 161
     return-void
 .end method
 
@@ -48,25 +48,25 @@
     .end annotation
 
     .prologue
-    .line 179
+    .line 217
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v0
 
-    .line 180
+    .line 218
     .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
-    .line 182
+    .line 220
     .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
     const-string v2, "android.content.res.IThemeService"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
-    .line 183
+    .line 221
     iget-object v2, p0, Landroid/content/res/IThemeService$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
     const/4 v3, 0x4
@@ -75,27 +75,27 @@
 
     invoke-interface {v2, v3, v0, v1, v4}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
-    .line 184
+    .line 222
     invoke-virtual {v1}, Landroid/os/Parcel;->readException()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 187
+    .line 225
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
-    .line 188
+    .line 226
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 190
+    .line 228
     return-void
 
-    .line 187
+    .line 225
     :catchall_0
     move-exception v2
 
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
-    .line 188
+    .line 226
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
     throw v2
@@ -105,7 +105,7 @@
     .locals 1
 
     .prologue
-    .line 126
+    .line 164
     iget-object v0, p0, Landroid/content/res/IThemeService$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
     return-object v0
@@ -126,42 +126,42 @@
 
     const/4 v3, 0x0
 
-    .line 227
+    .line 265
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v0
 
-    .line 228
+    .line 266
     .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
-    .line 231
+    .line 269
     .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
     const-string v4, "android.content.res.IThemeService"
 
     invoke-virtual {v0, v4}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
-    .line 232
+    .line 270
     if-eqz p1, :cond_0
 
-    .line 233
+    .line 271
     const/4 v4, 0x1
 
     invoke-virtual {v0, v4}, Landroid/os/Parcel;->writeInt(I)V
 
-    .line 234
+    .line 272
     const/4 v4, 0x0
 
     invoke-virtual {p1, v0, v4}, Landroid/graphics/Bitmap;->writeToParcel(Landroid/os/Parcel;I)V
 
-    .line 239
+    .line 277
     :goto_0
     invoke-virtual {v0, p2}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
 
-    .line 240
+    .line 278
     iget-object v4, p0, Landroid/content/res/IThemeService$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
     const/4 v5, 0x7
@@ -170,10 +170,10 @@
 
     invoke-interface {v4, v5, v0, v1, v6}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
-    .line 241
+    .line 279
     invoke-virtual {v1}, Landroid/os/Parcel;->readException()V
 
-    .line 242
+    .line 280
     invoke-virtual {v1}, Landroid/os/Parcel;->readInt()I
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
@@ -182,18 +182,18 @@
 
     if-eqz v4, :cond_1
 
-    .line 245
+    .line 283
     .local v2, "_result":Z
     :goto_1
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
-    .line 246
+    .line 284
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 248
+    .line 286
     return v2
 
-    .line 237
+    .line 275
     .end local v2    # "_result":Z
     :cond_0
     const/4 v4, 0x0
@@ -205,13 +205,13 @@
 
     goto :goto_0
 
-    .line 245
+    .line 283
     :catchall_0
     move-exception v3
 
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
-    .line 246
+    .line 284
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
     throw v3
@@ -219,7 +219,7 @@
     :cond_1
     move v2, v3
 
-    .line 242
+    .line 280
     goto :goto_1
 .end method
 
@@ -227,7 +227,7 @@
     .locals 1
 
     .prologue
-    .line 130
+    .line 168
     const-string v0, "android.content.res.IThemeService"
 
     return-object v0
@@ -242,25 +242,25 @@
     .end annotation
 
     .prologue
-    .line 210
+    .line 248
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v0
 
-    .line 211
+    .line 249
     .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
-    .line 214
+    .line 252
     .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
     const-string v3, "android.content.res.IThemeService"
 
     invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
-    .line 215
+    .line 253
     iget-object v3, p0, Landroid/content/res/IThemeService$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
     const/4 v4, 0x6
@@ -269,34 +269,34 @@
 
     invoke-interface {v3, v4, v0, v1, v5}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
-    .line 216
+    .line 254
     invoke-virtual {v1}, Landroid/os/Parcel;->readException()V
 
-    .line 217
+    .line 255
     invoke-virtual {v1}, Landroid/os/Parcel;->readInt()I
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     move-result v2
 
-    .line 220
+    .line 258
     .local v2, "_result":I
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
-    .line 221
+    .line 259
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 223
+    .line 261
     return v2
 
-    .line 220
+    .line 258
     .end local v2    # "_result":I
     :catchall_0
     move-exception v3
 
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
-    .line 221
+    .line 259
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
     throw v3
@@ -313,25 +313,25 @@
     .prologue
     const/4 v2, 0x0
 
-    .line 193
+    .line 231
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v0
 
-    .line 194
+    .line 232
     .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
-    .line 197
+    .line 235
     .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
     const-string v3, "android.content.res.IThemeService"
 
     invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
-    .line 198
+    .line 236
     iget-object v3, p0, Landroid/content/res/IThemeService$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
     const/4 v4, 0x5
@@ -340,10 +340,10 @@
 
     invoke-interface {v3, v4, v0, v1, v5}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
-    .line 199
+    .line 237
     invoke-virtual {v1}, Landroid/os/Parcel;->readException()V
 
-    .line 200
+    .line 238
     invoke-virtual {v1}, Landroid/os/Parcel;->readInt()I
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
@@ -354,28 +354,267 @@
 
     const/4 v2, 0x1
 
-    .line 203
+    .line 241
     .local v2, "_result":Z
     :cond_0
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
-    .line 204
+    .line 242
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 206
+    .line 244
     return v2
 
-    .line 203
+    .line 241
     .end local v2    # "_result":Z
     :catchall_0
     move-exception v3
 
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
-    .line 204
+    .line 242
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
     throw v3
+.end method
+
+.method public isThemeBeingProcessed(Ljava/lang/String;)Z
+    .locals 6
+    .param p1, "themePkgName"    # Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .prologue
+    const/4 v2, 0x0
+
+    .line 308
+    invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
+
+    move-result-object v0
+
+    .line 309
+    .local v0, "_data":Landroid/os/Parcel;
+    invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
+
+    move-result-object v1
+
+    .line 312
+    .local v1, "_reply":Landroid/os/Parcel;
+    :try_start_0
+    const-string v3, "android.content.res.IThemeService"
+
+    invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
+
+    .line 313
+    invoke-virtual {v0, p1}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
+
+    .line 314
+    iget-object v3, p0, Landroid/content/res/IThemeService$Stub$Proxy;->mRemote:Landroid/os/IBinder;
+
+    const/16 v4, 0x9
+
+    const/4 v5, 0x0
+
+    invoke-interface {v3, v4, v0, v1, v5}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
+
+    .line 315
+    invoke-virtual {v1}, Landroid/os/Parcel;->readException()V
+
+    .line 316
+    invoke-virtual {v1}, Landroid/os/Parcel;->readInt()I
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    move-result v3
+
+    if-eqz v3, :cond_0
+
+    const/4 v2, 0x1
+
+    .line 319
+    .local v2, "_result":Z
+    :cond_0
+    invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
+
+    .line 320
+    invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
+
+    .line 322
+    return v2
+
+    .line 319
+    .end local v2    # "_result":Z
+    :catchall_0
+    move-exception v3
+
+    invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
+
+    .line 320
+    invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
+
+    throw v3
+.end method
+
+.method public processThemeResources(Ljava/lang/String;)Z
+    .locals 6
+    .param p1, "themePkgName"    # Ljava/lang/String;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .prologue
+    const/4 v2, 0x0
+
+    .line 290
+    invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
+
+    move-result-object v0
+
+    .line 291
+    .local v0, "_data":Landroid/os/Parcel;
+    invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
+
+    move-result-object v1
+
+    .line 294
+    .local v1, "_reply":Landroid/os/Parcel;
+    :try_start_0
+    const-string v3, "android.content.res.IThemeService"
+
+    invoke-virtual {v0, v3}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
+
+    .line 295
+    invoke-virtual {v0, p1}, Landroid/os/Parcel;->writeString(Ljava/lang/String;)V
+
+    .line 296
+    iget-object v3, p0, Landroid/content/res/IThemeService$Stub$Proxy;->mRemote:Landroid/os/IBinder;
+
+    const/16 v4, 0x8
+
+    const/4 v5, 0x0
+
+    invoke-interface {v3, v4, v0, v1, v5}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
+
+    .line 297
+    invoke-virtual {v1}, Landroid/os/Parcel;->readException()V
+
+    .line 298
+    invoke-virtual {v1}, Landroid/os/Parcel;->readInt()I
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    move-result v3
+
+    if-eqz v3, :cond_0
+
+    const/4 v2, 0x1
+
+    .line 301
+    .local v2, "_result":Z
+    :cond_0
+    invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
+
+    .line 302
+    invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
+
+    .line 304
+    return v2
+
+    .line 301
+    .end local v2    # "_result":Z
+    :catchall_0
+    move-exception v3
+
+    invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
+
+    .line 302
+    invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
+
+    throw v3
+.end method
+
+.method public registerThemeProcessingListener(Landroid/content/res/IThemeProcessingListener;)V
+    .locals 5
+    .param p1, "listener"    # Landroid/content/res/IThemeProcessingListener;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .prologue
+    .line 326
+    invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
+
+    move-result-object v0
+
+    .line 327
+    .local v0, "_data":Landroid/os/Parcel;
+    invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
+
+    move-result-object v1
+
+    .line 329
+    .local v1, "_reply":Landroid/os/Parcel;
+    :try_start_0
+    const-string v2, "android.content.res.IThemeService"
+
+    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
+
+    .line 330
+    if-eqz p1, :cond_0
+
+    invoke-interface {p1}, Landroid/content/res/IThemeProcessingListener;->asBinder()Landroid/os/IBinder;
+
+    move-result-object v2
+
+    :goto_0
+    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeStrongBinder(Landroid/os/IBinder;)V
+
+    .line 331
+    iget-object v2, p0, Landroid/content/res/IThemeService$Stub$Proxy;->mRemote:Landroid/os/IBinder;
+
+    const/16 v3, 0xa
+
+    const/4 v4, 0x0
+
+    invoke-interface {v2, v3, v0, v1, v4}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
+
+    .line 332
+    invoke-virtual {v1}, Landroid/os/Parcel;->readException()V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 335
+    invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
+
+    .line 336
+    invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
+
+    .line 338
+    return-void
+
+    .line 330
+    :cond_0
+    const/4 v2, 0x0
+
+    goto :goto_0
+
+    .line 335
+    :catchall_0
+    move-exception v2
+
+    invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
+
+    .line 336
+    invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
+
+    throw v2
 .end method
 
 .method public removeUpdates(Landroid/content/res/IThemeChangeListener;)V
@@ -388,25 +627,25 @@
     .end annotation
 
     .prologue
-    .line 149
+    .line 187
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v0
 
-    .line 150
+    .line 188
     .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
-    .line 152
+    .line 190
     .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
     const-string v2, "android.content.res.IThemeService"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
-    .line 153
+    .line 191
     if-eqz p1, :cond_0
 
     invoke-interface {p1}, Landroid/content/res/IThemeChangeListener;->asBinder()Landroid/os/IBinder;
@@ -416,7 +655,7 @@
     :goto_0
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeStrongBinder(Landroid/os/IBinder;)V
 
-    .line 154
+    .line 192
     iget-object v2, p0, Landroid/content/res/IThemeService$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
     const/4 v3, 0x2
@@ -425,33 +664,33 @@
 
     invoke-interface {v2, v3, v0, v1, v4}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
-    .line 155
+    .line 193
     invoke-virtual {v1}, Landroid/os/Parcel;->readException()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 158
+    .line 196
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
-    .line 159
+    .line 197
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 161
+    .line 199
     return-void
 
-    .line 153
+    .line 191
     :cond_0
     const/4 v2, 0x0
 
     goto :goto_0
 
-    .line 158
+    .line 196
     :catchall_0
     move-exception v2
 
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
-    .line 159
+    .line 197
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
     throw v2
@@ -467,28 +706,28 @@
     .end annotation
 
     .prologue
-    .line 164
+    .line 202
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v0
 
-    .line 165
+    .line 203
     .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
-    .line 167
+    .line 205
     .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
     const-string v2, "android.content.res.IThemeService"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
-    .line 168
+    .line 206
     invoke-virtual {v0, p1}, Landroid/os/Parcel;->writeMap(Ljava/util/Map;)V
 
-    .line 169
+    .line 207
     iget-object v2, p0, Landroid/content/res/IThemeService$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
     const/4 v3, 0x3
@@ -497,27 +736,27 @@
 
     invoke-interface {v2, v3, v0, v1, v4}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
-    .line 170
+    .line 208
     invoke-virtual {v1}, Landroid/os/Parcel;->readException()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 173
+    .line 211
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
-    .line 174
+    .line 212
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 176
+    .line 214
     return-void
 
-    .line 173
+    .line 211
     :catchall_0
     move-exception v2
 
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
-    .line 174
+    .line 212
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
     throw v2
@@ -533,25 +772,25 @@
     .end annotation
 
     .prologue
-    .line 134
+    .line 172
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v0
 
-    .line 135
+    .line 173
     .local v0, "_data":Landroid/os/Parcel;
     invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
 
     move-result-object v1
 
-    .line 137
+    .line 175
     .local v1, "_reply":Landroid/os/Parcel;
     :try_start_0
     const-string v2, "android.content.res.IThemeService"
 
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
 
-    .line 138
+    .line 176
     if-eqz p1, :cond_0
 
     invoke-interface {p1}, Landroid/content/res/IThemeChangeListener;->asBinder()Landroid/os/IBinder;
@@ -561,7 +800,7 @@
     :goto_0
     invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeStrongBinder(Landroid/os/IBinder;)V
 
-    .line 139
+    .line 177
     iget-object v2, p0, Landroid/content/res/IThemeService$Stub$Proxy;->mRemote:Landroid/os/IBinder;
 
     const/4 v3, 0x1
@@ -570,33 +809,112 @@
 
     invoke-interface {v2, v3, v0, v1, v4}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
-    .line 140
+    .line 178
     invoke-virtual {v1}, Landroid/os/Parcel;->readException()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 143
+    .line 181
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
-    .line 144
+    .line 182
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
-    .line 146
+    .line 184
     return-void
 
-    .line 138
+    .line 176
     :cond_0
     const/4 v2, 0x0
 
     goto :goto_0
 
-    .line 143
+    .line 181
     :catchall_0
     move-exception v2
 
     invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
 
-    .line 144
+    .line 182
+    invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
+
+    throw v2
+.end method
+
+.method public unregisterThemeProcessingListener(Landroid/content/res/IThemeProcessingListener;)V
+    .locals 5
+    .param p1, "listener"    # Landroid/content/res/IThemeProcessingListener;
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+
+    .prologue
+    .line 341
+    invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
+
+    move-result-object v0
+
+    .line 342
+    .local v0, "_data":Landroid/os/Parcel;
+    invoke-static {}, Landroid/os/Parcel;->obtain()Landroid/os/Parcel;
+
+    move-result-object v1
+
+    .line 344
+    .local v1, "_reply":Landroid/os/Parcel;
+    :try_start_0
+    const-string v2, "android.content.res.IThemeService"
+
+    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V
+
+    .line 345
+    if-eqz p1, :cond_0
+
+    invoke-interface {p1}, Landroid/content/res/IThemeProcessingListener;->asBinder()Landroid/os/IBinder;
+
+    move-result-object v2
+
+    :goto_0
+    invoke-virtual {v0, v2}, Landroid/os/Parcel;->writeStrongBinder(Landroid/os/IBinder;)V
+
+    .line 346
+    iget-object v2, p0, Landroid/content/res/IThemeService$Stub$Proxy;->mRemote:Landroid/os/IBinder;
+
+    const/16 v3, 0xb
+
+    const/4 v4, 0x0
+
+    invoke-interface {v2, v3, v0, v1, v4}, Landroid/os/IBinder;->transact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
+
+    .line 347
+    invoke-virtual {v1}, Landroid/os/Parcel;->readException()V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 350
+    invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
+
+    .line 351
+    invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
+
+    .line 353
+    return-void
+
+    .line 345
+    :cond_0
+    const/4 v2, 0x0
+
+    goto :goto_0
+
+    .line 350
+    :catchall_0
+    move-exception v2
+
+    invoke-virtual {v1}, Landroid/os/Parcel;->recycle()V
+
+    .line 351
     invoke-virtual {v0}, Landroid/os/Parcel;->recycle()V
 
     throw v2

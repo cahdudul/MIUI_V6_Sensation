@@ -514,7 +514,7 @@
 
     move-result-object v4
 
-    const v5, 0x1130015
+    const v5, 0x1120016
 
     invoke-virtual {v4, v5, p2}, Landroid/content/res/Resources;->getQuantityText(II)Ljava/lang/CharSequence;
 
@@ -528,7 +528,7 @@
 
     move-result-object v4
 
-    const v5, 0x1130016
+    const v5, 0x1120017
 
     invoke-virtual {v4, v5, p2}, Landroid/content/res/Resources;->getQuantityText(II)Ljava/lang/CharSequence;
 
@@ -596,7 +596,7 @@
 
     iget-object v6, p0, Lcom/android/server/wifi/WifiNotificationController;->mContext:Landroid/content/Context;
 
-    const v7, 0x10400ca
+    const v7, 0x10400c3
 
     invoke-virtual {v6, v7}, Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;
 

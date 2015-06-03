@@ -23,7 +23,15 @@
     .end annotation
 .end method
 
-.method public abstract dispatch(Landroid/view/MotionEvent;)V
+.method public abstract dispatchApplicationWidgetEvent(Landroid/view/MotionEvent;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract dispatchCameraEvent(Landroid/view/MotionEvent;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;
@@ -80,6 +88,14 @@
 .end method
 
 .method public abstract keyguardDone(ZZ)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract launchApplicationWidget()V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

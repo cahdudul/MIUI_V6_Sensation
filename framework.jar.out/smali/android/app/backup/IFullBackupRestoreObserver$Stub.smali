@@ -30,15 +30,19 @@
 
 .field static final TRANSACTION_onEndBackup:I = 0x3
 
-.field static final TRANSACTION_onEndRestore:I = 0x6
+.field static final TRANSACTION_onEndBackupWithResult:I = 0x4
 
-.field static final TRANSACTION_onRestorePackage:I = 0x5
+.field static final TRANSACTION_onEndRestore:I = 0x7
+
+.field static final TRANSACTION_onEndRestoreWithResult:I = 0x8
+
+.field static final TRANSACTION_onRestorePackage:I = 0x6
 
 .field static final TRANSACTION_onStartBackup:I = 0x1
 
-.field static final TRANSACTION_onStartRestore:I = 0x4
+.field static final TRANSACTION_onStartRestore:I = 0x5
 
-.field static final TRANSACTION_onTimeout:I = 0x7
+.field static final TRANSACTION_onTimeout:I = 0x9
 
 
 # direct methods
@@ -132,7 +136,7 @@
     .line 44
     sparse-switch p1, :sswitch_data_0
 
-    .line 98
+    .line 114
     invoke-super {p0, p1, p2, p3, p4}, Landroid/os/Binder;->onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
     move-result v1
@@ -194,47 +198,83 @@
 
     invoke-virtual {p2, v2}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 74
-    invoke-virtual {p0}, Landroid/app/backup/IFullBackupRestoreObserver$Stub;->onStartRestore()V
+    .line 75
+    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v0
+
+    .line 76
+    .local v0, "_arg0":I
+    invoke-virtual {p0, v0}, Landroid/app/backup/IFullBackupRestoreObserver$Stub;->onEndBackupWithResult(I)V
 
     goto :goto_0
 
-    .line 79
+    .line 81
+    .end local v0    # "_arg0":I
     :sswitch_5
     const-string v2, "android.app.backup.IFullBackupRestoreObserver"
 
     invoke-virtual {p2, v2}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 81
-    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
-
-    move-result-object v0
-
     .line 82
-    .restart local v0    # "_arg0":Ljava/lang/String;
-    invoke-virtual {p0, v0}, Landroid/app/backup/IFullBackupRestoreObserver$Stub;->onRestorePackage(Ljava/lang/String;)V
+    invoke-virtual {p0}, Landroid/app/backup/IFullBackupRestoreObserver$Stub;->onStartRestore()V
 
     goto :goto_0
 
     .line 87
-    .end local v0    # "_arg0":Ljava/lang/String;
     :sswitch_6
     const-string v2, "android.app.backup.IFullBackupRestoreObserver"
 
     invoke-virtual {p2, v2}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 88
-    invoke-virtual {p0}, Landroid/app/backup/IFullBackupRestoreObserver$Stub;->onEndRestore()V
+    .line 89
+    invoke-virtual {p2}, Landroid/os/Parcel;->readString()Ljava/lang/String;
+
+    move-result-object v0
+
+    .line 90
+    .local v0, "_arg0":Ljava/lang/String;
+    invoke-virtual {p0, v0}, Landroid/app/backup/IFullBackupRestoreObserver$Stub;->onRestorePackage(Ljava/lang/String;)V
 
     goto :goto_0
 
-    .line 93
+    .line 95
+    .end local v0    # "_arg0":Ljava/lang/String;
     :sswitch_7
     const-string v2, "android.app.backup.IFullBackupRestoreObserver"
 
     invoke-virtual {p2, v2}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 94
+    .line 96
+    invoke-virtual {p0}, Landroid/app/backup/IFullBackupRestoreObserver$Stub;->onEndRestore()V
+
+    goto :goto_0
+
+    .line 101
+    :sswitch_8
+    const-string v2, "android.app.backup.IFullBackupRestoreObserver"
+
+    invoke-virtual {p2, v2}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 103
+    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v0
+
+    .line 104
+    .local v0, "_arg0":I
+    invoke-virtual {p0, v0}, Landroid/app/backup/IFullBackupRestoreObserver$Stub;->onEndRestoreWithResult(I)V
+
+    goto :goto_0
+
+    .line 109
+    .end local v0    # "_arg0":I
+    :sswitch_9
+    const-string v2, "android.app.backup.IFullBackupRestoreObserver"
+
+    invoke-virtual {p2, v2}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 110
     invoke-virtual {p0}, Landroid/app/backup/IFullBackupRestoreObserver$Stub;->onTimeout()V
 
     goto :goto_0
@@ -249,6 +289,8 @@
         0x5 -> :sswitch_5
         0x6 -> :sswitch_6
         0x7 -> :sswitch_7
+        0x8 -> :sswitch_8
+        0x9 -> :sswitch_9
         0x5f4e5446 -> :sswitch_0
     .end sparse-switch
 .end method

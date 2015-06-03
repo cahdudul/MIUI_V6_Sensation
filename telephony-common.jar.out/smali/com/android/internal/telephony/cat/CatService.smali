@@ -1801,7 +1801,7 @@
 
     iget-object v2, v0, Lcom/android/internal/telephony/cat/CatService;->mContext:Landroid/content/Context;
 
-    const v3, 0x1040616
+    const v3, 0x104062d
 
     invoke-virtual {v2, v3}, Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;
 
@@ -1894,7 +1894,7 @@
 
     iget-object v2, v0, Lcom/android/internal/telephony/cat/CatService;->mContext:Landroid/content/Context;
 
-    const v3, 0x1040615
+    const v3, 0x104062c
 
     invoke-virtual {v2, v3}, Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;
 
@@ -1952,7 +1952,7 @@
 
     iget-object v2, v0, Lcom/android/internal/telephony/cat/CatService;->mContext:Landroid/content/Context;
 
-    const v3, 0x1040617
+    const v3, 0x104062e
 
     invoke-virtual {v2, v3}, Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;
 
@@ -1998,7 +1998,7 @@
 
     move-result-object v2
 
-    const v3, 0x1110065
+    const v3, 0x1110067
 
     invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getBoolean(I)Z
     :try_end_0
@@ -3795,7 +3795,7 @@
 
     move-result-object v0
 
-    const v1, 0x111006a
+    const v1, 0x111006c
 
     invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getBoolean(I)Z
 

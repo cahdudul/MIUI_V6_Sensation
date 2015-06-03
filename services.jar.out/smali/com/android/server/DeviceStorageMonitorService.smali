@@ -1329,7 +1329,7 @@
     .local v8, "mNotificationMgr":Landroid/app/NotificationManager;
     iget-object v0, p0, Lcom/android/server/DeviceStorageMonitorService;->mContext:Landroid/content/Context;
 
-    const v3, 0x10404cc
+    const v3, 0x10404e3
 
     invoke-virtual {v0, v3}, Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;
 
@@ -1339,7 +1339,7 @@
     .local v10, "title":Ljava/lang/CharSequence;
     iget-object v0, p0, Lcom/android/server/DeviceStorageMonitorService;->mContext:Landroid/content/Context;
 
-    const v3, 0x10404cd
+    const v3, 0x10404e4
 
     invoke-virtual {v0, v3}, Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;
 

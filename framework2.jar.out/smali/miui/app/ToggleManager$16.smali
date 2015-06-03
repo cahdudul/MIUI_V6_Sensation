@@ -24,7 +24,7 @@
     .param p2, "x0"    # Landroid/os/Handler;
 
     .prologue
-    .line 1040
+    .line 1039
     iput-object p1, p0, Lmiui/app/ToggleManager$16;->this$0:Lmiui/app/ToggleManager;
 
     invoke-direct {p0, p2}, Landroid/database/ContentObserver;-><init>(Landroid/os/Handler;)V
@@ -39,12 +39,12 @@
     .param p1, "selfChange"    # Z
 
     .prologue
-    .line 1042
+    .line 1041
     iget-object v0, p0, Lmiui/app/ToggleManager$16;->this$0:Lmiui/app/ToggleManager;
 
     # invokes: Lmiui/app/ToggleManager;->updatePaperModeToggle()V
     invoke-static {v0}, Lmiui/app/ToggleManager;->access$2100(Lmiui/app/ToggleManager;)V
 
-    .line 1043
+    .line 1042
     return-void
 .end method

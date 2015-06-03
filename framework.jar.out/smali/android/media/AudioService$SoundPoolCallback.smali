@@ -39,17 +39,17 @@
     .locals 1
 
     .prologue
-    .line 1938
+    .line 1964
     iput-object p1, p0, Landroid/media/AudioService$SoundPoolCallback;->this$0:Landroid/media/AudioService;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 1941
+    .line 1967
     const/4 v0, 0x1
 
     iput v0, p0, Landroid/media/AudioService$SoundPoolCallback;->mStatus:I
 
-    .line 1942
+    .line 1968
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
@@ -65,7 +65,7 @@
     .param p2, "x1"    # Landroid/media/AudioService$1;
 
     .prologue
-    .line 1938
+    .line 1964
     invoke-direct {p0, p1}, Landroid/media/AudioService$SoundPoolCallback;-><init>(Landroid/media/AudioService;)V
 
     return-void
@@ -80,17 +80,17 @@
     .param p3, "status"    # I
 
     .prologue
-    .line 1958
+    .line 1984
     iget-object v1, p0, Landroid/media/AudioService$SoundPoolCallback;->this$0:Landroid/media/AudioService;
 
     # getter for: Landroid/media/AudioService;->mSoundEffectsLock:Ljava/lang/Object;
-    invoke-static {v1}, Landroid/media/AudioService;->access$1400(Landroid/media/AudioService;)Ljava/lang/Object;
+    invoke-static {v1}, Landroid/media/AudioService;->access$1700(Landroid/media/AudioService;)Ljava/lang/Object;
 
     move-result-object v2
 
     monitor-enter v2
 
-    .line 1959
+    .line 1985
     :try_start_0
     iget-object v1, p0, Landroid/media/AudioService$SoundPoolCallback;->mSamples:Ljava/util/List;
 
@@ -102,16 +102,16 @@
 
     move-result v0
 
-    .line 1960
+    .line 1986
     .local v0, "i":I
     if-ltz v0, :cond_0
 
-    .line 1961
+    .line 1987
     iget-object v1, p0, Landroid/media/AudioService$SoundPoolCallback;->mSamples:Ljava/util/List;
 
     invoke-interface {v1, v0}, Ljava/util/List;->remove(I)Ljava/lang/Object;
 
-    .line 1963
+    .line 1989
     :cond_0
     if-nez p3, :cond_1
 
@@ -123,28 +123,28 @@
 
     if-eqz v1, :cond_2
 
-    .line 1964
+    .line 1990
     :cond_1
     iput p3, p0, Landroid/media/AudioService$SoundPoolCallback;->mStatus:I
 
-    .line 1965
+    .line 1991
     iget-object v1, p0, Landroid/media/AudioService$SoundPoolCallback;->this$0:Landroid/media/AudioService;
 
     # getter for: Landroid/media/AudioService;->mSoundEffectsLock:Ljava/lang/Object;
-    invoke-static {v1}, Landroid/media/AudioService;->access$1400(Landroid/media/AudioService;)Ljava/lang/Object;
+    invoke-static {v1}, Landroid/media/AudioService;->access$1700(Landroid/media/AudioService;)Ljava/lang/Object;
 
     move-result-object v1
 
     invoke-virtual {v1}, Ljava/lang/Object;->notify()V
 
-    .line 1967
+    .line 1993
     :cond_2
     monitor-exit v2
 
-    .line 1968
+    .line 1994
     return-void
 
-    .line 1967
+    .line 1993
     .end local v0    # "i":I
     :catchall_0
     move-exception v1
@@ -161,7 +161,7 @@
     .param p1, "samples"    # [I
 
     .prologue
-    .line 1949
+    .line 1975
     const/4 v0, 0x0
 
     .local v0, "i":I
@@ -170,12 +170,12 @@
 
     if-ge v0, v1, :cond_1
 
-    .line 1951
+    .line 1977
     aget v1, p1, v0
 
     if-lez v1, :cond_0
 
-    .line 1952
+    .line 1978
     iget-object v1, p0, Landroid/media/AudioService$SoundPoolCallback;->mSamples:Ljava/util/List;
 
     aget v2, p1, v0
@@ -186,13 +186,13 @@
 
     invoke-interface {v1, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
 
-    .line 1949
+    .line 1975
     :cond_0
     add-int/lit8 v0, v0, 0x1
 
     goto :goto_0
 
-    .line 1955
+    .line 1981
     :cond_1
     return-void
 .end method
@@ -201,7 +201,7 @@
     .locals 1
 
     .prologue
-    .line 1945
+    .line 1971
     iget v0, p0, Landroid/media/AudioService$SoundPoolCallback;->mStatus:I
 
     return v0

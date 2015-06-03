@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <plurals name="tethered_clients_connected">
+        <item quantity="other">%d клијената повезано</item>
+        <item quantity="one">%d клијент повезан</item>
+        <item quantity="few">%d клијента повезана</item>
+        <item quantity="many">%d клијената повезано</item>
+    </plurals>
     <plurals name="pinpuk_attempts">
         <item quantity="other">Имате још %d покушаја пре него што се SIM картица закључа.</item>
         <item quantity="one">Имате још %d покушај пре него што се SIM картица закључа.</item>

@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <plurals name="tethered_clients_connected">
+        <item quantity="other">%d pripojených klientov</item>
+        <item quantity="one">%d pripojený klient</item>
+        <item quantity="few">%d pripojení klienti</item>
+    </plurals>
     <plurals name="pinpuk_attempts">
         <item quantity="other">Počet zostávajúcich pokusov pred uzamknutím karty SIM: %d.</item>
         <item quantity="one">Zostáva vám %d pokus, než sa vaša karta SIM uzamkne.</item>

@@ -2039,7 +2039,7 @@
 
     iget-object v4, v4, Lcom/android/server/am/ActivityManagerService;->mContext:Landroid/content/Context;
 
-    const v5, 0x10404f2
+    const v5, 0x1040509
 
     const/4 v6, 0x1
 
@@ -2137,7 +2137,7 @@
 
     iget-object v5, v5, Lcom/android/server/am/ActivityManagerService;->mContext:Landroid/content/Context;
 
-    const v6, 0x10404f3
+    const v6, 0x104050a
 
     invoke-virtual {v5, v6}, Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;
 
@@ -2201,7 +2201,7 @@
 
     const/16 v22, 0x0
 
-    const v23, 0x10404f2
+    const v23, 0x1040509
 
     move-object/from16 v0, v57
 
@@ -2281,7 +2281,7 @@
 
     const/4 v5, 0x0
 
-    const v6, 0x10404f2
+    const v6, 0x1040509
 
     move-object/from16 v0, p1
 
@@ -2792,7 +2792,7 @@
 
     iget-object v4, v4, Lcom/android/server/am/ActivityManagerService;->mContext:Landroid/content/Context;
 
-    const v5, 0x1040086
+    const v5, 0x104007b
 
     const/4 v6, 0x1
 
@@ -2826,7 +2826,7 @@
 
     iget-object v4, v4, Lcom/android/server/am/ActivityManagerService;->mContext:Landroid/content/Context;
 
-    const v5, 0x1040085
+    const v5, 0x104007a
 
     invoke-virtual {v4, v5}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
@@ -2974,7 +2974,7 @@
 
     const/16 v29, 0x0
 
-    const v30, 0x1040085
+    const v30, 0x104007a
 
     move-object/from16 v0, v57
 
@@ -3054,7 +3054,7 @@
 
     const/4 v5, 0x0
 
-    const v6, 0x1040085
+    const v6, 0x104007a
 
     move-object/from16 v0, p1
 

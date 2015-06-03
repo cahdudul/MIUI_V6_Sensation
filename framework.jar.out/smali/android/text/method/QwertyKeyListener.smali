@@ -66,7 +66,7 @@
 
     const/16 v1, 0x41
 
-    const v2, 0x1040029
+    const v2, 0x104001e
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -79,7 +79,7 @@
 
     const/16 v1, 0x43
 
-    const v2, 0x104002a
+    const v2, 0x104001f
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -92,7 +92,7 @@
 
     const/16 v1, 0x44
 
-    const v2, 0x104002b
+    const v2, 0x1040020
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -105,7 +105,7 @@
 
     const/16 v1, 0x45
 
-    const v2, 0x104002c
+    const v2, 0x1040021
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -118,7 +118,7 @@
 
     const/16 v1, 0x47
 
-    const v2, 0x104002d
+    const v2, 0x1040022
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -131,7 +131,7 @@
 
     const/16 v1, 0x4c
 
-    const v2, 0x104002e
+    const v2, 0x1040023
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -144,7 +144,7 @@
 
     const/16 v1, 0x49
 
-    const v2, 0x104002f
+    const v2, 0x1040024
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -157,7 +157,7 @@
 
     const/16 v1, 0x4e
 
-    const v2, 0x1040030
+    const v2, 0x1040025
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -170,7 +170,7 @@
 
     const/16 v1, 0x4f
 
-    const v2, 0x1040031
+    const v2, 0x1040026
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -183,7 +183,7 @@
 
     const/16 v1, 0x52
 
-    const v2, 0x1040032
+    const v2, 0x1040027
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -196,7 +196,7 @@
 
     const/16 v1, 0x53
 
-    const v2, 0x1040033
+    const v2, 0x1040028
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -209,7 +209,7 @@
 
     const/16 v1, 0x54
 
-    const v2, 0x1040034
+    const v2, 0x1040029
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -222,7 +222,7 @@
 
     const/16 v1, 0x55
 
-    const v2, 0x1040035
+    const v2, 0x104002a
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -235,7 +235,7 @@
 
     const/16 v1, 0x59
 
-    const v2, 0x1040036
+    const v2, 0x104002b
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -248,7 +248,7 @@
 
     const/16 v1, 0x5a
 
-    const v2, 0x1040037
+    const v2, 0x104002c
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -261,7 +261,7 @@
 
     const/16 v1, 0x61
 
-    const v2, 0x1040038
+    const v2, 0x104002d
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -274,7 +274,7 @@
 
     const/16 v1, 0x63
 
-    const v2, 0x1040039
+    const v2, 0x104002e
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -287,7 +287,7 @@
 
     const/16 v1, 0x64
 
-    const v2, 0x104003a
+    const v2, 0x104002f
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -300,7 +300,7 @@
 
     const/16 v1, 0x65
 
-    const v2, 0x104003b
+    const v2, 0x1040030
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -313,7 +313,7 @@
 
     const/16 v1, 0x67
 
-    const v2, 0x104003c
+    const v2, 0x1040031
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -326,7 +326,7 @@
 
     const/16 v1, 0x69
 
-    const v2, 0x104003d
+    const v2, 0x1040032
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -339,7 +339,7 @@
 
     const/16 v1, 0x6c
 
-    const v2, 0x104003e
+    const v2, 0x1040033
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -352,7 +352,7 @@
 
     const/16 v1, 0x6e
 
-    const v2, 0x104003f
+    const v2, 0x1040034
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -365,7 +365,7 @@
 
     const/16 v1, 0x6f
 
-    const v2, 0x1040040
+    const v2, 0x1040035
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -378,7 +378,7 @@
 
     const/16 v1, 0x72
 
-    const v2, 0x1040041
+    const v2, 0x1040036
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -391,7 +391,7 @@
 
     const/16 v1, 0x73
 
-    const v2, 0x1040042
+    const v2, 0x1040037
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -404,7 +404,7 @@
 
     const/16 v1, 0x74
 
-    const v2, 0x1040043
+    const v2, 0x1040038
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -417,7 +417,7 @@
 
     const/16 v1, 0x75
 
-    const v2, 0x1040044
+    const v2, 0x1040039
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -430,7 +430,7 @@
 
     const/16 v1, 0x79
 
-    const v2, 0x1040045
+    const v2, 0x104003a
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -443,7 +443,7 @@
 
     const/16 v1, 0x7a
 
-    const v2, 0x1040046
+    const v2, 0x104003b
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -456,7 +456,7 @@
 
     const/16 v1, 0x31
 
-    const v2, 0x1040049
+    const v2, 0x104003e
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -469,7 +469,7 @@
 
     const/16 v1, 0x32
 
-    const v2, 0x104004a
+    const v2, 0x104003f
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -482,7 +482,7 @@
 
     const/16 v1, 0x33
 
-    const v2, 0x104004b
+    const v2, 0x1040040
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -495,7 +495,7 @@
 
     const/16 v1, 0x34
 
-    const v2, 0x104004c
+    const v2, 0x1040041
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -508,7 +508,7 @@
 
     const/16 v1, 0x35
 
-    const v2, 0x104004d
+    const v2, 0x1040042
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -521,7 +521,7 @@
 
     const/16 v1, 0x37
 
-    const v2, 0x104004e
+    const v2, 0x1040043
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -534,7 +534,7 @@
 
     const/16 v1, 0x30
 
-    const v2, 0x104004f
+    const v2, 0x1040044
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -547,7 +547,7 @@
 
     const v1, 0xef01
 
-    const v2, 0x1040047
+    const v2, 0x104003c
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -560,7 +560,7 @@
 
     const/16 v1, 0x2f
 
-    const v2, 0x1040048
+    const v2, 0x104003d
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -573,7 +573,7 @@
 
     const/16 v1, 0x24
 
-    const v2, 0x1040050
+    const v2, 0x1040045
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -586,7 +586,7 @@
 
     const/16 v1, 0x25
 
-    const v2, 0x1040051
+    const v2, 0x1040046
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -599,7 +599,7 @@
 
     const/16 v1, 0x2a
 
-    const v2, 0x1040052
+    const v2, 0x1040047
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -612,7 +612,7 @@
 
     const/16 v1, 0x2d
 
-    const v2, 0x1040053
+    const v2, 0x1040048
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -625,7 +625,7 @@
 
     const/16 v1, 0x2b
 
-    const v2, 0x1040054
+    const v2, 0x1040049
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -638,7 +638,7 @@
 
     const/16 v1, 0x28
 
-    const v2, 0x1040055
+    const v2, 0x104004a
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -651,7 +651,7 @@
 
     const/16 v1, 0x29
 
-    const v2, 0x1040056
+    const v2, 0x104004b
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -664,7 +664,7 @@
 
     const/16 v1, 0x21
 
-    const v2, 0x1040057
+    const v2, 0x104004c
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -677,7 +677,7 @@
 
     const/16 v1, 0x22
 
-    const v2, 0x1040058
+    const v2, 0x104004d
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -690,7 +690,7 @@
 
     const/16 v1, 0x3f
 
-    const v2, 0x1040059
+    const v2, 0x104004e
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -703,7 +703,7 @@
 
     const/16 v1, 0x2c
 
-    const v2, 0x104005a
+    const v2, 0x104004f
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -716,7 +716,7 @@
 
     const/16 v1, 0x3d
 
-    const v2, 0x104005b
+    const v2, 0x1040050
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -729,7 +729,7 @@
 
     const/16 v1, 0x3c
 
-    const v2, 0x104005c
+    const v2, 0x1040051
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
@@ -742,7 +742,7 @@
 
     const/16 v1, 0x3e
 
-    const v2, 0x104005d
+    const v2, 0x1040052
 
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 

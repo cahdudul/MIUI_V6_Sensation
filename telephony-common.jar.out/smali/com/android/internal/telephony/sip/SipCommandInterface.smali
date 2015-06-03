@@ -542,6 +542,41 @@
     return-void
 .end method
 
+.method public iccCloseChannel(ILandroid/os/Message;)V
+    .locals 0
+    .param p1, "channel"    # I
+    .param p2, "response"    # Landroid/os/Message;
+
+    .prologue
+    .line 572
+    return-void
+.end method
+
+.method public iccExchangeApdu(IIIIIILjava/lang/String;Landroid/os/Message;)V
+    .locals 0
+    .param p1, "cla"    # I
+    .param p2, "command"    # I
+    .param p3, "channel"    # I
+    .param p4, "p1"    # I
+    .param p5, "p2"    # I
+    .param p6, "p3"    # I
+    .param p7, "data"    # Ljava/lang/String;
+    .param p8, "response"    # Landroid/os/Message;
+
+    .prologue
+    .line 564
+    return-void
+.end method
+
+.method public iccGetAtr(Landroid/os/Message;)V
+    .locals 0
+    .param p1, "response"    # Landroid/os/Message;
+
+    .prologue
+    .line 576
+    return-void
+.end method
+
 .method public iccIO(IILjava/lang/String;IIILjava/lang/String;Ljava/lang/String;Landroid/os/Message;)V
     .locals 0
     .param p1, "command"    # I
@@ -577,6 +612,16 @@
     return-void
 .end method
 
+.method public iccOpenChannel(Ljava/lang/String;Landroid/os/Message;)V
+    .locals 0
+    .param p1, "aid"    # Ljava/lang/String;
+    .param p2, "response"    # Landroid/os/Message;
+
+    .prologue
+    .line 568
+    return-void
+.end method
+
 .method public invokeOemRilRequestRaw([BLandroid/os/Message;)V
     .locals 0
     .param p1, "data"    # [B
@@ -602,7 +647,7 @@
     .param p1, "feature"    # Ljava/lang/String;
 
     .prologue
-    .line 561
+    .line 578
     const/4 v0, 0x0
 
     return v0

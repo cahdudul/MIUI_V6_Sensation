@@ -27,18 +27,6 @@
     <string name="storage_internal">Εσωτερικός χώρος αποθήκευσης</string>
     <string name="storage_sd_card">Κάρτα SD</string>
     <string name="storage_usb">Χώρος αποθήκευσης USB</string>
-    <string name="pinpuk_attempts">"
-Προσπάθειες που απομένουν:"</string>
-    <string name="lockscreen_sim_error_message_short">Μη έγκυρη κάρτα.</string>
-    <string name="lockscreen_airplane_mode_on">Λειτουργία πτήσης</string>
-    <string name="progress_nomediapresent">Δεν υπάρχουν αφαιρούμενα μέσα…</string>
-    <string name="storage_uicc">Αποθ. χώρος UICC</string>
-    <string name="stk_cc_ussd_to_dial">Η αίτηση USSD τροποποιήθηκε σε αίτηση DIAL.</string>
-    <string name="stk_cc_ussd_to_ss">Η αίτηση USSD τροποποιήθηκε σε αίτηση SS.</string>
-    <string name="stk_cc_ussd_to_ussd">Η αίτηση USSD τροποποιήθηκε σε νέα αίτηση USSD.</string>
-    <string name="stk_cc_ss_to_dial">Η αίτηση SS τροποποιήθηκε σε αίτηση DIAL.</string>
-    <string name="stk_cc_ss_to_ussd">Η αίτηση SS τροποποιήθηκε σε αίτηση USSD.</string>
-    <string name="stk_cc_ss_to_ss">Η αίτηση SS τροποποιήθηκε σε νέα αίτηση SS.</string>
     <string name="profileNameDefault">Προεπιλογή</string>
     <string name="profileNameWork">Εργασία</string>
     <string name="profileNameHome">Σπίτι</string>
@@ -105,6 +93,8 @@
     <string name="permdesc_setKeyguardWallpaper">Επιτρέπει σε μια εφαρμογή την αλλαγή της ταπετσαρίας της οθόνης κλειδώματος.</string>
     <string name="permlab_useHardwareFramework">χρήση του πλαισίου υλικού</string>
     <string name="permdesc_useHardwareFramework">Επιτρέπει σε μια εφαρμογή την πρόσβαση στο πλαίσιο υλικού του CM.</string>
+    <string name="permlab_keyguardApplicationWidget">ορισμός widget εφαρμογής οθόνης κλειδώματος</string>
+    <string name="permdesc_keyguardApplicationWidget">Επιτρέπει σε μια εφαρμογή να ορίζει το widget εφαρμογής στην οθόνη κλειδώματος.</string>
     <string name="immersive_mode_confirmation_bottom">Σύρετε από το κάτω μέρος προς τα πάνω για να βγείτε από την πλήρη οθόνη</string>
     <string name="app_ops_access_camera">πρόσβαση στην φωτογρ. μηχανή</string>
     <string name="app_ops_access_location">πρόσβαση στην τοποθεσία σας</string>
@@ -154,10 +144,11 @@
     <string name="adb_net_active_notification_title">ADB μέσω δικτύου ενεργοποιημένο</string>
     <string name="adb_both_active_notification_title">ADB μέσω USB &amp; δικτύου ενεργοποιημένο</string>
     <string name="adb_active_generic_notification_message">Αγγίξτε για απενεργοποίηση του εντοπισμού σφαλμάτων.</string>
-    <string name="extmedia_format_message_cm">"Όλα τα δεδομένα στην κάρτα σας (στο μονοπάτι '%1$s') θα διαγραφούν. Αυτή η ενέργεια δεν είναι αναστρέψιμη!"</string>
+    <string name="usb_extmedia_format_message">"Όλα τα αρχεία στον αποθηκευτικό σας χώρο USB (στο μονοπάτι '%1$s') θα διαγραφούν. Αυτή η ενέργεια δεν είναι αναστρέψιμη!"</string>
+    <string name="sd_extmedia_format_message">"Όλα τα δεδομένα στην κάρτα σας (στο μονοπάτι '%1$s') θα διαγραφούν. Αυτή η ενέργεια δεν είναι αναστρέψιμη!"</string>
     <string name="usb_storage_notification_manage_message">Πατήστε για διαχείριση</string>
-    <string name="sd_ext_media_checking_notification_title">Προετοιμασία κάρτας SD</string>
-    <string name="sd_ext_media_checking_notification_message">Έλεγχος κάρτας SD για σφάλματα.</string>
+    <string name="sd_ext_media_checking_notification_title">Προετοιμασία κάρτας SD…</string>
+    <string name="sd_ext_media_checking_notification_message">Έλεγχος κάρτας SD για σφάλματα…</string>
     <string name="sd_ext_media_nofs_notification_title">Κενή κάρτα SD</string>
     <string name="sd_ext_media_nofs_notification_message">Η κάρτα SD είναι κενή ή διαθέτει μη υποστηριζόμενο σύστημα αρχείων.</string>
     <string name="sd_ext_media_unmountable_notification_title">Κατεστραμμένη κάρτα SD</string>
@@ -168,8 +159,8 @@
     <string name="sd_ext_media_safe_unmount_notification_message">Μπορείτε να αφαιρέσετε με ασφάλεια της κάρτα SD.</string>
     <string name="sd_ext_media_nomedia_notification_title">Η κάρτα SD αφαιρέθηκε</string>
     <string name="sd_ext_media_nomedia_notification_message">Η κάρτα SD αφαιρέθηκε. Τοποθετήστε μια νέα κάρτα.</string>
-    <string name="usb_ext_media_checking_notification_title">Προετοιμασία αποθ. χώρου USB</string>
-    <string name="usb_ext_media_checking_notification_message">Έλεγχος αποθηκευτικού χώρου USB για σφάλματα.</string>
+    <string name="usb_ext_media_checking_notification_title">Προετοιμασία αποθ. χώρου USB…</string>
+    <string name="usb_ext_media_checking_notification_message">Έλεγχος αποθηκευτικού χώρου USB για σφάλματα…</string>
     <string name="usb_ext_media_nofs_notification_title">Κενός αποθ. χώρος USB</string>
     <string name="usb_ext_media_nofs_notification_message">Ο χώρος αποθήκευσης USB είναι κενός ή διαθέτει μη υποστηριζόμενο σύστημα αρχείων.</string>
     <string name="usb_ext_media_unmountable_notification_title">Βλάβη αποθ. χώρου USB</string>
@@ -180,6 +171,35 @@
     <string name="usb_ext_media_safe_unmount_notification_message">Μπορείτε να καταργήσετε τον αποθηκευτικό χώρο USB με ασφάλεια.</string>
     <string name="usb_ext_media_nomedia_notification_title">Ο αποθ. χώρος USB καταργήθηκε</string>
     <string name="usb_ext_media_nomedia_notification_message">Ο αποθηκευτικός χώρος USB καταργήθηκε. Εισαγάγετε νέο μέσο.</string>
+    <string name="progress_nomediapresent">Δεν υπάρχουν αφαιρούμενα μέσα…</string>
+    <string name="lockscreen_sim_error_message_short">Μη έγκυρη κάρτα.</string>
+    <string name="lockscreen_airplane_mode_on">Λειτουργία πτήσης</string>
+    <string name="lockscreen_sim_locked_message_cm">Η κάρτα SIM/RUIM είναι κλειδωμένη.</string>
+    <string name="pinpuk_attempts">"
+Προσπάθειες που απομένουν:"</string>
+    <string name="stk_cc_ussd_to_dial">Η αίτηση USSD τροποποιήθηκε σε αίτηση DIAL.</string>
+    <string name="stk_cc_ussd_to_ss">Η αίτηση USSD τροποποιήθηκε σε αίτηση SS.</string>
+    <string name="stk_cc_ussd_to_ussd">Η αίτηση USSD τροποποιήθηκε σε νέα αίτηση USSD.</string>
+    <string name="stk_cc_ss_to_dial">Η αίτηση SS τροποποιήθηκε σε αίτηση DIAL.</string>
+    <string name="stk_cc_ss_to_ussd">Η αίτηση SS τροποποιήθηκε σε αίτηση USSD.</string>
+    <string name="stk_cc_ss_to_ss">Η αίτηση SS τροποποιήθηκε σε νέα αίτηση SS.</string>
+    <string name="theme_install_error_title">Αποτυχία εγκατάστασης του θέματος</string>
+    <string name="theme_install_error_message">Αποτυχία εγκατάστασης του %s</string>
+    <string name="storage_uicc">Αποθ. χώρος UICC</string>
+    <string name="sd_progress_unmounting">Αποπροσάρτηση κάρτας SD…</string>
+    <string name="sd_progress_erasing">Διαγραφή κάρτας SD…</string>
+    <string name="sd_format_error">Δεν ήταν δυνατή η διαγραφή της κάρτας SD.</string>
+    <string name="sd_media_bad_removal">Η κάρτα SD αφαιρέθηκε πριν την αποπροσάρτησή της.</string>
+    <string name="sd_media_checking">Αυτή τη στιγμή γίνεται έλεγχος της κάρτας SD.</string>
+    <string name="sd_media_removed">Η κάρτα SD έχει αφαιρεθεί.</string>
+    <string name="sd_media_shared">Αυτή τη στιγμή η κάρτα SD χρησιμοποιείται από κάποιον υπολογιστή.</string>
+    <string name="usb_progress_unmounting">Αποπροσάρτηση αποθ. χώρου USB…</string>
+    <string name="usb_progress_erasing">Διαγραφή αποθ. χώρου USB…</string>
+    <string name="usb_format_error">Δεν ήταν δυνατή η διαγραφή του αποθ. χώρου USB.</string>
+    <string name="usb_media_bad_removal">Ο αποθ. χώρος USB αφαιρέθηκε πριν την αποπροσάρτησή του.</string>
+    <string name="usb_media_checking">Αυτή τη στιγμή γίνεται έλεγχος του αποθ. χώρου USB.</string>
+    <string name="usb_media_removed">Ο αποθ. χώρος USB έχει αφαιρεθεί.</string>
+    <string name="usb_media_shared">Αυτή τη στιγμή ο αποθ. χώρος USB χρησιμοποιείται από κάποιον υπολογιστή.</string>
     <string name="numeric_date_template" formatted="false">%s/%s/%s</string>
     <string name="month_day_year" formatted="false">%d %B %Y</string>
     <string name="time_of_day" formatted="false">%-l:%M:%S %p</string>
@@ -1067,7 +1087,7 @@
     <string name="days">ημέρες</string>
     <string name="hour">ώρα</string>
     <string name="hours">ώρες</string>
-    <string name="minute">λεπτά</string>
+    <string name="minute">λεπτό</string>
     <string name="minutes">λεπτά</string>
     <string name="second">δευτερόλεπτο</string>
     <string name="seconds">δευτερόλεπτα</string>

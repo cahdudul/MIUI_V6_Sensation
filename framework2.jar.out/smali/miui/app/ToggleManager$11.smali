@@ -24,7 +24,7 @@
     .param p2, "x0"    # Landroid/os/Handler;
 
     .prologue
-    .line 1008
+    .line 1007
     iput-object p1, p0, Lmiui/app/ToggleManager$11;->this$0:Lmiui/app/ToggleManager;
 
     invoke-direct {p0, p2}, Landroid/database/ContentObserver;-><init>(Landroid/os/Handler;)V
@@ -39,12 +39,12 @@
     .param p1, "selfChange"    # Z
 
     .prologue
-    .line 1010
+    .line 1009
     iget-object v0, p0, Lmiui/app/ToggleManager$11;->this$0:Lmiui/app/ToggleManager;
 
     # invokes: Lmiui/app/ToggleManager;->updateGpsToggle()V
     invoke-static {v0}, Lmiui/app/ToggleManager;->access$1500(Lmiui/app/ToggleManager;)V
 
-    .line 1011
+    .line 1010
     return-void
 .end method

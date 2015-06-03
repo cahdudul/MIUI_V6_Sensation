@@ -32,7 +32,7 @@
     .locals 0
 
     .prologue
-    .line 4098
+    .line 4183
     iput-object p1, p0, Lcom/android/server/pm/PackageManagerService$6;->this$0:Lcom/android/server/pm/PackageManagerService;
 
     iput-object p2, p0, Lcom/android/server/pm/PackageManagerService$6;->val$i:Ljava/util/concurrent/atomic/AtomicInteger;
@@ -56,7 +56,7 @@
 
     const/4 v6, 0x0
 
-    .line 4101
+    .line 4186
     iget-object v0, p0, Lcom/android/server/pm/PackageManagerService$6;->this$0:Lcom/android/server/pm/PackageManagerService;
 
     invoke-virtual {v0}, Lcom/android/server/pm/PackageManagerService;->isFirstBoot()Z
@@ -65,12 +65,12 @@
 
     if-nez v0, :cond_0
 
-    .line 4102
+    .line 4187
     iget-object v0, p0, Lcom/android/server/pm/PackageManagerService$6;->val$i:Ljava/util/concurrent/atomic/AtomicInteger;
 
     invoke-virtual {v0}, Ljava/util/concurrent/atomic/AtomicInteger;->getAndIncrement()I
 
-    .line 4104
+    .line 4189
     :try_start_0
     invoke-static {}, Landroid/app/ActivityManagerNative;->getDefault()Landroid/app/IActivityManager;
 
@@ -84,7 +84,7 @@
 
     move-result-object v1
 
-    const v2, 0x10404ef
+    const v2, 0x1040506
 
     const/4 v3, 0x2
 
@@ -124,7 +124,7 @@
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 4111
+    .line 4196
     :cond_0
     :goto_0
     iget-object v0, p0, Lcom/android/server/pm/PackageManagerService$6;->val$p:Landroid/content/pm/PackageParser$Package;
@@ -133,7 +133,7 @@
 
     if-nez v0, :cond_1
 
-    .line 4112
+    .line 4197
     iget-object v0, p0, Lcom/android/server/pm/PackageManagerService$6;->this$0:Lcom/android/server/pm/PackageManagerService;
 
     iget-object v1, p0, Lcom/android/server/pm/PackageManagerService$6;->val$p:Landroid/content/pm/PackageParser$Package;
@@ -141,11 +141,11 @@
     # invokes: Lcom/android/server/pm/PackageManagerService;->performDexOptLI(Landroid/content/pm/PackageParser$Package;ZZZ)I
     invoke-static {v0, v1, v6, v6, v7}, Lcom/android/server/pm/PackageManagerService;->access$2000(Lcom/android/server/pm/PackageManagerService;Landroid/content/pm/PackageParser$Package;ZZZ)I
 
-    .line 4114
+    .line 4199
     :cond_1
     return-void
 
-    .line 4108
+    .line 4193
     :catch_0
     move-exception v0
 

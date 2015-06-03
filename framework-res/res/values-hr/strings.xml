@@ -27,18 +27,6 @@
     <string name="storage_internal">Interna pohrana</string>
     <string name="storage_sd_card">SD kartica</string>
     <string name="storage_usb">USB pohrana</string>
-    <string name="pinpuk_attempts">"
-Preostalo pokušaja:"</string>
-    <string name="lockscreen_sim_error_message_short">Pogrešna kartica.</string>
-    <string name="lockscreen_airplane_mode_on">Zrakoplovni način</string>
-    <string name="progress_nomediapresent">Ne postoji uklonjivi medij…</string>
-    <string name="storage_uicc">UICC pohrana</string>
-    <string name="stk_cc_ussd_to_dial">USSD zahtjev je promijenjen u DIAL zahtjev.</string>
-    <string name="stk_cc_ussd_to_ss">USSD zahtjev je promijenjen u SS zahtjev.</string>
-    <string name="stk_cc_ussd_to_ussd">USSD zahtjev je promijenjen u novi USSD zahtjev.</string>
-    <string name="stk_cc_ss_to_dial">SS zahtjev je promijenjen u DIAL zahtjev.</string>
-    <string name="stk_cc_ss_to_ussd">SS zahtjev je promijenjen u USSD zahtjev.</string>
-    <string name="stk_cc_ss_to_ss">SS zahtjev je promijenjen u novi SS zahtjev.</string>
     <string name="profileNameDefault">Zadano</string>
     <string name="profileNameWork">Posao</string>
     <string name="profileNameHome">Kuća</string>
@@ -67,7 +55,6 @@ Preostalo pokušaja:"</string>
     <string name="permlab_preventpower">spriječiti \"power\" tipku</string>
     <string name="permdesc_preventpower">Dopušta aplikaciji nadvladati \"power\" tipku</string>
     <string name="permlab_sendMockSms">poslati lažne SMS poruke</string>
-    <string name="permdesc_sendMockSms">Dopušta aplikaciji slanje lažnih SMS poruka. Ovo dopušta aplikaciji slanje poruka provjerenim aplikacijama. Zlonamjerne aplikacije mogu slati poruke uzastopno, blokirajući sustav obavijesti uređaja i tako ometati korisnika.</string>
     <string name="storage_sd_dock_card">Dock SD kartica</string>
     <string name="app_killed_message">Aplikacija prisilno zaustavljena</string>
     <string name="global_action_reboot">Ponovno pokreni</string>
@@ -152,7 +139,6 @@ Preostalo pokušaja:"</string>
     <string name="adb_net_active_notification_title">Mrežni ADB omogućen</string>
     <string name="adb_both_active_notification_title">ADB preko USB &amp; mreže omogućen</string>
     <string name="adb_active_generic_notification_message">Dodirnite za onemogućavanje ispravljanja pogrešaka.</string>
-    <string name="extmedia_format_message_cm">"Svi podaci na vašoj kartici ('%1$s') će biti obrisani. Ova radnja se ne može poništiti!"</string>
     <string name="numeric_date_template" formatted="false">%s.%s.%s.</string>
     <string name="month_day_year" formatted="false">%-e. %B %Y.</string>
     <string name="time_of_day" formatted="false">%H:%M:%S</string>

@@ -231,7 +231,7 @@
 
     .line 127
     .local v6, "actualTitle":Ljava/lang/String;
-    const v1, 0x104050a
+    const v1, 0x1040521
 
     new-array v2, v11, [Ljava/lang/Object;
 
@@ -250,7 +250,7 @@
     if-nez v10, :cond_1
 
     .line 156
-    const v1, 0x104050d
+    const v1, 0x1040524
 
     invoke-virtual {p0, v1}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 

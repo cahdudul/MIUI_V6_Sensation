@@ -23,7 +23,7 @@
     .locals 0
 
     .prologue
-    .line 902
+    .line 1041
     iput-object p1, p0, Lcom/android/server/ThemeService$1;->this$0:Lcom/android/server/ThemeService;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -39,24 +39,24 @@
     .param p2, "intent"    # Landroid/content/Intent;
 
     .prologue
-    .line 905
+    .line 1044
     iget-object v1, p0, Lcom/android/server/ThemeService$1;->this$0:Lcom/android/server/ThemeService;
 
     # getter for: Lcom/android/server/ThemeService;->mWallpaperChangedByUs:Z
-    invoke-static {v1}, Lcom/android/server/ThemeService;->access$400(Lcom/android/server/ThemeService;)Z
+    invoke-static {v1}, Lcom/android/server/ThemeService;->access$1000(Lcom/android/server/ThemeService;)Z
 
     move-result v1
 
     if-nez v1, :cond_0
 
-    .line 907
+    .line 1046
     new-instance v0, Ljava/util/HashMap;
 
     const/4 v1, 0x1
 
     invoke-direct {v0, v1}, Ljava/util/HashMap;-><init>(I)V
 
-    .line 908
+    .line 1047
     .local v0, "components":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
     const-string v1, "mods_homescreen"
 
@@ -64,25 +64,25 @@
 
     invoke-interface {v0, v1, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 909
+    .line 1048
     iget-object v1, p0, Lcom/android/server/ThemeService$1;->this$0:Lcom/android/server/ThemeService;
 
     # invokes: Lcom/android/server/ThemeService;->updateProvider(Ljava/util/Map;)V
-    invoke-static {v1, v0}, Lcom/android/server/ThemeService;->access$500(Lcom/android/server/ThemeService;Ljava/util/Map;)V
+    invoke-static {v1, v0}, Lcom/android/server/ThemeService;->access$1100(Lcom/android/server/ThemeService;Ljava/util/Map;)V
 
-    .line 913
+    .line 1052
     .end local v0    # "components":Ljava/util/Map;, "Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;"
     :goto_0
     return-void
 
-    .line 911
+    .line 1050
     :cond_0
     iget-object v1, p0, Lcom/android/server/ThemeService$1;->this$0:Lcom/android/server/ThemeService;
 
     const/4 v2, 0x0
 
     # setter for: Lcom/android/server/ThemeService;->mWallpaperChangedByUs:Z
-    invoke-static {v1, v2}, Lcom/android/server/ThemeService;->access$402(Lcom/android/server/ThemeService;Z)Z
+    invoke-static {v1, v2}, Lcom/android/server/ThemeService;->access$1002(Lcom/android/server/ThemeService;Z)Z
 
     goto :goto_0
 .end method

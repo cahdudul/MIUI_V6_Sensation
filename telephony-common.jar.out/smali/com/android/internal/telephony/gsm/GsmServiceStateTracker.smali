@@ -790,7 +790,7 @@
 
     move-result-object v7
 
-    const v8, 0x1070035
+    const v8, 0x1070036
 
     invoke-virtual {v7, v8}, Landroid/content/res/Resources;->getStringArray(I)[Ljava/lang/String;
 
@@ -869,7 +869,7 @@
 
     move-result-object v7
 
-    const v8, 0x1070036
+    const v8, 0x1070037
 
     invoke-virtual {v7, v8}, Landroid/content/res/Resources;->getStringArray(I)[Ljava/lang/String;
 
@@ -4700,7 +4700,7 @@
 
     .line 1861
     .local v1, "details":Ljava/lang/CharSequence;
-    const v6, 0x1040154
+    const v6, 0x104016b
 
     invoke-virtual {v0, v6}, Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;
 
@@ -4794,7 +4794,7 @@
     const/16 v3, 0x378
 
     .line 1867
-    const v6, 0x1040155
+    const v6, 0x104016c
 
     invoke-virtual {v0, v6}, Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;
 
@@ -4812,7 +4812,7 @@
 
     .line 1873
     :pswitch_3
-    const v6, 0x1040158
+    const v6, 0x104016f
 
     invoke-virtual {v0, v6}, Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;
 
@@ -4823,7 +4823,7 @@
 
     .line 1876
     :pswitch_4
-    const v6, 0x1040157
+    const v6, 0x104016e
 
     invoke-virtual {v0, v6}, Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;
 
@@ -4834,7 +4834,7 @@
 
     .line 1879
     :pswitch_5
-    const v6, 0x1040156
+    const v6, 0x104016d
 
     invoke-virtual {v0, v6}, Landroid/content/Context;->getText(I)Ljava/lang/CharSequence;
 
@@ -7259,7 +7259,7 @@
 
     move-result-object v13
 
-    const v14, 0x1110048
+    const v14, 0x111004a
 
     invoke-virtual {v13, v14}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -8724,7 +8724,7 @@
 
     move-result-object v19
 
-    const v20, 0x1110042
+    const v20, 0x1110044
 
     invoke-virtual/range {v19 .. v20}, Landroid/content/res/Resources;->getBoolean(I)Z
 
@@ -9802,7 +9802,7 @@
 
     move-result-object v10
 
-    const v11, 0x1040400
+    const v11, 0x1040417
 
     invoke-virtual {v10, v11}, Landroid/content/res/Resources;->getText(I)Ljava/lang/CharSequence;
 
@@ -10023,7 +10023,7 @@
 
     move-result-object v10
 
-    const v11, 0x10403e6
+    const v11, 0x10403fd
 
     invoke-virtual {v10, v11}, Landroid/content/res/Resources;->getText(I)Ljava/lang/CharSequence;
 

@@ -868,7 +868,7 @@
 
     .line 598
     .local v0, "tv":Landroid/widget/TextView;
-    const v1, 0x104057b
+    const v1, 0x1040592
 
     invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(I)V
 

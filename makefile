@@ -18,7 +18,7 @@ local-previous-target-dir :=
 # All apps from original ZIP, but has smali files chanded
 local-modified-apps := 
 
-local-modified-priv-apps := mipop
+local-modified-priv-apps := MIPop
 
 local-modified-jars := 
 
@@ -27,7 +27,7 @@ local-miui-removed-apps := MiuiSuperMarket GameCenter
 
 local-miui-removed-priv-apps := MiGameCenterSDKService
 
-local-miui-modified-apps := MiuiFramework MiuiSystemUI MiuiHome SecurityCenter DeskClock
+local-miui-modified-apps := MiuiFramework MiuiSystemUI MiuiHome SecurityCenter
 
 # Config density for co-developers to use the aaps with HDPI or XHDPI resource,
 # Default configrations are HDPI for ics branch and XHDPI for jellybean branch

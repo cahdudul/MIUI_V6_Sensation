@@ -27,7 +27,7 @@
     .locals 3
 
     .prologue
-    .line 870
+    .line 944
     invoke-static {}, Landroid/net/wifi/WifiConfiguration$ProxySettings;->values()[Landroid/net/wifi/WifiConfiguration$ProxySettings;
 
     move-result-object v0
@@ -101,7 +101,7 @@
     :try_end_3
     .catch Ljava/lang/NoSuchFieldError; {:try_start_3 .. :try_end_3} :catch_5
 
-    .line 825
+    .line 899
     :goto_3
     invoke-static {}, Landroid/net/wifi/WifiConfiguration$IpAssignment;->values()[Landroid/net/wifi/WifiConfiguration$IpAssignment;
 
@@ -160,7 +160,7 @@
     :try_end_6
     .catch Ljava/lang/NoSuchFieldError; {:try_start_6 .. :try_end_6} :catch_2
 
-    .line 315
+    .line 382
     :goto_6
     invoke-static {}, Landroid/net/NetworkInfo$DetailedState;->values()[Landroid/net/NetworkInfo$DetailedState;
 
@@ -216,7 +216,7 @@
 
     goto :goto_7
 
-    .line 825
+    .line 899
     :catch_2
     move-exception v0
 
@@ -232,7 +232,7 @@
 
     goto :goto_4
 
-    .line 870
+    .line 944
     :catch_5
     move-exception v0
 

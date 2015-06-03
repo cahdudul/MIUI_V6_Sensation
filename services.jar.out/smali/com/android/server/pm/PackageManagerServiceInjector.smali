@@ -1627,6 +1627,18 @@
     return-void
 .end method
 
+.method static initTempInitApk(Z)V
+    .locals 0
+    .param p0, "isFirstBoot"    # Z
+
+    .prologue
+    .line 525
+    invoke-static {p0}, Lcom/android/server/pm/PackageHideUtil;->initHideApk(Z)V
+
+    .line 526
+    return-void
+.end method
+
 .method private static isPackageInstalled(Lcom/android/server/pm/Settings;Ljava/lang/String;)Z
     .locals 2
     .param p0, "settings"    # Lcom/android/server/pm/Settings;

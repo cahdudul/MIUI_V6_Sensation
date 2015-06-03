@@ -1238,7 +1238,7 @@
 
     iget-object v1, v1, Landroid/media/MediaRouter$Static;->mResources:Landroid/content/res/Resources;
 
-    const v2, 0x1040620
+    const v2, 0x1040637
 
     invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getText(I)Ljava/lang/CharSequence;
 

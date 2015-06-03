@@ -47,6 +47,30 @@
     .end annotation
 .end method
 
+.method public abstract isThemeBeingProcessed(Ljava/lang/String;)Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract processThemeResources(Ljava/lang/String;)Z
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract registerThemeProcessingListener(Landroid/content/res/IThemeProcessingListener;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
 .method public abstract removeUpdates(Landroid/content/res/IThemeChangeListener;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
@@ -64,6 +88,14 @@
 .end method
 
 .method public abstract requestThemeChangeUpdates(Landroid/content/res/IThemeChangeListener;)V
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Landroid/os/RemoteException;
+        }
+    .end annotation
+.end method
+
+.method public abstract unregisterThemeProcessingListener(Landroid/content/res/IThemeProcessingListener;)V
     .annotation system Ldalvik/annotation/Throws;
         value = {
             Landroid/os/RemoteException;

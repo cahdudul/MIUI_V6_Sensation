@@ -15,7 +15,7 @@
 
 
 # static fields
-.field public static final config_dimBehindFadeDuration:I = 0x1120000
+.field public static final config_dimBehindFadeDuration:I = 0x1130000
 
 
 # direct methods
@@ -23,7 +23,7 @@
     .locals 0
 
     .prologue
-    .line 12860
+    .line 12869
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void

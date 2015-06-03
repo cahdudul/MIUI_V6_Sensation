@@ -4374,8 +4374,6 @@
 
     if-eqz p1, :cond_0
 
-    iput-object p1, p0, Lcom/android/server/AppOpsService;->mCallbackBinder:Lcom/android/internal/app/IOpsCallback;
-
     const/4 v0, 0x0
 
     :goto_0

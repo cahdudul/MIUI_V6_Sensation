@@ -49,15 +49,16 @@
 
     .prologue
     .line 91
-    if-nez p0, :cond_0
+    if-eqz p0, :cond_0
 
     invoke-interface {p0}, Landroid/database/Cursor;->getCount()I
 
     move-result v1
 
-    if-nez v1, :cond_0
+    if-nez v1, :cond_1
 
     .line 92
+    :cond_0
     const/4 v0, 0x0
 
     .line 98
@@ -65,7 +66,7 @@
     return-object v0
 
     .line 94
-    :cond_0
+    :cond_1
     new-instance v0, Landroid/provider/LocalGroups$Group;
 
     invoke-direct {v0}, Landroid/provider/LocalGroups$Group;-><init>()V

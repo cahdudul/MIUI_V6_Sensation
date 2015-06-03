@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <plurals name="tethered_clients_connected">
+        <item quantity="other">%d klientų prisijungę</item>
+        <item quantity="one">%d klientas prisijungęs</item>
+        <item quantity="few">%d klientai prisijungę</item>
+    </plurals>
     <plurals name="pinpuk_attempts">
         <item quantity="other">Liko %d band. Paskui SIM kortelė bus užrakinta.</item>
         <item quantity="one">Liko %d band. Paskui SIM kortelė bus užrakinta.</item>

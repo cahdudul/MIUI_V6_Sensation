@@ -28,19 +28,19 @@
     .param p2, "name"    # Ljava/lang/String;
 
     .prologue
-    .line 333
+    .line 345
     iput-object p1, p0, Lcom/miui/server/SecurityManagerService$PackageSetting;->this$0:Lcom/miui/server/SecurityManagerService;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 334
+    .line 346
     iput-object p2, p0, Lcom/miui/server/SecurityManagerService$PackageSetting;->name:Ljava/lang/String;
 
-    .line 335
+    .line 347
     const/4 v0, 0x0
 
     iput-boolean v0, p0, Lcom/miui/server/SecurityManagerService$PackageSetting;->accessControl:Z
 
-    .line 336
+    .line 348
     return-void
 .end method

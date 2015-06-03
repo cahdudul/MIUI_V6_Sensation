@@ -28,7 +28,9 @@
 
 .field static final TRANSACTION_dismiss:I = 0x9
 
-.field static final TRANSACTION_dispatch:I = 0x13
+.field static final TRANSACTION_dispatchApplicationWidgetEvent:I = 0x14
+
+.field static final TRANSACTION_dispatchCameraEvent:I = 0x13
 
 .field static final TRANSACTION_doKeyguardTimeout:I = 0x10
 
@@ -44,9 +46,11 @@
 
 .field static final TRANSACTION_keyguardDone:I = 0x7
 
-.field static final TRANSACTION_launchCamera:I = 0x14
+.field static final TRANSACTION_launchApplicationWidget:I = 0x16
 
-.field static final TRANSACTION_onBootCompleted:I = 0x15
+.field static final TRANSACTION_launchCamera:I = 0x15
+
+.field static final TRANSACTION_onBootCompleted:I = 0x17
 
 .field static final TRANSACTION_onDreamingStarted:I = 0xa
 
@@ -162,7 +166,7 @@
     .line 38
     sparse-switch p1, :sswitch_data_0
 
-    .line 212
+    .line 231
     invoke-super {p0, p1, p2, p3, p4}, Landroid/os/Binder;->onTransact(ILandroid/os/Parcel;Landroid/os/Parcel;I)Z
 
     move-result v4
@@ -613,7 +617,7 @@
     .line 196
     .local v0, "_arg0":Landroid/view/MotionEvent;
     :goto_6
-    invoke-virtual {p0, v0}, Lcom/android/internal/policy/IKeyguardService$Stub;->dispatch(Landroid/view/MotionEvent;)V
+    invoke-virtual {p0, v0}, Lcom/android/internal/policy/IKeyguardService$Stub;->dispatchCameraEvent(Landroid/view/MotionEvent;)V
 
     goto/16 :goto_0
 
@@ -632,18 +636,67 @@
 
     invoke-virtual {p2, v3}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 202
-    invoke-virtual {p0}, Lcom/android/internal/policy/IKeyguardService$Stub;->launchCamera()V
+    .line 203
+    invoke-virtual {p2}, Landroid/os/Parcel;->readInt()I
+
+    move-result v3
+
+    if-eqz v3, :cond_b
+
+    .line 204
+    sget-object v3, Landroid/view/MotionEvent;->CREATOR:Landroid/os/Parcelable$Creator;
+
+    invoke-interface {v3, p2}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    check-cast v0, Landroid/view/MotionEvent;
+
+    .line 209
+    .restart local v0    # "_arg0":Landroid/view/MotionEvent;
+    :goto_7
+    invoke-virtual {p0, v0}, Lcom/android/internal/policy/IKeyguardService$Stub;->dispatchApplicationWidgetEvent(Landroid/view/MotionEvent;)V
 
     goto/16 :goto_0
 
     .line 207
+    .end local v0    # "_arg0":Landroid/view/MotionEvent;
+    :cond_b
+    const/4 v0, 0x0
+
+    .restart local v0    # "_arg0":Landroid/view/MotionEvent;
+    goto :goto_7
+
+    .line 214
+    .end local v0    # "_arg0":Landroid/view/MotionEvent;
     :sswitch_15
     const-string v3, "com.android.internal.policy.IKeyguardService"
 
     invoke-virtual {p2, v3}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
 
-    .line 208
+    .line 215
+    invoke-virtual {p0}, Lcom/android/internal/policy/IKeyguardService$Stub;->launchCamera()V
+
+    goto/16 :goto_0
+
+    .line 220
+    :sswitch_16
+    const-string v3, "com.android.internal.policy.IKeyguardService"
+
+    invoke-virtual {p2, v3}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 221
+    invoke-virtual {p0}, Lcom/android/internal/policy/IKeyguardService$Stub;->launchApplicationWidget()V
+
+    goto/16 :goto_0
+
+    .line 226
+    :sswitch_17
+    const-string v3, "com.android.internal.policy.IKeyguardService"
+
+    invoke-virtual {p2, v3}, Landroid/os/Parcel;->enforceInterface(Ljava/lang/String;)V
+
+    .line 227
     invoke-virtual {p0}, Lcom/android/internal/policy/IKeyguardService$Stub;->onBootCompleted()V
 
     goto/16 :goto_0
@@ -672,6 +725,8 @@
         0x13 -> :sswitch_13
         0x14 -> :sswitch_14
         0x15 -> :sswitch_15
+        0x16 -> :sswitch_16
+        0x17 -> :sswitch_17
         0x5f4e5446 -> :sswitch_0
     .end sparse-switch
 .end method

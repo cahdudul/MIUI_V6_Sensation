@@ -23,7 +23,7 @@
     .locals 0
 
     .prologue
-    .line 728
+    .line 730
     iput-object p1, p0, Landroid/net/wifi/WifiStateMachine$2;->this$0:Landroid/net/wifi/WifiStateMachine;
 
     invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
@@ -39,10 +39,10 @@
     .param p2, "intent"    # Landroid/content/Intent;
 
     .prologue
-    .line 731
+    .line 733
     const/4 v0, 0x0
 
-    .line 732
+    .line 734
     .local v0, "workSource":Landroid/os/WorkSource;
     iget-object v1, p0, Landroid/net/wifi/WifiStateMachine$2;->this$0:Landroid/net/wifi/WifiStateMachine;
 
@@ -50,6 +50,6 @@
 
     invoke-virtual {v1, v2, v0}, Landroid/net/wifi/WifiStateMachine;->startScan(ILandroid/os/WorkSource;)V
 
-    .line 733
+    .line 735
     return-void
 .end method

@@ -27,18 +27,6 @@
     <string name="storage_internal">Almacenamientu internu</string>
     <string name="storage_sd_card">Tarxeta SD</string>
     <string name="storage_usb">Almacenamientu USB</string>
-    <string name="pinpuk_attempts">"
-Intentos restantes:"</string>
-    <string name="lockscreen_sim_error_message_short">Tarxeta inválida.</string>
-    <string name="lockscreen_airplane_mode_on">Mou avión</string>
-    <string name="progress_nomediapresent">Nun hai medios estrayibles…</string>
-    <string name="storage_uicc">Almacenamientu UICC</string>
-    <string name="stk_cc_ussd_to_dial">Solicitú USSD modifícase a solicitú DIAL.</string>
-    <string name="stk_cc_ussd_to_ss">Solicitú USSD modifícase a solicitú SS.</string>
-    <string name="stk_cc_ussd_to_ussd">Solicitú USSD modifícase a solicitú nueva USSD.</string>
-    <string name="stk_cc_ss_to_dial">Solicitú SS modifícase a solicitú DIAL.</string>
-    <string name="stk_cc_ss_to_ussd">Solicitú SS modifícase a solicitú USSD.</string>
-    <string name="stk_cc_ss_to_ss">Solicitú SS modifícase a solicitú nueva SS.</string>
     <string name="profileNameDefault">Predet.</string>
     <string name="profileNameWork">Trabayu</string>
     <string name="profileNameHome">Aniciu</string>
@@ -105,6 +93,8 @@ Intentos restantes:"</string>
     <string name="permdesc_setKeyguardWallpaper">"Permite que l'aplicación afite'l fondu de la pantalla de bloquéu."</string>
     <string name="permlab_useHardwareFramework">usar marcu de hardware</string>
     <string name="permdesc_useHardwareFramework">"Permite que l'aplicación acceda al marcu de hardware de CM."</string>
+    <string name="permlab_keyguardApplicationWidget">"afitar widget d'aplicación na pantalla de bloquéu"</string>
+    <string name="permdesc_keyguardApplicationWidget">"Permite que l'aplicación afite'l widget d'aplicación na pantalla de bloquéu."</string>
     <string name="immersive_mode_confirmation_bottom">"Esliza'l deu hacia arriba dende'l borde inferior pa salir de la pantalla completa"</string>
     <string name="app_ops_access_camera">acceder a la cámara</string>
     <string name="app_ops_access_location">acceder a la to llocalización</string>
@@ -154,10 +144,11 @@ Intentos restantes:"</string>
     <string name="adb_net_active_notification_title">ADB sobre rede habilitáu</string>
     <string name="adb_both_active_notification_title">ADB sobre USB y rede habilitáu</string>
     <string name="adb_active_generic_notification_message">Toca pa deshabilitar la depuración.</string>
-    <string name="extmedia_format_message_cm">"Van desaniciase tolos datos de la tarxeta (nel camín '%1$s'). Esta aición nun pue desfacese!"</string>
+    <string name="usb_extmedia_format_message">Va desaniciase tola información del almacenamientu USB (nel camín «%1$s») . ¡Esta aición nun pue desfacese!</string>
+    <string name="sd_extmedia_format_message">"Van desaniciase tolos datos de la tarxeta (nel camín '%1$s'). ¡Esta aición nun pue desfacese!"</string>
     <string name="usb_storage_notification_manage_message">Toca pa xestionar</string>
-    <string name="sd_ext_media_checking_notification_title">Preparando tarxeta SD</string>
-    <string name="sd_ext_media_checking_notification_message">Comprobando fallos na tarxeta SD.</string>
+    <string name="sd_ext_media_checking_notification_title">Tresnando tarxeta SD…</string>
+    <string name="sd_ext_media_checking_notification_message">Comprobando errores na tarxeta SD…</string>
     <string name="sd_ext_media_nofs_notification_title">Tarxeta SD balera</string>
     <string name="sd_ext_media_nofs_notification_message">La tarxeta SD ta balera o tien un sistema de ficheros non sofitáu.</string>
     <string name="sd_ext_media_unmountable_notification_title">Tarxeta SD frañada</string>
@@ -168,8 +159,8 @@ Intentos restantes:"</string>
     <string name="sd_ext_media_safe_unmount_notification_message">Pues estrayer la tarxeta SD con seguridá.</string>
     <string name="sd_ext_media_nomedia_notification_title">Tarxeta SD estrayida</string>
     <string name="sd_ext_media_nomedia_notification_message">Tarxeta SD estrayida. Inxerta una nueva.</string>
-    <string name="usb_ext_media_checking_notification_title">Preparando almacenamientu USB</string>
-    <string name="usb_ext_media_checking_notification_message">Comprobando fallos nel almacenamientu USB.</string>
+    <string name="usb_ext_media_checking_notification_title">Tresnando almacenamientu USB…</string>
+    <string name="usb_ext_media_checking_notification_message">Comprobando fallos nel almacenamientu USB…</string>
     <string name="usb_ext_media_nofs_notification_title">Almacenamientu USB baleru</string>
     <string name="usb_ext_media_nofs_notification_message">"L'almacenamientu USB ta baleru o tien un sistema de ficheros non sofitáu."</string>
     <string name="usb_ext_media_unmountable_notification_title">Almacenamientu USB frañáu</string>
@@ -180,6 +171,35 @@ Intentos restantes:"</string>
     <string name="usb_ext_media_safe_unmount_notification_message">"Pues estrayer l'almacenamientu USB con seguridá."</string>
     <string name="usb_ext_media_nomedia_notification_title">Almacenamientu USB estrayíu</string>
     <string name="usb_ext_media_nomedia_notification_message">Almacenamientu USB estrayíu. Inxerta ún nuevu.</string>
+    <string name="progress_nomediapresent">Nun hai medios estrayibles…</string>
+    <string name="lockscreen_sim_error_message_short">Tarxeta inválida.</string>
+    <string name="lockscreen_airplane_mode_on">Mou avión</string>
+    <string name="lockscreen_sim_locked_message_cm">La tarxeta SIM/RUIM ta bloquiada.</string>
+    <string name="pinpuk_attempts">"
+Intentos restantes:"</string>
+    <string name="stk_cc_ussd_to_dial">Solicitú USSD modifícase a solicitú DIAL.</string>
+    <string name="stk_cc_ussd_to_ss">Solicitú USSD modifícase a solicitú SS.</string>
+    <string name="stk_cc_ussd_to_ussd">Solicitú USSD modifícase a solicitú nueva USSD.</string>
+    <string name="stk_cc_ss_to_dial">Solicitú SS modifícase a solicitú DIAL.</string>
+    <string name="stk_cc_ss_to_ussd">Solicitú SS modifícase a solicitú USSD.</string>
+    <string name="stk_cc_ss_to_ss">Solicitú SS modifícase a solicitú nueva SS.</string>
+    <string name="theme_install_error_title">Falló al instalar el tema</string>
+    <string name="theme_install_error_message">%s falló al instalar</string>
+    <string name="storage_uicc">Almacenamientu UICC</string>
+    <string name="sd_progress_unmounting">Desactivando tarxeta SD…</string>
+    <string name="sd_progress_erasing">Desaniciando tarxeta SD…</string>
+    <string name="sd_format_error">Nun pudo desaniciase la tarxeta SD.</string>
+    <string name="sd_media_bad_removal">La tarxeta SD estráxose enantes de desactivala.</string>
+    <string name="sd_media_checking">Ta comprobándose la tarxeta SD.</string>
+    <string name="sd_media_removed">Estráxose la tarxeta SD.</string>
+    <string name="sd_media_shared">Hai un equipu usando agora mesmo la tarxeta SD.</string>
+    <string name="usb_progress_unmounting">Desactivando almacenamientu USB…</string>
+    <string name="usb_progress_erasing">Desaniciando almacenamientu USB…</string>
+    <string name="usb_format_error">"Nun pudo desaniciase l'almacenamientu USB."</string>
+    <string name="usb_media_bad_removal">"L'almacenamientu USB estráxose enantes de desmontase."</string>
+    <string name="usb_media_checking">"Ta comprobándose l'almacenamientu USB."</string>
+    <string name="usb_media_removed">"Estráxose l'almacenamientu USB."</string>
+    <string name="usb_media_shared">"Hai un equipu usando agora mesmo l'almacenamientu USB."</string>
     <string name="byteShort">B</string>
     <string name="kilobyteShort">KB</string>
     <string name="megabyteShort">MB</string>
@@ -915,8 +935,8 @@ Intentos restantes:"</string>
     <string name="emergency_calls_only">"Namái llamaes d'emerxencia"</string>
     <string name="lockscreen_network_locked_message">Bloquiada pa la rede</string>
     <string name="lockscreen_sim_puk_locked_message">La tarxeta SIM ta bloquiada col códigu PUK.</string>
-    <string name="lockscreen_sim_puk_locked_instructions">"Consulta la guía del usuariu o ponte en contautu col serviciu d'atención al cliente."</string>
-    <string name="lockscreen_sim_locked_message">"Inxerta'l códigu PIN."</string>
+    <string name="lockscreen_sim_puk_locked_instructions">"Ver la Guía d'usuariu o contautar con atención al veceru."</string>
+    <string name="lockscreen_sim_locked_message">La tarxeta SIM ta bloquiada.</string>
     <string name="lockscreen_sim_unlock_progress_dialog_message">Desbloquiando tarxeta SIM…</string>
     <string name="lockscreen_too_many_failed_attempts_dialog_message" formatted="false">"Fixisti %d intentos fallíos de desbloquéu. 
 
@@ -1510,7 +1530,7 @@ pa la cuenta %s"</string>
     <string name="kg_sim_unlock_progress_dialog_message">Desbloquiando tarxeta SIM…</string>
     <string name="kg_password_wrong_pin_code">Códigu PIN incorreutu</string>
     <string name="kg_invalid_sim_pin_hint">Introduz un códigu PIN con una llonxitú comprendida ente cuatro y ocho díxitos.</string>
-    <string name="kg_invalid_sim_puk_hint">El códigu PUK tien de tener ocho númberos como mínimo.</string>
+    <string name="kg_invalid_sim_puk_hint">El códigu PUK tien de tener ocho númberos como mínimu.</string>
     <string name="kg_invalid_puk">Vuelvi a introducir el códigu PUK correutu. Si introduces un códigu incorreutu delles vegaes, va inhabilitase la tarxeta SIM.</string>
     <string name="kg_invalid_confirm_pin_hint">Los códigos PIN nun concasen.</string>
     <string name="kg_login_too_many_attempts">Abondos intentos incorreutos de crear el patrón</string>
